@@ -1,0 +1,51 @@
+body{
+    background-color: #343477
+}
+.container{
+    background-color: #8080B3;
+    border: 1px solid black;
+    padding: 10px;
+    width: 800px;
+    margin: 25px auto;
+    border-radius: 50px;
+    box-shadow: 0px 0px 5px black;
+    text-align: center;
+
+    }
+.container img{
+    width: 600px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50px;
+    box-shadow: 0px 0px 5px black;
+}
+.para{
+    padding: 5px;
+    text-shadow: 0px 0px 5px white;
+    font-size: 30px;
+}
+.footercontainer{
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+.footercontainer a{
+    color: #8080b3;
+    font-size: 25px;
+    margin:20px 8px;
+}
+a:hover { 
+    color: #8070b3
+  }
+  #logo{
+    position: fixed;
+    left: 50px;
+    top: 50px;
+    width: 150px;
+    border-radius: 50px;
+    height: auto;
+    transition: 0.3s
+  }
+  #logo:hover{
+      width: 200px;
+  }
