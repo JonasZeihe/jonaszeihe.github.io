@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import SmoothScroller from '../utilities/SmoothScroller';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const theme = useTheme();
 
   const sections = [{ id: 'introduction', label: 'Einführung' }];
 
@@ -15,34 +14,23 @@ export default function Header() {
     setMenuOpen(false);
   };
 
-  const renderNavItems = (isMobile) =>
+  const renderNavItems = () =>
     sections.map(({ id, label }) => (
       <SmoothScroller key={id} targetId={id}>
-        <NavItem
-          isMobile={isMobile}
-          onClick={() => isMobile && setMenuOpen(false)}
-        >
-          {label}
-        </NavItem>
+        <NavItem onClick={() => setMenuOpen(false)}>{label}</NavItem>
       </SmoothScroller>
     ));
 
   return (
     <HeaderContainer>
       <HeaderContent>
-        <Logo
-          src={
-            menuOpen || window.innerWidth >= parseInt(theme.breakpoints.md, 10)
-          }
-          alt="KIM Logo"
-          onClick={handleLogoClick}
-        />
-        <DesktopNav>{renderNavItems(false)}</DesktopNav>
+        <Logo onClick={handleLogoClick}>Jonas Zeihe</Logo>
+        <DesktopNav>{renderNavItems()}</DesktopNav>
         <MobileMenuButton onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? '✕' : '☰'}
         </MobileMenuButton>
       </HeaderContent>
-      {menuOpen && <MobileMenu>{renderNavItems(true)}</MobileMenu>}
+      {menuOpen && <MobileMenu>{renderNavItems()}</MobileMenu>}
     </HeaderContainer>
   );
 }
@@ -63,21 +51,24 @@ const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 ${({ theme }) => theme.spacing(4)};
+  padding: ${({ theme }) => theme.spacing(4)};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: 0 ${({ theme }) => theme.spacing(2)};
+    padding: ${({ theme }) => theme.spacing(2)};
   }
 `;
 
-const Logo = styled.img`
-  height: clamp(3rem, 5vw, 4rem);
+const Logo = styled.div`
+  font-size: ${({ theme }) => theme.typography.fontSize.h2};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
+  color: ${({ theme }) => theme.colors.neutral.white};
   cursor: pointer;
 `;
 
 const DesktopNav = styled.nav`
   display: flex;
   gap: ${({ theme }) => theme.spacing(4)};
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
   }
@@ -85,8 +76,7 @@ const DesktopNav = styled.nav`
 
 const NavItem = styled.div`
   font-size: ${({ theme }) => theme.typography.fontSize.body};
-  color: ${({ isMobile, theme }) =>
-    isMobile ? theme.colors.neutral.white : theme.colors.neutral.white};
+  color: ${({ theme }) => theme.colors.neutral.white};
   cursor: pointer;
   position: relative;
   transition: color 0.3s ease;
@@ -102,19 +92,18 @@ const NavItem = styled.div`
     transition: width 0.3s ease;
   }
 
-  &:hover::after {
-    width: 100%;
-  }
+  &:hover {
+    color: ${({ theme }) => theme.colors.accent.main};
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.typography.fontSize.h3};
-    text-align: center;
-    width: 100%;
+    &::after {
+      width: 100%;
+    }
   }
 `;
 
 const MobileMenuButton = styled.button`
   display: none;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: block;
     background: none;
@@ -137,6 +126,10 @@ const MobileMenu = styled.div`
   flex-direction: column;
   align-items: center;
   padding: ${({ theme }) => theme.spacing(4)} 0;
-  gap: ${({ theme }) => theme.spacing(3)};
+  gap: ${({ theme }) => theme.spacing(2)};
   z-index: 999;
+
+  ${NavItem} {
+    font-size: ${({ theme }) => theme.typography.fontSize.h3};
+  }
 `;

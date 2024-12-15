@@ -1,59 +1,74 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 import {
   FaFacebook,
   FaTwitter,
   FaInstagram,
   FaLinkedin,
   FaArrowUp,
-} from "react-icons/fa";
+  FaEnvelope,
+  FaGithub,
+} from 'react-icons/fa';
 
 export default function Footer() {
   const scrollToTop = () => {
-    document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
-    document.body.scrollTo({ top: 0, behavior: "smooth" });
+    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <FooterWrapper>
       <FooterContent>
-        <LogoSection>
-          <FooterDescription>
-            Die App für echte Verbindungen – für authentische Freundschaften und
-            nachhaltige Begegnungen.
-          </FooterDescription>
-          <SocialIcons>
-            <IconLink href="https://facebook.com" aria-label="Facebook">
-              <FaFacebook />
-            </IconLink>
-            <IconLink href="https://twitter.com" aria-label="Twitter">
-              <FaTwitter />
-            </IconLink>
-            <IconLink href="https://instagram.com" aria-label="Instagram">
-              <FaInstagram />
-            </IconLink>
-            <IconLink href="https://linkedin.com" aria-label="LinkedIn">
-              <FaLinkedin />
-            </IconLink>
-          </SocialIcons>
-        </LogoSection>
         <FooterGrid>
           <FooterColumn>
             <FooterTitle>Kontakt</FooterTitle>
-            <FooterLinks>
-              <FooterLink href="mailto:contact@kim-app.com">
-                contact@kim-app.com
-              </FooterLink>
-              <FooterLink href="tel:+49123456789">+49 123 456 789</FooterLink>
-            </FooterLinks>
+            <ContactList>
+              <ContactItem>
+                <FaEnvelope />
+                <ContactLink href="mailto:jonaszeihe@gmail.com">
+                  jonaszeihe@gmail.com
+                </ContactLink>
+              </ContactItem>
+              <ContactItem>
+                <FaGithub />
+                <ContactLink
+                  href="https://github.com/jonaszeihe"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  github.com/jonaszeihe
+                </ContactLink>
+              </ContactItem>
+            </ContactList>
+          </FooterColumn>
+
+          <FooterColumn>
+            <FooterTitle>Social Media</FooterTitle>
+            <SocialIcons>
+              <IconLink href="https://facebook.com" aria-label="Facebook">
+                <FaFacebook />
+              </IconLink>
+              <IconLink href="https://twitter.com" aria-label="Twitter">
+                <FaTwitter />
+              </IconLink>
+              <IconLink href="https://instagram.com" aria-label="Instagram">
+                <FaInstagram />
+              </IconLink>
+              <IconLink href="https://linkedin.com" aria-label="LinkedIn">
+                <FaLinkedin />
+              </IconLink>
+            </SocialIcons>
           </FooterColumn>
         </FooterGrid>
       </FooterContent>
+
       <FooterBottom>
         <Copyright>
-          © {new Date().getFullYear()} KIM App. Alle Rechte vorbehalten.
+          © {new Date().getFullYear()} Jonas Zeihe. Alle Rechte vorbehalten.
         </Copyright>
-        <ScrollToTopButton onClick={scrollToTop}>
+        <ScrollToTopButton
+          onClick={scrollToTop}
+          aria-label="Nach oben scrollen"
+        >
           <FaArrowUp />
         </ScrollToTopButton>
       </FooterBottom>
@@ -61,13 +76,15 @@ export default function Footer() {
   );
 }
 
+// **Styles**
 const FooterWrapper = styled.footer`
   background: ${({ theme }) => theme.colors.primary.dark};
   color: ${({ theme }) => theme.colors.neutral.white};
-  padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(4)};
+  padding: ${({ theme }) => theme.spacing(6)} ${({ theme }) => theme.spacing(4)};
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: ${({ theme }) => theme.spacing(6)};
 `;
 
 const FooterContent = styled.div`
@@ -76,38 +93,6 @@ const FooterContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing(6)};
-`;
-
-const LogoSection = styled.div`
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing(3)};
-`;
-
-const FooterDescription = styled.p`
-  font-size: ${({ theme }) => theme.typography.fontSize.body};
-  color: ${({ theme }) => theme.colors.neutral.light};
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: ${({ theme }) => theme.typography.lineHeight.relaxed};
-`;
-
-const SocialIcons = styled.div`
-  display: flex;
-  gap: ${({ theme }) => theme.spacing(4)};
-`;
-
-const IconLink = styled.a`
-  color: ${({ theme }) => theme.colors.neutral.white};
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.accent.main};
-  }
 `;
 
 const FooterGrid = styled.div`
@@ -125,20 +110,48 @@ const FooterColumn = styled.div`
 
 const FooterTitle = styled.h4`
   font-size: ${({ theme }) => theme.typography.fontSize.h3};
-`;
-
-const FooterLinks = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(2)};
-`;
-
-const FooterLink = styled.a`
   color: ${({ theme }) => theme.colors.neutral.white};
+`;
+
+const ContactList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`;
+
+const ContactItem = styled.li`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(2)};
+  font-size: ${({ theme }) => theme.typography.fontSize.body};
+  color: ${({ theme }) => theme.colors.neutral.light};
+`;
+
+const ContactLink = styled.a`
+  color: ${({ theme }) => theme.colors.neutral.light};
+  text-decoration: none;
   transition: color 0.3s ease;
 
   &:hover {
     color: ${({ theme }) => theme.colors.accent.main};
+  }
+`;
+
+const SocialIcons = styled.div`
+  display: flex;
+  gap: ${({ theme }) => theme.spacing(3)};
+`;
+
+const IconLink = styled.a`
+  color: ${({ theme }) => theme.colors.neutral.white};
+  font-size: 1.5rem;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.accent.main};
+    transform: scale(1.1);
   }
 `;
 
@@ -148,13 +161,12 @@ const FooterBottom = styled.div`
   align-items: center;
   width: 100%;
   max-width: ${({ theme }) => theme.breakpoints.xl};
-  margin-top: ${({ theme }) => theme.spacing(6)};
-  font-size: ${({ theme }) => theme.typography.fontSize.detail};
-  color: ${({ theme }) => theme.colors.neutral.light};
+  font-size: ${({ theme }) => theme.typography.fontSize.small};
+  color: ${({ theme }) => theme.colors.neutral.medium};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
-    gap: ${({ theme }) => theme.spacing(3)};
+    gap: ${({ theme }) => theme.spacing(2)};
   }
 `;
 
@@ -167,12 +179,12 @@ const ScrollToTopButton = styled.button`
   color: ${({ theme }) => theme.colors.neutral.white};
   border: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   cursor: pointer;
   transition:
     background 0.3s ease,
@@ -185,6 +197,6 @@ const ScrollToTopButton = styled.button`
 
   &:focus {
     outline: 2px solid ${({ theme }) => theme.colors.accent.light};
-    outline-offset: 4px;
+    outline-offset: 2px;
   }
 `;

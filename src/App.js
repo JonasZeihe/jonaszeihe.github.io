@@ -1,10 +1,11 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 
-import Introduction from "./pages/1_Introduction";
+import Introduction from './pages/1_Introduction';
+import TestPage from './pages/2_testpage';
 
 const Main = styled.main`
   padding: ${({ theme }) => theme.spacing(6)} ${({ theme }) => theme.spacing(1)};
@@ -19,6 +20,9 @@ export default function App() {
       <Main>
         <Section id="introduction">
           <Introduction />
+        </Section>
+        <Section id="testPage">
+          <TestPage />
         </Section>
       </Main>
       <Footer />

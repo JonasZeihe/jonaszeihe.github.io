@@ -1,0 +1,121 @@
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Wrapper from '../layout/Wrapper';
+import Typography from '../../styles/Typography';
+import MediaDisplay from './MediaDisplay';
+import Button from '../common/Button';
+
+// Styled Components
+const CardContainer = styled(Wrapper)`
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: ${({ theme }) => theme.boxShadow.medium};
+  }
+`;
+
+const MediaWrapper = styled.div`
+  position: relative;
+  height: 200px; /* Fixe Höhe für konsistente Darstellung */
+  overflow: hidden;
+
+  img,
+  video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+const CardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(2)};
+  text-align: center;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing(2)};
+  margin-top: ${({ theme }) => theme.spacing(3)};
+`;
+
+// Function Declaration for Linting
+function Card({ title, media, description, buttons }) {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  const handleOpenLightbox = () => setLightboxOpen(true);
+  const handleCloseLightbox = () => setLightboxOpen(false);
+
+  return (
+    <CardContainer gradient="neutralSoft" elevated>
+      {/* Media Section */}
+      <MediaWrapper onClick={handleOpenLightbox}>
+        <MediaDisplay media={media} />
+      </MediaWrapper>
+
+      {/* Content Section */}
+      <Wrapper backgroundColor="neutral.white">
+        <CardContent>
+          <Typography variant="h3" color="primary.main">
+            {title}
+          </Typography>
+          <Typography variant="body" color="neutral.dark">
+            {description}
+          </Typography>
+          <ButtonContainer>
+            {buttons.map((button) => (
+              <Button
+                key={button.label}
+                variant={button.variant || 'primary'}
+                onClick={button.onClick}
+              >
+                {button.label}
+              </Button>
+            ))}
+          </ButtonContainer>
+        </CardContent>
+      </Wrapper>
+
+      {/* Lightbox Integration */}
+      {lightboxOpen && (
+        <MediaDisplay
+          media={media}
+          currentIndex={0} // Default to first media item
+          onClose={handleCloseLightbox}
+        />
+      )}
+    </CardContainer>
+  );
+}
+
+// Prop Types
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+  media: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.oneOf(['image', 'video']).isRequired,
+      src: PropTypes.string.isRequired,
+      alt: PropTypes.string,
+    })
+  ).isRequired,
+  description: PropTypes.string.isRequired,
+  buttons: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      onClick: PropTypes.func.isRequired,
+      variant: PropTypes.string, // Optional: 'primary', 'secondary', etc.
+    })
+  ),
+};
+
+Card.defaultProps = {
+  buttons: [],
+};
+
+export default Card;
