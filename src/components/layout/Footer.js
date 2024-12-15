@@ -87,10 +87,6 @@ const LogoSection = styled.div`
   gap: ${({ theme }) => theme.spacing(3)};
 `;
 
-const Logo = styled.img`
-  height: 60px;
-`;
-
 const FooterDescription = styled.p`
   font-size: ${({ theme }) => theme.typography.fontSize.body};
   color: ${({ theme }) => theme.colors.neutral.light};

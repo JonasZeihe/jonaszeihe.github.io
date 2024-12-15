@@ -10,7 +10,7 @@ for /f "tokens=1-5 delims=:-. " %%a in ("%date% %time%") do (
 set LOGFILE=clean_install_log_%year%-%month%-%day%T%hour%-%minute%.txt
 
 :: Log start of script execution
-echo Starting cleanup and installation... > %LOGFILE%
+echo Starting full reset... > %LOGFILE%
 echo ======================== >> %LOGFILE%
 echo %year%-%month%-%day%T%hour%:%minute% >> %LOGFILE%
 echo ======================== >> %LOGFILE%
@@ -45,6 +45,21 @@ if exist package-lock.json (
     echo package-lock.json does not exist. Skipping deletion. >> %LOGFILE%
 )
 
+:: Delete build folder
+if exist build (
+    echo Deleting build folder... >> %LOGFILE%
+    rd /s /q build >> %LOGFILE% 2>&1
+    if %errorlevel% neq 0 (
+        echo Failed to delete build folder. Check permissions. >> %LOGFILE%
+        echo Failed to delete build folder. Check the log file: %LOGFILE%
+        pause
+        exit /b 1
+    )
+    echo build folder deleted successfully. >> %LOGFILE%
+) else (
+    echo build folder does not exist. Skipping deletion. >> %LOGFILE%
+)
+
 :: Run npm install
 echo Running npm install... >> %LOGFILE%
 npm install >> %LOGFILE% 2>&1
@@ -56,5 +71,7 @@ if %errorlevel% neq 0 (
 )
 echo npm install completed successfully. >> %LOGFILE%
 
-echo Cleanup and installation process completed successfully! Check the log file: %LOGFILE%
+:: Log end of reset process
+echo Full reset process completed successfully! Check the log file: %LOGFILE% >> %LOGFILE%
+echo Full reset process completed successfully! Check the log file: %LOGFILE%
 pause
