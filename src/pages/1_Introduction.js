@@ -1,8 +1,8 @@
-import React from "react";
-import Wrapper from "../components/layout/Wrapper";
-import QuoteComponent from "../components/sections/QuoteComponent";
-import Typography from "../styles/Typography";
-import HighlightText from "../components/utilities/HighlightText";
+import React from 'react';
+import Wrapper from '../components/layout/Wrapper';
+import QuoteComponent from '../components/sections/QuoteComponent';
+import Typography from '../styles/Typography';
+import HighlightText from '../components/utilities/HighlightText';
 
 // Assets
 
@@ -14,18 +14,18 @@ export default function Introduction() {
           Case Study: <strong>KIM</strong>
         </Typography>
         <Typography variant="h3" color="neutral.white" align="center">
-          Diese Case Study beleuchtet die Entwicklung und Gestaltung einer{" "}
+          Diese Case Study beleuchtet die Entwicklung und Gestaltung einer{' '}
           innovativen KI-gestützten App, die es Nutzern ermöglicht, basierend
           auf ihren Interessen und Werten tiefgehende Verbindungen zu schaffen.
-        </Typography>{" "}
+        </Typography>{' '}
       </Wrapper>
       <Wrapper backgroundColor="neutral.white">
         <Typography variant="h2" color="primary.main">
           Kurzbeschreibung
         </Typography>
         <Typography color="primary.main">
-          <strong>KIM</strong> ist eine App, die mit{" "}
-          <HighlightText>KI-gestützter Persönlichkeitsanalyse</HighlightText>{" "}
+          <strong>KIM</strong> ist eine App, die mit{' '}
+          <HighlightText>KI-gestützter Persönlichkeitsanalyse</HighlightText>{' '}
           arbeitet, um Menschen zusammenzubringen, die ähnliche Interessen und
           Werte teilen.
         </Typography>

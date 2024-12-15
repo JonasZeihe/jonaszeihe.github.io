@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledHighlightText = styled.span`
-  color: ${({ theme, color }) => color || theme.colors.secondary.main};
+  color: ${({ theme, color }) => color || theme.colors.highlight.main};
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
 `;
 

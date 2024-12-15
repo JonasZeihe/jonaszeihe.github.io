@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import styled, { useTheme } from "styled-components";
-import SmoothScroller from "../utilities/SmoothScroller";
+import React, { useState } from 'react';
+import styled, { useTheme } from 'styled-components';
+import SmoothScroller from '../utilities/SmoothScroller';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const theme = useTheme();
 
-  const sections = [{ id: "introduction", label: "Einführung" }];
+  const sections = [{ id: 'introduction', label: 'Einführung' }];
 
   const handleLogoClick = () => {
     document
-      .getElementById("introduction")
-      ?.scrollIntoView({ behavior: "smooth" });
+      .getElementById('introduction')
+      ?.scrollIntoView({ behavior: 'smooth' });
     setMenuOpen(false);
   };
 
@@ -39,7 +39,7 @@ export default function Header() {
         />
         <DesktopNav>{renderNavItems(false)}</DesktopNav>
         <MobileMenuButton onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? "✕" : "☰"}
+          {menuOpen ? '✕' : '☰'}
         </MobileMenuButton>
       </HeaderContent>
       {menuOpen && <MobileMenu>{renderNavItems(true)}</MobileMenu>}
@@ -92,7 +92,7 @@ const NavItem = styled.div`
   transition: color 0.3s ease;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     bottom: -0.25rem;

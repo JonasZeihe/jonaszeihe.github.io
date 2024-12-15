@@ -7,7 +7,7 @@ const WrapperContainer = styled.div`
     if (gradient) return theme.gradients[gradient];
     if (backgroundColor) {
       const [color, shade] = backgroundColor.split('.');
-      return theme.colors[color]?.[shade] || theme.colors.background.light;
+      return theme.colors[color]?.[shade] || theme.colors.neutral.light;
     }
     return theme.colors.background.light;
   }};

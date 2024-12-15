@@ -8,7 +8,7 @@ const QuoteWrapper = styled.blockquote`
   margin: ${({ theme }) => theme.spacing(3)} auto;
   padding: ${({ theme }) => theme.spacing(3)};
   max-width: 600px; /* Begrenzte Breite für bessere Lesbarkeit */
-  background: ${({ theme }) => theme.colors.background.main};
+  background: ${({ theme }) => theme.colors.neutral.main};
   color: ${({ theme }) => theme.colors.neutral.white};
   font-style: italic;
   border-left: 8px solid ${({ theme }) => theme.colors.primary.main}; /* Breiterer Balken */
