@@ -7,7 +7,7 @@ for /f "tokens=1-5 delims=:-. " %%a in ("%date% %time%") do (
     set hour=%%d
     set minute=%%e
 )
-set LOGFILE=start_log_%year%-%month%-%day%T%hour%-%minute%.txt
+set LOGFILE=01_start_log_%year%-%month%-%day%T%hour%-%minute%.txt
 
 echo Starting App... > %LOGFILE%
 echo ======================== >> %LOGFILE%

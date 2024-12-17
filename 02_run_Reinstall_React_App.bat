@@ -7,7 +7,7 @@ for /f "tokens=1-5 delims=:-. " %%a in ("%date% %time%") do (
     set hour=%%d
     set minute=%%e
 )
-set LOGFILE=clean_install_log_%year%-%month%-%day%T%hour%-%minute%.txt
+set LOGFILE=02_clean_install_log_%year%-%month%-%day%T%hour%-%minute%.txt
 
 :: Log start of script execution
 echo Starting full reset... > %LOGFILE%

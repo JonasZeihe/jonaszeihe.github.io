@@ -40,11 +40,9 @@ function PortfolioPage() {
       buttons: [
         {
           label: 'Case Study anzeigen',
-          onClick: () => alert('Case Study für Projekt Alpha!'),
         },
         {
           label: 'Projekt besuchen',
-          onClick: () => alert('Projekt Alpha besuchen!'),
         },
       ],
     },
@@ -59,11 +57,9 @@ function PortfolioPage() {
       buttons: [
         {
           label: 'Case Study anzeigen',
-          onClick: () => alert('Case Study für Projekt Beta!'),
         },
         {
           label: 'Projekt besuchen',
-          onClick: () => alert('Projekt Beta besuchen!'),
         },
       ],
     },
@@ -82,11 +78,9 @@ function PortfolioPage() {
       buttons: [
         {
           label: 'Case Study anzeigen',
-          onClick: () => alert('Case Study für Projekt Gamma!'),
         },
         {
           label: 'Projekt besuchen',
-          onClick: () => alert('Projekt Gamma besuchen!'),
         },
       ],
     },
