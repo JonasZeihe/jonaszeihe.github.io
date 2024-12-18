@@ -83,8 +83,6 @@ function JavaFullstackProjectsPage() {
               buttons={[
                 {
                   label: 'Projekt Präsentation anfragen',
-                  onClick: () =>
-                    alert('Bitte kontaktieren Sie mich für eine Präsentation.'),
                 },
               ]}
             />
