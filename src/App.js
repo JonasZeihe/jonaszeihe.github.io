@@ -6,6 +6,9 @@ import Footer from './components/layout/Footer';
 
 import Introduction from './pages/1_Introduction';
 import TestPage from './pages/2_testpage';
+import UXUIPage from './pages/02_Uxui';
+import PythonPage from './pages/03_Python';
+import JavaFullstackPage from './pages/04_JavaFullstack';
 
 const Main = styled.main`
   padding: ${({ theme }) => theme.spacing(6)} ${({ theme }) => theme.spacing(1)};
@@ -23,6 +26,15 @@ export default function App() {
         </Section>
         <Section id="testPage">
           <TestPage />
+        </Section>
+        <Section id="uxui">
+          <UXUIPage />
+        </Section>
+        <Section id="python">
+          <PythonPage />
+        </Section>
+        <Section id="java">
+          <JavaFullstackPage />
         </Section>
       </Main>
       <Footer />
