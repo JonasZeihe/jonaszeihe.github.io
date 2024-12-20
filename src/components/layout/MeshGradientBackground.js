@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function MeshGradientBackground() {
+function MeshGradientBackground({
+  gradient1 = 'primaryLight',
+  gradient2 = 'secondaryWarm',
+}) {
   return (
     <BackgroundContainer>
-      <GradientLayer1 />
-      <GradientLayer2 />
+      <GradientLayer gradient={gradient1} />
+      <GradientLayer gradient={gradient2} position="bottom-right" />
     </BackgroundContainer>
   );
 }
 
-// Styled Components
 const BackgroundContainer = styled.div`
   position: fixed;
   top: 0;
@@ -18,35 +20,21 @@ const BackgroundContainer = styled.div`
   width: 100%;
   height: 100%;
   z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
 `;
 
-// Layer 1: Hauptgradient
-const GradientLayer1 = styled.div`
+const GradientLayer = styled.div`
   position: absolute;
   width: 150%;
   height: 150%;
-  top: -10%;
-  left: -10%;
-  background: ${({ theme }) => theme.gradients.neutralLight};
+  top: ${({ position }) => (position === 'bottom-right' ? 'auto' : '-10%')};
+  left: ${({ position }) => (position === 'bottom-right' ? 'auto' : '-10%')};
+  bottom: ${({ position }) => (position === 'bottom-right' ? '-20%' : 'auto')};
+  right: ${({ position }) => (position === 'bottom-right' ? '-20%' : 'auto')};
+  background: ${({ theme, gradient }) => theme.gradients[gradient]};
   filter: blur(120px);
-  opacity: 1.7;
+  opacity: 1.5;
   z-index: 1;
-`;
-
-// Layer 3: Subtiler dynamischer Akzent
-const GradientLayer2 = styled.div`
-  position: absolute;
-  width: 170%;
-  height: 170%;
-  bottom: -20%;
-  right: -20%;
-  background: ${({ theme }) => theme.gradients.neutralLight};
-  filter: blur(150px);
-  opacity: 2.4;
-  z-index: 3;
-  mix-blend-mode: overlay; /* Überlagerung für mehr Tiefe */
+  mix-blend-mode: overlay;
 `;
 
 export default MeshGradientBackground;

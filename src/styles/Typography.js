@@ -1,12 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-// Styled Component für die Typografie
 const StyledTypography = styled.span`
   margin: 0;
   padding: 0;
 
-  // Farbe aus dem Theme
   color: ${({ theme, color }) => {
     const [colorKey, shade] = (color || 'primary.main').split('.');
     return theme.colors[colorKey]?.[shade] || theme.colors.primary.main;
@@ -23,6 +21,7 @@ const StyledTypography = styled.span`
         font-weight: ${theme.typography.fontWeight.bold};
         line-height: ${theme.typography.lineHeight.tight};
         margin-bottom: ${theme.spacing(6)};
+        color: ${theme.colors.primary.dark};
         @media (max-width: ${theme.breakpoints.md}) {
           font-size: ${theme.typography.fontSize.h2};
           margin-bottom: ${theme.spacing(4)};
@@ -30,9 +29,10 @@ const StyledTypography = styled.span`
       `,
       h2: css`
         font-size: ${theme.typography.fontSize.h2};
-        font-weight: ${theme.typography.fontWeight.bold};
+        font-weight: ${theme.typography.fontWeight.medium};
         line-height: ${theme.typography.lineHeight.tight};
         margin-bottom: ${theme.spacing(5)};
+        color: ${theme.colors.highlight.main};
         @media (max-width: ${theme.breakpoints.md}) {
           font-size: ${theme.typography.fontSize.h3};
           margin-bottom: ${theme.spacing(3)};
@@ -43,8 +43,30 @@ const StyledTypography = styled.span`
         font-weight: ${theme.typography.fontWeight.medium};
         line-height: ${theme.typography.lineHeight.normal};
         margin-bottom: ${theme.spacing(4)};
+        color: ${theme.colors.accent.dark};
         @media (max-width: ${theme.breakpoints.md}) {
           font-size: ${theme.typography.fontSize.body};
+          margin-bottom: ${theme.spacing(2)};
+        }
+      `,
+      subhead: css`
+        font-size: ${theme.typography.fontSize.body};
+        font-weight: ${theme.typography.fontWeight.medium};
+        line-height: ${theme.typography.lineHeight.normal};
+        color: ${theme.colors.secondaryHighlight.dark};
+        margin-bottom: ${theme.spacing(3)};
+        @media (max-width: ${theme.breakpoints.md}) {
+          font-size: ${theme.typography.fontSize.small};
+        }
+      `,
+      body: css`
+        font-size: ${theme.typography.fontSize.body};
+        font-weight: ${theme.typography.fontWeight.regular};
+        line-height: ${theme.typography.lineHeight.normal};
+        margin-bottom: ${theme.spacing(3)};
+        color: ${theme.colors.secondary.main};
+        @media (max-width: ${theme.breakpoints.md}) {
+          font-size: ${theme.typography.fontSize.small};
           margin-bottom: ${theme.spacing(2)};
         }
       `,
@@ -55,23 +77,12 @@ const StyledTypography = styled.span`
         color: ${theme.colors.neutral.medium};
         margin-bottom: ${theme.spacing(2)};
       `,
-      body: css`
-        font-size: ${theme.typography.fontSize.body};
-        font-weight: ${theme.typography.fontWeight.regular};
-        line-height: ${theme.typography.lineHeight.normal};
-        margin-bottom: ${theme.spacing(3)};
-        @media (max-width: ${theme.breakpoints.md}) {
-          font-size: ${theme.typography.fontSize.small};
-          margin-bottom: ${theme.spacing(2)};
-        }
-      `,
     };
 
     return variantStyles[variant] || variantStyles.body;
   }}
 `;
 
-// Funktionale Typography-Komponente
 function Typography({
   variant = 'body',
   color = 'neutral.dark',
@@ -79,11 +90,11 @@ function Typography({
   lineHeight,
   children,
 }) {
-  // Tag-Mapping
   const tagMap = {
     h1: 'h1',
     h2: 'h2',
     h3: 'h3',
+    subhead: 'h4',
     caption: 'span',
     body: 'p',
   };

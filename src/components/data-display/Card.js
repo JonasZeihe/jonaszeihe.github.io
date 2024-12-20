@@ -1,26 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Wrapper from '../layout/Wrapper';
+import CardWrapper from '../Wrapper/CardWrapper';
+import ContentWrapper from '../Wrapper/ContentWrapper';
 import Typography from '../../styles/Typography';
 import MediaDisplay from './MediaDisplay';
 import Button from '../common/Button';
 
-// Styled Components
-const CardContainer = styled(Wrapper)`
-  transition:
-    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: ${({ theme }) => theme.boxShadow.medium};
-  }
-`;
-
 const MediaWrapper = styled.div`
   position: relative;
-  height: 200px; /* Fixe Höhe für konsistente Darstellung */
+  height: 200px;
   overflow: hidden;
 
   img,
@@ -45,7 +34,6 @@ const ButtonContainer = styled.div`
   margin-top: ${({ theme }) => theme.spacing(3)};
 `;
 
-// Function Declaration for Linting
 function Card({ title, media, description, buttons }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
@@ -53,14 +41,12 @@ function Card({ title, media, description, buttons }) {
   const handleCloseLightbox = () => setLightboxOpen(false);
 
   return (
-    <CardContainer gradient="neutralSoft" elevated>
-      {/* Media Section */}
+    <CardWrapper>
       <MediaWrapper onClick={handleOpenLightbox}>
         <MediaDisplay media={media} />
       </MediaWrapper>
 
-      {/* Content Section */}
-      <Wrapper backgroundColor="neutral.white">
+      <ContentWrapper backgroundColor="neutral.white">
         <CardContent>
           <Typography variant="h3" color="primary.main">
             {title}
@@ -80,21 +66,19 @@ function Card({ title, media, description, buttons }) {
             ))}
           </ButtonContainer>
         </CardContent>
-      </Wrapper>
+      </ContentWrapper>
 
-      {/* Lightbox Integration */}
       {lightboxOpen && (
         <MediaDisplay
           media={media}
-          currentIndex={0} // Default to first media item
+          currentIndex={0}
           onClose={handleCloseLightbox}
         />
       )}
-    </CardContainer>
+    </CardWrapper>
   );
 }
 
-// Prop Types
 Card.propTypes = {
   title: PropTypes.string.isRequired,
   media: PropTypes.arrayOf(
@@ -109,7 +93,7 @@ Card.propTypes = {
     PropTypes.shape({
       label: PropTypes.string.isRequired,
       onClick: PropTypes.func.isRequired,
-      variant: PropTypes.string, // Optional: 'primary', 'secondary', etc.
+      variant: PropTypes.string,
     })
   ),
 };
