@@ -1,25 +1,28 @@
 import styled from 'styled-components';
 
 const HeroWrapper = styled.div`
-  /* Grundlayout */
+  /* Breite und anfängliche Höhe */
   width: 100%;
-  min-height: 60vh;
+  min-height: 50vh;
+  padding: ${({ theme }) => theme.spacing(4)};
+
+  /* Zentrierung und Ausrichtung */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+
+  /* Hintergrund und Overlay */
   position: relative;
   overflow: hidden;
-
-  /* Dynamischer Hintergrund */
   background: ${({ theme, gradient, customMesh }) => {
     if (customMesh) return customMesh; // Benutzerdefinierter Mesh-Hintergrund
     if (gradient) return theme.gradients[gradient];
     return theme.gradients.primaryToSecondary; // Fallback Gradient
   }};
 
-  /* Farbe und Schattierung */
+  /* Textfarbe, Ecken, Schatten */
   color: ${({ theme, textColor }) =>
     theme.colors[textColor] || theme.colors.neutral.white};
   border-radius: ${({ theme, borderRadius }) =>
@@ -27,19 +30,25 @@ const HeroWrapper = styled.div`
   box-shadow: ${({ theme, shadow }) =>
     shadow ? theme.boxShadow[shadow] : 'none'};
 
-  /* Responsive Typografie und Abstand */
+  /* Grundlegender Abstand für direkte Kindelemente */
   & > * {
-    z-index: 1; /* Elemente über Overlay */
     margin-bottom: ${({ theme }) => theme.spacing(2)};
-    font-size: ${({ theme }) => theme.typography.fontSize.h3};
+  }
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-      font-size: ${({ theme }) => theme.typography.fontSize.h2};
-      margin-bottom: ${({ theme }) => theme.spacing(4)};
+  /* Medienabfragen für kleinere und größere Viewports */
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    min-height: 40vh; /* Wirkt kompakter auf größeren Bildschirmen */
+    & > * {
+      margin-bottom: ${({ theme }) => theme.spacing(3)};
     }
+  }
 
-    @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-      font-size: ${({ theme }) => theme.typography.fontSize.h1};
+  /* Anpassung für richtig kleine Bildschirme */
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    min-height: 40vh;
+    padding: ${({ theme }) => theme.spacing(2)};
+    & > * {
+      margin-bottom: ${({ theme }) => theme.spacing(1)};
     }
   }
 `;

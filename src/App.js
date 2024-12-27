@@ -1,11 +1,11 @@
-import React from 'react';
+// App.js
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
 import Introduction from './pages/01_Introduction';
-import Python from './pages/04_Python_Projekte';
 import PythonPage from './pages/python/PythonPage';
 
 const Main = styled.main`
@@ -15,15 +15,31 @@ const Main = styled.main`
 `;
 
 export default function App() {
+  const navSections = useMemo(
+    () => [
+      { id: 'Introduction', label: 'Einführung' },
+      {
+        id: 'PythonPage',
+        label: 'Python',
+        // Hier die Unterpunkte, die Namen
+        // sollten matchen mit IDs aus PythonPage (Noctua, Skryper, usw.)
+        children: [
+          { id: '01_Noctua', label: 'Noctua' },
+          { id: '02_Skryper', label: 'Skryper' },
+          { id: '03_Structra', label: 'Structra' },
+          { id: '04_InkGrid', label: 'InkGrid' },
+        ],
+      },
+    ],
+    []
+  );
+
   return (
     <>
-      <Header />
+      <Header navSections={navSections} />
       <Main>
         <Section id="Introduction">
           <Introduction />
-        </Section>
-        <Section id="Python">
-          <Python />
         </Section>
         <Section id="PythonPage">
           <PythonPage />

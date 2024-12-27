@@ -1,35 +1,30 @@
 import React from 'react';
-import styled from 'styled-components';
-import HeroWrapper from '../components/Wrapper/HeroWrapper';
-import ContentWrapper from '../components/Wrapper/ContentWrapper';
-import QuoteComponent from '../components/sections/QuoteComponent';
-import Typography from '../styles/Typography';
+import {
+  HeroWrapper,
+  QuoteComponent,
+  Typography,
+  SectionWrapper,
+  HighlightText,
+} from '../utils/sharedComponents';
 
 export default function Introduction() {
   return (
-    <PageContainer>
-      {/* Hero Section */}
-      <HeroWrapper gradient="primaryToSecondary">
-        <QuoteComponent
-          text="Design trifft Funktion – Willkommen in meinem Portfolio!"
-          author="Jonas Zeihe"
-        />
+    <>
+      {/* Hero-Bereich mit Zitat */}
+      <HeroWrapper gradient="primaryToSecondary" style={{ padding: '3rem 0' }}>
+        <QuoteComponent text="Design trifft Funktion – Willkommen in meinem Portfolio!" />
       </HeroWrapper>
 
-      {/* Introduction Section */}
-      <ContentWrapper>
-        <Typography variant="body" color="neutral.dark" align="center">
-          Ich bin ein Fullstack Designer mit einem Faible für intuitive Designs
-          und skalierbare Lösungen. Willkommen in meinem digitalen Schaufenster,
-          das meine Leidenschaft für Entwicklung und Design vereint.
+      {/* Intro-Text in SectionWrapper */}
+      <SectionWrapper backgroundColor="neutral.lightest" elevated>
+        <Typography variant="h2" align="center" color="primary.dark">
+          Ich bin ein <HighlightText>Fullstack Designer</HighlightText> mit
+          einem Faible für intuitive Designs und skalierbare Lösungen.
+          Willkommen in meinem digitalen Schaufenster, das meine Leidenschaft
+          für <HighlightText>Entwicklung</HighlightText>
+          und <HighlightText>Design</HighlightText> vereint.
         </Typography>
-      </ContentWrapper>
-    </PageContainer>
+      </SectionWrapper>
+    </>
   );
 }
-
-const PageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(6)};
-`;

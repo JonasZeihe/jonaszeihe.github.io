@@ -32,7 +32,7 @@ const StyledTypography = styled.span`
         font-weight: ${theme.typography.fontWeight.medium};
         line-height: ${theme.typography.lineHeight.tight};
         margin-bottom: ${theme.spacing(5)};
-        color: ${theme.colors.highlight.main};
+        color: ${theme.colors.depth.main};
         @media (max-width: ${theme.breakpoints.md}) {
           font-size: ${theme.typography.fontSize.h3};
           margin-bottom: ${theme.spacing(3)};
