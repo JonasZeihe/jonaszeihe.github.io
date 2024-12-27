@@ -1,4 +1,3 @@
-// App.js
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
@@ -6,6 +5,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
 import Introduction from './pages/01_Introduction';
+import UxUiPage from './pages/uxui/UxUiPage';
 import PythonPage from './pages/python/PythonPage';
 
 const Main = styled.main`
@@ -19,10 +19,18 @@ export default function App() {
     () => [
       { id: 'Introduction', label: 'Einführung' },
       {
+        id: 'UxUiPage',
+        label: 'UX/UI Design',
+        // Hier können später spezifische Projekte verlinkt werden
+        children: [
+          { id: '01_KIM', label: 'KIM' },
+          { id: '02_FlavorFusion', label: 'FlavorFusion' },
+        ],
+      },
+      {
         id: 'PythonPage',
         label: 'Python',
-        // Hier die Unterpunkte, die Namen
-        // sollten matchen mit IDs aus PythonPage (Noctua, Skryper, usw.)
+        // Unterpunkte der Python-Projekte
         children: [
           { id: '01_Noctua', label: 'Noctua' },
           { id: '02_Skryper', label: 'Skryper' },
@@ -40,6 +48,9 @@ export default function App() {
       <Main>
         <Section id="Introduction">
           <Introduction />
+        </Section>
+        <Section id="UxUiPage">
+          <UxUiPage />
         </Section>
         <Section id="PythonPage">
           <PythonPage />

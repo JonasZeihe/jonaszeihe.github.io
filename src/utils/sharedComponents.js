@@ -2,7 +2,6 @@
 export { default as Typography } from '../styles/Typography';
 export { default as HighlightText } from '../components/utilities/HighlightText';
 export { default as SmoothScroller } from '../components/utilities/SmoothScroller';
-export { default as Card } from '../components/data-display/Card';
 export { default as Button } from '../components/common/Button';
 export { default as Badge } from '../components/common/Badge';
 export { default as ListComponent } from '../components/data-display/ListComponent';
