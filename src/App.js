@@ -6,6 +6,7 @@ import Footer from './components/layout/Footer';
 
 import Introduction from './pages/01_Introduction';
 import Python from './pages/04_Python_Projekte';
+import PythonPage from './pages/python/PythonPage';
 
 const Main = styled.main`
   padding: ${({ theme }) => theme.spacing(6)} ${({ theme }) => theme.spacing(1)};
@@ -23,6 +24,9 @@ export default function App() {
         </Section>
         <Section id="Python">
           <Python />
+        </Section>
+        <Section id="PythonPage">
+          <PythonPage />
         </Section>
       </Main>
       <Footer />

@@ -2,35 +2,61 @@ import styled from 'styled-components';
 import WrapperBase from './WrapperBase';
 
 const SectionWrapper = styled(WrapperBase)`
-  padding: ${({ theme }) => theme.spacing(2)};
-  margin: ${({ theme }) => theme.spacing(2)} auto;
-  border-radius: ${({ theme }) => theme.borderRadius.medium};
-  box-shadow: ${({ theme }) => theme.boxShadow.light};
-  background: ${({ theme }) => theme.colors.neutral.white};
-  transition: box-shadow 0.3s ease;
+  /* Grundlayout */
+  padding: ${({ theme }) => theme.spacing(4)};
+  margin: ${({ theme }) => theme.spacing(4)} auto;
+  border-radius: ${({ theme }) => theme.borderRadius.large};
+  box-shadow: ${({ theme }) => theme.boxShadow.medium};
+  background: ${({ theme, backgroundColor }) =>
+    backgroundColor
+      ? theme.colors[backgroundColor.split('.')[0]]?.[
+          backgroundColor.split('.')[1]
+        ]
+      : theme.colors.neutral.white};
+  transition: all 0.3s ease-in-out;
 
+  /* Hover-Effekte */
   &:hover {
-    box-shadow: ${({ theme }) => theme.boxShadow.medium};
+    transform: translateY(-5px);
+    box-shadow: ${({ theme }) => theme.boxShadow.heavy};
+    background: ${({ theme, hoverBackground }) =>
+      hoverBackground
+        ? theme.colors[hoverBackground.split('.')[0]]?.[
+            hoverBackground.split('.')[1]
+          ]
+        : theme.colors.neutral.lightest};
   }
 
-  /* Optimierung für größere Bildschirme */
-  @media (min-width: 1600px) {
-    max-width: 1400px;
-    padding: ${({ theme }) => theme.spacing(1)};
-  }
-
-  /* Anpassung für Tablets und kleinere Geräte */
+  /* Responsive Einstellungen */
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing(2)};
-    max-width: 95%;
-    box-shadow: none;
+    padding: ${({ theme }) => theme.spacing(3)};
+    margin: ${({ theme }) => theme.spacing(2)} auto;
+    box-shadow: ${({ theme }) => theme.boxShadow.light};
+    transform: none;
+
+    &:hover {
+      box-shadow: ${({ theme }) => theme.boxShadow.medium};
+    }
   }
 
-  /* Anpassung für Smartphones */
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: ${({ theme }) => theme.spacing(2)};
-    max-width: 98%;
+    margin: ${({ theme }) => theme.spacing(1)} auto;
+    border-radius: ${({ theme }) => theme.borderRadius.medium};
   }
+
+  /* Maximale Breite für große Bildschirme */
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    max-width: 1200px;
+  }
+
+  /* Optionale Randlinien */
+  ${({ border }) =>
+    border &&
+    `
+    border: 2px solid ${border.color || 'transparent'};
+    border-radius: ${border.radius || 'inherit'};
+  `}
 `;
 
 export default SectionWrapper;

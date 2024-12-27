@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-// Styled Components
 const StyledList = styled.ul`
   margin: ${({ theme }) => theme.spacing(3)} 0;
   padding: 0;
@@ -14,18 +13,20 @@ const StyledList = styled.ul`
 
 const StyledListItem = styled.li`
   padding: ${({ theme }) => theme.spacing(2)};
-  background: ${({ theme }) => theme.colors.depth.darkest};
+  background: ${({ theme }) => theme.colors.depth.dark};
   color: ${({ theme }) => theme.colors.neutral.white};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   box-shadow: ${({ theme }) => theme.boxShadow.light};
-  transition: transform 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
 
   &:hover {
     transform: translateY(-3px);
+    background: ${({ theme }) => theme.colors.depth.main};
   }
 `;
 
-// React Component
 function ListComponent({ items }) {
   return (
     <StyledList>
@@ -38,7 +39,6 @@ function ListComponent({ items }) {
   );
 }
 
-// Prop Types
 ListComponent.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({

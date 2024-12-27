@@ -1,49 +1,56 @@
 import styled from 'styled-components';
 
 const WrapperBase = styled.div`
+  /* Dynamischer Hintergrund */
   background: ${({ theme, gradient, backgroundColor }) => {
     if (gradient) return theme.gradients[gradient];
     if (backgroundColor) {
       const [color, shade] = backgroundColor.split('.');
       return theme.colors[color]?.[shade] || theme.colors.neutral.light;
     }
-    return theme.colors.depth.light;
+    return theme.colors.neutral.lightest;
   }};
 
+  /* Styling für Border-Radius */
   border-radius: ${({ theme }) => theme.borderRadius.medium};
+
+  /* Box-Shadow, abhängig vom "elevated"-Prop */
   box-shadow: ${({ theme, elevated }) =>
-    elevated ? theme.boxShadow.medium : 'none'};
+    elevated ? theme.boxShadow.medium : theme.boxShadow.light};
+
+  /* Standardabstände und Maximale Breite */
   padding: ${({ theme }) => theme.spacing(2)};
-  margin: ${({ theme }) => theme.spacing(1)} auto;
+  margin: ${({ theme }) => theme.spacing(2)} auto;
   width: 100%;
   max-width: ${({ theme }) => theme.breakpoints.xl};
 
-  /* Subtile Übergänge für Dynamik */
+  /* Smooth Übergänge */
   transition:
+    background 0.3s ease,
     box-shadow 0.3s ease,
-    background 0.3s ease;
+    transform 0.3s ease;
 
-  /* Hover-Effekt für interaktive Bereiche */
+  /* Hover-Effekte */
   &:hover {
+    transform: translateY(-1px);
     box-shadow: ${({ theme, elevated }) =>
       elevated ? theme.boxShadow.heavy : theme.boxShadow.medium};
   }
 
-  /* Anpassung für größere Bildschirme */
-  @media (min-width: 1600px) {
-    max-width: 1400px;
-    padding: ${({ theme }) => theme.spacing(1)};
+  /* Responsive Anpassungen */
+  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+    padding: ${({ theme }) => theme.spacing(2)};
+    border-radius: ${({ theme }) => theme.borderRadius.large};
   }
 
-  /* Anpassung für Tablets und kleinere Geräte */
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing(1)};
-    box-shadow: none;
+    padding: ${({ theme }) => theme.spacing(2)};
+    box-shadow: ${({ theme }) => theme.boxShadow.light};
   }
 
-  /* Anpassung für Smartphones */
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing(0)};
+    padding: ${({ theme }) => theme.spacing(1)};
+    border-radius: ${({ theme }) => theme.borderRadius.small};
     box-shadow: none;
   }
 `;

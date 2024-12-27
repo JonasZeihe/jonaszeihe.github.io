@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 const HeroWrapper = styled.div`
+  /* Grundlayout */
   width: 100%;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,36 +12,35 @@ const HeroWrapper = styled.div`
   position: relative;
   overflow: hidden;
 
-  /* Dynamisches Hintergrund-Setup */
+  /* Dynamischer Hintergrund */
   background: ${({ theme, gradient, customMesh }) => {
-    if (customMesh) return customMesh;
+    if (customMesh) return customMesh; // Benutzerdefinierter Mesh-Hintergrund
     if (gradient) return theme.gradients[gradient];
-    return theme.gradients.primaryDynamic; // Fallback Gradient
+    return theme.gradients.primaryToSecondary; // Fallback Gradient
   }};
 
-  /* Dynamische Farb- und Styling-Optionen */
+  /* Farbe und Schattierung */
   color: ${({ theme, textColor }) =>
     theme.colors[textColor] || theme.colors.neutral.white};
-  border-radius: ${({ borderRadius, theme }) =>
-    theme.borderRadius[borderRadius] || '0'};
+  border-radius: ${({ theme, borderRadius }) =>
+    theme.borderRadius[borderRadius] || theme.borderRadius.none};
   box-shadow: ${({ theme, shadow }) =>
     shadow ? theme.boxShadow[shadow] : 'none'};
 
+  /* Responsive Typografie und Abstand */
   & > * {
-    z-index: 1;
-  }
+    z-index: 1; /* Elemente über Overlay */
+    margin-bottom: ${({ theme }) => theme.spacing(2)};
+    font-size: ${({ theme }) => theme.typography.fontSize.h3};
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 0;
-    pointer-events: none;
-    background: ${({ theme, overlay }) =>
-      overlay ? theme.gradients[overlay] : 'transparent'};
-    opacity: 0.5;
+    @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+      font-size: ${({ theme }) => theme.typography.fontSize.h2};
+      margin-bottom: ${({ theme }) => theme.spacing(4)};
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+      font-size: ${({ theme }) => theme.typography.fontSize.h1};
+    }
   }
 `;
 
