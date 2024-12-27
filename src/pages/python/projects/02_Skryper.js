@@ -116,13 +116,10 @@ export default function Skryper() {
             marginTop: '2rem',
           }}
         >
-          <Button
-            variant="primary"
-            onClick={() => alert('Mehr erfahren geklickt!')}
-          >
+          <Button variant="primary" onClick={() => {}}>
             Mehr erfahren
           </Button>
-          <Button variant="secondary" onClick={() => alert('GitHub geklickt!')}>
+          <Button variant="secondary" onClick={() => {}}>
             GitHub
           </Button>
         </div>

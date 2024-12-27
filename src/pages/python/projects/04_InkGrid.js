@@ -106,16 +106,10 @@ export default function InkGrid() {
             marginTop: '2rem',
           }}
         >
-          <Button
-            variant="primary"
-            onClick={() => alert('Mehr erfahren geklickt!')}
-          >
+          <Button variant="primary" onClick={() => {}}>
             Mehr erfahren
           </Button>
-          <Button
-            variant="success"
-            onClick={() => alert('Design-Tool öffnen geklickt!')}
-          >
+          <Button variant="success" onClick={() => {}}>
             Design-Tool öffnen
           </Button>
         </div>

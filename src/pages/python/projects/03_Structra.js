@@ -115,13 +115,10 @@ export default function Structra() {
             marginTop: '2rem',
           }}
         >
-          <Button
-            variant="primary"
-            onClick={() => alert('Mehr erfahren geklickt!')}
-          >
+          <Button variant="primary" onClick={() => {}}>
             Mehr erfahren
           </Button>
-          <Button variant="warning" onClick={() => alert('Video ansehen')}>
+          <Button variant="warning" onClick={() => {}}>
             Video ansehen
           </Button>
         </div>
