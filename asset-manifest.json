@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.js": "/static/js/main.be1d44b7.js",
+    "main.js": "/static/js/main.15d0c962.js",
     "static/media/flavorfusion_logo.png": "/static/media/flavorfusion_logo.7b7af6c135b430d1f24f.png",
     "static/media/kim_logo.png": "/static/media/kim_logo.d22cae88d40cb293012a.png",
     "static/media/skryper_logo.png": "/static/media/skryper_logo.ed49f4c05230f8238b55.png",
     "static/media/inkgrid_logo.png": "/static/media/inkgrid_logo.7e202fc277edcc268eef.png",
     "static/media/structra_logo.png": "/static/media/structra_logo.b5fb3faab4cb4ea6a417.png",
+    "static/media/shizen-logo.png": "/static/media/shizen-logo.8c5efac7b9466e12efbf.png",
     "static/media/noctua_logo.png": "/static/media/noctua_logo.c500ffa8d5bc50fa23a2.png",
+    "static/media/colorpal_logo.png": "/static/media/colorpal_logo.ab5e992f358da6d2d82b.png",
     "index.html": "/index.html",
-    "main.be1d44b7.js.map": "/static/js/main.be1d44b7.js.map"
+    "main.15d0c962.js.map": "/static/js/main.15d0c962.js.map"
   },
   "entrypoints": [
-    "static/js/main.be1d44b7.js"
+    "static/js/main.15d0c962.js"
   ]
 }
