@@ -1,52 +1,120 @@
-import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import React, { useReducer, useEffect, useRef, useState } from 'react';
+import styled from 'styled-components';
+import { FiChevronDown, FiChevronUp, FiX, FiMenu } from 'react-icons/fi';
 import SmoothScroller from '../utilities/SmoothScroller';
 
 export default function Header({ navSections = [] }) {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const headerRef = useRef();
+  const [activeSection, setActiveSection] = useState(null);
+  const [highlightedParent, setHighlightedParent] = useState(null);
 
-  // speichert, ob ein Submenü (z. B. "Python") auf Mobile offen oder zu ist
-  const [openSubNav, setOpenSubNav] = useState(null);
+  const initialState = { menuOpen: false, openSubNav: null };
 
-  const handleLogoClick = () => {
-    document
-      .getElementById('Introduction')
-      ?.scrollIntoView({ behavior: 'smooth' });
-    setMenuOpen(false);
-    setOpenSubNav(null);
+  function reducer(state, action) {
+    switch (action.type) {
+      case 'TOGGLE_MENU':
+        return { ...state, menuOpen: !state.menuOpen, openSubNav: null };
+      case 'TOGGLE_SUBNAV':
+        return {
+          ...state,
+          openSubNav:
+            state.openSubNav === action.payload ? null : action.payload,
+        };
+      case 'CLOSE_MENU':
+        return initialState;
+      default:
+        return state;
+    }
+  }
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const handleScroll = () => {
+    const offsets = navSections.flatMap((section) => [
+      {
+        id: section.id,
+        offsetTop: document.getElementById(section.id)?.offsetTop || 0,
+      },
+      ...(section.children || []).map((child) => ({
+        id: child.id,
+        offsetTop: document.getElementById(child.id)?.offsetTop || 0,
+        parentId: section.id,
+      })),
+    ]);
+
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+    const currentSection = offsets
+      .filter(({ offsetTop }) => scrollPosition >= offsetTop)
+      .pop();
+
+    if (currentSection?.id !== activeSection) {
+      setActiveSection(currentSection?.id);
+      setHighlightedParent(currentSection?.parentId || currentSection?.id);
+    }
   };
 
-  // Klicken auf einen Top-Level-Menüpunkt auf Mobile
-  // -> toggelt das entsprechende Submenü
-  const handleMobileSubNavToggle = (sectionId) => {
-    setOpenSubNav(openSubNav === sectionId ? null : sectionId);
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [activeSection]);
+
+  const handleSwipeOrScroll = () => {
+    if (state.menuOpen) {
+      dispatch({ type: 'CLOSE_MENU' });
+    }
   };
 
-  // DESKTOP: Hauptnavi + Subnavi (Hover-Dropdown)
+  useEffect(() => {
+    if (state.menuOpen) {
+      window.addEventListener('scroll', handleSwipeOrScroll);
+    }
+    return () => {
+      window.removeEventListener('scroll', handleSwipeOrScroll);
+    };
+  }, [state.menuOpen]);
+
+  const handleClickOutside = (event) => {
+    if (
+      state.menuOpen &&
+      headerRef.current &&
+      !headerRef.current.contains(event.target)
+    ) {
+      dispatch({ type: 'CLOSE_MENU' });
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [state.menuOpen]);
+
+  const renderSubNavItems = (children) =>
+    children.map((child) => (
+      <SmoothScroller key={child.id} targetId={child.id}>
+        <SubNavItem isActive={activeSection === child.id}>
+          {child.label}
+        </SubNavItem>
+      </SmoothScroller>
+    ));
+
   const renderDesktopNav = () => (
     <DesktopNav>
       {navSections.map((section) => {
         const hasChildren = section.children && section.children.length > 0;
         return (
           <NavItemWrapper key={section.id}>
-            {/* Top-Level-Menüpunkt */}
             <SmoothScroller targetId={section.id}>
-              <NavItem onClick={() => setMenuOpen(false)}>
+              <NavItem isActive={highlightedParent === section.id}>
                 {section.label}
               </NavItem>
             </SmoothScroller>
-
-            {/* SubNav als Hover-Dropdown */}
             {hasChildren && (
-              <SubNav className="subnav">
-                {section.children.map((child) => (
-                  <SmoothScroller key={child.id} targetId={child.id}>
-                    <SubNavItem onClick={() => setMenuOpen(false)}>
-                      {child.label}
-                    </SubNavItem>
-                  </SmoothScroller>
-                ))}
-              </SubNav>
+              <SubNav>{renderSubNavItems(section.children)}</SubNav>
             )}
           </NavItemWrapper>
         );
@@ -54,8 +122,6 @@ export default function Header({ navSections = [] }) {
     </DesktopNav>
   );
 
-  // MOBILE: Komplettes Menü (Burger → Dropdown),
-  // aber Submenüs kollabierbar
   const renderMobileNav = () => (
     <MobileMenu>
       {navSections.map((section) => {
@@ -63,43 +129,35 @@ export default function Header({ navSections = [] }) {
 
         return (
           <React.Fragment key={section.id}>
-            {/* Top-Level-Menüpunkt */}
-            {hasChildren ? (
-              // Wenn wir Kinder haben (z. B. "Python"),
-              // klickbares Toggle für SubNav
-              <MobileToggleWrapper>
-                <MobileTopItem
-                  onClick={() => handleMobileSubNavToggle(section.id)}
-                >
-                  {section.label}
-                  <ToggleIcon>
-                    {openSubNav === section.id ? '▲' : '▼'}
-                  </ToggleIcon>
-                </MobileTopItem>
-
-                {/* Kollabierbares SubNav */}
-                <CollapsibleSubNav isOpen={openSubNav === section.id}>
-                  {section.children.map((child) => (
-                    <SmoothScroller key={child.id} targetId={child.id}>
-                      <MobileSubNavItem onClick={() => setMenuOpen(false)}>
-                        {child.label}
-                      </MobileSubNavItem>
-                    </SmoothScroller>
-                  ))}
-                </CollapsibleSubNav>
-              </MobileToggleWrapper>
-            ) : (
-              // Wenn keine Kinder, direkt klickbarer Menüpunkt
+            <MobileNavItem>
               <SmoothScroller targetId={section.id}>
-                <MobileTopItem
-                  onClick={() => {
-                    setMenuOpen(false);
-                    setOpenSubNav(null);
-                  }}
-                >
+                <NavItem isActive={highlightedParent === section.id}>
                   {section.label}
-                </MobileTopItem>
+                </NavItem>
               </SmoothScroller>
+              {hasChildren && (
+                <DropdownToggle
+                  onClick={() =>
+                    dispatch({ type: 'TOGGLE_SUBNAV', payload: section.id })
+                  }
+                  aria-label={
+                    state.openSubNav === section.id
+                      ? 'Close submenu'
+                      : 'Open submenu'
+                  }
+                >
+                  {state.openSubNav === section.id ? (
+                    <FiChevronUp size={16} />
+                  ) : (
+                    <FiChevronDown size={16} />
+                  )}
+                </DropdownToggle>
+              )}
+            </MobileNavItem>
+            {hasChildren && (
+              <MobileSubNav isOpen={state.openSubNav === section.id}>
+                {renderSubNavItems(section.children)}
+              </MobileSubNav>
             )}
           </React.Fragment>
         );
@@ -108,218 +166,145 @@ export default function Header({ navSections = [] }) {
   );
 
   return (
-    <HeaderContainer>
+    <HeaderContainer ref={headerRef}>
       <HeaderContent>
-        <Logo onClick={handleLogoClick}>Jonas Zeihe</Logo>
-
-        {/* Desktop-Navigation */}
-        {renderDesktopNav()}
-
-        {/* Burger-Icon für Mobile */}
-        <MobileMenuButton
-          onClick={() => {
-            setMenuOpen(!menuOpen);
-            setOpenSubNav(null);
-          }}
-        >
-          {menuOpen ? '✕' : '☰'}
-        </MobileMenuButton>
+        <Logo onClick={() => dispatch({ type: 'CLOSE_MENU' })}>BrandName</Logo>
+        <DesktopOnly>{renderDesktopNav()}</DesktopOnly>
+        <MobileOnly>
+          <MobileMenuButton
+            onClick={() => dispatch({ type: 'TOGGLE_MENU' })}
+            aria-label={state.menuOpen ? 'Close menu' : 'Open menu'}
+          >
+            {state.menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          </MobileMenuButton>
+        </MobileOnly>
       </HeaderContent>
-
-      {/* Ausklappendes Mobile-Menü */}
-      {menuOpen && renderMobileNav()}
+      {state.menuOpen && <MobileOnly>{renderMobileNav()}</MobileOnly>}
     </HeaderContainer>
   );
 }
 
-/* --------------------------------------------
-   STYLES
---------------------------------------------- */
 const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: ${({ theme }) => theme.colors.primary.main};
-  box-shadow: ${({ theme }) => theme.boxShadow.medium};
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 const HeaderContent = styled.div`
-  max-width: ${({ theme }) => theme.breakpoints.xl};
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* Etwas kleineres Padding für kompakteren Header */
-  padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(3)};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing(2)};
-  }
+  padding: 1rem;
 `;
 
 const Logo = styled.div`
-  font-size: ${({ theme }) => theme.typography.fontSize.h3};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
-  color: ${({ theme }) => theme.colors.neutral.white};
+  font-size: 1.5rem;
+  font-weight: bold;
   cursor: pointer;
-  /* Leichtes Hover-Highlight */
+  color: #333;
   &:hover {
-    color: ${({ theme }) => theme.colors.accent.light};
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    font-size: ${({ theme }) => theme.typography.fontSize.h2};
+    color: #007bff;
   }
 `;
 
-/* --------------------------------------------
-   DESKTOP NAVIGATION
---------------------------------------------- */
-const DesktopNav = styled.nav`
-  display: flex;
-  gap: ${({ theme }) => theme.spacing(2)};
-  align-items: center;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+const DesktopOnly = styled.div`
+  @media (max-width: 768px) {
     display: none;
   }
 `;
 
-/* Gruppe: NavItem + (SubNav) */
+const MobileOnly = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const DesktopNav = styled.nav`
+  display: flex;
+  gap: 2rem;
+`;
+
 const NavItemWrapper = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: column;
 
-  /* Hover: Subnav anzeigen */
-  &:hover .subnav {
+  &:hover > div {
     display: block;
   }
 `;
 
 const NavItem = styled.div`
-  font-size: ${({ theme }) => theme.typography.fontSize.body};
-  color: ${({ theme }) => theme.colors.neutral.white};
-  padding: ${({ theme }) => theme.spacing(1)} 0;
+  font-size: 1rem;
   cursor: pointer;
-  transition: color 0.3s ease;
-
+  color: ${({ isActive }) => (isActive ? '#007bff' : '#333')};
+  font-weight: ${({ isActive }) => (isActive ? 'bold' : 'normal')};
   &:hover {
-    color: ${({ theme }) => theme.colors.accent.light};
+    color: #007bff;
   }
 `;
 
-/* SubNav: direkt unter dem Hauptpunkt, ohne Lücke */
 const SubNav = styled.div`
-  display: none;
   position: absolute;
-  top: 100%; /* ohne zusätzliche Pixel */
+  top: 100%;
   left: 0;
-  min-width: 140px;
-  background: ${({ theme }) => theme.colors.primary.dark};
-  box-shadow: ${({ theme }) => theme.boxShadow.medium};
-  padding: ${({ theme }) => theme.spacing(1)} 0; /* etwas Innenabstand */
-  border-radius: ${({ theme }) => theme.borderRadius.small};
-  z-index: 999;
+  background: #f9f9f9;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none;
 `;
 
 const SubNavItem = styled.div`
-  font-size: ${({ theme }) => theme.typography.fontSize.small};
-  color: ${({ theme }) => theme.colors.neutral.white};
+  font-size: 0.9rem;
   cursor: pointer;
-  padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(2)}`};
-  transition: background-color 0.2s ease;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.primary.light};
-  }
+  color: ${({ isActive }) => (isActive ? '#007bff' : '#333')};
 `;
 
-/* --------------------------------------------
-   MOBILE NAVIGATION (Burger-Menü)
---------------------------------------------- */
 const MobileMenuButton = styled.button`
-  display: none;
   background: none;
   border: none;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.neutral.white};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    display: block;
-  }
+  color: #333;
 `;
 
 const MobileMenu = styled.div`
   position: absolute;
   top: 100%;
-  right: 0;
   left: 0;
-  background: ${({ theme }) => theme.colors.primary.dark};
-  box-shadow: ${({ theme }) => theme.boxShadow.medium};
-  display: flex;
-  flex-direction: column;
-  padding: ${({ theme }) => theme.spacing(2)} 0;
-  gap: ${({ theme }) => theme.spacing(1)};
-  z-index: 999;
+  right: 0;
+  background: white;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
-const MobileTopItem = styled.div`
-  font-size: ${({ theme }) => theme.typography.fontSize.body};
-  color: ${({ theme }) => theme.colors.neutral.white};
-  cursor: pointer;
-  padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(3)}`};
+const MobileNavItem = styled.div`
   display: flex;
-  align-items: center;
   justify-content: space-between;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.primary.light};
-  }
+  align-items: center;
 `;
 
-/* Kleines Symbol (▲ / ▼) rechts vom Titel */
-const ToggleIcon = styled.span`
-  margin-left: ${({ theme }) => theme.spacing(1)};
-  font-size: 0.8em;
-  color: ${({ theme }) => theme.colors.accent.light};
-`;
-
-const MobileToggleWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-
-const CollapsibleSubNav = styled.div`
-  /* Kollaps-Animation: max-height = 0 → max-height: NNNpx */
-  overflow: hidden;
-  transition:
-    max-height 0.3s ease,
-    padding 0.3s ease;
-
-  ${({ isOpen, theme }) =>
-    isOpen
-      ? css`
-          max-height: 300px; /* ein großzügiger Wert für SubNav-Höhe */
-          padding-top: ${theme.spacing(1)};
-        `
-      : css`
-          max-height: 0;
-          padding-top: 0;
-        `}
-`;
-
-const MobileSubNavItem = styled.div`
-  font-size: ${({ theme }) => theme.typography.fontSize.small};
-  color: ${({ theme }) => theme.colors.neutral.white};
+const DropdownToggle = styled.button`
+  background: none;
+  border: none;
   cursor: pointer;
-  padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(5)}`};
-  transition: background-color 0.2s ease;
-
+  padding: 8px;
+  color: #333;
   &:hover {
-    background: ${({ theme }) => theme.colors.primary.light};
+    color: #007bff;
   }
+`;
+
+const MobileSubNav = styled.div`
+  max-height: ${({ isOpen }) => (isOpen ? '500px' : '0')};
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: ${({ isOpen }) => (isOpen ? '0.5rem 0' : '0')};
 `;
