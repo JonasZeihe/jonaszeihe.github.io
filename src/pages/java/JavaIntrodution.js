@@ -32,11 +32,13 @@ export default function JavaIntroduction() {
     { label: 'MongoDB', icon: 'FaDatabase', variant: 'accent' },
     { label: 'REST APIs', icon: 'FaNetworkWired', variant: 'secondary' },
     { label: 'JWT Auth', icon: 'FaKey', variant: 'warning' },
+    { label: 'Docker', icon: 'FaDocker', variant: 'success' },
+    { label: 'React', icon: 'FaReact', variant: 'primary' },
   ];
 
   return (
     <>
-      {/* Hero-Bereich mit Zitat */}
+      {/* Hero-Bereich */}
       <HeroWrapper gradient="primaryToSecondary">
         <QuoteComponent
           text="Java-Projekte – Skalierbarkeit und Präzision in moderner Softwareentwicklung."
@@ -47,20 +49,40 @@ export default function JavaIntroduction() {
       {/* Einleitung */}
       <SectionWrapper backgroundColor="neutral.lightest" elevated>
         <Typography variant="h1" color="accent.dark" align="center">
-          Java Projekte
+          Java/React/Fullstack Projekte
         </Typography>
-        <Typography variant="h2" align="center">
-          Entdecke meine <HighlightText>skalierbaren</HighlightText> und{' '}
-          <HighlightText>effizienten</HighlightText> Softwarelösungen, die mit
-          modernsten Technologien wie <HighlightText>Spring Boot</HighlightText>{' '}
-          und <HighlightText>MongoDB</HighlightText> umgesetzt wurden.
+        <Typography
+          variant="body"
+          align="center"
+          color="neutral.main"
+          style={{ marginTop: '1rem' }}
+        >
+          Meine Java/React-Projekte stehen für ein Zusammenspiel aus robuster
+          Backend-Entwicklung und modernen, interaktiven Frontend-Lösungen. Mit
+          Technologien wie <HighlightText>Spring Boot</HighlightText>,{' '}
+          <HighlightText>MongoDB</HighlightText> und{' '}
+          <HighlightText>React</HighlightText> entwickle ich skalierbare,
+          sichere und zukunftsweisende Anwendungen.
         </Typography>
       </SectionWrapper>
 
-      {/* Zusätzliche Highlights */}
+      {/* Kernmerkmale */}
       <SectionWrapper backgroundColor="neutral.light">
+        <Typography variant="h2" align="center" color="primary.dark">
+          🚀 Kernmerkmale meiner Java-Projekte
+        </Typography>
+        <Typography
+          variant="body"
+          align="center"
+          color="neutral.main"
+          style={{ marginTop: '1rem' }}
+        >
+          Java-Projekte stellen die Grundlage für hochperformante und flexible
+          Softwarelösungen dar. Die eingesetzten Technologien und Architekturen
+          garantieren Stabilität und Skalierbarkeit:
+        </Typography>
         <ContentWrapper>
-          <Typography variant="h2" align="center">
+          <Typography variant="h3" align="center" color="accent.dark">
             Technologien, die den Unterschied machen:
           </Typography>
           <BadgeContainer>
@@ -69,6 +91,24 @@ export default function JavaIntroduction() {
             ))}
           </BadgeContainer>
         </ContentWrapper>
+      </SectionWrapper>
+
+      {/* Vision */}
+      <SectionWrapper backgroundColor="neutral.lightest" elevated>
+        <Typography variant="h2" align="center" color="accent.dark">
+          🔮 Vision für Java-Projekte
+        </Typography>
+        <Typography variant="body" align="center" color="neutral.main">
+          Java/React-Projekte bilden das Rückgrat moderner Softwareentwicklung.
+          Meine Vision ist es, Anwendungen zu schaffen, die nicht nur stabil und
+          sicher sind, sondern auch durch intuitive Benutzererfahrung
+          überzeugen.
+        </Typography>
+        <Typography variant="body" align="center" style={{ marginTop: '1rem' }}>
+          Die Projekte sind darauf ausgelegt, durch modulare Architekturen und
+          KI-Integration eine Brücke zwischen Backend-Stabilität und
+          Frontend-Interaktivität zu schlagen.
+        </Typography>
       </SectionWrapper>
     </>
   );

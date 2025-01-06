@@ -20,8 +20,9 @@ export default function KIM() {
       id: 'feature-1',
       content: (
         <>
-          🤖 <HighlightText>KI-Chatbot:</HighlightText> Persönlichkeitsprofile
-          basierend auf Nutzerantworten.
+          🤖 <HighlightText>KI-Chatbot:</HighlightText> Erstelle dynamische
+          Persönlichkeitsprofile basierend auf Nutzerantworten und vergleiche
+          diese für Gruppenmatching.
         </>
       ),
     },
@@ -30,7 +31,8 @@ export default function KIM() {
       content: (
         <>
           👫 <HighlightText>Gruppenmatching:</HighlightText>{' '}
-          Kompatibilitätsscores für tiefere Verbindungen.
+          Kompatibilitätsscores für bessere Interaktionen und tiefere
+          Verbindungen zwischen Nutzern.
         </>
       ),
     },
@@ -38,8 +40,8 @@ export default function KIM() {
       id: 'feature-3',
       content: (
         <>
-          ❓ <HighlightText>Automatisierte Icebreaker:</HighlightText>{' '}
-          Spielerische Elemente zur Förderung von Gruppendialogen.
+          🧊 <HighlightText>Automatisierte Icebreaker:</HighlightText> Förderung
+          von Gruppendialogen durch spielerische Interaktionselemente.
         </>
       ),
     },
@@ -47,8 +49,9 @@ export default function KIM() {
       id: 'feature-4',
       content: (
         <>
-          🎯 <HighlightText>Designsystem:</HighlightText> Konsistente
-          Farbpalette und intuitive Interaktion.
+          🎯 <HighlightText>Designsystem:</HighlightText> Einheitliche
+          Farbpalette und intuitive Interaktionen für ein konsistentes
+          Nutzererlebnis.
         </>
       ),
     },
@@ -59,10 +62,16 @@ export default function KIM() {
     { label: 'Iteratives Prototyping', icon: 'FaRedo', variant: 'success' },
     { label: 'Figma & FigJam', icon: 'FaFigma', variant: 'accent' },
     { label: 'User-Centered Design', icon: 'FaUser', variant: 'secondary' },
+    {
+      label: 'Zugängliches Design',
+      icon: 'FaUniversalAccess',
+      variant: 'primary',
+    },
   ];
 
   return (
     <>
+      {/* Hero-Bereich */}
       <SectionWrapper backgroundColor="neutral.lightest" elevated>
         <HeroWrapper gradient="neutralSoft">
           <Typography variant="h1" align="center">
@@ -76,24 +85,40 @@ export default function KIM() {
                 alt: 'KIM Project Image',
               },
             ]}
+            onClick={() => setLightboxOpen(true)}
           />
         </HeroWrapper>
 
-        <Typography variant="body" align="center" color="neutral.main">
-          <HighlightText>KIM</HighlightText> ist ein UX/UI-Projekt, das die
-          Entwicklung einer barrierefreien, KI-gestützten App simuliert. Der
-          interaktive Prototyp veranschaulicht die Nutzung von{' '}
-          <HighlightText>Persönlichkeitsprofilen</HighlightText>
-          und <HighlightText>Gruppenmatching</HighlightText>, um tiefere
-          Verbindungen zwischen Nutzern zu fördern. Die Case Study dokumentiert
-          alle Designphasen, von der Research bis hin zum
-          High-Fidelity-Prototypen.
+        <Typography
+          variant="body"
+          align="center"
+          color="neutral.main"
+          style={{ marginTop: '1rem' }}
+        >
+          <HighlightText>KIM</HighlightText> wurde im Rahmen eines
+          interdisziplinären Capstone-Projekts entwickelt, um soziale
+          Verbindungen zu stärken. Die App nutzt{' '}
+          <HighlightText>KI</HighlightText> und{' '}
+          <HighlightText>zugängliches Design</HighlightText>, um Nutzern eine
+          sichere und einladende Umgebung zu bieten. Von der
+          Persönlichkeitsanalyse bis hin zu spielerischen Gruppenelementen – KIM
+          bietet ein innovatives, interaktives Erlebnis.
         </Typography>
+      </SectionWrapper>
 
-        {/* Feature-Liste */}
+      {/* Feature-Liste */}
+      <SectionWrapper backgroundColor="neutral.light">
+        <Typography variant="h2" align="center" color="primary.dark">
+          🚀 Features von <HighlightText>KIM</HighlightText>
+        </Typography>
         <ListComponent items={features} />
+      </SectionWrapper>
 
-        {/* Badges */}
+      {/* Badges */}
+      <SectionWrapper backgroundColor="neutral.lightest" elevated>
+        <Typography variant="h2" align="center" color="accent.dark">
+          🛡️ Technologien hinter <HighlightText>KIM</HighlightText>
+        </Typography>
         <div
           style={{
             display: 'flex',
@@ -107,13 +132,33 @@ export default function KIM() {
             <Badge key={label} label={label} icon={icon} variant={variant} />
           ))}
         </div>
+      </SectionWrapper>
 
-        {/* Buttons */}
+      {/* Aktueller Stand */}
+      <SectionWrapper backgroundColor="neutral.light">
+        <Typography variant="h2" align="center" color="primary.dark">
+          🚦 Aktueller Stand und nächste Schritte
+        </Typography>
+        <Typography variant="body" align="center" color="neutral.main">
+          Der High-Fidelity-Prototyp ist vollständig und wurde mit Erfolg
+          präsentiert. Zukünftige Schritte umfassen die Integration erweiterter
+          KI-Funktionen und umfangreiche Usability-Tests zur Validierung des
+          Designs.
+        </Typography>
+        <Typography variant="body" align="center" style={{ marginTop: '1rem' }}>
+          <HighlightText>Zukunftsvision:</HighlightText> Entwicklung einer
+          vollfunktionsfähigen App mit Echtzeit-Feedback und personalisierten
+          Matching-Algorithmen.
+        </Typography>
+      </SectionWrapper>
+
+      {/* Call-to-Actions */}
+      <SectionWrapper backgroundColor="neutral.lightest">
         <div
           style={{
             display: 'flex',
             justifyContent: 'center',
-            gap: '1rem',
+            gap: '1.5rem',
             marginTop: '2rem',
           }}
         >

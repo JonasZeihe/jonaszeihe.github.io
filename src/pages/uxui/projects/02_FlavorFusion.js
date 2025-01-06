@@ -20,8 +20,9 @@ export default function FlavorFusion() {
       id: 'feature-1',
       content: (
         <>
-          🎨 <HighlightText>Visuelles Storytelling:</HighlightText> Darstellung
-          kultureller Vielfalt durch individuelle Farbpaletten und Karten.
+          🎨 <HighlightText>Visuelles Storytelling:</HighlightText> Individuelle
+          Farbpaletten und kulturelle Karten, die die Vielfalt der Weltküchen
+          betonen.
         </>
       ),
     },
@@ -30,7 +31,8 @@ export default function FlavorFusion() {
       content: (
         <>
           🧩 <HighlightText>User-Centered Design:</HighlightText> Intuitive
-          Navigation mit klar strukturierter Informationsarchitektur.
+          Navigation und klar strukturierte Inhalte für eine optimale
+          Benutzererfahrung.
         </>
       ),
     },
@@ -39,7 +41,7 @@ export default function FlavorFusion() {
       content: (
         <>
           ✏️ <HighlightText>High-Fidelity Prototyping:</HighlightText>{' '}
-          Realistische und animierte Landing Page in Figma erstellt.
+          Realistischer und animierter Prototyp, der in Figma entwickelt wurde.
         </>
       ),
     },
@@ -48,7 +50,7 @@ export default function FlavorFusion() {
       content: (
         <>
           🚀 <HighlightText>Interaktive Call-to-Actions:</HighlightText>{' '}
-          Animierte Buttons und Download-Optionen für hohe Konversionsraten.
+          Animierte Buttons und Download-Optionen, die Nutzer zur App führen.
         </>
       ),
     },
@@ -63,10 +65,11 @@ export default function FlavorFusion() {
 
   return (
     <>
+      {/* Hero-Bereich */}
       <SectionWrapper backgroundColor="neutral.lightest" elevated>
         <HeroWrapper gradient="neutralSoft">
           <Typography variant="h1" align="center">
-            🍴 FlavorFusion – Landing Page für eine Rezept-App
+            🍴 FlavorFusion – Die Welt in deiner Küche
           </Typography>
           <MediaDisplay
             media={[
@@ -76,24 +79,39 @@ export default function FlavorFusion() {
                 alt: 'FlavorFusion Project Image',
               },
             ]}
+            onClick={() => setLightboxOpen(true)}
           />
         </HeroWrapper>
 
-        <Typography variant="body" align="center" color="neutral.main">
-          <HighlightText>FlavorFusion</HighlightText> ist ein
-          UX/UI-Designprojekt, das die Entwicklung einer Landing Page für eine
-          hypothetische Rezept-App simuliert. Der Prototyp zeigt, wie{' '}
-          <HighlightText>visuelles Storytelling</HighlightText>
-          und <HighlightText>kulturelle Vielfalt</HighlightText> durch
-          ansprechende Designs und intuitive Navigation hervorgehoben werden
-          können. Die Case Study dokumentiert die Designphasen, vom Wireframing
-          bis zum High-Fidelity-Prototyp.
+        <Typography
+          variant="body"
+          align="center"
+          color="neutral.main"
+          style={{ marginTop: '1rem' }}
+        >
+          <HighlightText>FlavorFusion</HighlightText> ist eine interaktive
+          Landing Page, die Nutzer dazu inspiriert, die Vielfalt der Weltküchen
+          zu entdecken. Mit einem Fokus auf{' '}
+          <HighlightText>visuelles Storytelling</HighlightText> und{' '}
+          <HighlightText>intuitive Navigation</HighlightText> ist FlavorFusion
+          nicht nur funktional, sondern auch eine emotionale Erfahrung, die Lust
+          auf neue Rezepte macht.
         </Typography>
+      </SectionWrapper>
 
-        {/* Feature-Liste */}
+      {/* Features */}
+      <SectionWrapper backgroundColor="neutral.light">
+        <Typography variant="h2" align="center" color="primary.dark">
+          🚀 Highlights von <HighlightText>FlavorFusion</HighlightText>
+        </Typography>
         <ListComponent items={features} />
+      </SectionWrapper>
 
-        {/* Badges */}
+      {/* Technologien */}
+      <SectionWrapper backgroundColor="neutral.lightest" elevated>
+        <Typography variant="h2" align="center" color="accent.dark">
+          🛠️ Tools und Technologien
+        </Typography>
         <div
           style={{
             display: 'flex',
@@ -107,13 +125,31 @@ export default function FlavorFusion() {
             <Badge key={label} label={label} icon={icon} variant={variant} />
           ))}
         </div>
+      </SectionWrapper>
 
-        {/* Buttons */}
+      {/* Aktueller Stand */}
+      <SectionWrapper backgroundColor="neutral.light">
+        <Typography variant="h2" align="center" color="primary.dark">
+          🚦 Aktueller Stand
+        </Typography>
+        <Typography variant="body" align="center" color="neutral.main">
+          <HighlightText>Status:</HighlightText> Der High-Fidelity-Prototyp ist
+          abgeschlossen und als klickbare Case Study in React verfügbar.
+        </Typography>
+        <Typography variant="body" align="center" style={{ marginTop: '1rem' }}>
+          <HighlightText>Zukunft:</HighlightText> Erweiterung der Landing Page
+          zu einer vollständig interaktiven App mit neuen Features wie
+          Sprachsteuerung und KI-gestützten Rezeptempfehlungen.
+        </Typography>
+      </SectionWrapper>
+
+      {/* Call-to-Actions */}
+      <SectionWrapper backgroundColor="neutral.lightest">
         <div
           style={{
             display: 'flex',
             justifyContent: 'center',
-            gap: '1rem',
+            gap: '1.5rem',
             marginTop: '2rem',
           }}
         >
