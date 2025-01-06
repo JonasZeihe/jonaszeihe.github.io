@@ -5,17 +5,25 @@ import {
   SectionWrapper,
   Typography,
   HighlightText,
+  // Falls du Button o.ä. brauchst, hier importieren
+  // Button
 } from '../utils/sharedComponents';
 
-// Hier deine neue FeatureCard importieren
+// Wir verwenden deine FeatureCard (unten überarbeitet)
 import FeatureCard from '../components/layout/FeatureCard';
 
 // Grid für die Cards definieren
 const CardGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: ${({ theme }) => theme.spacing(4)};
+  margin-top: ${({ theme }) => theme.spacing(4)};
+  padding: 0 ${({ theme }) => theme.spacing(2)};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    grid-template-columns: 1fr;
+    margin-top: ${({ theme }) => theme.spacing(2)};
+  }
 `;
 
 export default function Introduction() {
@@ -24,28 +32,28 @@ export default function Introduction() {
       id: 'project-1',
       title: 'KIM',
       description:
-        'Ein innovatives Tool, das KI-basierte Persönlichkeitsprofile und Gruppenvorschläge nutzt, um Verbindungen zu fördern.',
+        'Ein KI-gestütztes Tool für dynamische Persönlichkeitsprofile und Gruppenmatching.',
       tags: ['UX/UI Design', 'React', 'Python'],
     },
     {
       id: 'project-2',
       title: 'Shizen',
       description:
-        'Ein LMS mit dynamischen Kursinhalten, Gamification und skalierbarer Architektur – Lernen neu gedacht.',
+        'Ein LMS mit dynamischen Kursinhalten, Gamification und skalierbarer Architektur.',
       tags: ['Java', 'React', 'MongoDB'],
     },
     {
       id: 'project-3',
       title: 'Skryper & Structra',
       description:
-        'Analyse und Visualisierung in perfekter Harmonie. Präzision trifft Datenvisualisierung.',
+        'Analyse und Visualisierung in perfekter Harmonie. Effiziente Verzeichnisscans und automatisierte Projektstrukturen.',
       tags: ['Python', 'Java'],
     },
     {
       id: 'project-4',
       title: 'colorPal',
       description:
-        'Eine App, die Daten in ästhetische Kunst verwandelt – Datenvisualisierung trifft Design.',
+        'Verwandelt Daten in ästhetische Kunst – Datenvisualisierung trifft Design.',
       tags: ['React', 'Design', 'JSON'],
     },
   ];
@@ -61,23 +69,24 @@ export default function Introduction() {
           variant="body"
           align="center"
           color="neutral.lightest"
-          style={{ marginTop: '1rem' }}
+          style={{ marginTop: '1rem', maxWidth: '700px', margin: '1rem auto' }}
         >
           Willkommen in meiner Welt, wo Kreativität auf Technologie trifft, um
-          intuitive und skalierbare Lösungen zu schaffen.
+          intuitive und skalierbare Lösungen zu schaffen. Entdecke meine
+          Projekte und lass dich inspirieren!
         </Typography>
       </HeroWrapper>
 
       {/* Einleitung */}
       <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h1" align="center" color="accent.dark">
+        <Typography variant="h2" align="center" color="accent.dark">
           ✨ Einleitung
         </Typography>
         <Typography
           variant="body"
           align="center"
           color="neutral.main"
-          style={{ marginTop: '1rem' }}
+          style={{ marginTop: '1rem', maxWidth: '800px', margin: '1rem auto' }}
         >
           Als <HighlightText>Fullstack Designer</HighlightText> kombiniere ich{' '}
           <HighlightText>technische Präzision</HighlightText> mit{' '}
@@ -89,7 +98,15 @@ export default function Introduction() {
       {/* Feature Projekte */}
       <SectionWrapper backgroundColor="neutral.light">
         <Typography variant="h2" align="center" color="primary.dark">
-          🌟 Feature Projekte
+          🌟 Meine Projekte
+        </Typography>
+        <Typography
+          variant="body"
+          align="center"
+          color="neutral.main"
+          style={{ marginTop: '0.5rem' }}
+        >
+          Eine kleine Auswahl meiner spannendsten Arbeiten
         </Typography>
 
         <CardGrid>
