@@ -1,12 +1,7 @@
-// FeatureCard.js
 import React from 'react';
 import styled from 'styled-components';
 import { Button, Badge } from '../../utils/sharedComponents';
-// oder je nachdem, ob du Button/Badge nutzt
 
-// ------------------------------------
-// Styled Components
-// ------------------------------------
 const CardWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.neutral.white};
   border: 1px solid ${({ theme }) => theme.colors.neutral.lighter};
@@ -16,7 +11,6 @@ const CardWrapper = styled.div`
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -24,6 +18,7 @@ const CardWrapper = styled.div`
   &:hover {
     transform: translateY(-2px);
     box-shadow: ${({ theme }) => theme.boxShadow.medium};
+    background-color: ${({ theme }) => theme.colors.depth.lightest};
   }
 `;
 
@@ -31,14 +26,14 @@ const Title = styled.h3`
   margin: 0 0 ${({ theme }) => theme.spacing(2)};
   color: ${({ theme }) => theme.colors.primary.dark};
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: ${({ theme }) => theme.typography.fontSize.h3};
 `;
 
 const Description = styled.p`
   margin: 0 0 ${({ theme }) => theme.spacing(3)};
   color: ${({ theme }) => theme.colors.neutral.main};
-  line-height: 1.4;
-  flex: 1; /* füllt Platz, damit Buttons unten bleiben */
+  line-height: 1.6;
+  flex: 1;
 `;
 
 const TagContainer = styled.div`
@@ -48,44 +43,43 @@ const TagContainer = styled.div`
   margin-bottom: ${({ theme }) => theme.spacing(2)};
 `;
 
-// ------------------------------------
-// FeatureCard Component
-// ------------------------------------
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin-top: ${({ theme }) => theme.spacing(2)};
+`;
+
+const scrollToSection = (id) => {
+  const section = document.getElementById(id);
+  if (section) section.scrollIntoView({ behavior: 'smooth' });
+};
+
 export default function FeatureCard({
   title,
   description,
   tags = [],
-  onLearnMore, // optional callback für "Mehr erfahren"
+  targetId,
 }) {
   return (
     <CardWrapper>
       <div>
         <Title>{title}</Title>
         <Description>{description}</Description>
-
-        {tags.length > 0 && (
-          <TagContainer>
-            {tags.map((tag) => (
-              // Beispiel: Du könntest hier
-              // <Badge label={tag} variant="primary" /> verwenden,
-              // wenn du dein Badge-Component willst
-              <Badge key={tag} label={tag} icon={null} variant="secondary" />
-            ))}
-          </TagContainer>
-        )}
+        <TagContainer>
+          {tags.map((tag) => (
+            <Badge key={tag} label={tag} variant="secondary" />
+          ))}
+        </TagContainer>
       </div>
-
-      {/* Optionaler Button-Bereich */}
-      {onLearnMore && (
+      <ButtonContainer>
         <Button
           variant="primary"
           size="small"
-          onClick={onLearnMore}
-          style={{ alignSelf: 'flex-start' }}
+          onClick={() => scrollToSection(targetId)}
         >
-          Mehr erfahren
+          Zum Projekt
         </Button>
-      )}
+      </ButtonContainer>
     </CardWrapper>
   );
 }

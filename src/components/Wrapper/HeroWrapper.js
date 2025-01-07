@@ -13,37 +13,37 @@ const HeroWrapper = styled.div`
   justify-content: center;
   text-align: center;
 
-  /* Hintergrund und Overlay */
-  position: relative;
-  overflow: hidden;
-  background: ${({ theme, gradient, customMesh }) => {
-    if (customMesh) return customMesh; // Benutzerdefinierter Mesh-Hintergrund
-    if (gradient) return theme.gradients[gradient];
-    return theme.gradients.primaryToSecondary; // Fallback Gradient
-  }};
+  /* Dynamischer Hintergrund */
+  background: ${({ theme, gradient, customMesh }) =>
+    customMesh ||
+    theme.gradients[gradient] ||
+    theme.gradients.primaryToSecondary};
 
-  /* Textfarbe, Ecken, Schatten */
+  /* Textfarbe */
   color: ${({ theme, textColor }) =>
     theme.colors[textColor] || theme.colors.neutral.white};
+
+  /* Optionaler Schatten und Border-Radius */
   border-radius: ${({ theme, borderRadius }) =>
     theme.borderRadius[borderRadius] || theme.borderRadius.none};
   box-shadow: ${({ theme, shadow }) =>
     shadow ? theme.boxShadow[shadow] : 'none'};
 
-  /* Grundlegender Abstand für direkte Kindelemente */
+  /* Abstand zwischen Kind-Elementen */
   & > * {
     margin-bottom: ${({ theme }) => theme.spacing(2)};
   }
 
-  /* Medienabfragen für kleinere und größere Viewports */
+  /* Anpassung für größere Bildschirme */
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    min-height: 40vh; /* Wirkt kompakter auf größeren Bildschirmen */
+    min-height: 40vh;
+    padding: ${({ theme }) => theme.spacing(5)};
     & > * {
       margin-bottom: ${({ theme }) => theme.spacing(3)};
     }
   }
 
-  /* Anpassung für richtig kleine Bildschirme */
+  /* Anpassung für kleinere Bildschirme */
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     min-height: 40vh;
     padding: ${({ theme }) => theme.spacing(2)};

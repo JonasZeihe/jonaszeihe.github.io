@@ -5,14 +5,10 @@ import {
   SectionWrapper,
   Typography,
   HighlightText,
-  // Falls du Button o.ä. brauchst, hier importieren
-  // Button
 } from '../utils/sharedComponents';
-
-// Wir verwenden deine FeatureCard (unten überarbeitet)
 import FeatureCard from '../components/layout/FeatureCard';
 
-// Grid für die Cards definieren
+// Styled Components
 const CardGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -29,28 +25,28 @@ const CardGrid = styled.div`
 export default function Introduction() {
   const featureProjects = [
     {
-      id: 'project-1',
+      id: 'UxUiPage',
       title: 'KIM',
       description:
         'Ein KI-gestütztes Tool für dynamische Persönlichkeitsprofile und Gruppenmatching.',
       tags: ['UX/UI Design', 'React', 'Python'],
     },
     {
-      id: 'project-2',
+      id: 'JavaPage',
       title: 'Shizen',
       description:
         'Ein LMS mit dynamischen Kursinhalten, Gamification und skalierbarer Architektur.',
       tags: ['Java', 'React', 'MongoDB'],
     },
     {
-      id: 'project-3',
+      id: 'PythonPage',
       title: 'Skryper & Structra',
       description:
         'Analyse und Visualisierung in perfekter Harmonie. Effiziente Verzeichnisscans und automatisierte Projektstrukturen.',
       tags: ['Python', 'Java'],
     },
     {
-      id: 'project-4',
+      id: 'ReactPage',
       title: 'colorPal',
       description:
         'Verwandelt Daten in ästhetische Kunst – Datenvisualisierung trifft Design.',
@@ -60,7 +56,7 @@ export default function Introduction() {
 
   return (
     <>
-      {/* Hero-Section */}
+      {/* Hero Section */}
       <HeroWrapper gradient="primaryToSecondary" style={{ padding: '3rem 0' }}>
         <Typography variant="h1" align="center" color="neutral.lightest">
           🎨 Design trifft Funktion – Mein Portfolio
@@ -116,6 +112,7 @@ export default function Introduction() {
               title={project.title}
               description={project.description}
               tags={project.tags}
+              targetId={project.id} // Ziel-ID für Scroll
             />
           ))}
         </CardGrid>

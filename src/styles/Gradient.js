@@ -17,6 +17,10 @@ const gradients = (theme) => ({
   ),
 
   // Secondary Palette (Erzeugt Kontraste)
+  secondaryLight: createGradient(
+    theme.colors.secondary.lightest,
+    theme.colors.secondary.light
+  ),
   secondaryWarm: createGradient(
     theme.colors.secondary.lightest,
     theme.colors.secondary.main
