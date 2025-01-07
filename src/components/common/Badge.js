@@ -7,10 +7,13 @@ const BadgeContainer = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: ${({ theme }) => theme.spacing(1)};
-  background-color: ${({ theme, variant }) =>
-    theme.colors[variant]?.main || theme.colors.primary.main};
-  color: ${({ theme }) => theme.colors.neutral.white};
+  gap: ${({ theme }) => theme.spacing(0.8)};
+  background-color: ${({ theme, variant, customColor }) =>
+    customColor || theme.colors[variant]?.main || theme.colors.primary.main};
+  color: ${({ theme, variant, customColor }) =>
+    customColor
+      ? theme.colors.neutral.white
+      : theme.colors[variant]?.contrast || theme.colors.neutral.white};
   border-radius: ${({ theme }) => theme.borderRadius.pill};
   padding: ${({ theme }) => `${theme.spacing(0.8)} ${theme.spacing(2)}`};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
@@ -21,9 +24,10 @@ const BadgeContainer = styled.div`
     box-shadow 0.3s ease;
 
   &:hover {
-    background-color: ${({ theme, variant }) =>
-      theme.colors[variant]?.dark || theme.colors.primary.dark};
+    background-color: ${({ theme, variant, customColor }) =>
+      customColor || theme.colors[variant]?.dark || theme.colors.primary.dark};
     box-shadow: ${({ theme }) => theme.boxShadow.medium};
+    transform: translateY(-1px);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -32,7 +36,6 @@ const BadgeContainer = styled.div`
     gap: ${({ theme }) => theme.spacing(0.6)};
   }
 `;
-
 const IconWrapper = styled.span`
   display: flex;
   align-items: center;
@@ -45,11 +48,16 @@ const IconWrapper = styled.span`
   }
 `;
 
-export default function Badge({ label, icon, variant = 'primary' }) {
-  const Icon = Icons[icon]; // Dynamischer Icon-Resolver
+export default function Badge({
+  label,
+  icon,
+  variant = 'primary',
+  customColor,
+}) {
+  const Icon = Icons[icon];
 
   return (
-    <BadgeContainer variant={variant}>
+    <BadgeContainer variant={variant} customColor={customColor}>
       {Icon && (
         <IconWrapper>
           <Icon />
@@ -78,10 +86,17 @@ Badge.propTypes = {
     'accent',
     'success',
     'warning',
+    'info',
+    'neutral',
   ]),
+  /**
+   * Benutzerdefinierte Hintergrundfarbe
+   */
+  customColor: PropTypes.string,
 };
 
 Badge.defaultProps = {
   icon: null,
   variant: 'primary',
+  customColor: null,
 };

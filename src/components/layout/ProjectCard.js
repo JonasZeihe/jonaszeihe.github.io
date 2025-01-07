@@ -12,6 +12,16 @@ const ImageWrapper = styled.div`
     height: auto;
     border-radius: ${({ theme }) => theme.borderRadius.medium};
     box-shadow: ${({ theme }) => theme.boxShadow.light};
+    transition: transform 0.3s ease;
+  }
+`;
+
+const ContentWrapper = styled.div`
+  padding: ${({ theme }) => theme.spacing(2)};
+  text-align: center;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing(1)};
   }
 `;
 
@@ -20,72 +30,54 @@ const BadgeContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(1)};
-  margin: ${({ theme }) => theme.spacing(2)} 0;
+  margin: ${({ theme }) => theme.spacing(1)} 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    gap: ${({ theme }) => theme.spacing(0.5)};
+  }
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(2)};
-  margin-top: ${({ theme }) => theme.spacing(2)};
-`;
+  margin-top: ${({ theme }) => theme.spacing(3)};
 
-/**
- * Optional: zusätzliche Styles für den Content,
- * damit bei Hover ein ansprechender Effekt sichtbar wird.
- */
-const CardContent = styled.div`
-  cursor: pointer; /* gesamter Card-Bereich als "klickbar" kennzeichnen */
-  text-align: center;
-
-  /* Optionaler Hover-Effekt – kann natürlich nach Wunsch angepasst werden */
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.boxShadow.medium};
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+    gap: ${({ theme }) => theme.spacing(1)};
   }
 `;
 
 export default function ProjectCard({ project, onOpen }) {
-  // Diese Funktion wird aufgerufen, wenn man in den „freien“ Bereich der Card klickt
   const handleCardClick = () => {
     onOpen();
   };
 
-  // Button-Klick für „Projekt ansehen“ – soll das Overlay öffnen, aber nicht
-  // gleichzeitig den Card-Klick auslösen:
   const handleOpenButtonClick = (e) => {
     e.stopPropagation();
     onOpen();
   };
 
-  // Beispielhafter zweiter Button: könnte GitHub-Link o. Ä. öffnen
   const handleSecondButtonClick = (e) => {
     e.stopPropagation();
     if (project.githubLink) {
       window.open(project.githubLink, '_blank');
     }
-    // Oder eine andere Aktion, z. B. onPreview() usw.
   };
 
   return (
-    <CardWrapper hoverEffect onClick={handleCardClick}>
-      <CardContent>
-        {/* Projektbild */}
-        <ImageWrapper>
-          <img src={project.image} alt={project.name} />
-        </ImageWrapper>
-
-        {/* Projektname */}
+    <CardWrapper onClick={handleCardClick}>
+      <ImageWrapper>
+        <img src={project.image} alt={project.name} />
+      </ImageWrapper>
+      <ContentWrapper>
         <Typography variant="h3" align="center" color="primary.main">
           {project.name}
         </Typography>
-
-        {/* Kurzbeschreibung */}
         <Typography variant="body" align="center" color="neutral.main">
           {project.description}
         </Typography>
-
-        {/* Badges */}
         <BadgeContainer>
           {project.badges.map((badge) => (
             <Badge
@@ -96,18 +88,17 @@ export default function ProjectCard({ project, onOpen }) {
             />
           ))}
         </BadgeContainer>
-
-        {/* Buttons */}
         <ButtonContainer>
           <Button variant="primary" onClick={handleOpenButtonClick}>
             Projekt ansehen
           </Button>
-          <Button variant="secondary" onClick={handleSecondButtonClick}>
-            {/* Beispiel: „GitHub“ oder „Prototyp“ */}
-            GitHub
-          </Button>
+          {project.githubLink && (
+            <Button variant="secondary" onClick={handleSecondButtonClick}>
+              GitHub
+            </Button>
+          )}
         </ButtonContainer>
-      </CardContent>
+      </ContentWrapper>
     </CardWrapper>
   );
 }
@@ -124,7 +115,7 @@ ProjectCard.propTypes = {
         variant: PropTypes.string.isRequired,
       })
     ).isRequired,
-    githubLink: PropTypes.string, // optional
+    githubLink: PropTypes.string,
   }).isRequired,
   onOpen: PropTypes.func.isRequired,
 };

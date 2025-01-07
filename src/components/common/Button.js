@@ -32,58 +32,53 @@ const StyledButton = styled.button`
 
   /* Variant Styling */
   ${({ $variant, theme }) => {
-    switch ($variant) {
-      case 'secondary':
-        return css`
-          background: ${theme.colors.secondary.main};
-          color: ${theme.colors.neutral.white};
-          &:hover {
-            background: ${theme.colors.secondary.dark};
-            box-shadow: ${theme.boxShadow.medium};
-          }
-        `;
-      case 'icon':
-        return css`
-          background: ${theme.colors.neutral.transparent || 'transparent'};
-          color: ${theme.colors.primary.main};
-          padding: ${theme.spacing(2)};
-          border-radius: 50%;
-          &:hover {
-            background: ${theme.colors.neutral.light};
-            transform: scale(1.1);
-          }
-        `;
-      case 'warning':
-        return css`
-          background: ${theme.colors.warning?.main || theme.colors.accent.main};
-          color: ${theme.colors.neutral.white};
-          &:hover {
-            background: ${theme.colors.warning?.dark ||
-            theme.colors.accent.dark};
-            box-shadow: ${theme.boxShadow.medium};
-          }
-        `;
-      case 'success':
-        return css`
-          background: ${theme.colors.success?.main ||
-          theme.colors.secondary.main};
-          color: ${theme.colors.neutral.white};
-          &:hover {
-            background: ${theme.colors.success?.dark ||
-            theme.colors.secondary.dark};
-            box-shadow: ${theme.boxShadow.medium};
-          }
-        `;
-      default:
-        return css`
-          background: ${theme.colors.primary.main};
-          color: ${theme.colors.neutral.white};
-          &:hover {
-            background: ${theme.colors.primary.dark};
-            box-shadow: ${theme.boxShadow.medium};
-          }
-        `;
-    }
+    const variants = {
+      primary: css`
+        background: ${theme.colors.primary.main};
+        color: ${theme.colors.neutral.white};
+        &:hover {
+          background: ${theme.colors.primary.dark};
+          box-shadow: ${theme.boxShadow.medium};
+        }
+      `,
+      secondary: css`
+        background: ${theme.colors.secondary.main};
+        color: ${theme.colors.neutral.white};
+        &:hover {
+          background: ${theme.colors.secondary.dark};
+          box-shadow: ${theme.boxShadow.medium};
+        }
+      `,
+      icon: css`
+        background: ${theme.colors.neutral.transparent || 'transparent'};
+        color: ${theme.colors.primary.main};
+        padding: ${theme.spacing(2)};
+        border-radius: 50%;
+        &:hover {
+          background: ${theme.colors.neutral.light};
+          transform: scale(1.1);
+        }
+      `,
+      warning: css`
+        background: ${theme.colors.warning?.main || theme.colors.accent.main};
+        color: ${theme.colors.neutral.white};
+        &:hover {
+          background: ${theme.colors.warning?.dark || theme.colors.accent.dark};
+          box-shadow: ${theme.boxShadow.medium};
+        }
+      `,
+      success: css`
+        background: ${theme.colors.success?.main ||
+        theme.colors.secondary.main};
+        color: ${theme.colors.neutral.white};
+        &:hover {
+          background: ${theme.colors.success?.dark ||
+          theme.colors.secondary.dark};
+          box-shadow: ${theme.boxShadow.medium};
+        }
+      `,
+    };
+    return variants[$variant] || variants.primary;
   }}
 
   /* Disabled Styling */

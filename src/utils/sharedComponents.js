@@ -12,7 +12,6 @@ export { default as Lightbox } from '../components/lightbox/Lightbox';
 // Wrapper-Komponenten
 export { default as HeroWrapper } from '../components/Wrapper/HeroWrapper';
 export { default as SectionWrapper } from '../components/Wrapper/SectionWrapper';
-export { default as ContentWrapper } from '../components/Wrapper/ContentWrapper';
 export { default as CardWrapper } from '../components/Wrapper/CardWrapper';
 
 // Utilities und globale Stile
