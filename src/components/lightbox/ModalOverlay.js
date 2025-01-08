@@ -26,12 +26,12 @@ const ContentWrapper = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.large};
   box-shadow: ${({ theme }) => theme.boxShadow.heavy};
 
-  padding: ${({ theme }) => theme.spacing(4)};
+  padding: ${({ theme }) => theme.spacing(1)};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     max-width: 95%;
-    max-height: 80%;
-    padding: ${({ theme }) => theme.spacing(2)};
+    max-height: 85%;
+    padding: ${({ theme }) => theme.spacing(1)};
   }
 `;
 
@@ -40,7 +40,7 @@ const CloseButton = styled.button`
   top: 1rem;
   right: 1rem;
   background: ${({ theme }) => theme.colors.neutral.lightest};
-  color: ${({ theme }) => theme.colors.neutral.dark};
+  color: ${({ theme }) => theme.colors.neutral.darkest};
   border: none;
   border-radius: 50%;
   width: 40px;

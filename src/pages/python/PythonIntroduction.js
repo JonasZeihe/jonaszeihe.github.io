@@ -1,141 +1,95 @@
 import React from 'react';
+import styled from 'styled-components';
+
 import {
-  PageWrapper,
   HeroWrapper,
   SectionWrapper,
   Typography,
   HighlightText,
-  ListComponent,
+  Badge,
 } from '../../utils/sharedComponents';
+
+// Styled Grid für Badges
+const BadgeGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${({ theme }) => theme.spacing(2)};
+  justify-content: center;
+  margin-top: ${({ theme }) => theme.spacing(3)};
+`;
 
 export default function PythonIntroduction() {
   const coreFeatures = [
     {
       id: 'feature-1',
-      content: (
-        <>
-          📂 <HighlightText>Strukturierte Entwicklung:</HighlightText> Klare
-          Projektstrukturen und sauber dokumentierter Code.
-        </>
-      ),
+      label: 'Strukturierte Entwicklung',
+      icon: 'FaFolderOpen',
+      variant: 'secondary',
     },
     {
       id: 'feature-2',
-      content: (
-        <>
-          ⚡ <HighlightText>Effizienz:</HighlightText> Prozesse beschleunigen
-          und repetitive Aufgaben minimieren.
-        </>
-      ),
+      label: 'Effizienz',
+      icon: 'FaBolt',
+      variant: 'success',
     },
     {
       id: 'feature-3',
-      content: (
-        <>
-          📈 <HighlightText>Skalierbarkeit:</HighlightText> Vom kleinen Skript
-          bis zur unternehmensweiten Anwendung.
-        </>
-      ),
+      label: 'Skalierbarkeit',
+      icon: 'FaChartLine',
+      variant: 'info',
     },
     {
       id: 'feature-4',
-      content: (
-        <>
-          🤖 <HighlightText>AI-Unterstützung:</HighlightText> Fortschrittliche
-          Ansätze für optimierte Entwicklung.
-        </>
-      ),
+      label: 'AI-Unterstützung',
+      icon: 'FaRobot',
+      variant: 'accent',
     },
     {
       id: 'feature-5',
-      content: (
-        <>
-          🔧 <HighlightText>Flexibilität:</HighlightText> Anpassbar an
-          verschiedene Plattformen und Anforderungen.
-        </>
-      ),
-    },
-  ];
-
-  const projects = [
-    {
-      id: 'project-1',
-      content: (
-        <>
-          📂 <HighlightText>Skryper:</HighlightText> Analyse und Dokumentation
-          von Verzeichnisstrukturen für komplexe Projekte.
-        </>
-      ),
-    },
-    {
-      id: 'project-2',
-      content: (
-        <>
-          🏭 <HighlightText>Structra:</HighlightText> Automatisierte Erstellung
-          von Ordner- und Dateistrukturen aus Baumdarstellungen.
-        </>
-      ),
-    },
-    {
-      id: 'project-3',
-      content: (
-        <>
-          🔧 <HighlightText>Noctua:</HighlightText> Flexible Hardwareanalyse und
-          Berichterstellung mit Markdown-Export.
-        </>
-      ),
-    },
-    {
-      id: 'project-4',
-      content: (
-        <>
-          🎨 <HighlightText>InkGrid:</HighlightText> Organisation von
-          Farbpaletten und strukturierte SVG-Erstellung für Design-Tools.
-        </>
-      ),
+      label: 'Flexibilität',
+      icon: 'FaTools',
+      variant: 'warning',
     },
   ];
 
   return (
     <>
       {/* Hero-Bereich */}
-      <PageWrapper backgroundColor="neutral.lightest" elevated>
-        <HeroWrapper gradient="primaryLightest">
-          <Typography variant="h1" align="center">
-            🐍 Python-Projekte – Klarheit und Präzision
-          </Typography>
-        </HeroWrapper>
+      <HeroWrapper gradient="primaryLightest">
+        <Typography variant="h1" align="center">
+          🐍 Python-Projekte – Klarheit und Präzision
+        </Typography>
+      </HeroWrapper>
 
-        {/* Einleitung */}
-        <SectionWrapper backgroundColor="neutral.lightest">
-          <Typography variant="h3">
-            Hier findest du <HighlightText>innovative</HighlightText> und{' '}
-            <HighlightText>effiziente</HighlightText> Lösungen, die mit Liebe
-            zum Detail und einem klaren Fokus auf Skalierbarkeit entwickelt
-            wurden.
-          </Typography>
+      {/* Einleitung */}
+      <SectionWrapper backgroundColor="neutral.lightest">
+        <Typography variant="h3" align="center">
+          Hier findest du <HighlightText>innovative</HighlightText> und{' '}
+          <HighlightText>effiziente</HighlightText> Lösungen, die mit Liebe zum
+          Detail und einem klaren Fokus auf Skalierbarkeit entwickelt wurden.
+          Python ermöglicht es mir, komplexe Probleme mit klaren, innovativen
+          Lösungen zu lösen. Mein Ziel ist es, Werkzeuge zu schaffen, die
+          <HighlightText> technische Exzellenz</HighlightText> und
+          <HighlightText> Benutzerfreundlichkeit</HighlightText> vereinen,
+          während sie gleichzeitig Prozesse optimieren und die Kreativität
+          fördern.
+        </Typography>
 
-          {/* Kernmerkmale */}
-          <ListComponent items={coreFeatures} />
-
-          {/* Projekte */}
-          <Typography variant="h2" align="center" color="accent.dark">
-            🛠️ Meine Python-Projekte
-          </Typography>
-          <ListComponent items={projects} />
-
-          {/* Vision */}
-          <Typography variant="h2" align="center" color="primary.dark">
-            🔮 Meine Vision für Python-Projekte
-          </Typography>
-          <Typography variant="body" color="neutral.main">
-            Python ermöglicht es mir, komplexe Probleme mit klaren, innovativen
-            Lösungen zu lösen. Mein Ziel ist es, Werkzeuge zu schaffen, die
-            technische Exzellenz und Benutzerfreundlichkeit vereinen, während
-            sie gleichzeitig Prozesse optimieren und die Kreativität fördern.
-          </Typography>
-        </SectionWrapper>
-      </PageWrapper>
+        {/* Kernmerkmale als Badges */}
+        <Typography variant="h2" align="center">
+          🚀 Kernmerkmale meiner Python-Projekte
+        </Typography>
+        <BadgeGrid>
+          {coreFeatures.map((feature) => (
+            <Badge
+              key={feature.id}
+              label={feature.label}
+              icon={feature.icon}
+              variant={feature.variant}
+            />
+          ))}
+        </BadgeGrid>
+      </SectionWrapper>
     </>
   );
 }

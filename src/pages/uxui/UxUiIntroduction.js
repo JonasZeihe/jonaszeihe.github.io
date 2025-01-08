@@ -8,15 +8,6 @@ import {
   Badge,
 } from '../../utils/sharedComponents';
 
-const ContentWrapper = styled.div`
-  margin-top: ${({ theme }) => theme.spacing(4)};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: ${({ theme }) => theme.spacing(3)};
-`;
-
 const BadgeContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -47,25 +38,23 @@ export default function UxUiIntroduction() {
       </HeroWrapper>
 
       {/* Projekteinführung */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <ContentWrapper>
-          <Typography variant="h2" align="center" color="primary.dark">
-            Von <HighlightText>nutzerzentrierter Forschung</HighlightText> bis
-            hin zu <HighlightText>interaktiven Prototypen</HighlightText>
-          </Typography>
-          <Typography variant="body" align="center" color="neutral.main">
-            Mit einem Fokus auf intuitive Benutzererlebnisse und
-            visuell-ansprechende Interfaces bringe ich kreative Visionen in die
-            Realität. Entdecke, wie meine Projekte{' '}
-            <HighlightText>Design und Technologie</HighlightText> harmonisch
-            vereinen.
-          </Typography>
-          <BadgeContainer>
-            {badges.map(({ label, icon, variant }) => (
-              <Badge key={label} label={label} icon={icon} variant={variant} />
-            ))}
-          </BadgeContainer>
-        </ContentWrapper>
+      <SectionWrapper backgroundColor="neutral.lightest">
+        <Typography variant="h2" align="center" color="primary.dark">
+          Von <HighlightText>nutzerzentrierter Forschung</HighlightText> bis hin
+          zu <HighlightText>interaktiven Prototypen</HighlightText>
+        </Typography>
+        <Typography variant="body" align="center" color="neutral.main">
+          Mit einem Fokus auf intuitive Benutzererlebnisse und
+          visuell-ansprechende Interfaces bringe ich kreative Visionen in die
+          Realität. Entdecke, wie meine Projekte{' '}
+          <HighlightText>Design und Technologie</HighlightText> harmonisch
+          vereinen.
+        </Typography>
+        <BadgeContainer>
+          {badges.map(({ label, icon, variant }) => (
+            <Badge key={label} label={label} icon={icon} variant={variant} />
+          ))}
+        </BadgeContainer>
       </SectionWrapper>
     </>
   );

@@ -3,9 +3,12 @@ import WrapperBase from './WrapperBase';
 
 const CardWrapper = styled(WrapperBase)`
   /* Grundstruktur */
-  padding: ${({ theme }) => theme.spacing(3)};
+  width: 95%;
+  margin: ${({ theme }) => theme.spacing(1)} auto;
+  padding: ${({ theme }) => theme.spacing(1)};
+
+  padding: ${({ theme }) => theme.spacing(1)};
   border-radius: ${({ theme }) => theme.borderRadius.large};
-  background: ${({ theme }) => theme.gradients.neutralSoft};
   box-shadow: ${({ theme }) => theme.boxShadow.light};
   overflow: hidden;
 
@@ -35,7 +38,7 @@ const CardWrapper = styled(WrapperBase)`
 
   /* Optimierung für mobile Geräte */
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing(2)};
+    padding: ${({ theme }) => theme.spacing(1)};
     border-radius: ${({ theme }) => theme.borderRadius.medium};
     box-shadow: ${({ theme }) => theme.boxShadow.light};
 

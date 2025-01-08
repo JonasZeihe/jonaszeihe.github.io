@@ -10,10 +10,11 @@ export { default as QuoteComponent } from '../components/sections/QuoteComponent
 export { default as Lightbox } from '../components/lightbox/Lightbox';
 
 // Wrapper-Komponenten
-export { default as PageWrapper } from '../components/Wrapper/PageWrapper';
-export { default as HeroWrapper } from '../components/Wrapper/HeroWrapper';
-export { default as SectionWrapper } from '../components/Wrapper/SectionWrapper';
-export { default as CardWrapper } from '../components/Wrapper/CardWrapper';
+export { default as PageWrapper } from '../components/wrapper/PageWrapper';
+export { default as HeroWrapper } from '../components/wrapper/HeroWrapper';
+export { default as SectionWrapper } from '../components/wrapper/SectionWrapper';
+export { default as CardWrapper } from '../components/wrapper/CardWrapper';
+export { default as CardGrid } from '../components/layout/CardGrid';
 
 // Utilities und globale Stile
 export { default as GlobalStyles } from '../styles/GlobalStyles';
