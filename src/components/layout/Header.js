@@ -41,13 +41,10 @@ export default function Header({ navSections = [] }) {
         parentId: section.id,
       })),
     ]);
-
     const scrollPosition = window.scrollY + window.innerHeight / 2;
-
     const currentSection = offsets
       .filter(({ offsetTop }) => scrollPosition >= offsetTop)
       .pop();
-
     if (currentSection?.id !== activeSection) {
       setActiveSection(currentSection?.id);
       setHighlightedParent(currentSection?.parentId || currentSection?.id);
@@ -56,42 +53,8 @@ export default function Header({ navSections = [] }) {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [activeSection]);
-
-  const handleSwipeOrScroll = () => {
-    if (state.menuOpen) {
-      dispatch({ type: 'CLOSE_MENU' });
-    }
-  };
-
-  useEffect(() => {
-    if (state.menuOpen) {
-      window.addEventListener('scroll', handleSwipeOrScroll);
-    }
-    return () => {
-      window.removeEventListener('scroll', handleSwipeOrScroll);
-    };
-  }, [state.menuOpen]);
-
-  const handleClickOutside = (event) => {
-    if (
-      state.menuOpen &&
-      headerRef.current &&
-      !headerRef.current.contains(event.target)
-    ) {
-      dispatch({ type: 'CLOSE_MENU' });
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [state.menuOpen]);
 
   const renderSubNavItems = (children) =>
     children.map((child) => (
@@ -126,7 +89,6 @@ export default function Header({ navSections = [] }) {
     <MobileMenu>
       {navSections.map((section) => {
         const hasChildren = section.children && section.children.length > 0;
-
         return (
           <React.Fragment key={section.id}>
             <MobileNavItem>
@@ -165,10 +127,15 @@ export default function Header({ navSections = [] }) {
     </MobileMenu>
   );
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    dispatch({ type: 'CLOSE_MENU' });
+  };
+
   return (
     <HeaderContainer ref={headerRef}>
       <HeaderContent>
-        <Logo onClick={() => dispatch({ type: 'CLOSE_MENU' })}>BrandName</Logo>
+        <Logo onClick={scrollToTop}>Jonas Zeihe</Logo>
         <DesktopOnly>{renderDesktopNav()}</DesktopOnly>
         <MobileOnly>
           <MobileMenuButton
@@ -221,7 +188,6 @@ const DesktopOnly = styled.div`
 
 const MobileOnly = styled.div`
   display: none;
-
   @media (max-width: 768px) {
     display: block;
   }
@@ -234,7 +200,6 @@ const DesktopNav = styled.nav`
 
 const NavItemWrapper = styled.div`
   position: relative;
-
   &:hover > div {
     display: block;
   }
@@ -265,6 +230,10 @@ const SubNavItem = styled.div`
   font-size: 0.9rem;
   cursor: pointer;
   color: ${({ isActive }) => (isActive ? '#007bff' : '#333')};
+  padding: 0.4rem 0;
+  &:hover {
+    color: #007bff;
+  }
 `;
 
 const MobileMenuButton = styled.button`
@@ -303,8 +272,35 @@ const DropdownToggle = styled.button`
 `;
 
 const MobileSubNav = styled.div`
-  max-height: ${({ isOpen }) => (isOpen ? '500px' : '0')};
   overflow: hidden;
-  transition: max-height 0.3s ease;
-  padding: ${({ isOpen }) => (isOpen ? '0.5rem 0' : '0')};
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease;
+  max-height: ${({ isOpen }) => (isOpen ? '500px' : '0')};
+  opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
+  pointer-events: ${({ isOpen }) => (isOpen ? 'auto' : 'none')};
+  padding-left: 2rem; /* Zusätzliche Einrückung */
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Abstand zwischen den Elementen */
+  padding: 0.5rem 1rem; /* Innenabstand mit seitlicher Einrückung */
+
+  & > div {
+    font-size: 0.9rem;
+    color: #333;
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+    background-color: #ffffff; /* Optional: Weißer Hintergrund für die Items */
+    border-radius: 4px; /* Optional: Leichte Abrundung für die Items */
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      color: #007bff;
+      background-color: #f1f1f1; /* Leichte Farbänderung beim Hover */
+    }
+  }
 `;

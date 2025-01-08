@@ -6,18 +6,21 @@ import PropTypes from 'prop-types';
 const QuoteWrapper = styled.blockquote`
   position: relative;
   margin: ${({ theme }) => theme.spacing(3)} auto;
-  padding: ${({ theme }) => theme.spacing(3)};
-  max-width: 600px; /* Begrenzte Breite für bessere Lesbarkeit */
-  background: ${({ theme }) => theme.colors.neutral.main};
+  padding: ${({ theme }) => theme.spacing(4)};
+  max-width: 600px;
+  background: ${({ theme, backgroundColor }) =>
+    theme.colors[backgroundColor] || theme.colors.neutral.main};
   color: ${({ theme }) => theme.colors.neutral.white};
   font-style: italic;
-  border-left: 8px solid ${({ theme }) => theme.colors.primary.main}; /* Breiterer Balken */
+  border-left: 6px solid
+    ${({ theme, borderColor }) =>
+      theme.colors[borderColor] || theme.colors.primary.main};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
-  box-shadow: ${({ theme }) => theme.boxShadow.light};
+  box-shadow: ${({ theme }) => theme.boxShadow.medium};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding: ${({ theme }) => theme.spacing(3)};
-    max-width: 90%; /* Mehr Platz auf kleineren Geräten */
+    max-width: 90%;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -48,14 +51,19 @@ const AuthorText = styled.p`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.fontSize.body};
-    text-align: center; /* Zentriert auf kleineren Bildschirmen */
+    text-align: center;
   }
 `;
 
 // Funktionale QuoteComponent
-export default function QuoteComponent({ text, author }) {
+export default function QuoteComponent({
+  text,
+  author,
+  backgroundColor,
+  borderColor,
+}) {
   return (
-    <QuoteWrapper>
+    <QuoteWrapper backgroundColor={backgroundColor} borderColor={borderColor}>
       <QuoteText>{`"${text}"`}</QuoteText>
       {author && <AuthorText>- {author}</AuthorText>}
     </QuoteWrapper>
@@ -65,8 +73,12 @@ export default function QuoteComponent({ text, author }) {
 QuoteComponent.propTypes = {
   text: PropTypes.string.isRequired,
   author: PropTypes.string,
+  backgroundColor: PropTypes.string, // Dynamischer Hintergrund
+  borderColor: PropTypes.string, // Dynamische Farbe für den Balken
 };
 
 QuoteComponent.defaultProps = {
-  author: null, // Standardmäßig kein Author
+  author: null,
+  backgroundColor: 'neutral.main',
+  borderColor: 'primary.main',
 };

@@ -74,6 +74,7 @@ const theme = {
       h1: responsiveFontSize(scaleFont(3), scaleFont(4)),
       h2: responsiveFontSize(scaleFont(2), scaleFont(3)),
       h3: responsiveFontSize(scaleFont(1), scaleFont(2)),
+      h4: responsiveFontSize(scaleFont(1), scaleFont(1.5)),
       body: responsiveFontSize(scaleFont(0), scaleFont(1)),
       small: responsiveFontSize(scaleFont(-1), scaleFont(0)),
     },

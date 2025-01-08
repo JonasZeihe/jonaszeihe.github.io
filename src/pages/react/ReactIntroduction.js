@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import {
   HeroWrapper,
   SectionWrapper,
-  QuoteComponent,
   Typography,
   HighlightText,
   Badge,
@@ -37,37 +36,42 @@ export default function ReactIntroduction() {
 
   return (
     <>
-      {/* Hero-Bereich mit Zitat */}
-      <HeroWrapper gradient="primaryToNeutral">
-        <QuoteComponent
-          text="React – Die Kunst, Komponenten zu orchestrieren und digitale Erlebnisse zu schaffen."
-          author="Jonas Zeihe"
-        />
-      </HeroWrapper>
-
-      {/* Kurze Einleitung */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h1" color="primary.dark" align="center">
+      {/* Hero-Bereich */}
+      <HeroWrapper gradient="secondaryLight">
+        <Typography variant="h1" color="depth.dark" align="center">
           React Projekte
         </Typography>
+      </HeroWrapper>
+
+      {/* Einleitung */}
+      <SectionWrapper backgroundColor="neutral.lightest" elevated>
         <Typography variant="h2" align="center">
           <HighlightText>React</HighlightText> ist das Herzstück moderner
-          Webentwicklung. Mit seiner Flexibilität und Performance ermöglicht es
+          Webentwicklung. Mit seiner Flexibilität und Performance ermöglicht es{' '}
           <HighlightText>
-            {' '}
             interaktive und dynamische Benutzererfahrungen
           </HighlightText>
-          . Hier sind einige meiner Projekte, die zeigen, wie ich React nutze,
-          um digitale Produkte zum Leben zu erwecken.
+          . In Projekten wie <HighlightText>colorPal</HighlightText> und{' '}
+          <HighlightText>Shizen</HighlightText> sowie in meinen{' '}
+          <HighlightText>UX/UI Case Studies</HighlightText> setze ich auf React,
+          um herausragende Anwendungen zu entwickeln.
         </Typography>
         <ContentWrapper>
-          <Typography variant="body" align="center" color="neutral.main">
-            Meine Expertise reicht von datengetriebenen Anwendungen wie{' '}
-            <HighlightText>colorPal</HighlightText> bis hin zu nutzerzentrierten
-            Plattformen wie <HighlightText>Shizen LMS</HighlightText>. Jedes
-            Projekt spiegelt meine Fähigkeit wider, aus einer Idee ein
-            funktionierendes Produkt zu schaffen.
+          <Typography variant="h3" align="center" color="neutral.main">
+            React bildet die Basis sowohl für datenintensive Visualisierungen
+            als auch für benutzerzentrierte Plattformen. Meine Expertise
+            erstreckt sich von modularen Komponentenbibliotheken bis hin zu
+            nahtlosen Fullstack-Integrationen.
           </Typography>
+        </ContentWrapper>
+      </SectionWrapper>
+
+      {/* Technologien */}
+      <SectionWrapper backgroundColor="neutral.lightest">
+        <Typography variant="h2" align="center" color="accent.dark">
+          🚀 Technologien hinter meinen React-Projekten
+        </Typography>
+        <ContentWrapper>
           <BadgeContainer>
             {badges.map(({ label, icon, variant }) => (
               <Badge key={label} label={label} icon={icon} variant={variant} />

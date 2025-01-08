@@ -1,20 +1,23 @@
 import styled from 'styled-components';
 
+// Utility-Funktion zur Verarbeitung von Farben
+const resolveThemeColor = (theme, colorKey) => {
+  if (!colorKey) return theme.colors.neutral.lightest;
+  const [palette, shade] = colorKey.split('.');
+  return theme.colors[palette]?.[shade] || theme.colors.neutral.light;
+};
+
 const WrapperBase = styled.div`
   /* Dynamischer Hintergrund */
-  background: ${({ theme, gradient, backgroundColor }) => {
-    if (gradient) return theme.gradients[gradient];
-    if (backgroundColor) {
-      const [color, shade] = backgroundColor.split('.');
-      return theme.colors[color]?.[shade] || theme.colors.neutral.light;
-    }
-    return theme.colors.neutral.lightest;
-  }};
+  background: ${({ theme, gradient, backgroundColor }) =>
+    gradient
+      ? theme.gradients[gradient]
+      : resolveThemeColor(theme, backgroundColor)};
 
-  /* Styling für Border-Radius */
+  /* Border-Radius */
   border-radius: ${({ theme }) => theme.borderRadius.medium};
 
-  /* Box-Shadow, abhängig vom "elevated"-Prop */
+  /* Dynamische Box-Schatten (abhängig von "elevated") */
   box-shadow: ${({ theme, elevated }) =>
     elevated ? theme.boxShadow.medium : theme.boxShadow.light};
 
@@ -24,17 +27,17 @@ const WrapperBase = styled.div`
   width: 100%;
   max-width: ${({ theme }) => theme.breakpoints.xl};
 
-  /* Smooth Übergänge */
+  /* Smooth Transition für alle wichtigen Eigenschaften */
   transition:
     background 0.3s ease,
     box-shadow 0.3s ease,
     transform 0.3s ease;
 
-  /* Hover-Effekte */
+  /* Hover-Effekt */
   &:hover {
     transform: translateY(-1px);
     box-shadow: ${({ theme, elevated }) =>
-      elevated ? theme.boxShadow.heavy : theme.boxShadow.medium};
+      elevated ? theme.boxShadow.heavy : theme.boxShadow.light};
   }
 
   /* Responsive Anpassungen */

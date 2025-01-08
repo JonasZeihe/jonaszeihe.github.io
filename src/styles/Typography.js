@@ -50,7 +50,7 @@ const StyledTypography = styled.span`
         }
       `,
       subhead: css`
-        font-size: ${theme.typography.fontSize.body};
+        font-size: ${theme.typography.fontSize.h4};
         font-weight: ${theme.typography.fontWeight.medium};
         line-height: ${theme.typography.lineHeight.normal};
         color: ${theme.colors.secondaryHighlight.dark};

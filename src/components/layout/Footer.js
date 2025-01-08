@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
   FaLinkedin,
+  FaXing,
   FaArrowUp,
   FaEnvelope,
   FaGithub,
@@ -44,17 +42,17 @@ export default function Footer() {
           <FooterColumn>
             <FooterTitle>Social Media</FooterTitle>
             <SocialIcons>
-              <IconLink href="https://facebook.com" aria-label="Facebook">
-                <FaFacebook />
-              </IconLink>
-              <IconLink href="https://twitter.com" aria-label="Twitter">
-                <FaTwitter />
-              </IconLink>
-              <IconLink href="https://instagram.com" aria-label="Instagram">
-                <FaInstagram />
-              </IconLink>
-              <IconLink href="https://linkedin.com" aria-label="LinkedIn">
+              <IconLink
+                href="https://de.linkedin.com/in/jonas-zeihe"
+                aria-label="LinkedIn"
+              >
                 <FaLinkedin />
+              </IconLink>
+              <IconLink
+                href="https://www.xing.com/profile/Jonas_Zeihe3"
+                aria-label="Xing"
+              >
+                <FaXing />
               </IconLink>
             </SocialIcons>
           </FooterColumn>

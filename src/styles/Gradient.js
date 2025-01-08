@@ -3,6 +3,10 @@ const createGradient = (color1, color2, angle = 135) =>
 
 const gradients = (theme) => ({
   // Primary Palette (Erzeugt mehr Tiefe)
+  primaryLightest: createGradient(
+    theme.colors.primary.lightest,
+    theme.colors.primary.light
+  ),
   primaryLight: createGradient(
     theme.colors.primary.lightest,
     theme.colors.primary.main
@@ -17,6 +21,10 @@ const gradients = (theme) => ({
   ),
 
   // Secondary Palette (Erzeugt Kontraste)
+  secondaryLight: createGradient(
+    theme.colors.secondary.lightest,
+    theme.colors.secondary.light
+  ),
   secondaryWarm: createGradient(
     theme.colors.secondary.lightest,
     theme.colors.secondary.main

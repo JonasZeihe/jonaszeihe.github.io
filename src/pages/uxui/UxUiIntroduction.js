@@ -1,18 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import HeroWrapper from '../../components/Wrapper/HeroWrapper';
-import QuoteComponent from '../../components/sections/QuoteComponent';
-import Typography from '../../styles/Typography';
-import Badge from '../../components/common/Badge';
-
-const ContentWrapper = styled.div`
-  margin-top: ${({ theme }) => theme.spacing(4)};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: ${({ theme }) => theme.spacing(3)};
-`;
+import {
+  HeroWrapper,
+  SectionWrapper,
+  Typography,
+  HighlightText,
+  Badge,
+} from '../../utils/sharedComponents';
 
 const BadgeContainer = styled.div`
   display: flex;
@@ -30,23 +24,38 @@ export default function UxUiIntroduction() {
   ];
 
   return (
-    <HeroWrapper gradient="warmSoft">
-      {/* Zitat-Komponente */}
-      <QuoteComponent text="UX/UI-Design – Schaffe Erlebnisse, die Menschen begeistern." />
+    <>
+      {/* Hero-Bereich */}
+      <HeroWrapper gradient="depthSubtle">
+        <Typography variant="h1" align="center" color="primary.dark">
+          🌟 UX/UI Projekte
+        </Typography>
+        <Typography variant="h2" align="center" color="neutral.main">
+          <HighlightText>Erlebe Design</HighlightText>, das begeistert und{' '}
+          <HighlightText>technologisch überzeugt</HighlightText>. Meine
+          UX/UI-Projekte verschmelzen kreative Konzepte mit modernster Technik.
+        </Typography>
+      </HeroWrapper>
 
-      {/* Zusätzlicher Inhalt */}
-      <ContentWrapper>
-        <Typography variant="h2">
-          Von nutzerzentrierter Forschung bis hin zu interaktiven Prototypen
-          UX/UI-Design ist der Schlüssel zu erfolgreichen digitalen Produkten.
-          Entdecke meine Projekte, die zeigen, wie Design den Unterschied macht.
+      {/* Projekteinführung */}
+      <SectionWrapper backgroundColor="neutral.lightest">
+        <Typography variant="h2" align="center" color="primary.dark">
+          Von <HighlightText>nutzerzentrierter Forschung</HighlightText> bis hin
+          zu <HighlightText>interaktiven Prototypen</HighlightText>
+        </Typography>
+        <Typography variant="body" align="center" color="neutral.main">
+          Mit einem Fokus auf intuitive Benutzererlebnisse und
+          visuell-ansprechende Interfaces bringe ich kreative Visionen in die
+          Realität. Entdecke, wie meine Projekte{' '}
+          <HighlightText>Design und Technologie</HighlightText> harmonisch
+          vereinen.
         </Typography>
         <BadgeContainer>
           {badges.map(({ label, icon, variant }) => (
             <Badge key={label} label={label} icon={icon} variant={variant} />
           ))}
         </BadgeContainer>
-      </ContentWrapper>
-    </HeroWrapper>
+      </SectionWrapper>
+    </>
   );
 }
