@@ -1,0 +1,77 @@
+Starting App... 
+======================== 
+2025-08-01T18:28 
+======================== 
+
+> Jonaszeihe@0.1.0 start
+> react-scripts start
+
+(node:1356) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:1356) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Failed to compile.
+
+[eslint] 
+src\utils\sharedComponents.js
+  Line 1:15:   Delete `␍`  prettier/prettier
+  Line 2:62:   Delete `␍`  prettier/prettier
+  Line 3:82:   Delete `␍`  prettier/prettier
+  Line 4:84:   Delete `␍`  prettier/prettier
+  Line 5:65:   Delete `␍`  prettier/prettier
+  Line 6:63:   Delete `␍`  prettier/prettier
+  Line 7:85:   Delete `␍`  prettier/prettier
+  Line 8:83:   Delete `␍`  prettier/prettier
+  Line 9:83:   Delete `␍`  prettier/prettier
+  Line 10:71:  Delete `␍`  prettier/prettier
+  Line 11:1:   Delete `␍`  prettier/prettier
+  Line 12:23:  Delete `␍`  prettier/prettier
+  Line 13:76:  Delete `␍`  prettier/prettier
+  Line 14:82:  Delete `␍`  prettier/prettier
+  Line 15:76:  Delete `␍`  prettier/prettier
+  Line 16:69:  Delete `␍`  prettier/prettier
+  Line 17:1:   Delete `␍`  prettier/prettier
+  Line 18:31:  Delete `␍`  prettier/prettier
+  Line 19:66:  Delete `␍`  prettier/prettier
+  Line 20:52:  Delete `␍`  prettier/prettier
+  Line 21:59:  Delete `␍`  prettier/prettier
+  Line 22:1:   Delete `␍`  prettier/prettier
+  Line 23:20:  Delete `␍`  prettier/prettier
+  Line 24:97:  Delete `␍`  prettier/prettier
+  Line 25:65:  Delete `␍`  prettier/prettier
+  Line 26:65:  Delete `␍`  prettier/prettier
+
+Search for the keywords to learn more about each error.
+[1m[31mERROR[39m[22m in [1m[eslint] 
+src\utils\sharedComponents.js
+  Line 1:15:   Delete `␍`  prettier/prettier
+  Line 2:62:   Delete `␍`  prettier/prettier
+  Line 3:82:   Delete `␍`  prettier/prettier
+  Line 4:84:   Delete `␍`  prettier/prettier
+  Line 5:65:   Delete `␍`  prettier/prettier
+  Line 6:63:   Delete `␍`  prettier/prettier
+  Line 7:85:   Delete `␍`  prettier/prettier
+  Line 8:83:   Delete `␍`  prettier/prettier
+  Line 9:83:   Delete `␍`  prettier/prettier
+  Line 10:71:  Delete `␍`  prettier/prettier
+  Line 11:1:   Delete `␍`  prettier/prettier
+  Line 12:23:  Delete `␍`  prettier/prettier
+  Line 13:76:  Delete `␍`  prettier/prettier
+  Line 14:82:  Delete `␍`  prettier/prettier
+  Line 15:76:  Delete `␍`  prettier/prettier
+  Line 16:69:  Delete `␍`  prettier/prettier
+  Line 17:1:   Delete `␍`  prettier/prettier
+  Line 18:31:  Delete `␍`  prettier/prettier
+  Line 19:66:  Delete `␍`  prettier/prettier
+  Line 20:52:  Delete `␍`  prettier/prettier
+  Line 21:59:  Delete `␍`  prettier/prettier
+  Line 22:1:   Delete `␍`  prettier/prettier
+  Line 23:20:  Delete `␍`  prettier/prettier
+  Line 24:97:  Delete `␍`  prettier/prettier
+  Line 25:65:  Delete `␍`  prettier/prettier
+  Line 26:65:  Delete `␍`  prettier/prettier
+
+Search for the keywords to learn more about each [1m[31merror[39m[22m[1m.[39m[22m
+
+webpack compiled with [1m[31m1 error[39m[22m
