@@ -37,12 +37,12 @@ const WrapperBase = styled.div`
   &:hover {
     transform: translateY(-1px);
     box-shadow: ${({ theme, elevated }) =>
-      elevated ? theme.boxShadow.heavy : theme.boxShadow.medium};
+      elevated ? theme.boxShadow.heavy : theme.boxShadow.light};
   }
 
   /* Responsive Anpassungen */
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    padding: ${({ theme }) => theme.spacing(3)};
+    padding: ${({ theme }) => theme.spacing(2)};
     border-radius: ${({ theme }) => theme.borderRadius.large};
   }
 

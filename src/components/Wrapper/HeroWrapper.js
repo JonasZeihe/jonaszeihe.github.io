@@ -36,16 +36,15 @@ const HeroWrapper = styled.div`
 
   /* Anpassung für größere Bildschirme */
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    min-height: 40vh;
-    padding: ${({ theme }) => theme.spacing(5)};
+    min-height: 25vh;
+    padding: ${({ theme }) => theme.spacing(2)};
     & > * {
-      margin-bottom: ${({ theme }) => theme.spacing(3)};
     }
   }
 
   /* Anpassung für kleinere Bildschirme */
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    min-height: 40vh;
+    min-height: 20vh;
     padding: ${({ theme }) => theme.spacing(2)};
     & > * {
       margin-bottom: ${({ theme }) => theme.spacing(1)};

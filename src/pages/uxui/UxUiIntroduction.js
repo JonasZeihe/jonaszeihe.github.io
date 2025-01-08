@@ -35,7 +35,7 @@ export default function UxUiIntroduction() {
   return (
     <>
       {/* Hero-Bereich */}
-      <HeroWrapper gradient="warmSoft">
+      <HeroWrapper gradient="depthSubtle">
         <Typography variant="h1" align="center" color="primary.dark">
           🌟 UX/UI Projekte
         </Typography>
