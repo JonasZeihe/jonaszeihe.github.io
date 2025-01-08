@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  PageWrapper,
   HeroWrapper,
   SectionWrapper,
   Typography,
@@ -97,77 +98,44 @@ export default function PythonIntroduction() {
 
   return (
     <>
-      {/* Hero-Bereich mit Zitat */}
-      <HeroWrapper gradient="primaryToSecondary" style={{ padding: '3rem 0' }}>
-        <Typography variant="h1" align="center" color="neutral.lightest">
-          🐍 Python-Projekte – Klarheit und Präzision
-        </Typography>
-        <Typography
-          variant="body"
-          align="center"
-          color="neutral.lightest"
-          style={{ marginTop: '1rem' }}
-        >
-          „Python-Projekte stehen für Struktur, Innovation und kompromisslose
-          Qualität.“ – Jonas Zeihe
-        </Typography>
-      </HeroWrapper>
+      {/* Hero-Bereich */}
+      <PageWrapper backgroundColor="neutral.lightest" elevated>
+        <HeroWrapper gradient="primaryLightest">
+          <Typography variant="h1" align="center">
+            🐍 Python-Projekte – Klarheit und Präzision
+          </Typography>
+        </HeroWrapper>
 
-      {/* Einleitung */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h1" align="center" color="accent.dark">
-          Willkommen in der Welt der Python-Projekte
-        </Typography>
-        <Typography
-          variant="body"
-          align="center"
-          color="neutral.main"
-          style={{ marginTop: '1rem' }}
-        >
-          Hier findest du <HighlightText>innovative</HighlightText> und{' '}
-          <HighlightText>effiziente</HighlightText> Lösungen, die mit Liebe zum
-          Detail und einem klaren Fokus auf Skalierbarkeit entwickelt wurden.
-        </Typography>
-      </SectionWrapper>
+        {/* Einleitung */}
+        <SectionWrapper backgroundColor="neutral.lightest">
+          <Typography variant="h3">
+            Hier findest du <HighlightText>innovative</HighlightText> und{' '}
+            <HighlightText>effiziente</HighlightText> Lösungen, die mit Liebe
+            zum Detail und einem klaren Fokus auf Skalierbarkeit entwickelt
+            wurden.
+          </Typography>
 
-      {/* Kernmerkmale */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <Typography variant="h2" align="center" color="primary.dark">
-          🚀 Kernmerkmale meiner Python-Projekte
-        </Typography>
-        <ListComponent items={coreFeatures} />
-      </SectionWrapper>
+          {/* Kernmerkmale */}
+          <ListComponent items={coreFeatures} />
 
-      {/* Projekte */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h2" align="center" color="accent.dark">
-          🛠️ Meine Python-Projekte
-        </Typography>
-        <ListComponent items={projects} />
-      </SectionWrapper>
+          {/* Projekte */}
+          <Typography variant="h2" align="center" color="accent.dark">
+            🛠️ Meine Python-Projekte
+          </Typography>
+          <ListComponent items={projects} />
 
-      {/* Vision */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <Typography variant="h2" align="center" color="primary.dark">
-          🔮 Meine Vision für Python-Projekte
-        </Typography>
-        <Typography variant="body" align="center" color="neutral.main">
-          Python ermöglicht es mir, komplexe Probleme mit klaren, innovativen
-          Lösungen zu lösen. Mein Ziel ist es, Werkzeuge zu schaffen, die
-          technische Exzellenz und Benutzerfreundlichkeit vereinen, während sie
-          gleichzeitig Prozesse optimieren und die Kreativität fördern.
-        </Typography>
-        <Typography
-          variant="body"
-          align="center"
-          color="neutral.main"
-          style={{ marginTop: '1rem' }}
-        >
-          Zukünftig möchte ich meine Projekte auf weitere Plattformen ausweiten
-          und eng mit der Entwickler-Community zusammenarbeiten, um
-          Open-Source-Innovationen voranzutreiben.
-        </Typography>
-      </SectionWrapper>
+          {/* Vision */}
+          <Typography variant="h2" align="center" color="primary.dark">
+            🔮 Meine Vision für Python-Projekte
+          </Typography>
+          <Typography variant="body" color="neutral.main">
+            Python ermöglicht es mir, komplexe Probleme mit klaren, innovativen
+            Lösungen zu lösen. Mein Ziel ist es, Werkzeuge zu schaffen, die
+            technische Exzellenz und Benutzerfreundlichkeit vereinen, während
+            sie gleichzeitig Prozesse optimieren und die Kreativität fördern.
+          </Typography>
+        </SectionWrapper>
+      </PageWrapper>
     </>
   );
 }

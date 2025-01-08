@@ -4,9 +4,8 @@ import { Button, Badge } from '../../utils/sharedComponents';
 
 const CardWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.neutral.white};
-  border: 1px solid ${({ theme }) => theme.colors.neutral.lighter};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
-  padding: ${({ theme }) => theme.spacing(3)};
+  padding: ${({ theme }) => theme.spacing(2)};
   box-shadow: ${({ theme }) => theme.boxShadow.light};
   transition:
     transform 0.2s ease,
@@ -14,12 +13,6 @@ const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.boxShadow.medium};
-    background-color: ${({ theme }) => theme.colors.depth.lightest};
-  }
 `;
 
 const Title = styled.h3`
@@ -31,7 +24,7 @@ const Title = styled.h3`
 
 const Description = styled.p`
   margin: 0 0 ${({ theme }) => theme.spacing(3)};
-  color: ${({ theme }) => theme.colors.neutral.main};
+  color: ${({ theme }) => theme.colors.depth.main};
   line-height: 1.6;
   flex: 1;
 `;
@@ -62,15 +55,13 @@ export default function FeatureCard({
 }) {
   return (
     <CardWrapper>
-      <div>
-        <Title>{title}</Title>
-        <Description>{description}</Description>
-        <TagContainer>
-          {tags.map((tag) => (
-            <Badge key={tag} label={tag} variant="secondary" />
-          ))}
-        </TagContainer>
-      </div>
+      <Title>{title}</Title>
+      <Description>{description}</Description>
+      <TagContainer>
+        {tags.map((tag) => (
+          <Badge key={tag} label={tag} variant="secondary" />
+        ))}
+      </TagContainer>
       <ButtonContainer>
         <Button
           variant="primary"
