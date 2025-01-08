@@ -1,9 +1,9 @@
-// JavaPage.js
 import React from 'react';
 import JavaIntroduction from './JavaIntrodution';
 import loadProjects from '../../utils/ProjectLoader';
+import HoneycombGrid from '../../components/honeycomb/HoneycombGrid';
 
-// Projekte dynamisch laden
+// Dynamisches Laden der Projekte
 const projects = loadProjects(require.context('./projects', false, /\.js$/));
 
 export default function JavaPage() {
@@ -12,12 +12,13 @@ export default function JavaPage() {
       {/* Einführung */}
       <JavaIntroduction />
 
-      {/* Dynamische Projekte */}
-      {projects.map(({ name, component: ProjectComponent }) => (
-        <section id={name} key={name} style={{ scrollMarginTop: '80px' }}>
-          <ProjectComponent />
-        </section>
-      ))}
+      {/* Dynamische Projekte im HoneycombGrid */}
+      <HoneycombGrid
+        items={projects.map(({ name, component: ProjectComponent }) => ({
+          id: name,
+          component: <ProjectComponent key={name} />,
+        }))}
+      />
     </>
   );
 }
