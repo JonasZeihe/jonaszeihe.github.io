@@ -15,10 +15,6 @@ export { default as SectionWrapper } from '../components/Wrapper/SectionWrapper'
 export { default as CardWrapper } from '../components/Wrapper/CardWrapper';
 export { default as CardGrid } from '../components/layout/CardGrid';
 
-// Honeycomb Komponenten
-export { default as HoneycombGrid } from '../components/honeycomb/HoneycombGrid';
-export { default as HoneycombCell } from '../components/honeycomb/HoneycombCell';
-
 // Utilities und globale Stile
 export { default as GlobalStyles } from '../styles/GlobalStyles';
 export { default as theme } from '../styles/theme';

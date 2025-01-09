@@ -1,106 +1,177 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Badge from '../common/Badge';
-import Button from '../common/Button';
+import styled from 'styled-components';
+import { Badge, Typography, Button } from '../../utils/sharedComponents';
+import HoneycombWrapper from './HoneycombWrapper';
 
-const HexagonWrapper = styled.div`
+// Cluster-Styled Wrapper
+const ClusterWrapper = styled.div`
   position: relative;
-  width: 240px;
-  height: 280px;
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  background-color: ${({ theme }) => theme.colors.neutral.white};
+  width: 600px; /* Gesamtgröße des Clusters */
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 320px;
+    height: 320px;
+  }
+`;
+
+// Positionierte Waben
+const TitleCell = styled(HoneycombWrapper)`
+  position: absolute;
+  top: -15%; /* Abstand nach oben */
+  left: 20%;
+  transform: translate(-50%, 0);
+  z-index: 3;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    top: -80px;
+    width: 140px;
+    height: 160px;
+  }
+`;
+
+const MainCell = styled(HoneycombWrapper)`
+  position: relative; /* Hauptwabe bleibt zentral */
+  z-index: 2;
+`;
+
+const ButtonCell = styled(HoneycombWrapper)`
+  position: absolute;
+  width: 180px;
+  height: 200px;
+
+  &.left {
+    bottom: -5%;
+    left: -3%;
+    transform: translate(0, 0);
+  }
+
+  &.left {
+    bottom: -5%;
+    left: -3%;
+    transform: translate(0, 0);
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    display: none; /* Buttons ausblenden auf mobilen Geräten */
+  }
+`;
+
+// Bild-Overlay
+const ImageOverlayWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(${({ src }) => src});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    background-color: ${({ theme }) => theme.colors.neutral.light};
+  }
+`;
+
+// Badges und Content
+const BadgeContainer = styled.div`
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing(0.5)};
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    display: none; /* Badges ausblenden auf mobilen Geräten */
+  }
+`;
+
+const ContentWrapper = styled.div`
+  margin-top: ${({ theme }) =>
+    theme.spacing(4)}; /* Abstand zur Spitze der Wabe */
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  box-shadow: ${({ theme }) => theme.boxShadow.medium};
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: ${({ theme }) => theme.boxShadow.heavy};
-  }
-`;
-
-const Title = styled.h3`
-  text-align: center;
-  font-size: ${({ theme }) => theme.typography.fontSize.h4};
-  color: ${({ theme }) => theme.colors.primary.main};
-  margin-bottom: ${({ theme }) => theme.spacing(2)};
-`;
-
-const ImageSection = styled.div`
-  flex: 1;
   width: 100%;
-  background-image: url(${({ src }) => src});
-  background-size: cover;
-  background-position: center;
-  clip-path: polygon(50% 0%, 100% 25%, 100% 50%, 50% 75%, 0% 50%, 0% 25%);
-`;
-
-const ContentSection = styled.div`
-  padding: ${({ theme }) => theme.spacing(2)};
+  height: 100%;
   text-align: center;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
-const BadgeContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${({ theme }) => theme.spacing(1)};
-  justify-content: center;
-  margin-top: ${({ theme }) => theme.spacing(1)};
-`;
+export default function HoneycombCell({ project, onOpen }) {
+  const handleCellClick = () => {
+    onOpen();
+  };
 
-const ButtonsSection = styled.div`
-  display: flex;
-  gap: ${({ theme }) => theme.spacing(1)};
-  justify-content: center;
-  padding: ${({ theme }) => theme.spacing(1)};
-`;
-
-export default function HoneycombCell({ project }) {
   return (
-    <>
-      <Title>{project.name}</Title>
-      <HexagonWrapper>
-        <ImageSection src={project.image} />
-        <ContentSection>
-          <p>{project.description}</p>
-          <BadgeContainer>
-            {project.badges.map((badge) => (
-              <Badge
-                key={badge.label}
-                label={badge.label}
-                icon={badge.icon}
-                variant={badge.variant}
-              />
-            ))}
-          </BadgeContainer>
-        </ContentSection>
-        <ButtonsSection>
-          {project.buttons.map(({ label, onClick, variant }) => (
-            <Button key={label} variant={variant} onClick={onClick}>
-              {label}
-            </Button>
-          ))}
-        </ButtonsSection>
-      </HexagonWrapper>
-    </>
+    <ClusterWrapper>
+      {/* Titel-Wabe */}
+      <TitleCell size="small" position="title">
+        <Typography variant="h3" color="primary.main" align="center">
+          {project.name}
+        </Typography>
+      </TitleCell>
+
+      {/* Hauptwabe */}
+      <MainCell size="large" position="main" onClick={handleCellClick}>
+        <ContentWrapper>
+          <ImageOverlayWrapper src={project.image}>
+            <BadgeContainer>
+              {project.badges.map((badge) => (
+                <Badge
+                  key={badge.label}
+                  label={badge.label}
+                  icon={badge.icon}
+                  variant={badge.variant}
+                />
+              ))}
+            </BadgeContainer>
+          </ImageOverlayWrapper>
+
+          <Typography variant="body" color="neutral.main" align="center">
+            {project.description}
+          </Typography>
+        </ContentWrapper>
+      </MainCell>
+
+      {/* Linke Button-Wabe */}
+      <ButtonCell size="small" position="button1" className="left">
+        <Button variant="primary" onClick={handleCellClick}>
+          Projekt ansehen
+        </Button>
+      </ButtonCell>
+
+      {/* Rechte Button-Wabe */}
+      <ButtonCell size="small" position="button2" className="right">
+        <Button
+          variant="secondary"
+          onClick={() => window.open(project.githubLink, '_blank')}
+        >
+          GitHub
+        </Button>
+      </ButtonCell>
+    </ClusterWrapper>
   );
 }
 
 HoneycombCell.propTypes = {
   project: PropTypes.shape({
-    name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     badges: PropTypes.arrayOf(
       PropTypes.shape({
@@ -109,12 +180,7 @@ HoneycombCell.propTypes = {
         variant: PropTypes.string,
       })
     ).isRequired,
-    buttons: PropTypes.arrayOf(
-      PropTypes.shape({
-        label: PropTypes.string.isRequired,
-        onClick: PropTypes.func,
-        variant: PropTypes.string,
-      })
-    ).isRequired,
+    githubLink: PropTypes.string,
   }).isRequired,
+  onOpen: PropTypes.func.isRequired,
 };
