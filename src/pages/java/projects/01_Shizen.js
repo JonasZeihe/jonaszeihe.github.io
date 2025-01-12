@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import HoneycombCell from '../../../components/honeycomb/HoneycombCell';
+import ProjectCluster from '../../../components/honeycomb/ProjectCluster';
 import ModalOverlay from '../../../components/lightbox/ModalOverlay';
 import ShizenDetails from './details/01_ShizenDetails';
 import ShizenImage from '../../../assets/images/Projects/shizen-logo.png';
@@ -33,7 +33,7 @@ export default function Shizen() {
   return (
     <>
       {/* Kompakte Card-Ansicht */}
-      <HoneycombCell
+      <ProjectCluster
         project={shizenProject}
         onOpen={() => setShowModal(true)}
       />
