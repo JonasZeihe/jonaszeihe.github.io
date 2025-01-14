@@ -1,70 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Typography, Badge } from '../../utils/sharedComponents';
-import TitleCellWrapper from './TitleCellWrapper';
-import ProjectCellWrapper from './ProjectCellWrapper';
 import ClusterGrid from './ClusterGrid';
+import HexagonCell from './HexagonCell';
+import ProjectCell from './ProjectCell';
+import { Typography } from '../../utils/sharedComponents';
+import ModalOverlay from '../lightbox/ModalOverlay';
 import HoneycombIconButton from '../common/HoneycombIconButton';
 
-const BadgeContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: ${({ theme }) => theme.spacing(1)};
-`;
+export default function ProjectCluster({ project, variant }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-export default function ProjectCluster({ project, variant, onOpen }) {
-  const handleCellClick = () => {
-    if (onOpen) onOpen(project);
+  const handleOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsModalOpen(false);
   };
 
   return (
-    <ClusterGrid variant={variant}>
-      <TitleCellWrapper className="title" variant={variant}>
-        <Typography variant="h3" align="center">
-          {project.name}
-        </Typography>
-      </TitleCellWrapper>
+    <>
+      <ClusterGrid variant={variant}>
+        {/* Titelzelle */}
+        <HexagonCell bgColor="#EAEAEA" className="title">
+          <Typography variant="h3" align="center" color="primary.main">
+            {project.name}
+          </Typography>
+        </HexagonCell>
 
-      <ProjectCellWrapper
-        className="main"
-        src={project.image}
-        size="large"
-        onClick={handleCellClick}
-      >
-        <div>
+        {/* Hauptprojektzelle */}
+        <ProjectCell project={project} onClick={handleOpen} className="main" />
+
+        {/* GitHub-Buttonzelle */}
+        <HoneycombIconButton
+          className="button"
+          icon="FaGithub"
+          size="small"
+          onClick={() => window.open(project.githubLink, '_blank')}
+        />
+      </ClusterGrid>
+
+      {/* Modal-Overlay */}
+      {isModalOpen && (
+        <ModalOverlay onClose={handleClose}>
+          <Typography variant="h1" align="center">
+            {project.name}
+          </Typography>
           <Typography variant="body" align="center">
             {project.description}
           </Typography>
-          <BadgeContainer>
-            {project.badges.map((badge) => (
-              <Badge
-                key={badge.label}
-                label={badge.label}
-                icon={badge.icon}
-                variant={badge.variant}
-              />
-            ))}
-          </BadgeContainer>
-        </div>
-      </ProjectCellWrapper>
-
-      <HoneycombIconButton
-        className="button"
-        icon="FaGithub"
-        size="small"
-        onClick={() => window.open(project.githubLink, '_blank')}
-      />
-    </ClusterGrid>
+        </ModalOverlay>
+      )}
+    </>
   );
 }
 
 ProjectCluster.propTypes = {
   project: PropTypes.shape({
-    image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
     badges: PropTypes.arrayOf(
       PropTypes.shape({
         label: PropTypes.string.isRequired,
@@ -72,12 +67,7 @@ ProjectCluster.propTypes = {
         variant: PropTypes.string,
       })
     ).isRequired,
-    githubLink: PropTypes.string.isRequired,
+    githubLink: PropTypes.string,
   }).isRequired,
   variant: PropTypes.oneOf(['variant1', 'variant2', 'variant3']).isRequired,
-  onOpen: PropTypes.func,
-};
-
-ProjectCluster.defaultProps = {
-  onOpen: null,
 };
