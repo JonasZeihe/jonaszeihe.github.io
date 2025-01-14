@@ -10,7 +10,8 @@ import HoneycombIconButton from '../common/HoneycombIconButton';
 export default function ProjectCluster({ project, variant }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleOpen = () => {
+  const handleOpen = (e) => {
+    e.stopPropagation(); // Verhindert Event-Bubbling
     setIsModalOpen(true);
   };
 
@@ -22,33 +23,50 @@ export default function ProjectCluster({ project, variant }) {
     <>
       <ClusterGrid variant={variant}>
         {/* Titelzelle */}
-        <HexagonCell bgColor="#EAEAEA" className="title">
-          <Typography variant="h3" align="center" color="primary.main">
+        <HexagonCell color="neutral.white" className="title">
+          <Typography variant="h1" align="center" color="primary.main">
             {project.name}
           </Typography>
         </HexagonCell>
 
         {/* Hauptprojektzelle */}
-        <ProjectCell project={project} onClick={handleOpen} className="main" />
+        <ProjectCell
+          project={project}
+          onClick={handleOpen} // Modal-Öffnung
+          className="main"
+        />
 
         {/* GitHub-Buttonzelle */}
         <HoneycombIconButton
           className="button"
           icon="FaGithub"
           size="small"
-          onClick={() => window.open(project.githubLink, '_blank')}
+          onClick={(e) => {
+            e.stopPropagation(); // Verhindert Modal-Öffnung
+            window.open(project.githubLink, '_blank');
+          }}
         />
       </ClusterGrid>
 
       {/* Modal-Overlay */}
       {isModalOpen && (
         <ModalOverlay onClose={handleClose}>
-          <Typography variant="h1" align="center">
+          <Typography variant="h1" align="center" color="primary.main">
             {project.name}
           </Typography>
-          <Typography variant="body" align="center">
+          <Typography variant="body" align="center" color="neutral.dark">
             {project.description}
           </Typography>
+          <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+            {project.badges.map((badge) => (
+              <HoneycombIconButton
+                key={badge.label}
+                icon={badge.icon}
+                size="small"
+                onClick={() => console.log(`Badge clicked: ${badge.label}`)}
+              />
+            ))}
+          </div>
         </ModalOverlay>
       )}
     </>

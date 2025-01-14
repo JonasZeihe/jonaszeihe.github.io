@@ -5,81 +5,98 @@ import HexagonCell from './HexagonCell';
 import { Badge, Typography } from '../../utils/sharedComponents';
 
 const ProjectCellWrapper = styled(HexagonCell)`
-  background-image: url(${({ src }) => src});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  position: relative;
   cursor: pointer;
-  perspective: 1000px;
 
-  .hex-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.6s ease;
-  }
-
-  &:hover .hex-inner {
-    transform: rotateY(180deg);
-  }
-
-  .hex-face {
+  .image-container {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
+    background-image: url(${({ src }) => src});
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    transition:
+      filter 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .content {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: ${({ theme }) => theme.spacing(1)};
+    padding: ${({ theme }) => theme.spacing(2)};
+    z-index: 1;
+
+    .description {
+      max-height: ${({ theme }) => theme.spacing(4)};
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-bottom: ${({ theme }) => theme.spacing(2)};
+      color: ${({ theme }) => theme.colors.neutral.white};
+    }
   }
 
-  .hex-front {
-    color: ${({ theme }) => theme.colors.neutral.white};
-    background-color: rgba(0, 0, 0, 0.4); /* Optionaler Overlay */
+  &:hover {
+    .image-container {
+      filter: brightness(0.8);
+      transform: scale(1.05); /* Smooth zoom effect */
+    }
+
+    .badges {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  .hex-back {
-    transform: rotateY(180deg);
-    background-color: ${({ theme }) => theme.colors.neutral.white};
-    color: ${({ theme }) => theme.colors.neutral.dark};
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: ${({ theme }) => theme.spacing(1)};
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
   }
-`;
-
-const BadgeContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: ${({ theme }) => theme.spacing(1)};
-  padding: ${({ theme }) => theme.spacing(1)};
 `;
 
 export default function ProjectCell({ project, onClick }) {
   return (
-    <ProjectCellWrapper src={project.image} onClick={onClick}>
-      <div className="hex-inner">
-        {/* Vorderseite */}
-        <div className="hex-face hex-front">
-          <Typography variant="body" align="center">
-            {project.description}
-          </Typography>
-        </div>
-
-        {/* Rückseite */}
-        <div className="hex-face hex-back">
-          <BadgeContainer>
-            {project.badges.map((badge) => (
-              <Badge
-                key={badge.label}
-                label={badge.label}
-                icon={badge.icon}
-                variant={badge.variant}
-              />
-            ))}
-          </BadgeContainer>
+    <ProjectCellWrapper
+      src={project.image}
+      onClick={(e) => {
+        e.stopPropagation(); // Verhindert Event-Bubbling
+        onClick();
+      }}
+    >
+      <div className="image-container" />
+      <div className="content">
+        <Typography
+          className="description"
+          variant="body"
+          align="center"
+          color="neutral.lightest"
+        >
+          {project.description}
+        </Typography>
+        <div className="badges">
+          {project.badges.map((badge) => (
+            <Badge
+              key={badge.label}
+              label={badge.label}
+              icon={badge.icon}
+              variant={badge.variant}
+            />
+          ))}
         </div>
       </div>
     </ProjectCellWrapper>
@@ -88,8 +105,8 @@ export default function ProjectCell({ project, onClick }) {
 
 ProjectCell.propTypes = {
   project: PropTypes.shape({
-    description: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
     badges: PropTypes.arrayOf(
       PropTypes.shape({
         label: PropTypes.string.isRequired,
