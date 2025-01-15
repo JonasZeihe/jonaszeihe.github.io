@@ -74,15 +74,14 @@ export default function Footer() {
   );
 }
 
-// **Styles**
 const FooterWrapper = styled.footer`
   background: ${({ theme }) => theme.colors.primary.dark};
-  color: ${({ theme }) => theme.colors.neutral.white};
-  padding: ${({ theme }) => theme.spacing(4)} ${({ theme }) => theme.spacing(4)};
+  color: ${({ theme }) => theme.colors.neutral.ultraLight};
+  padding: ${({ theme }) => theme.spacing(3)} ${({ theme }) => theme.spacing(4)};
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing(6)};
+  gap: ${({ theme }) => theme.spacing(4)};
 `;
 
 const FooterContent = styled.div`
@@ -91,12 +90,13 @@ const FooterContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: ${({ theme }) => theme.spacing(4)};
 `;
 
 const FooterGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: ${({ theme }) => theme.spacing(6)};
+  gap: ${({ theme }) => theme.spacing(4)};
   width: 100%;
 `;
 
@@ -107,14 +107,18 @@ const FooterColumn = styled.div`
 `;
 
 const FooterTitle = styled.h4`
-  font-size: ${({ theme }) => theme.typography.fontSize.h3};
+  font-size: ${({ theme }) => theme.typography.fontSize.h4};
   color: ${({ theme }) => theme.colors.neutral.white};
+  margin: 0;
 `;
 
 const ContactList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(2)};
 `;
 
 const ContactItem = styled.li`
@@ -160,11 +164,11 @@ const FooterBottom = styled.div`
   width: 100%;
   max-width: ${({ theme }) => theme.breakpoints.xl};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
-  color: ${({ theme }) => theme.colors.neutral.medium};
+  color: ${({ theme }) => theme.colors.neutral.light};
+  gap: ${({ theme }) => theme.spacing(2)};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
-    gap: ${({ theme }) => theme.spacing(2)};
   }
 `;
 

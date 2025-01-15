@@ -1,27 +1,16 @@
+// ClusterGrid.js
 import styled from 'styled-components';
 
-/* Helper-Funktionen für die Positionierung */
-const getTitlePosition = (position) => {
-  switch (position) {
-    case 'left':
-      return 'start';
-    case 'right':
-      return 'end';
-    default:
-      return 'center';
-  }
-};
-
-const getButtonPosition = (position) => {
-  switch (position) {
-    case 'left':
-      return 'start';
-    case 'right':
-      return 'end';
-    default:
-      return 'center';
-  }
-};
+function getTitlePosition(pos) {
+  if (pos === 'left') return 'start';
+  if (pos === 'right') return 'end';
+  return 'center';
+}
+function getButtonPosition(pos) {
+  if (pos === 'left') return 'start';
+  if (pos === 'right') return 'end';
+  return 'center';
+}
 
 const ClusterGrid = styled.div`
   display: grid;
@@ -43,10 +32,8 @@ const ClusterGrid = styled.div`
   .main {
     grid-area: main;
     width: 100%;
-    max-width: ${({ theme }) =>
-      theme.spacing(60)}; /* Maximalbreite der ProjectCell */
-    min-width: ${({ theme }) =>
-      theme.spacing(30)}; /* Minimalbreite der ProjectCell */
+    max-width: ${({ theme }) => theme.spacing(60)};
+    min-width: ${({ theme }) => theme.spacing(30)};
   }
 
   .button {
@@ -55,18 +42,9 @@ const ClusterGrid = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    grid-template-areas:
-      'title'
-      'main'
-      'button';
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
-
     gap: ${({ theme }) => theme.spacing(2)};
-
     .main {
-      max-width: ${({ theme }) =>
-        theme.spacing(50)}; /* Reduzierte Maximalbreite für Mobile */
+      max-width: ${({ theme }) => theme.spacing(50)};
       min-width: ${({ theme }) => theme.spacing(20)};
     }
   }
