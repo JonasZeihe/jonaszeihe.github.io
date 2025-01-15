@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const resolveThemeColor = (theme, colorKey) => {
@@ -18,6 +17,7 @@ const HexagonWrapper = styled.div`
   aspect-ratio: 1.155; /* Hexagon Seitenverhältnis: Breite zu Höhe */
 
   .hexagon-svg {
+    z-index: 1;
     position: absolute;
     top: 0;
     left: 0;
@@ -30,9 +30,13 @@ const HexagonWrapper = styled.div`
           ? theme.gradients[gradient]
           : resolveThemeColor(theme, backgroundColor)};
     }
+
+    /* Verhindert, dass das SVG Klicks abfängt */
+    pointer-events: none;
   }
 
   .hex-content {
+    z-index: 2;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -40,9 +44,6 @@ const HexagonWrapper = styled.div`
     align-items: center;
     padding: ${({ theme, contentPadding }) =>
       contentPadding ? theme.spacing(contentPadding) : theme.spacing(2)};
-    z-index: 1;
-
-    /* Sicherstellen, dass Inhalt nicht überläuft */
     word-break: break-word;
 
     img,
@@ -60,6 +61,7 @@ export default function HexagonCell({
   className,
   gradient,
   contentPadding,
+  onClick,
 }) {
   return (
     <HexagonWrapper
@@ -67,6 +69,7 @@ export default function HexagonCell({
       backgroundColor={color}
       gradient={gradient}
       contentPadding={contentPadding}
+      onClick={onClick}
     >
       <svg
         className="hexagon-svg"
@@ -79,19 +82,3 @@ export default function HexagonCell({
     </HexagonWrapper>
   );
 }
-
-HexagonCell.propTypes = {
-  children: PropTypes.node,
-  color: PropTypes.string,
-  className: PropTypes.string,
-  gradient: PropTypes.string,
-  contentPadding: PropTypes.number,
-};
-
-HexagonCell.defaultProps = {
-  children: null,
-  className: '',
-  color: 'neutral.lightest',
-  gradient: null,
-  contentPadding: 2,
-};
