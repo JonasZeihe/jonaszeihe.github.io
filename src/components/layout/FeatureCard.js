@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button, Badge } from '../../utils/sharedComponents';
+import { Button, Badge, Typography } from '../../utils/sharedComponents';
 
 const CardWrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.neutral.white};
+  background-color: ${({ theme }) => theme.colors.secondary.light};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   padding: ${({ theme }) => theme.spacing(2)};
   box-shadow: ${({ theme }) => theme.boxShadow.light};
@@ -15,22 +15,10 @@ const CardWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const Title = styled.h3`
-  margin: 0 0 ${({ theme }) => theme.spacing(2)};
-  color: ${({ theme }) => theme.colors.primary.dark};
-  font-weight: 700;
-  font-size: ${({ theme }) => theme.typography.fontSize.h3};
-`;
-
-const Description = styled.p`
-  margin: 0 0 ${({ theme }) => theme.spacing(3)};
-  color: ${({ theme }) => theme.colors.depth.main};
-  line-height: 1.6;
-  flex: 1;
-`;
-
 const TagContainer = styled.div`
   display: flex;
+  justify-content: center;
+
   flex-wrap: wrap;
   gap: ${({ theme }) => theme.spacing(1)};
   margin-bottom: ${({ theme }) => theme.spacing(2)};
@@ -38,7 +26,7 @@ const TagContainer = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   margin-top: ${({ theme }) => theme.spacing(2)};
 `;
 
@@ -55,8 +43,12 @@ export default function FeatureCard({
 }) {
   return (
     <CardWrapper>
-      <Title>{title}</Title>
-      <Description>{description}</Description>
+      <Typography variant="h2" align="center" color="accent.dark">
+        {title}
+      </Typography>
+      <Typography variant="body" align="center" color="secondary.darkest">
+        {description}
+      </Typography>
       <TagContainer>
         {tags.map((tag) => (
           <Badge key={tag} label={tag} variant="secondary" />

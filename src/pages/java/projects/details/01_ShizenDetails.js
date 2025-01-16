@@ -84,143 +84,106 @@ export default function ShizenDetails() {
   return (
     <>
       {/* Hero-Bereich */}
-      <HeroWrapper gradient="neutralToPrimary">
-        <Typography variant="h1" align="center">
-          📚 <HighlightText>Shizen</HighlightText> – Die Plattform für modernes
-          Lernen und Lehren
-        </Typography>
+      <HeroWrapper gradient="primaryLight">
         <MediaDisplay
           media={[{ type: 'image', src: ShizenImage, alt: 'Shizen Logo' }]}
           onClick={() => setLightboxOpen(true)}
         />
-        <Typography
-          variant="body"
-          align="center"
-          color="neutral.lightest"
-          style={{ marginTop: '1rem' }}
-        >
-          <HighlightText>Shizen</HighlightText> revolutioniert die Art, wie
-          Kurse erstellt, organisiert und erlebt werden. Flexibel, skalierbar
-          und nutzerzentriert.
+        <Typography variant="h1" align="center" color="neutral.deep">
+          📚 <HighlightText>Shizen</HighlightText> – Die Plattform für modernes
+          Lernen und Lehren
         </Typography>
       </HeroWrapper>
 
       {/* Einführung */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h2" align="center" color="primary.dark">
-          Warum <HighlightText>Shizen</HighlightText>?
-        </Typography>
-        <Typography variant="body" align="center" color="neutral.main">
-          Shizen ist eine universelle Lernplattform, die moderne Technologien
-          mit benutzerfreundlichem Design kombiniert. Sie bietet dynamische
-          Kursverwaltungsfunktionen, Gamification-Elemente und datenbasiertes
-          Feedback, um Bildungsanbieter und Teilnehmer gleichermaßen zu
-          unterstützen.
-        </Typography>
-        <Typography variant="body" align="center" style={{ marginTop: '1rem' }}>
-          Egal ob für Yoga-, Sprach- oder Kochkurse – Shizen setzt auf modernste
-          Technologien wie Java, Spring Boot und React, um Bildung effizienter
-          und interaktiver zu gestalten.
-        </Typography>
-      </SectionWrapper>
+      <SectionWrapper backgroundColor="primary.main" elevated>
+        <SectionWrapper backgroundColor="primary.lightest" elevated>
+          <Typography variant="h2" align="center" color="primary.dark">
+            Warum <HighlightText>Shizen</HighlightText>?
+          </Typography>
+          <Typography variant="body" align="center" color="neutral.deep">
+            Shizen ist eine universelle Lernplattform, die moderne Technologien
+            mit benutzerfreundlichem Design kombiniert. Sie bietet dynamische
+            Kursverwaltungsfunktionen, Gamification-Elemente und datenbasiertes
+            Feedback, um Bildungsanbieter und Teilnehmer gleichermaßen zu
+            unterstützen. Egal ob für Yoga-, Sprach- oder Kochkurse – Shizen
+            setzt auf modernste Technologien wie Java, Spring Boot und React, um
+            Bildung effizienter und interaktiver zu gestalten.
+          </Typography>
+        </SectionWrapper>
 
-      {/* Vision */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <Typography variant="h3" align="center" color="accent.dark">
-          🌍 Visionen hinter <HighlightText>Shizen</HighlightText>
-        </Typography>
-        <Typography variant="body" align="center">
-          <HighlightText>AI Vision:</HighlightText> Eine Plattform, die Lernen
-          durch Technologie transformiert, Engagement fördert und
-          personalisierte Lernerfahrungen ermöglicht.
-        </Typography>
-        <Typography
-          variant="body"
-          align="center"
-          style={{ marginTop: '0.5rem' }}
-        >
-          <HighlightText>Technische Vision:</HighlightText> Ein skalierbares,
-          flexibles System, das nahtlos zwischen Präsenz- und Online-Lernen
-          vermittelt.
-        </Typography>
-        <Typography
-          variant="body"
-          align="center"
-          style={{ marginTop: '0.5rem' }}
-        >
-          <HighlightText>Benutzerzentrierung:</HighlightText> Tools, die
-          Lehrende und Lernende gleichermaßen inspirieren und unterstützen.
-        </Typography>
-      </SectionWrapper>
+        {/* Features */}
+        <SectionWrapper backgroundColor="primary.lightest" elevated>
+          <Typography variant="h2" align="center" color="primary.dark">
+            🚀 Features von <HighlightText>Shizen</HighlightText>
+          </Typography>
+          <ListComponent items={features} />
+        </SectionWrapper>
 
-      {/* Features */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h2" align="center" color="primary.dark">
-          🚀 Features von <HighlightText>Shizen</HighlightText>
-        </Typography>
-        <ListComponent items={features} />
-      </SectionWrapper>
-
-      {/* Badges */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <Typography variant="h2" align="center" color="accent.dark">
-          🛡️ Technologien hinter <HighlightText>Shizen</HighlightText>
-        </Typography>
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: '1rem',
-            marginTop: '1.5rem',
-          }}
-        >
-          {badges.map(({ label, icon, variant }) => (
-            <Badge key={label} label={label} icon={icon} variant={variant} />
-          ))}
-        </div>
-      </SectionWrapper>
-
-      {/* Aktueller Stand */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h3" align="center" color="accent.dark">
-          🚦 Aktueller Stand
-        </Typography>
-        <Typography variant="body" align="center" color="neutral.main">
-          <HighlightText>Status:</HighlightText> Backend vollständig
-          implementiert mit rollenbasiertem Zugriff und API-Endpunkten. Frontend
-          benötigt weitere UX/UI-Optimierungen.
-        </Typography>
-        <Typography
-          variant="body"
-          align="center"
-          style={{ marginTop: '0.5rem' }}
-        >
-          Gamification-Elemente sind in Entwicklung und werden in zukünftigen
-          Updates integriert.
-        </Typography>
-      </SectionWrapper>
-
-      {/* Call-to-Actions */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '1.5rem',
-            marginTop: '2rem',
-          }}
-        >
-          <Button
-            variant="primary"
-            onClick={() =>
-              window.open('https://github.com/jonaszeihe/shizen', '_blank')
-            }
+        {/* Badges */}
+        <SectionWrapper backgroundColor="neutral.ultraLight">
+          <Typography variant="h2" align="center" color="accent.main">
+            🛡️ Technologien hinter <HighlightText>Shizen</HighlightText>
+          </Typography>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              gap: '1rem',
+              marginTop: '1.5rem',
+            }}
           >
-            GitHub Repository
-          </Button>
-          <Button variant="success">Prototyp ansehen</Button>
-        </div>
+            {badges.map(({ label, icon, variant }) => (
+              <Badge key={label} label={label} icon={icon} variant={variant} />
+            ))}
+          </div>
+        </SectionWrapper>
+
+        {/* Aktueller Stand */}
+        <SectionWrapper backgroundColor="primary.lightest" elevated>
+          <Typography variant="h3" align="center" color="accent.main">
+            🚦 Aktueller Stand
+          </Typography>
+          <Typography variant="body" align="center" color="primary.darkest">
+            <HighlightText>Status:</HighlightText> Backend vollständig
+            implementiert mit rollenbasiertem Zugriff und API-Endpunkten.
+            Frontend benötigt weitere UX/UI-Optimierungen.
+          </Typography>
+          <Typography variant="body" align="center" color="primary.darkest">
+            Gamification-Elemente sind in Entwicklung und werden in zukünftigen
+            Updates integriert.
+          </Typography>
+        </SectionWrapper>
+
+        {/* Call-to-Actions */}
+        <SectionWrapper backgroundColor="neutral.ultraLight">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '1.5rem',
+              marginTop: '2rem',
+            }}
+          >
+            <Button
+              variant="primary"
+              onClick={() =>
+                window.open('https://github.com/jonaszeihe/shizen', '_blank')
+              }
+            >
+              GitHub Repository
+            </Button>
+            <Button
+              variant="success"
+              onClick={() =>
+                window.open('https://shizen-dev.onrender.com/', '_blank')
+              }
+            >
+              Shizen
+            </Button>
+          </div>
+        </SectionWrapper>
       </SectionWrapper>
 
       {/* Lightbox (nur für das Bild) */}

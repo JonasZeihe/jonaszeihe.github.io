@@ -76,154 +76,128 @@ export default function StructraDetails() {
   return (
     <>
       {/* Hero-Bereich */}
-      <HeroWrapper gradient="primaryToSecondary">
-        <Typography variant="h1" align="center">
-          🏭 <HighlightText>Structra</HighlightText> – Strukturen leicht gemacht
-        </Typography>
+      <HeroWrapper gradient="warmDynamic">
         <MediaDisplay
           media={[{ type: 'image', src: StructraLogo, alt: 'Structra Logo' }]}
           onClick={() => setLightboxOpen(true)}
         />
-        <Typography
-          variant="body"
-          align="center"
-          color="neutral.lightest"
-          style={{ marginTop: '1rem' }}
-        >
-          Mit <HighlightText>Structra</HighlightText> bringst du Struktur und
-          Automatisierung in deine Projekte. Es ergänzt{' '}
-          <HighlightText>Skryper</HighlightText> perfekt, um konsistente
-          Projektaufbauten zu erstellen und wiederherzustellen.
+        <Typography variant="h1" align="center" color="neutral.lightest">
+          🏭 Structra – Strukturen leicht gemacht
         </Typography>
       </HeroWrapper>
 
       {/* Einführung */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h2" align="center" color="primary.dark">
-          Was ist <HighlightText>Structra</HighlightText>?
-        </Typography>
-        <Typography variant="body" align="center" color="neutral.main">
-          Manuelle Verzeichnis- und Dateierstellungen sind zeitaufwendig und
-          fehleranfällig. <HighlightText>Structra</HighlightText> automatisiert
-          diesen Prozess, indem es textbasierte Baumvorlagen in reale
-          Verzeichnisse und Dateien umwandelt.
-        </Typography>
-        <Typography variant="body" align="center" style={{ marginTop: '1rem' }}>
-          Gemeinsam mit <HighlightText>Skryper</HighlightText> bildet Structra
-          ein leistungsstarkes Duo: Skryper analysiert bestehende
-          Projektstrukturen, während Structra sie effizient wiederherstellt oder
-          neue aufbaut.
-        </Typography>
-      </SectionWrapper>
-
-      {/* Vision */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <Typography variant="h3" align="center" color="accent.dark">
-          🌍 Visionen hinter <HighlightText>Structra</HighlightText>
-        </Typography>
-        <Typography variant="body" align="center">
-          <HighlightText>Automatisierung:</HighlightText> Structra bringt
-          Baumstrukturen direkt in die physische Welt – ohne manuelle Arbeit.
-        </Typography>
-        <Typography
-          variant="body"
-          align="center"
-          style={{ marginTop: '0.5rem' }}
-        >
-          <HighlightText>Ergänzung zu Skryper:</HighlightText> Während Skryper
-          bestehende Strukturen dokumentiert, erstellt Structra diese effizient
-          und konsistent.
-        </Typography>
-        <Typography
-          variant="body"
-          align="center"
-          style={{ marginTop: '0.5rem' }}
-        >
-          <HighlightText>Plattformunabhängigkeit:</HighlightText> Zukünftige
-          Updates werden macOS- und Linux-Unterstützung bieten.
-        </Typography>
-      </SectionWrapper>
-
-      {/* Aktueller Stand */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h3" align="center" color="primary.dark">
-          🚦 Aktueller Stand
-        </Typography>
-        <Typography variant="body" align="center">
-          <HighlightText>Status:</HighlightText> Stabil und einsatzbereit mit
-          Drag-and-Drop-Unterstützung für Windows.
-        </Typography>
-        <Typography
-          variant="body"
-          align="center"
-          style={{ marginTop: '0.5rem' }}
-        >
-          <HighlightText>Funktionalitäten:</HighlightText> Automatische
-          Struktur-Generierung, Vorlagenunterstützung und präzise
-          Hierarchieverarbeitung.
-        </Typography>
-      </SectionWrapper>
-
-      {/* Zukunftsaussichten */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <Typography variant="h3" align="center" color="neutral.dark">
-          🔮 Zukunftsaussichten
-        </Typography>
-        <Typography variant="body" align="center">
-          Erweiterung der Plattformunterstützung, Integration zusätzlicher
-          Dateiformate wie `.dockerignore` und Optimierung der
-          Drag-and-Drop-Funktion.
-        </Typography>
-      </SectionWrapper>
-
-      {/* Features */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h2" align="center" color="neutral.main">
-          🔧 Funktionen von <HighlightText>Structra</HighlightText>
-        </Typography>
-        <ListComponent items={features} />
-      </SectionWrapper>
-
-      {/* Badges */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <Typography variant="h2" align="center" color="neutral.dark">
-          🚀 Technologien hinter <HighlightText>Structra</HighlightText>
-        </Typography>
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: '1rem',
-            marginTop: '1rem',
-          }}
-        >
-          {badges.map(({ label, icon, variant }) => (
-            <Badge key={label} label={label} icon={icon} variant={variant} />
-          ))}
-        </div>
-      </SectionWrapper>
-
-      {/* Call-to-Actions */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '1.5rem',
-            marginTop: '2rem',
-          }}
-        >
-          <Button
-            variant="primary"
-            onClick={() =>
-              window.open('https://github.com/jonaszeihe/structra', '_blank')
-            }
+      <SectionWrapper backgroundColor="secondaryHighlight.light" elevated>
+        <SectionWrapper backgroundColor="secondaryHighlight.lightest" elevated>
+          <Typography
+            variant="h2"
+            align="center"
+            color="secondaryHighlight.dark"
           >
-            GitHub Repository
-          </Button>
-          <Button variant="warning">Video ansehen</Button>
-        </div>
+            Was ist <HighlightText>Structra</HighlightText>?
+          </Typography>
+          <Typography variant="body" align="center" color="primary.dark">
+            Manuelle Verzeichnis- und Dateierstellungen sind zeitaufwendig und
+            fehleranfällig. <HighlightText>Structra</HighlightText>{' '}
+            automatisiert diesen Prozess, indem es textbasierte Baumvorlagen in
+            reale Verzeichnisse und Dateien umwandelt. Gemeinsam mit{' '}
+            <HighlightText>Skryper</HighlightText> bildet Structra ein
+            leistungsstarkes Duo: Skryper analysiert bestehende
+            Projektstrukturen, während Structra sie effizient wiederherstellt
+            oder neue aufbaut.
+          </Typography>
+        </SectionWrapper>
+
+        {/* Aktueller Stand */}
+        <SectionWrapper backgroundColor="secondaryHighlight.lightest" elevated>
+          <Typography
+            variant="h3"
+            align="center"
+            color="secondaryHighlight.dark"
+          >
+            🚦 Aktueller Stand
+          </Typography>
+          <Typography variant="body" align="center" color="primary.dark">
+            <HighlightText>Status:</HighlightText> Stabil und einsatzbereit mit
+            Drag-and-Drop-Unterstützung für Windows.
+          </Typography>
+        </SectionWrapper>
+
+        {/* Zukunftsaussichten */}
+        <SectionWrapper backgroundColor="secondaryHighlight.lightest">
+          <Typography variant="h3" align="center" color="accent.main">
+            🔮 Zukunftsaussichten
+          </Typography>
+          <Typography variant="body" align="center" color="primary.dark">
+            Erweiterung der Plattformunterstützung, Integration zusätzlicher
+            Dateiformate wie `.dockerignore` und Optimierung der
+            Drag-and-Drop-Funktion.
+          </Typography>
+        </SectionWrapper>
+
+        {/* Features */}
+        <SectionWrapper backgroundColor="secondaryHighlight.lightest" elevated>
+          <Typography
+            variant="h2"
+            align="center"
+            color="secondaryHighlight.dark"
+          >
+            🔧 Funktionen von <HighlightText>Structra</HighlightText>
+          </Typography>
+          <ListComponent items={features} />
+        </SectionWrapper>
+
+        {/* Badges */}
+        <SectionWrapper backgroundColor="secondaryHighlight.lightest">
+          <Typography variant="h2" align="center" color="primary.dark">
+            🚀 Technologien hinter <HighlightText>Structra</HighlightText>
+          </Typography>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              gap: '1rem',
+              marginTop: '1rem',
+            }}
+          >
+            {badges.map(({ label, icon, variant }) => (
+              <Badge key={label} label={label} icon={icon} variant={variant} />
+            ))}
+          </div>
+        </SectionWrapper>
+
+        {/* Call-to-Actions */}
+        <SectionWrapper backgroundColor="secondaryHighlight.lightest">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '1.5rem',
+              marginTop: '2rem',
+            }}
+          >
+            <Button
+              variant="primary"
+              onClick={() =>
+                window.open('https://github.com/jonaszeihe/structra', '_blank')
+              }
+            >
+              GitHub Repository
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={() =>
+                window.open(
+                  'https://github.com/JonasZeihe/structra/releases',
+                  '_blank'
+                )
+              }
+            >
+              Download
+            </Button>
+          </div>
+        </SectionWrapper>
       </SectionWrapper>
 
       {/* Lightbox (nur für das Logo) */}

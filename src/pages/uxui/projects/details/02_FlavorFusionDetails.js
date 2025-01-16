@@ -66,27 +66,27 @@ export default function FlavorFusionDetails() {
   return (
     <>
       {/* Hero-Bereich */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <HeroWrapper gradient="neutralSoft">
-          <Typography variant="h1" align="center">
-            🍴 FlavorFusion – Die Welt in deiner Küche
-          </Typography>
-          <MediaDisplay
-            media={[
-              {
-                type: 'image',
-                src: FlavorFusionImage,
-                alt: 'FlavorFusion Project Image',
-              },
-            ]}
-            onClick={() => setLightboxOpen(true)}
-          />
-        </HeroWrapper>
+      <HeroWrapper gradient="accentSoft">
+        <MediaDisplay
+          media={[
+            {
+              type: 'image',
+              src: FlavorFusionImage,
+              alt: 'FlavorFusion Project Image',
+            },
+          ]}
+          onClick={() => setLightboxOpen(true)}
+        />
+        <Typography variant="h1" align="center" color="neutral.black">
+          🍴 FlavorFusion – Die Welt in deiner Küche
+        </Typography>
+      </HeroWrapper>
 
+      <SectionWrapper backgroundColor="accent.lightest" elevated>
         <Typography
           variant="body"
           align="center"
-          color="neutral.main"
+          color="depth.darkest"
           style={{ marginTop: '1rem' }}
         >
           <HighlightText>FlavorFusion</HighlightText> ist eine interaktive
@@ -100,16 +100,16 @@ export default function FlavorFusionDetails() {
       </SectionWrapper>
 
       {/* Features */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <Typography variant="h2" align="center" color="primary.dark">
+      <SectionWrapper backgroundColor="secondary.lightest">
+        <Typography variant="h2" align="center" color="accent.dark">
           🚀 Highlights von <HighlightText>FlavorFusion</HighlightText>
         </Typography>
         <ListComponent items={features} />
       </SectionWrapper>
 
       {/* Technologien */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h2" align="center" color="accent.dark">
+      <SectionWrapper backgroundColor="accent.lightest" elevated>
+        <Typography variant="h2" align="center" color="depth.darkest">
           🛠️ Tools und Technologien
         </Typography>
         <div
@@ -128,23 +128,18 @@ export default function FlavorFusionDetails() {
       </SectionWrapper>
 
       {/* Aktueller Stand */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <Typography variant="h2" align="center" color="primary.dark">
+      <SectionWrapper backgroundColor="secondary.lightest">
+        <Typography variant="h2" align="center" color="accent.dark">
           🚦 Aktueller Stand
         </Typography>
-        <Typography variant="body" align="center" color="neutral.main">
+        <Typography variant="body" align="center" color="depth.darkest">
           <HighlightText>Status:</HighlightText> Der High-Fidelity-Prototyp ist
           abgeschlossen und als klickbare Case Study in React verfügbar.
-        </Typography>
-        <Typography variant="body" align="center" style={{ marginTop: '1rem' }}>
-          <HighlightText>Zukunft:</HighlightText> Erweiterung der Landing Page
-          zu einer vollständig interaktiven App mit neuen Features wie
-          Sprachsteuerung und KI-gestützten Rezeptempfehlungen.
         </Typography>
       </SectionWrapper>
 
       {/* Call-to-Actions */}
-      <SectionWrapper backgroundColor="neutral.lightest">
+      <SectionWrapper backgroundColor="accent.lightest">
         <div
           style={{
             display: 'flex',
@@ -153,8 +148,13 @@ export default function FlavorFusionDetails() {
             marginTop: '2rem',
           }}
         >
-          <Button variant="primary" onClick={() => {}}>
-            Mehr erfahren
+          <Button
+            variant="primary"
+            onClick={() => {
+              'https://jonaszeihe.github.io/casestudyFlavorFusion/';
+            }}
+          >
+            Case Study
           </Button>
           <Button variant="success" onClick={() => {}}>
             Prototyp ansehen

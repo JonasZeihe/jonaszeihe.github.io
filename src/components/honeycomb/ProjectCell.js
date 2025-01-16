@@ -25,20 +25,17 @@ const Wrapper = styled(HexagonCell)`
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    font-size: ${({ theme }) => theme.typography.fontSize.medium};
-    color: ${({ theme }) => theme.colors.neutral.dark};
-    padding: ${({ theme }) => theme.spacing(2)};
     transition: opacity 0.3s ease;
   }
 
   .badges {
     opacity: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(1fr));
     gap: ${({ theme }) => theme.spacing(1)};
     justify-content: center;
     align-items: center;
-    padding: ${({ theme }) => theme.spacing(2)};
+    padding: ${({ theme }) => theme.spacing(6)};
     position: relative;
     transition:
       opacity 0.5s ease,
@@ -78,7 +75,9 @@ export default function ProjectCell({ project, onOpen, className }) {
   return (
     <Wrapper className={className} onClick={handleClick}>
       <div className="description">
-        <Typography variant="body">{project.description}</Typography>
+        <Typography variant="body" align="center" color="primary.dark">
+          {project.description}
+        </Typography>
       </div>
       <div className="badges">
         {(project.badges || []).map((b) => (

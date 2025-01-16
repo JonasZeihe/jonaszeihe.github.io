@@ -11,7 +11,7 @@ const SectionWrapper = styled(WrapperBase)`
       ? theme.colors[backgroundColor.split('.')[0]]?.[
           backgroundColor.split('.')[1]
         ]
-      : theme.colors.neutral.white};
+      : theme.colors.neutral.ultraLight};
 
   /* Responsive Einstellungen */
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {

@@ -10,7 +10,7 @@ const QuoteWrapper = styled.blockquote`
   max-width: 600px;
   background: ${({ theme, backgroundColor }) =>
     theme.colors[backgroundColor] || theme.colors.neutral.main};
-  color: ${({ theme }) => theme.colors.neutral.white};
+  color: ${({ theme }) => theme.colors.neutral.ultraLight};
   font-style: italic;
   border-left: 6px solid
     ${({ theme, borderColor }) =>

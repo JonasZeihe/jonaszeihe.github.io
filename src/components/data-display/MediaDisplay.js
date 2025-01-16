@@ -6,13 +6,12 @@ import Lightbox from '../lightbox/Lightbox';
 // Styled Components
 const MediaGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: ${({ theme }) => theme.spacing(2)};
+  grid-template-columns: repeat(auto-fit, minmax(1fr));
   width: 100%;
   justify-content: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(1fr));
     gap: ${({ theme }) => theme.spacing(1.5)};
   }
 

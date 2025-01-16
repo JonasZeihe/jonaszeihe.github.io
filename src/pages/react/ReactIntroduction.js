@@ -37,15 +37,15 @@ export default function ReactIntroduction() {
   return (
     <>
       {/* Hero-Bereich */}
-      <HeroWrapper gradient="secondaryLight">
-        <Typography variant="h1" color="depth.dark" align="center">
+      <HeroWrapper gradient="secondaryDynamic">
+        <Typography variant="h1" color="primary.dark" align="center">
           React Projekte
         </Typography>
       </HeroWrapper>
 
       {/* Einleitung */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h2" align="center">
+      <SectionWrapper backgroundColor="secondary.lightest" elevated>
+        <Typography variant="h2" align="center" color="primary.dark">
           <HighlightText>React</HighlightText> ist das Herzstück moderner
           Webentwicklung. Mit seiner Flexibilität und Performance ermöglicht es{' '}
           <HighlightText>
@@ -57,7 +57,7 @@ export default function ReactIntroduction() {
           um herausragende Anwendungen zu entwickeln.
         </Typography>
         <ContentWrapper>
-          <Typography variant="h3" align="center" color="neutral.main">
+          <Typography variant="h3" align="center" color="accent.dark">
             React bildet die Basis sowohl für datenintensive Visualisierungen
             als auch für benutzerzentrierte Plattformen. Meine Expertise
             erstreckt sich von modularen Komponentenbibliotheken bis hin zu
@@ -67,8 +67,8 @@ export default function ReactIntroduction() {
       </SectionWrapper>
 
       {/* Technologien */}
-      <SectionWrapper backgroundColor="neutral.lightest">
-        <Typography variant="h2" align="center" color="accent.dark">
+      <SectionWrapper backgroundColor="secondary.lightest">
+        <Typography variant="h2" align="center" color="primary.dark">
           🚀 Technologien hinter meinen React-Projekten
         </Typography>
         <ContentWrapper>

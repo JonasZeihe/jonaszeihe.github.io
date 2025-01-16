@@ -72,9 +72,9 @@ export default function KIMDetails() {
   return (
     <>
       {/* Hero-Bereich */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
+      <SectionWrapper backgroundColor="primary.lightest" elevated>
         <HeroWrapper gradient="neutralSoft">
-          <Typography variant="h1" align="center">
+          <Typography variant="h1" align="center" color="depth.dark">
             🌟 KIM – Your Friend to Meet New Friends
           </Typography>
           <MediaDisplay
@@ -92,7 +92,7 @@ export default function KIMDetails() {
         <Typography
           variant="body"
           align="center"
-          color="neutral.main"
+          color="neutral.deep"
           style={{ marginTop: '1rem' }}
         >
           <HighlightText>KIM</HighlightText> wurde im Rahmen eines
@@ -107,16 +107,16 @@ export default function KIMDetails() {
       </SectionWrapper>
 
       {/* Feature-Liste */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <Typography variant="h2" align="center" color="primary.dark">
+      <SectionWrapper backgroundColor="secondary.lightest">
+        <Typography variant="h2" align="center" color="depth.dark">
           🚀 Features von <HighlightText>KIM</HighlightText>
         </Typography>
         <ListComponent items={features} />
       </SectionWrapper>
 
       {/* Badges */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h2" align="center" color="accent.dark">
+      <SectionWrapper backgroundColor="primary.lightest" elevated>
+        <Typography variant="h2" align="center" color="depth.dark">
           🛡️ Technologien hinter <HighlightText>KIM</HighlightText>
         </Typography>
         <div
@@ -135,11 +135,11 @@ export default function KIMDetails() {
       </SectionWrapper>
 
       {/* Aktueller Stand */}
-      <SectionWrapper backgroundColor="neutral.light">
+      <SectionWrapper backgroundColor="secondary.lightest">
         <Typography variant="h2" align="center" color="primary.dark">
           🚦 Aktueller Stand und nächste Schritte
         </Typography>
-        <Typography variant="body" align="center" color="neutral.main">
+        <Typography variant="body" align="center" color="neutral.deep">
           Der High-Fidelity-Prototyp ist vollständig und wurde mit Erfolg
           präsentiert. Zukünftige Schritte umfassen die Integration erweiterter
           KI-Funktionen und umfangreiche Usability-Tests zur Validierung des
@@ -163,7 +163,7 @@ export default function KIMDetails() {
           }}
         >
           <Button variant="primary" onClick={() => {}}>
-            Mehr erfahren
+            Case Study
           </Button>
           <Button variant="success" onClick={() => {}}>
             Prototyp ansehen

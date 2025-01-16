@@ -7,8 +7,8 @@ import { Typography } from '../../utils/sharedComponents';
 export default function ProjectCluster({ project, onOpen }) {
   return (
     <ClusterGrid>
-      <HexagonCell color="neutral.white" className="title">
-        <Typography variant="h3" align="center" color="primary.main">
+      <HexagonCell className="title">
+        <Typography variant="h3" align="center" color="primary.dark">
           {project.name}
         </Typography>
       </HexagonCell>

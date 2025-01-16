@@ -67,132 +67,99 @@ export default function ColorPalDetails() {
   return (
     <>
       {/* Hero-Bereich */}
-      <HeroWrapper gradient="neutralToPrimary">
-        <Typography variant="h1" align="center">
-          🎨 <HighlightText>colorPal</HighlightText> – Transform Data Into Art
-        </Typography>
+      <HeroWrapper gradient="accentPlayful">
         <MediaDisplay
           media={[{ type: 'image', src: ColorPalImage, alt: 'ColorPal Logo' }]}
           onClick={() => setLightboxOpen(true)}
         />
-        <Typography
-          variant="body"
-          align="center"
-          color="neutral.lightest"
-          style={{ marginTop: '1rem' }}
-        >
-          Mit <HighlightText>colorPal</HighlightText> wird jede
-          Datenvisualisierung zu einem Kunstwerk. Flexible Styling-Optionen und
-          Exportmöglichkeiten machen es zu einem unverzichtbaren Werkzeug für
-          Designer und Entwickler.
+        <Typography variant="h1" align="center" color="accent.lightest">
+          🎨 <HighlightText>colorPal</HighlightText> – Transform Data Into Art
         </Typography>
       </HeroWrapper>
 
       {/* Einführung */}
       <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h2" align="center" color="primary.dark">
+        <Typography variant="h2" align="center" color="accent.dark">
           Warum <HighlightText>colorPal</HighlightText>?
         </Typography>
-        <Typography variant="body" align="center" color="neutral.main">
+
+        <Typography variant="body" align="center" color="accent.dark">
           Daten müssen nicht langweilig sein. Mit{' '}
           <HighlightText>colorPal</HighlightText> lassen sich Diagramme in
           Echtzeit gestalten, dynamisch anpassen und als hochwertige SVG- oder
           PNG-Dateien exportieren. Es ist die perfekte Lösung für alle, die
           Daten auf eine kreative und intuitive Weise präsentieren möchten.
         </Typography>
-      </SectionWrapper>
 
-      {/* Vision */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <Typography variant="h3" align="center" color="accent.dark">
-          🌍 Visionen hinter <HighlightText>colorPal</HighlightText>
-        </Typography>
-        <Typography variant="body" align="center">
-          <HighlightText>AI Vision:</HighlightText> Eine Plattform, die
-          technische Daten mit kreativer Visualisierung vereint und so
-          Präsentationen und Designs auf ein neues Level hebt.
-        </Typography>
-        <Typography
-          variant="body"
-          align="center"
-          style={{ marginTop: '0.5rem' }}
-        >
-          <HighlightText>Technische Vision:</HighlightText> Durch die Nutzung
-          von React und Styled Components werden dynamische Diagrammtypen mit
-          flexiblen Styling-Optionen kombiniert.
-        </Typography>
-        <Typography
-          variant="body"
-          align="center"
-          style={{ marginTop: '0.5rem' }}
-        >
-          <HighlightText>Benutzerzentrierung:</HighlightText> Ein intuitives
-          Interface für Designer, Entwickler und kreative Köpfe, das auf
-          einfache Bedienung und nahtlose Integration setzt.
-        </Typography>
-      </SectionWrapper>
+        {/* Features */}
+        <SectionWrapper backgroundColor="neutral.lightest" elevated>
+          <Typography variant="h2" align="center" color="accent.dark">
+            🚀 Features von <HighlightText>colorPal</HighlightText>
+          </Typography>
+          <ListComponent items={features} />
+        </SectionWrapper>
 
-      {/* Features */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h2" align="center" color="primary.dark">
-          🚀 Features von <HighlightText>colorPal</HighlightText>
-        </Typography>
-        <ListComponent items={features} />
-      </SectionWrapper>
-
-      {/* Badges */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <Typography variant="h2" align="center" color="accent.dark">
-          🛡️ Technologien hinter <HighlightText>colorPal</HighlightText>
-        </Typography>
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: '1rem',
-            marginTop: '1.5rem',
-          }}
-        >
-          {badges.map(({ label, icon, variant }) => (
-            <Badge key={label} label={label} icon={icon} variant={variant} />
-          ))}
-        </div>
-      </SectionWrapper>
-
-      {/* Aktueller Stand */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h3" align="center" color="accent.dark">
-          🚦 Aktueller Stand
-        </Typography>
-        <Typography variant="body" align="center" color="neutral.main">
-          <HighlightText>Status:</HighlightText> Solide Grundlage mit
-          funktionierenden Diagrammtypen und JSON-Handling. Weitere
-          Styling-Optionen und eine optimierte Benutzeroberfläche befinden sich
-          in Entwicklung.
-        </Typography>
-      </SectionWrapper>
-
-      {/* Call-to-Actions */}
-      <SectionWrapper backgroundColor="neutral.light">
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '1.5rem',
-            marginTop: '2rem',
-          }}
-        >
-          <Button
-            variant="primary"
-            onClick={() =>
-              window.open('https://github.com/jonaszeihe/colorpal', '_blank')
-            }
+        {/* Badges */}
+        <SectionWrapper backgroundColor="neutral.lightest">
+          <Typography variant="h2" align="center" color="highlight.dark">
+            🛡️ Technologien hinter <HighlightText>colorPal</HighlightText>
+          </Typography>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              gap: '1rem',
+              marginTop: '1.5rem',
+            }}
           >
-            GitHub Repository
-          </Button>
-          <Button variant="success">Prototyp ansehen</Button>
-        </div>
+            {badges.map(({ label, icon, variant }) => (
+              <Badge key={label} label={label} icon={icon} variant={variant} />
+            ))}
+          </div>
+        </SectionWrapper>
+
+        {/* Aktueller Stand */}
+        <SectionWrapper backgroundColor="neutral.lightest" elevated>
+          <Typography variant="h3" align="center" color="highlight.dark">
+            🚦 Aktueller Stand
+          </Typography>
+          <Typography variant="body" align="center" color="accent.dark">
+            <HighlightText>Status:</HighlightText> Solide Grundlage mit
+            funktionierenden Diagrammtypen und JSON-Handling. Weitere
+            Styling-Optionen und eine optimierte Benutzeroberfläche befinden
+            sich in Entwicklung.
+          </Typography>
+        </SectionWrapper>
+
+        {/* Call-to-Actions */}
+        <SectionWrapper backgroundColor="depth.main">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '1.5rem',
+              marginTop: '2rem',
+            }}
+          >
+            <Button
+              variant="primary"
+              onClick={() =>
+                window.open('https://github.com/jonaszeihe/colorpal', '_blank')
+              }
+            >
+              GitHub Repository
+            </Button>
+            <Button
+              variant="success"
+              onClick={() =>
+                window.open('https://jonaszeihe.github.io/colorPal/', '_blank')
+              }
+            >
+              Website
+            </Button>
+          </div>
+        </SectionWrapper>
       </SectionWrapper>
 
       {/* Lightbox nur für Bildvergrößerung */}

@@ -53,7 +53,6 @@ const ClusterGrid = styled.div`
   }}
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    gap: ${({ theme }) => theme.spacing(2)};
     .title {
       justify-self: center;
     }
@@ -62,7 +61,7 @@ const ClusterGrid = styled.div`
     }
     .main {
       max-width: ${({ theme }) => theme.spacing(50)};
-      min-width: ${({ theme }) => theme.spacing(20)};
+      min-width: ${({ theme }) => theme.spacing(15)};
     }
   }
 `;
