@@ -1,24 +1,20 @@
 import React from 'react';
 import JavaIntroduction from './JavaIntrodution';
 import loadProjects from '../../utils/ProjectLoader';
-import HoneycombGrid from '../../components/honeycomb/HoneycombGrid';
-import getHoneycombVariants from '../../utils/HoneycombVariantManager';
+import CardGrid from '../../components/layout/CardGrid';
+import { SectionWrapper } from '../../utils/sharedComponents';
 
 const projects = loadProjects(require.context('./projects', false, /\.js$/));
 
 export default function JavaPage() {
-  const isMobile = window.innerWidth <= 768;
-  const variants = getHoneycombVariants(projects.length, isMobile);
-
   return (
-    <>
+    <SectionWrapper backgroundColor="neutral.lightest">
       <JavaIntroduction />
-      <HoneycombGrid items={projects.length}>
-        {projects.map(({ name, component: ProjectComponent }, index) => {
-          const variant = variants[index] || 'variant1';
-          return <ProjectComponent key={name} variant={variant} />;
-        })}
-      </HoneycombGrid>
-    </>
+      <CardGrid>
+        {projects.map(({ name, component: ProjectComponent }) => (
+          <ProjectComponent key={name} id={name} />
+        ))}
+      </CardGrid>
+    </SectionWrapper>
   );
 }

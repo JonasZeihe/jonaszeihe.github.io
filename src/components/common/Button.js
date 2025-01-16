@@ -35,7 +35,7 @@ const StyledButton = styled.button`
     const variants = {
       primary: css`
         background: ${theme.colors.primary.main};
-        color: ${theme.colors.neutral.white};
+        color: ${theme.colors.neutral.ultraLight};
         &:hover {
           background: ${theme.colors.primary.dark};
           box-shadow: ${theme.boxShadow.medium};
@@ -43,7 +43,7 @@ const StyledButton = styled.button`
       `,
       secondary: css`
         background: ${theme.colors.secondary.main};
-        color: ${theme.colors.neutral.white};
+        color: ${theme.colors.neutral.ultraLight};
         &:hover {
           background: ${theme.colors.secondary.dark};
           box-shadow: ${theme.boxShadow.medium};
@@ -61,7 +61,7 @@ const StyledButton = styled.button`
       `,
       warning: css`
         background: ${theme.colors.warning?.main || theme.colors.accent.main};
-        color: ${theme.colors.neutral.white};
+        color: ${theme.colors.neutral.ultraLight};
         &:hover {
           background: ${theme.colors.warning?.dark || theme.colors.accent.dark};
           box-shadow: ${theme.boxShadow.medium};
@@ -70,7 +70,7 @@ const StyledButton = styled.button`
       success: css`
         background: ${theme.colors.success?.main ||
         theme.colors.secondary.main};
-        color: ${theme.colors.neutral.white};
+        color: ${theme.colors.neutral.ultraLight};
         &:hover {
           background: ${theme.colors.success?.dark ||
           theme.colors.secondary.dark};

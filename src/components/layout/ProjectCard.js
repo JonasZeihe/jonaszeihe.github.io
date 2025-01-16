@@ -46,6 +46,7 @@ const ButtonContainer = styled.div`
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(2)};
   margin-top: ${({ theme }) => theme.spacing(3)};
+  padding: ${({ theme }) => theme.spacing(2)};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
@@ -76,10 +77,10 @@ export default function ProjectCard({ project, onOpen }) {
         <img src={project.image} alt={project.name} />
       </ImageWrapper>
       <ContentWrapper>
-        <Typography variant="h3" align="center" color="primary.main">
+        <Typography variant="h2" align="center" color="primary.main">
           {project.name}
         </Typography>
-        <Typography variant="body" align="center" color="neutral.main">
+        <Typography variant="body" align="center" color="secondary.dark">
           {project.description}
         </Typography>
         <BadgeContainer>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProjectCluster from '../../../components/honeycomb/ProjectCluster';
+import ProjectCard from '../../../components/layout/ProjectCard';
 import ModalOverlay from '../../../components/lightbox/ModalOverlay';
 import KIMDetails from './details/01_KIMDetails';
 import KimImage from '../../../assets/images/Projects/kim_logo.png';
@@ -29,7 +29,7 @@ export default function KIM() {
   return (
     <>
       {/* Card-Ansicht */}
-      <ProjectCluster project={kimProject} onOpen={() => setShowModal(true)} />
+      <ProjectCard project={kimProject} onOpen={() => setShowModal(true)} />
 
       {/* ModalOverlay für die Detail-Komponente */}
       {showModal && (

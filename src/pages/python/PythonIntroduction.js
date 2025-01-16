@@ -55,15 +55,15 @@ export default function PythonIntroduction() {
   return (
     <>
       {/* Hero-Bereich */}
-      <HeroWrapper gradient="primaryLightest">
-        <Typography variant="h1" align="center">
+      <HeroWrapper gradient="depthDramatic">
+        <Typography variant="h1" align="center" color="neutral.ultraLight">
           🐍 Python-Projekte – Klarheit und Präzision
         </Typography>
       </HeroWrapper>
 
       {/* Einleitung */}
-      <SectionWrapper backgroundColor="neutral.lightest">
-        <Typography variant="h3" align="center">
+      <SectionWrapper backgroundColor="depth.dark">
+        <Typography variant="h3" align="center" color="neutral.ultraLight">
           Hier findest du <HighlightText>innovative</HighlightText> und{' '}
           <HighlightText>effiziente</HighlightText> Lösungen, die mit Liebe zum
           Detail und einem klaren Fokus auf Skalierbarkeit entwickelt wurden.
@@ -74,9 +74,16 @@ export default function PythonIntroduction() {
           während sie gleichzeitig Prozesse optimieren und die Kreativität
           fördern.
         </Typography>
+      </SectionWrapper>
 
-        {/* Kernmerkmale als Badges */}
-        <Typography variant="h2" align="center">
+      {/* Kernmerkmale als Badges */}
+      <SectionWrapper backgroundColor="depth.dark">
+        <Typography
+          variant="h2"
+          align="center"
+          color="highlight.main"
+          style={{ marginTop: '2rem' }}
+        >
           🚀 Kernmerkmale meiner Python-Projekte
         </Typography>
         <BadgeGrid>

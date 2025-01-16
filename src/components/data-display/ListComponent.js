@@ -14,7 +14,7 @@ const StyledList = styled.ul`
 const StyledListItem = styled.li`
   padding: ${({ theme }) => theme.spacing(2)};
   background: ${({ theme }) => theme.colors.depth.dark};
-  color: ${({ theme }) => theme.colors.neutral.white};
+  color: ${({ theme }) => theme.colors.neutral.ultraLight};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   box-shadow: ${({ theme }) => theme.boxShadow.light};
   transition:

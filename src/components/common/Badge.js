@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import * as Icons from 'react-icons/fa'; // Dynamischer Icon-Import
 
@@ -12,12 +11,10 @@ const BadgeContainer = styled.div`
     customColor || theme.colors[variant]?.main || theme.colors.primary.main};
   color: ${({ theme, variant, customColor }) =>
     customColor
-      ? theme.colors.neutral.white
-      : theme.colors[variant]?.contrast || theme.colors.neutral.white};
+      ? theme.colors.neutral.ultraLight
+      : theme.colors[variant]?.contrast || theme.colors.neutral.ultraLight};
   border-radius: ${({ theme }) => theme.borderRadius.pill};
   padding: ${({ theme }) => `${theme.spacing(0.8)} ${theme.spacing(2)}`};
-  font-size: ${({ theme }) => theme.typography.fontSize.small};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
   box-shadow: ${({ theme }) => theme.boxShadow.light};
   transition:
     background-color 0.3s ease,
@@ -60,36 +57,3 @@ export default function Badge({
     </BadgeContainer>
   );
 }
-
-Badge.propTypes = {
-  /**
-   * Textlabel des Badges
-   */
-  label: PropTypes.string.isRequired,
-  /**
-   * Name des Icons aus react-icons/fa (z. B. "FaPython")
-   */
-  icon: PropTypes.string,
-  /**
-   * Farbvariante des Badges
-   */
-  variant: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'accent',
-    'success',
-    'warning',
-    'info',
-    'neutral',
-  ]),
-  /**
-   * Benutzerdefinierte Hintergrundfarbe
-   */
-  customColor: PropTypes.string,
-};
-
-Badge.defaultProps = {
-  icon: null,
-  variant: 'primary',
-  customColor: null,
-};

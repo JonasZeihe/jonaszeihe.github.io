@@ -21,7 +21,7 @@ const HeroWrapper = styled.div`
 
   /* Textfarbe */
   color: ${({ theme, textColor }) =>
-    theme.colors[textColor] || theme.colors.neutral.white};
+    theme.colors[textColor] || theme.colors.neutral.ultraLight};
 
   /* Optionaler Schatten und Border-Radius */
   border-radius: ${({ theme, borderRadius }) =>

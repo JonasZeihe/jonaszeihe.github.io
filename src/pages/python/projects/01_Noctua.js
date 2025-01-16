@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProjectCluster from '../../../components/honeycomb/ProjectCluster';
+import ProjectCard from '../../../components/layout/ProjectCard';
 import ModalOverlay from '../../../components/lightbox/ModalOverlay';
 import NoctuaDetails from './details/01_NoctuaDetails';
 import NoctuaLogo from '../../../assets/images/Projects/noctua_logo.png';
@@ -32,10 +32,7 @@ export default function Noctua() {
 
   return (
     <>
-      <ProjectCluster
-        project={noctuaProject}
-        onOpen={() => setShowModal(true)}
-      />
+      <ProjectCard project={noctuaProject} onOpen={() => setShowModal(true)} />
 
       {showModal && (
         <ModalOverlay onClose={() => setShowModal(false)}>

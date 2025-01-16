@@ -13,7 +13,7 @@ const gradients = (theme) => ({
   ),
   primaryDark: createGradient(
     theme.colors.primary.dark,
-    theme.colors.primary.darkest
+    theme.colors.primary.main
   ),
   primaryDynamic: createGradient(
     theme.colors.primary.light,
@@ -30,8 +30,8 @@ const gradients = (theme) => ({
     theme.colors.secondary.main
   ),
   secondaryBold: createGradient(
-    theme.colors.secondary.main,
-    theme.colors.primary.dark
+    theme.colors.secondary.dark,
+    theme.colors.secondary.darkest
   ),
   secondaryDynamic: createGradient(
     theme.colors.secondary.light,
@@ -54,7 +54,7 @@ const gradients = (theme) => ({
 
   // Highlight Palette (Auffallend und Lebendig)
   highlightSoft: createGradient(
-    theme.colors.highlight.lightest,
+    theme.colors.highlight.ultraLight,
     theme.colors.highlight.main
   ),
   highlightBright: createGradient(

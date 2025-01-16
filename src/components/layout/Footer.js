@@ -75,7 +75,7 @@ export default function Footer() {
 }
 
 const FooterWrapper = styled.footer`
-  background: ${({ theme }) => theme.colors.primary.dark};
+  background: ${({ theme }) => theme.gradients.primaryDark};
   color: ${({ theme }) => theme.colors.neutral.ultraLight};
   padding: ${({ theme }) => theme.spacing(3)} ${({ theme }) => theme.spacing(4)};
   display: flex;
@@ -108,7 +108,7 @@ const FooterColumn = styled.div`
 
 const FooterTitle = styled.h4`
   font-size: ${({ theme }) => theme.typography.fontSize.h4};
-  color: ${({ theme }) => theme.colors.neutral.white};
+  color: ${({ theme }) => theme.colors.neutral.ultraLight};
   margin: 0;
 `;
 
@@ -126,11 +126,11 @@ const ContactItem = styled.li`
   align-items: center;
   gap: ${({ theme }) => theme.spacing(2)};
   font-size: ${({ theme }) => theme.typography.fontSize.body};
-  color: ${({ theme }) => theme.colors.neutral.light};
+  color: ${({ theme }) => theme.colors.neutral.ultraLight};
 `;
 
 const ContactLink = styled.a`
-  color: ${({ theme }) => theme.colors.neutral.light};
+  color: ${({ theme }) => theme.colors.neutral.lightest};
   text-decoration: none;
   transition: color 0.3s ease;
 
@@ -145,7 +145,7 @@ const SocialIcons = styled.div`
 `;
 
 const IconLink = styled.a`
-  color: ${({ theme }) => theme.colors.neutral.white};
+  color: ${({ theme }) => theme.colors.neutral.ultraLight};
   font-size: 1.5rem;
   transition:
     color 0.3s ease,
@@ -164,7 +164,7 @@ const FooterBottom = styled.div`
   width: 100%;
   max-width: ${({ theme }) => theme.breakpoints.xl};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
-  color: ${({ theme }) => theme.colors.neutral.light};
+  color: ${({ theme }) => theme.colors.neutral.ultraLight};
   gap: ${({ theme }) => theme.spacing(2)};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -178,7 +178,7 @@ const Copyright = styled.p`
 
 const ScrollToTopButton = styled.button`
   background: ${({ theme }) => theme.colors.accent.main};
-  color: ${({ theme }) => theme.colors.neutral.white};
+  color: ${({ theme }) => theme.colors.neutral.ultraLight};
   border: none;
   border-radius: 50%;
   width: 48px;

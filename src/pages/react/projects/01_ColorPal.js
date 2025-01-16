@@ -1,6 +1,6 @@
 // src/pages/react/projects/01_ColorPal.js
 import React, { useState } from 'react';
-import ProjectCluster from '../../../components/honeycomb/ProjectCluster';
+import ProjectCard from '../../../components/layout/ProjectCard';
 import ModalOverlay from '../../../components/lightbox/ModalOverlay';
 import ColorPalDetails from './details/01_ColorPalDetails';
 import ColorPalImage from '../../../assets/images/Projects/colorpal_logo.png';
@@ -24,7 +24,7 @@ export default function ColorPal() {
   return (
     <>
       {/* Card-Ansicht (kompakt) */}
-      <ProjectCluster
+      <ProjectCard
         project={colorPalProject}
         onOpen={() => setShowModal(true)}
       />

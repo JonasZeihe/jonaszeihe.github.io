@@ -21,7 +21,7 @@ const ContentWrapper = styled.div`
   max-height: 90%;
   overflow-y: auto;
 
-  background-color: ${({ theme }) => theme.colors.neutral.white};
+  background-color: ${({ theme }) => theme.colors.neutral.ultraLight};
   color: ${({ theme }) => theme.colors.neutral.dark};
   border-radius: ${({ theme }) => theme.borderRadius.large};
   box-shadow: ${({ theme }) => theme.boxShadow.heavy};
@@ -56,7 +56,7 @@ const CloseButton = styled.button`
   &:hover {
     background: ${({ theme }) =>
       theme.colors.primary.main}; /* Existierende Farbe */
-    color: ${({ theme }) => theme.colors.neutral.white};
+    color: ${({ theme }) => theme.colors.neutral.ultraLight};
   }
 `;
 

@@ -55,7 +55,6 @@ const StyledTypography = styled.span`
         font-size: ${theme.typography.fontSize.h4};
         font-weight: ${theme.typography.fontWeight.medium};
         line-height: ${theme.typography.lineHeight.normal};
-        color: ${theme.colors.secondaryHighlight.dark};
         margin-bottom: ${theme.spacing(3)};
         @media (max-width: ${theme.breakpoints.md}) {
           font-size: ${theme.typography.fontSize.small};
@@ -66,7 +65,6 @@ const StyledTypography = styled.span`
         font-weight: ${theme.typography.fontWeight.regular};
         line-height: ${theme.typography.lineHeight.normal};
         margin-bottom: ${theme.spacing(3)};
-        color: ${theme.colors.secondary.main};
         @media (max-width: ${theme.breakpoints.md}) {
           font-size: ${theme.typography.fontSize.small};
           margin-bottom: ${theme.spacing(2)};
@@ -76,7 +74,6 @@ const StyledTypography = styled.span`
         font-size: ${theme.typography.fontSize.small};
         font-weight: ${theme.typography.fontWeight.light};
         line-height: ${theme.typography.lineHeight.tight};
-        color: ${theme.colors.neutral.medium};
         margin-bottom: ${theme.spacing(2)};
       `,
     };

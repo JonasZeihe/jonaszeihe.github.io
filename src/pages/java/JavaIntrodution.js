@@ -8,15 +8,6 @@ import {
   Badge,
 } from '../../utils/sharedComponents';
 
-const ContentWrapper = styled.div`
-  margin-top: ${({ theme }) => theme.spacing(4)};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: ${({ theme }) => theme.spacing(3)};
-`;
-
 const BadgeContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -38,20 +29,15 @@ export default function JavaIntroduction() {
   return (
     <>
       {/* Hero-Bereich */}
-      <HeroWrapper gradient="secondaryToAccent">
-        <Typography variant="h1" color="accent.dark" align="center">
+      <HeroWrapper gradient="primaryToSecondary">
+        <Typography variant="h1" color="depth.dark" align="center">
           Java/React/Fullstack Projekte
         </Typography>
       </HeroWrapper>
 
       {/* Einleitung */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography
-          variant="body"
-          align="center"
-          color="neutral.main"
-          style={{ marginTop: '1rem' }}
-        >
+      <SectionWrapper backgroundColor="neutral.ultraLight" elevated>
+        <Typography variant="h3" align="center" color="depth.dark">
           Meine Java/React-Projekte stehen für ein Zusammenspiel aus robuster
           Backend-Entwicklung und modernen, interaktiven Frontend-Lösungen. Mit
           Technologien wie <HighlightText>Spring Boot</HighlightText>,{' '}
@@ -62,48 +48,16 @@ export default function JavaIntroduction() {
       </SectionWrapper>
 
       {/* Kernmerkmale */}
-      <SectionWrapper backgroundColor="neutral.lightest">
+      <SectionWrapper backgroundColor="neutral.ultraLight">
         <Typography variant="h2" align="center" color="primary.dark">
           🚀 Kernmerkmale meiner Java-Projekte
         </Typography>
-        <Typography
-          variant="body"
-          align="center"
-          color="neutral.main"
-          style={{ marginTop: '1rem' }}
-        >
-          Java-Projekte stellen die Grundlage für hochperformante und flexible
-          Softwarelösungen dar. Die eingesetzten Technologien und Architekturen
-          garantieren Stabilität und Skalierbarkeit:
-        </Typography>
-        <ContentWrapper>
-          <Typography variant="h3" align="center" color="accent.dark">
-            Technologien, die den Unterschied machen:
-          </Typography>
-          <BadgeContainer>
-            {badges.map(({ label, icon, variant }) => (
-              <Badge key={label} label={label} icon={icon} variant={variant} />
-            ))}
-          </BadgeContainer>
-        </ContentWrapper>
-      </SectionWrapper>
 
-      {/* Vision */}
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h2" align="center" color="accent.dark">
-          🔮 Vision für Java-Projekte
-        </Typography>
-        <Typography variant="body" align="center" color="neutral.main">
-          Java/React-Projekte bilden das Rückgrat moderner Softwareentwicklung.
-          Meine Vision ist es, Anwendungen zu schaffen, die nicht nur stabil und
-          sicher sind, sondern auch durch intuitive Benutzererfahrung
-          überzeugen.
-        </Typography>
-        <Typography variant="body" align="center" style={{ marginTop: '1rem' }}>
-          Die Projekte sind darauf ausgelegt, durch modulare Architekturen und
-          KI-Integration eine Brücke zwischen Backend-Stabilität und
-          Frontend-Interaktivität zu schlagen.
-        </Typography>
+        <BadgeContainer>
+          {badges.map(({ label, icon, variant }) => (
+            <Badge key={label} label={label} icon={icon} variant={variant} />
+          ))}
+        </BadgeContainer>
       </SectionWrapper>
     </>
   );

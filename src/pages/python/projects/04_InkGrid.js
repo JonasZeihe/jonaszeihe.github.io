@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProjectCluster from '../../../components/honeycomb/ProjectCluster';
+import ProjectCard from '../../../components/layout/ProjectCard';
 import ModalOverlay from '../../../components/lightbox/ModalOverlay';
 import InkGridDetails from './details/04_InkGridDetails';
 import InkGridLogo from '../../../assets/images/Projects/inkgrid_logo.png';
@@ -29,10 +29,7 @@ export default function InkGrid() {
   return (
     <>
       {/* Kompakte Card-Ansicht */}
-      <ProjectCluster
-        project={inkGridProject}
-        onOpen={() => setShowModal(true)}
-      />
+      <ProjectCard project={inkGridProject} onOpen={() => setShowModal(true)} />
 
       {/* Overlay mit Detail-Komponente */}
       {showModal && (

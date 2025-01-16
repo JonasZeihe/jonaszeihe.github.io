@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProjectCluster from '../../../components/honeycomb/ProjectCluster';
+import ProjectCard from '../../../components/layout/ProjectCard';
 import ModalOverlay from '../../../components/lightbox/ModalOverlay';
 import ShizenDetails from './details/01_ShizenDetails';
 import ShizenImage from '../../../assets/images/Projects/shizen-logo.png';
@@ -33,10 +33,7 @@ export default function Shizen() {
   return (
     <>
       {/* Kompakte Card-Ansicht */}
-      <ProjectCluster
-        project={shizenProject}
-        onOpen={() => setShowModal(true)}
-      />
+      <ProjectCard project={shizenProject} onOpen={() => setShowModal(true)} />
 
       {/* Overlay mit Detail-Komponente */}
       {showModal && (
