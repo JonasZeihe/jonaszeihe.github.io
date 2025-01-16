@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function resolveThemeColor(theme, colorKey) {
-  if (!colorKey) return theme.colors.neutral.lightest;
-  const [palette, shade = 'main'] = colorKey.split('.');
+function resolveThemeColor(theme, key) {
+  if (!key) return theme.colors.neutral.lightest;
+  const [palette, shade = 'main'] = key.split('.');
   return theme.colors[palette]?.[shade] || theme.colors.neutral.light;
 }
 
@@ -13,11 +13,9 @@ const HexagonWrapper = styled.div`
   align-items: center;
   justify-content: center;
   aspect-ratio: 1.155;
+
   .hexagon-svg {
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
     width: 100%;
     height: 100%;
     polygon {
@@ -25,25 +23,39 @@ const HexagonWrapper = styled.div`
         gradient
           ? theme.gradients[gradient]
           : resolveThemeColor(theme, backgroundColor)};
+      stroke: ${({ theme, strokeColor }) =>
+        strokeColor
+          ? resolveThemeColor(theme, strokeColor)
+          : theme.colors.primary.main};
+      stroke-width: 3px;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      vector-effect: non-scaling-stroke; /* Keep stroke consistent */
+      transition:
+        stroke 0.3s ease,
+        filter 0.3s ease,
+        transform 0.3s ease;
     }
     pointer-events: none;
   }
+
+  &:hover .hexagon-svg polygon {
+    stroke: ${({ theme }) => theme.colors.accent.main};
+    filter: drop-shadow(0 0 10px ${({ theme }) => theme.colors.accent.main});
+    transform: scale(1.02); /* Slight scaling for a subtle pop effect */
+  }
+
   .hex-content {
     position: relative;
-    z-index: 2;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     padding: ${({ theme, contentPadding }) =>
       contentPadding ? theme.spacing(contentPadding) : theme.spacing(2)};
-    word-break: break-word;
-    img,
-    svg {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
+    z-index: 1;
+    font-size: ${({ theme }) => theme.typography.fontSize.medium};
+    color: ${({ theme }) => theme.colors.neutral.dark};
   }
 `;
 
@@ -52,6 +64,7 @@ export default function HexagonCell({
   color,
   gradient,
   contentPadding,
+  strokeColor,
   onClick,
   className,
 }) {
@@ -61,6 +74,7 @@ export default function HexagonCell({
       backgroundColor={color}
       gradient={gradient}
       contentPadding={contentPadding}
+      strokeColor={strokeColor}
       onClick={onClick}
     >
       <svg

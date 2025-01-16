@@ -23,13 +23,6 @@ const BadgeContainer = styled.div`
     background-color 0.3s ease,
     box-shadow 0.3s ease;
 
-  &:hover {
-    background-color: ${({ theme, variant, customColor }) =>
-      customColor || theme.colors[variant]?.dark || theme.colors.primary.dark};
-    box-shadow: ${({ theme }) => theme.boxShadow.medium};
-    transform: translateY(-1px);
-  }
-
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: ${({ theme }) => `${theme.spacing(0.6)} ${theme.spacing(1.5)}`};
     font-size: ${({ theme }) => theme.typography.fontSize.xsmall};

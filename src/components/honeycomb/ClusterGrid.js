@@ -1,16 +1,5 @@
-// ClusterGrid.js
 import styled from 'styled-components';
-
-function getTitlePosition(pos) {
-  if (pos === 'left') return 'start';
-  if (pos === 'right') return 'end';
-  return 'center';
-}
-function getButtonPosition(pos) {
-  if (pos === 'left') return 'start';
-  if (pos === 'right') return 'end';
-  return 'center';
-}
+import { getStoredVariants } from '../../utils/HoneycombVariantManager';
 
 const ClusterGrid = styled.div`
   display: grid;
@@ -20,29 +9,57 @@ const ClusterGrid = styled.div`
     'button';
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
-  gap: ${({ theme }) => theme.spacing(3)};
   justify-items: center;
-  position: relative;
 
   .title {
     grid-area: title;
-    justify-self: ${({ titlePosition }) => getTitlePosition(titlePosition)};
   }
-
   .main {
     grid-area: main;
     width: 100%;
-    max-width: ${({ theme }) => theme.spacing(60)};
-    min-width: ${({ theme }) => theme.spacing(30)};
   }
-
   .button {
     grid-area: button;
-    justify-self: ${({ buttonPosition }) => getButtonPosition(buttonPosition)};
   }
+
+  ${() => {
+    const variants = getStoredVariants();
+    return variants
+      .map((variant, index) => {
+        if (variant === 'variant1') {
+          return `
+          &:nth-child(${index + 1}) .title { justify-self: start; }
+          &:nth-child(${index + 1}) .button { justify-self: end; }
+        `;
+        }
+        if (variant === 'variant2') {
+          return `
+          &:nth-child(${index + 1}) .title { justify-self: center; }
+          &:nth-child(${index + 1}) .button { justify-self: center; }
+        `;
+        }
+        if (variant === 'variant3') {
+          return `
+          &:nth-child(${index + 1}) .title { justify-self: end; }
+          &:nth-child(${index + 1}) .button { justify-self: start; }
+        `;
+        }
+        return `
+        &:nth-child(${index + 1}) .title { justify-self: center; }
+        &:nth-child(${index + 1}) .button { justify-self: center; }
+      `;
+      })
+      .join('');
+  }}
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     gap: ${({ theme }) => theme.spacing(2)};
+    .title {
+      justify-self: center;
+    }
+    .button {
+      justify-self: center;
+    }
     .main {
       max-width: ${({ theme }) => theme.spacing(50)};
       min-width: ${({ theme }) => theme.spacing(20)};

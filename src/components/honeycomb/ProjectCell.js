@@ -1,76 +1,72 @@
-// ProjectCell.js
 import React from 'react';
 import styled from 'styled-components';
 import HexagonCell from './HexagonCell';
-import { Badge, Typography } from '../../utils/sharedComponents';
+import { Typography, Badge } from '../../utils/sharedComponents';
 
-const ProjectCellWrapper = styled(HexagonCell)`
-  position: relative;
+const Wrapper = styled(HexagonCell)`
+  width: 100%;
   cursor: pointer;
-  display: flex;
+  position: relative;
+  transition: transform 0.3s ease;
 
-  .flip-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.8s ease;
-  }
-
+  /* Desktop: Hover-Effekt */
   &:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
+    transform: scale(1.1); /* Hexagon wird größer */
   }
 
-  &:hover .flip-container {
-    transform: rotateY(180deg);
-  }
-
-  .front,
-  .back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
+  .description {
+    opacity: 1;
+    text-align: center;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    font-size: ${({ theme }) => theme.typography.fontSize.medium};
+    color: ${({ theme }) => theme.colors.neutral.dark};
     padding: ${({ theme }) => theme.spacing(2)};
-  }
-
-  .front {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: brightness(0.7);
-    transform: rotateY(0deg);
-    color: ${({ theme }) => theme.colors.neutral.lightest};
-  }
-
-  .front-content {
-    max-width: 80%;
-    margin: 0 auto;
-    line-height: 1.4;
-    word-break: break-word;
-  }
-
-  .back {
-    background-color: ${({ theme }) => theme.colors.neutral.dark};
-    transform: rotateY(180deg);
-    color: ${({ theme }) => theme.colors.neutral.lightest};
+    transition: opacity 0.3s ease;
   }
 
   .badges {
-    display: flex;
-    flex-wrap: wrap;
+    opacity: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
     gap: ${({ theme }) => theme.spacing(1)};
     justify-content: center;
-    max-width: 80%;
-    margin: 0 auto;
+    align-items: center;
+    padding: ${({ theme }) => theme.spacing(2)};
+    position: relative;
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+    transform: scale(0.9);
+    z-index: 2;
+
+    /* Mobile: Badges ausblenden */
+    @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+      display: none;
+    }
+  }
+
+  /* Hover-Effekt für Badges nur auf Desktop */
+  &:hover .description {
+    opacity: 0; /* Text verschwindet */
+  }
+
+  &:hover .badges {
+    opacity: 1; /* Badges erscheinen */
+    transform: scale(1);
+  }
+
+  /* Mobile: Keine Hover-Effekte */
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    &:hover {
+      transform: none; /* Keine Vergrößerung auf Mobile */
+    }
   }
 `;
 
@@ -80,31 +76,20 @@ export default function ProjectCell({ project, onOpen, className }) {
   };
 
   return (
-    <ProjectCellWrapper className={className} onClick={handleClick}>
-      <div className="flip-container">
-        <div
-          className="front"
-          style={{ backgroundImage: `url(${project.image})` }}
-        >
-          <div className="front-content">
-            <Typography variant="body" align="center">
-              {project.description}
-            </Typography>
-          </div>
-        </div>
-        <div className="back">
-          <div className="badges">
-            {project.badges.map((badge) => (
-              <Badge
-                key={badge.label}
-                label={badge.label}
-                icon={badge.icon}
-                variant={badge.variant}
-              />
-            ))}
-          </div>
-        </div>
+    <Wrapper className={className} onClick={handleClick}>
+      <div className="description">
+        <Typography variant="body">{project.description}</Typography>
       </div>
-    </ProjectCellWrapper>
+      <div className="badges">
+        {(project.badges || []).map((b) => (
+          <Badge
+            key={b.label}
+            label={b.label}
+            icon={b.icon}
+            variant={b.variant}
+          />
+        ))}
+      </div>
+    </Wrapper>
   );
 }

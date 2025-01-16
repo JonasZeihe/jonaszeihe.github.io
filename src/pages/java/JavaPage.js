@@ -14,9 +14,10 @@ export default function JavaPage() {
     <>
       <JavaIntroduction />
       <HoneycombGrid items={projects.length}>
-        {projects.map(({ name, component: ProjectComponent }, index) => (
-          <ProjectComponent key={name} variant={variants[index]} />
-        ))}
+        {projects.map(({ name, component: ProjectComponent }, index) => {
+          const variant = variants[index] || 'variant1';
+          return <ProjectComponent key={name} variant={variant} />;
+        })}
       </HoneycombGrid>
     </>
   );
