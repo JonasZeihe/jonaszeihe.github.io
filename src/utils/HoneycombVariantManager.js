@@ -6,7 +6,6 @@ export function getStoredVariants() {
 
 export default function generateHoneycombVariants(total, isMobile) {
   if (total <= 0) {
-    console.warn('Keine Projekte gefunden, keine Varianten verfügbar.');
     storedVariants = [];
     return storedVariants;
   }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProjectCard from '../../../components/layout/ProjectCard';
+import ProjectCluster from '../../../components/honeycomb/ProjectCluster';
 import ModalOverlay from '../../../components/lightbox/ModalOverlay';
 import SkryperDetails from './details/02_SkryperDetails';
 import SkryperLogo from '../../../assets/images/Projects/skryper_logo.png';
@@ -25,7 +25,10 @@ export default function Skryper() {
   return (
     <>
       {/* Card-Ansicht */}
-      <ProjectCard project={skryperProject} onOpen={() => setShowModal(true)} />
+      <ProjectCluster
+        project={skryperProject}
+        onOpen={() => setShowModal(true)}
+      />
 
       {/* Overlay mit Detail-Komponente */}
       {showModal && (

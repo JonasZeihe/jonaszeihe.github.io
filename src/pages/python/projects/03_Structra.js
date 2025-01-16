@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProjectCard from '../../../components/layout/ProjectCard';
+import ProjectCluster from '../../../components/honeycomb/ProjectCluster';
 import ModalOverlay from '../../../components/lightbox/ModalOverlay';
 import StructraDetails from './details/03_StructraDetails';
 import StructraLogo from '../../../assets/images/Projects/structra_logo.png';
@@ -25,7 +25,7 @@ export default function Structra() {
   return (
     <>
       {/* Card-Ansicht */}
-      <ProjectCard
+      <ProjectCluster
         project={structraProject}
         onOpen={() => setShowModal(true)}
       />

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 function resolveThemeColor(theme, key) {
   if (!key) return theme.colors.neutral.lightest;
   const [palette, shade = 'main'] = key.split('.');
-  return theme.colors[palette]?.[shade] || theme.colors.neutral.light;
+  return theme.colors[palette]?.[shade] || theme.colors.neutral.lightest;
 }
 
 const HexagonWrapper = styled.div`
@@ -23,26 +23,8 @@ const HexagonWrapper = styled.div`
         gradient
           ? theme.gradients[gradient]
           : resolveThemeColor(theme, backgroundColor)};
-      stroke: ${({ theme, strokeColor }) =>
-        strokeColor
-          ? resolveThemeColor(theme, strokeColor)
-          : theme.colors.primary.main};
-      stroke-width: 3px;
-      stroke-linejoin: round;
-      stroke-linecap: round;
-      vector-effect: non-scaling-stroke; /* Keep stroke consistent */
-      transition:
-        stroke 0.3s ease,
-        filter 0.3s ease,
-        transform 0.3s ease;
     }
     pointer-events: none;
-  }
-
-  &:hover .hexagon-svg polygon {
-    stroke: ${({ theme }) => theme.colors.accent.main};
-    filter: drop-shadow(0 0 10px ${({ theme }) => theme.colors.accent.main});
-    transform: scale(1.02); /* Slight scaling for a subtle pop effect */
   }
 
   .hex-content {
@@ -52,10 +34,8 @@ const HexagonWrapper = styled.div`
     justify-content: center;
     text-align: center;
     padding: ${({ theme, contentPadding }) =>
-      contentPadding ? theme.spacing(contentPadding) : theme.spacing(2)};
+      contentPadding ? theme.spacing(contentPadding) : theme.spacing(4)};
     z-index: 1;
-    font-size: ${({ theme }) => theme.typography.fontSize.medium};
-    color: ${({ theme }) => theme.colors.neutral.dark};
   }
 `;
 

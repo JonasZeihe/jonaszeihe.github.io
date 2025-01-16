@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProjectCard from '../../../components/layout/ProjectCard';
+import ProjectCluster from '../../../components/honeycomb/ProjectCluster';
 import ModalOverlay from '../../../components/lightbox/ModalOverlay';
 import FlavorFusionDetails from './details/02_FlavorFusionDetails';
 import FlavorFusionImage from '../../../assets/images/Projects/flavorfusion_logo.png';
@@ -25,7 +25,7 @@ export default function FlavorFusion() {
   return (
     <>
       {/* Card-Ansicht */}
-      <ProjectCard
+      <ProjectCluster
         project={flavorFusionProject}
         onOpen={() => setShowModal(true)}
       />
