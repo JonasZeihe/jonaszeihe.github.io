@@ -162,10 +162,26 @@ export default function KIMDetails() {
             marginTop: '2rem',
           }}
         >
-          <Button variant="primary" onClick={() => {}}>
+          <Button
+            variant="primary"
+            onClick={() =>
+              window.open(
+                'https://jonaszeihe.github.io/case-study-KIM/',
+                '_blank'
+              )
+            }
+          >
             Case Study
           </Button>
-          <Button variant="success" onClick={() => {}}>
+          <Button
+            variant="success"
+            onClick={() =>
+              window.open(
+                'https://www.figma.com/proto/zOqkBn4RzZ9vU8yIWpjbwx/capstone_Gruppe4_designsystem?page-id=1%3A2&node-id=1269-9613&viewport=6473%2C-426%2C0.65&t=glC7uXK0AhmNVLGg-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1184%3A20281',
+                '_blank'
+              )
+            }
+          >
             Prototyp ansehen
           </Button>
         </div>

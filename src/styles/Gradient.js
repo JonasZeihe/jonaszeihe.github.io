@@ -107,12 +107,12 @@ const gradients = (theme) => ({
   // Depth Gradients (Subtil und Dunkel)
   depthSubtle: createGradient(
     theme.colors.depth.lightest,
-    theme.colors.neutral.light,
+    theme.colors.depth.light,
     180
   ),
   depthDramatic: createGradient(
+    theme.colors.depth.main,
     theme.colors.depth.dark,
-    theme.colors.primary.darkest,
     180
   ),
   depthVibrant: createGradient(

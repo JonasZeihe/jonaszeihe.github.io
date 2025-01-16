@@ -15,8 +15,8 @@ root.render(
       <GlobalStyles />
       {/* MeshGradientBackground mit zwei spezifischen Gradienten */}
       <MeshGradientBackground
-        gradient1="secondaryWarm"
-        gradient2="depthSubtle"
+        gradient1="depthSubtle"
+        gradient2="depthDramatic"
       />
       <Router>
         <App />
