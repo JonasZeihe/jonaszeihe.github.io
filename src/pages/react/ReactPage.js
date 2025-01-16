@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactIntroduction from './ReactIntroduction';
 import loadProjects from '../../utils/ProjectLoader';
+import CardGrid from '../../components/layout/CardGrid';
 
 // Projekte dynamisch laden
 const projects = loadProjects(require.context('./projects', false, /\.js$/));
@@ -11,12 +12,12 @@ export default function ReactPage() {
       {/* Einführung */}
       <ReactIntroduction />
 
-      {/* Dynamische Projekte */}
-      {projects.map(({ name, component: ProjectComponent }) => (
-        <section id={name} key={name} style={{ scrollMarginTop: '80px' }}>
-          <ProjectComponent />
-        </section>
-      ))}
+      {/* Projekte in Grid */}
+      <CardGrid>
+        {projects.map(({ name, component: ProjectComponent }) => (
+          <ProjectComponent key={name} />
+        ))}
+      </CardGrid>
     </>
   );
 }

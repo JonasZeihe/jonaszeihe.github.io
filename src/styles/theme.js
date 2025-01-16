@@ -2,63 +2,74 @@ import gradients from './Gradient';
 
 const baseFontSize = 18;
 const goldenRatio = 1.618;
-
 const scaleFont = (level) => `${(baseFontSize * goldenRatio ** level) / 16}rem`;
-
 const responsiveFontSize = (minSize, maxSize) =>
   `clamp(${minSize}, calc(${minSize} + (${maxSize} - ${minSize}) * ((100vw - 320px) / (1200 - 320))), ${maxSize})`;
 
 const colors = {
   primary: {
-    lightest: '#D4F9E2',
-    light: '#A6EFC1',
+    ultraLight: '#FAFFFD',
+    lightest: '#F2FAF7',
+    light: '#A4DBC4',
     main: '#2ECC71',
-    dark: '#249A57',
-    darkest: '#18713C',
+    dark: '#3B7C65',
+    darkest: '#1A332A',
+    deep: '#0F2118',
   },
   secondary: {
-    lightest: '#D6DFE6',
-    light: '#92A3B5',
-    main: '#1B263B',
-    dark: '#131C29',
-    darkest: '#0D1219',
+    ultraLight: '#F9FEFE',
+    lightest: '#F3F9FA',
+    light: '#C0E1E5',
+    main: '#63B4BF',
+    dark: '#38767F',
+    darkest: '#193130',
+    deep: '#0E1A1C',
   },
   accent: {
+    ultraLight: '#FFF8F3',
     lightest: '#FFE3E6',
     light: '#FFB3B6',
-    main: '#E63946',
+    main: '#FF9340',
     dark: '#B52835',
-    darkest: '#891B25',
+    darkest: '#3F240F',
+    deep: '#251409',
   },
   highlight: {
+    ultraLight: '#FFFDF8',
     lightest: '#FFF5E6',
     light: '#FFE1B3',
     main: '#F5B041',
     dark: '#C99033',
     darkest: '#996B26',
+    deep: '#5C4015',
   },
   secondaryHighlight: {
+    ultraLight: '#FEF9F9',
     lightest: '#FDEEEF',
     light: '#F7CACE',
     main: '#C88389',
     dark: '#9A666A',
     darkest: '#6F4A4D',
+    deep: '#3F2A2C',
   },
   neutral: {
-    white: '#FFFFFF',
+    ultraLight: '#FFFFFF',
     lightest: '#F2F5F5',
     light: '#CCD7D8',
     main: '#AAB7B8',
     dark: '#889394',
     darkest: '#656D6E',
     black: '#000000',
+    deep: '#242727',
   },
   depth: {
+    ultraLight: '#F9FAFA',
     lightest: '#E6EAEA',
     light: '#B0B7C0',
     main: '#2C3E50',
     dark: '#1E2B3C',
     darkest: '#131D28',
+    deep: '#0B1118',
   },
 };
 
