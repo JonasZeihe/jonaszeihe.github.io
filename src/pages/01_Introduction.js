@@ -35,13 +35,13 @@ export default function Introduction() {
 
   return (
     <>
-      <HeroWrapper gradient="accentToPrimary">
+      <HeroWrapper gradient="accentToPrimary" elevated>
         <Typography variant="h1" align="center" color="neutral.ultraLight">
           🎨 Design trifft Funktion – Mein Portfolio
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="neutral.lightest">
+      <SectionWrapper backgroundColor="neutral.lightest" elevated>
         <Typography variant="h3" align="left" color="depth.main">
           <HighlightText>Willkommen</HighlightText> in meiner Welt, wo
           Kreativität auf Technologie trifft, um intuitive und skalierbare

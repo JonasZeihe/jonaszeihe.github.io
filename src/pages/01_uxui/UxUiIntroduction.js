@@ -25,17 +25,18 @@ export default function UxUiIntroduction() {
 
   return (
     <>
-      <HeroWrapper gradient="highlightSoft">
+      <HeroWrapper gradient="highlightSoft" elevated>
         <Typography variant="h1" align="center" color="depth.dark">
           🌟 UX/UI Projekte
         </Typography>
       </HeroWrapper>
+
       <SectionWrapper backgroundColor="highlight.lightest">
         <Typography variant="h2" align="center" color="depth.dark">
           Von <HighlightText>nutzerzentrierter Forschung</HighlightText> bis hin
           zu <HighlightText>interaktiven Prototypen</HighlightText>
         </Typography>
-        <Typography variant="body" align="left" color="depth.dark">
+        <Typography variant="h3" align="left" color="depth.dark">
           Mit einem Fokus auf intuitive Benutzererlebnisse und
           visuell-ansprechende Interfaces bringe ich kreative Visionen in die
           Realität. Entdecke, wie meine Projekte{' '}

@@ -5,7 +5,7 @@ const HeroWrapper = styled.div`
   width: 100%;
   min-height: 50vh;
   padding: ${({ theme }) => theme.spacing(4)};
-  margin-top: ${({ theme }) => theme.spacing(4)};
+  margin: auto;
 
   /* Zentrierung und Ausrichtung */
   display: flex;
@@ -29,10 +29,6 @@ const HeroWrapper = styled.div`
     theme.borderRadius[borderRadius] || theme.borderRadius.none};
   box-shadow: ${({ theme, shadow }) =>
     shadow ? theme.boxShadow[shadow] : 'none'};
-
-  & > * {
-    margin: ${({ theme }) => theme.spacing(2)};
-  }
 
   /* Anpassung für größere Bildschirme */
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {

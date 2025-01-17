@@ -3,8 +3,7 @@ import WrapperBase from './WrapperBase';
 
 const SectionWrapper = styled(WrapperBase)`
   /* Grundlayout */
-  padding: ${({ theme }) => theme.spacing(4)};
-  margin: ${({ theme }) => theme.spacing(3)} auto;
+  padding: ${({ theme }) => theme.spacing(3)};
   border-radius: ${({ theme }) => theme.borderRadius.large};
   background: ${({ theme, backgroundColor }) =>
     backgroundColor
