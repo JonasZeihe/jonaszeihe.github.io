@@ -9,7 +9,7 @@ const CardWrapper = styled(WrapperBase)`
 
   padding: ${({ theme }) => theme.spacing(1)};
   border-radius: ${({ theme }) => theme.borderRadius.large};
-  box-shadow: ${({ theme }) => theme.boxShadow.light};
+  box-shadow: ${({ theme }) => theme.boxShadow.medium};
   overflow: hidden;
 
   /* Subtile Interaktivität */
@@ -31,9 +31,9 @@ const CardWrapper = styled(WrapperBase)`
 
   /* Optimierung für mobile Geräte */
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing(1)};
+    margin: ${({ theme }) => theme.spacing(0)} auto;
     border-radius: ${({ theme }) => theme.borderRadius.medium};
-    box-shadow: ${({ theme }) => theme.boxShadow.glow};
+    box-shadow: ${({ theme }) => theme.boxShadow.heavy};
 
     &:hover {
       transform: none;
