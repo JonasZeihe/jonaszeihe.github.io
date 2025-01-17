@@ -3,7 +3,7 @@ import WrapperBase from './WrapperBase';
 
 const SectionWrapper = styled(WrapperBase)`
   /* Grundlayout */
-  padding: ${({ theme }) => theme.spacing(3)};
+  padding: ${({ theme }) => theme.spacing(4)};
   margin: ${({ theme }) => theme.spacing(3)} auto;
   border-radius: ${({ theme }) => theme.borderRadius.large};
   background: ${({ theme, backgroundColor }) =>
@@ -15,13 +15,13 @@ const SectionWrapper = styled(WrapperBase)`
 
   /* Responsive Einstellungen */
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing(3)};
+    padding: ${({ theme }) => theme.spacing(2)};
     margin: ${({ theme }) => theme.spacing(2)} auto;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing(2)};
-    margin: ${({ theme }) => theme.spacing(1)} auto;
+    padding: auto;
+    margin: ${({ theme }) => theme.spacing(2)} auto;
     border-radius: ${({ theme }) => theme.borderRadius.medium};
   }
 

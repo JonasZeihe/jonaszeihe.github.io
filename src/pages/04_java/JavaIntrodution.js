@@ -37,22 +37,15 @@ export default function JavaIntroduction() {
 
       {/* Einleitung */}
       <SectionWrapper backgroundColor="neutral.ultraLight" elevated>
-        <Typography variant="h3" align="center" color="depth.dark">
-          Meine Java/React-Projekte stehen für ein Zusammenspiel aus robuster
-          Backend-Entwicklung und modernen, interaktiven Frontend-Lösungen. Mit
-          Technologien wie <HighlightText>Spring Boot</HighlightText>,{' '}
+        <Typography variant="h3" align="left" color="depth.dark">
+          Meine <HighlightText>Java-Projekte</HighlightText> stehen für ein
+          Zusammenspiel aus robuster Backend-Entwicklung und modernen,
+          interaktiven Frontend-Lösungen. Mit Technologien wie{' '}
+          <HighlightText>Spring Boot</HighlightText>,{' '}
           <HighlightText>MongoDB</HighlightText> und{' '}
           <HighlightText>React</HighlightText> entwickle ich skalierbare,
           sichere und zukunftsweisende Anwendungen.
         </Typography>
-      </SectionWrapper>
-
-      {/* Kernmerkmale */}
-      <SectionWrapper backgroundColor="neutral.ultraLight">
-        <Typography variant="h2" align="center" color="primary.dark">
-          🚀 Kernmerkmale meiner Java-Projekte
-        </Typography>
-
         <BadgeContainer>
           {badges.map(({ label, icon, variant }) => (
             <Badge key={label} label={label} icon={icon} variant={variant} />

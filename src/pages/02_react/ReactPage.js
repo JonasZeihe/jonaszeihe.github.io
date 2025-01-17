@@ -1,20 +1,23 @@
 import React from 'react';
-import JavaIntroduction from './JavaIntrodution';
+import ReactIntroduction from './ReactIntroduction';
 import loadProjects from '../../utils/ProjectLoader';
 import CardGrid from '../../components/layout/CardGrid';
-import { SectionWrapper } from '../../utils/sharedComponents';
 
+// Projekte dynamisch laden
 const projects = loadProjects(require.context('./projects', false, /\.js$/));
 
-export default function JavaPage() {
+export default function ReactPage() {
   return (
-    <SectionWrapper backgroundColor="neutral.lightest">
-      <JavaIntroduction />
+    <>
+      {/* Einführung */}
+      <ReactIntroduction />
+
+      {/* Projekte in Grid */}
       <CardGrid>
         {projects.map(({ name, component: ProjectComponent }) => (
           <ProjectComponent key={name} id={name} />
         ))}
       </CardGrid>
-    </SectionWrapper>
+    </>
   );
 }

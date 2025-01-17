@@ -5,6 +5,7 @@ const HeroWrapper = styled.div`
   width: 100%;
   min-height: 50vh;
   padding: ${({ theme }) => theme.spacing(4)};
+  margin-top: ${({ theme }) => theme.spacing(4)};
 
   /* Zentrierung und Ausrichtung */
   display: flex;
@@ -29,9 +30,8 @@ const HeroWrapper = styled.div`
   box-shadow: ${({ theme, shadow }) =>
     shadow ? theme.boxShadow[shadow] : 'none'};
 
-  /* Abstand zwischen Kind-Elementen */
   & > * {
-    margin-bottom: ${({ theme }) => theme.spacing(2)};
+    margin: ${({ theme }) => theme.spacing(2)};
   }
 
   /* Anpassung für größere Bildschirme */
@@ -44,10 +44,11 @@ const HeroWrapper = styled.div`
 
   /* Anpassung für kleinere Bildschirme */
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin-top: ${({ theme }) => theme.spacing(2)};
+
     min-height: 20vh;
     padding: ${({ theme }) => theme.spacing(2)};
     & > * {
-      margin-bottom: ${({ theme }) => theme.spacing(1)};
     }
   }
 `;

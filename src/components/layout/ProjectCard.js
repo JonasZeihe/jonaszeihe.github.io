@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
   Badge,
@@ -10,10 +9,9 @@ import {
 
 // Styled Components
 const ImageWrapper = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing(2)};
+  margin-bottom: ${({ theme }) => theme.spacing(1)};
   img {
     width: 100%;
-    height: auto;
     border-radius: ${({ theme }) => theme.borderRadius.medium};
     box-shadow: ${({ theme }) => theme.boxShadow.light};
     transition: transform 0.3s ease;
@@ -80,7 +78,7 @@ export default function ProjectCard({ project, onOpen }) {
         <Typography variant="h2" align="center" color="primary.main">
           {project.name}
         </Typography>
-        <Typography variant="body" align="center" color="secondary.dark">
+        <Typography variant="body" align="left" color="secondary.darkest">
           {project.description}
         </Typography>
         <BadgeContainer>
@@ -107,20 +105,3 @@ export default function ProjectCard({ project, onOpen }) {
     </CardWrapper>
   );
 }
-
-ProjectCard.propTypes = {
-  project: PropTypes.shape({
-    image: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    badges: PropTypes.arrayOf(
-      PropTypes.shape({
-        label: PropTypes.string.isRequired,
-        icon: PropTypes.string.isRequired,
-        variant: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    githubLink: PropTypes.string,
-  }).isRequired,
-  onOpen: PropTypes.func.isRequired,
-};

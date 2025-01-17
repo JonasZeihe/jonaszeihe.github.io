@@ -23,16 +23,9 @@ const CardWrapper = styled(WrapperBase)`
     background: ${({ theme }) => theme.colors.depth.lightest};
   }
 
-  /* Fokus-Style für Barrierefreiheit */
-  &:focus-within {
-    outline: 3px solid ${({ theme }) => theme.colors.accent.main};
-    outline-offset: ${({ theme }) => theme.spacing(1)};
-    box-shadow: ${({ theme }) => theme.boxShadow.glow};
-  }
-
   /* Anpassungen für größere Bildschirme */
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing(4)};
+    padding: ${({ theme }) => theme.spacing(2)};
     border-radius: ${({ theme }) => theme.borderRadius.large};
   }
 
@@ -40,7 +33,7 @@ const CardWrapper = styled(WrapperBase)`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: ${({ theme }) => theme.spacing(1)};
     border-radius: ${({ theme }) => theme.borderRadius.medium};
-    box-shadow: ${({ theme }) => theme.boxShadow.light};
+    box-shadow: ${({ theme }) => theme.boxShadow.glow};
 
     &:hover {
       transform: none;
@@ -48,19 +41,6 @@ const CardWrapper = styled(WrapperBase)`
     }
   }
 
-  /* Zusätzliche Varianten */
-  &.highlight {
-    background: ${({ theme }) => theme.gradients.primaryToSecondary};
-    box-shadow: ${({ theme }) => theme.boxShadow.medium};
-    color: ${({ theme }) => theme.colors.primary.dark};
-    transition:
-      background 0.3s ease,
-      box-shadow 0.3s ease;
-
-    &:hover {
-      background: ${({ theme }) => theme.gradients.accentSoft};
-      box-shadow: ${({ theme }) => theme.boxShadow.heavy};
-    }
   }
 `;
 

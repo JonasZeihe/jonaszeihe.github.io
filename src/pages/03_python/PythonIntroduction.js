@@ -9,7 +9,6 @@ import {
   Badge,
 } from '../../utils/sharedComponents';
 
-// Styled Grid für Badges
 const BadgeGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -57,13 +56,13 @@ export default function PythonIntroduction() {
       {/* Hero-Bereich */}
       <HeroWrapper gradient="depthDramatic">
         <Typography variant="h1" align="center" color="neutral.ultraLight">
-          🐍 Python-Projekte – Klarheit und Präzision
+          🐍 Python-Projekte
         </Typography>
       </HeroWrapper>
 
       {/* Einleitung */}
       <SectionWrapper backgroundColor="depth.dark">
-        <Typography variant="h3" align="center" color="neutral.ultraLight">
+        <Typography variant="h3" align="left" color="neutral.ultraLight">
           Hier findest du <HighlightText>innovative</HighlightText> und{' '}
           <HighlightText>effiziente</HighlightText> Lösungen, die mit Liebe zum
           Detail und einem klaren Fokus auf Skalierbarkeit entwickelt wurden.
@@ -73,18 +72,6 @@ export default function PythonIntroduction() {
           <HighlightText> Benutzerfreundlichkeit</HighlightText> vereinen,
           während sie gleichzeitig Prozesse optimieren und die Kreativität
           fördern.
-        </Typography>
-      </SectionWrapper>
-
-      {/* Kernmerkmale als Badges */}
-      <SectionWrapper backgroundColor="depth.dark">
-        <Typography
-          variant="h2"
-          align="center"
-          color="highlight.main"
-          style={{ marginTop: '2rem' }}
-        >
-          🚀 Kernmerkmale meiner Python-Projekte
         </Typography>
         <BadgeGrid>
           {coreFeatures.map((feature) => (
