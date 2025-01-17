@@ -150,17 +150,19 @@ export default function FlavorFusionDetails() {
         >
           <Button
             variant="primary"
-            onClick={() => {
-              'https://jonaszeihe.github.io/casestudyFlavorFusion/';
-            }}
+            onClick={() =>
+              window.open('https://jonaszeihe.github.io/casestudyFlavorFusion/')
+            }
           >
             Case Study
           </Button>
           <Button
             variant="success"
-            onClick={() => {
-              'https://www.figma.com/proto/Gy9acaVeAmKcpYY2qLSE24/Projekt4_FIGMA_JONAS?page-id=606%3A5597&node-id=4114-3680&viewport=3715%2C1765%2C0.4&t=9FZnOndSTJA4elsZ-1&scaling=scale-down&content-scaling=fixed';
-            }}
+            onClick={() =>
+              window.open(
+                'https://www.figma.com/proto/Gy9acaVeAmKcpYY2qLSE24/Projekt4_FIGMA_JONAS?page-id=606%3A5597&node-id=4114-3680&viewport=3715%2C1765%2C0.4&t=9FZnOndSTJA4elsZ-1&scaling=scale-down&content-scaling=fixed'
+              )
+            }
           >
             Prototyp ansehen
           </Button>

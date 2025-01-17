@@ -8,8 +8,6 @@ import {
 } from '../utils/sharedComponents';
 import FeatureCard from '../components/layout/FeatureCard';
 
-// Styled Components
-
 export default function Introduction() {
   const featureProjects = [
     {
@@ -37,30 +35,25 @@ export default function Introduction() {
 
   return (
     <>
-      {/* Hero Section */}
       <HeroWrapper gradient="accentToPrimary">
         <Typography variant="h1" align="center" color="neutral.ultraLight">
           🎨 Design trifft Funktion – Mein Portfolio
         </Typography>
       </HeroWrapper>
 
-      {/* Einleitung */}
       <SectionWrapper backgroundColor="neutral.lightest">
-        <SectionWrapper backgroundColor="neutral.ultraLight">
-          <Typography variant="h3" align="center" color="depth.main">
-            <HighlightText>Willkommen</HighlightText> in meiner Welt, wo
-            Kreativität auf Technologie trifft, um intuitive und skalierbare
-            Lösungen zu schaffen. Entdecke meine Projekte und lass dich
-            inspirieren! Als <HighlightText>Fullstack Designer</HighlightText>{' '}
-            kombiniere ich <HighlightText>technische Präzision</HighlightText>{' '}
-            mit <HighlightText>ästhetischem Design</HighlightText>, um Projekte
-            zu schaffen, die inspirieren und Lösungen bieten.
-          </Typography>
-        </SectionWrapper>
+        <Typography variant="h3" align="left" color="depth.main">
+          <HighlightText>Willkommen</HighlightText> in meiner Welt, wo
+          Kreativität auf Technologie trifft, um intuitive und skalierbare
+          Lösungen zu schaffen. Als{' '}
+          <HighlightText>Fullstack Designer</HighlightText> kombiniere ich{' '}
+          <HighlightText>technische Präzision</HighlightText> mit{' '}
+          <HighlightText>ästhetischem Design</HighlightText>, um Projekte zu
+          schaffen, die inspirieren und Lösungen bieten.
+        </Typography>
 
-        {/* Feature Projekte */}
         <SectionWrapper backgroundColor="neutral.ultraLight">
-          <Typography variant="h3" align="center" color="primary.darkest">
+          <Typography variant="h2" align="center" color="primary.darkest">
             🌟 Eine kleine Auswahl meiner spannendsten Projekte
           </Typography>
 
@@ -71,7 +64,7 @@ export default function Introduction() {
                 title={project.title}
                 description={project.description}
                 tags={project.tags}
-                targetId={project.id} // Ziel-ID für Scroll
+                targetId={project.id}
               />
             ))}
           </CardGrid>

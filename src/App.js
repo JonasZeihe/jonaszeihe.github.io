@@ -5,15 +5,15 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
 import Introduction from './pages/01_Introduction';
-import UxUiPage from './pages/uxui/UxUiPage';
-import PythonPage from './pages/python/PythonPage';
-import JavaPage from './pages/java/JavaPage';
-import ReactPage from './pages/react/ReactPage';
+import UxUiPage from './pages/01_uxui/UxUiPage';
+import ReactPage from './pages/02_react/ReactPage';
+import PythonPage from './pages/03_python/PythonPage';
+import JavaPage from './pages/04_java/JavaPage';
 
 const Main = styled.main`
-  padding: ${({ theme }) => theme.spacing(6)} ${({ theme }) => theme.spacing(1)};
+  padding: ${({ theme }) => theme.spacing(4)} ${({ theme }) => theme.spacing(1)};
   max-width: ${({ theme }) => theme.breakpoints.xl};
-  margin: 2rem auto;
+  margin: auto;
 `;
 
 export default function App() {
