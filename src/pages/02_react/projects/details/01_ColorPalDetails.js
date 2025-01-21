@@ -1,5 +1,5 @@
 // src/pages/react/projects/details/01_ColorPalDetails.js
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   HeroWrapper,
   SectionWrapper,
@@ -10,11 +10,11 @@ import {
   Badge,
   Button,
   Lightbox,
-} from '../../../../utils/sharedComponents';
-import ColorPalImage from '../../../../assets/images/Projects/colorpal_logo.png';
+} from '../../../../utils/sharedComponents'
+import ColorPalImage from '../../../../assets/images/Projects/colorpal_logo.png'
 
 export default function ColorPalDetails() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
   // Features von colorPal
   const features = [
@@ -54,7 +54,7 @@ export default function ColorPalDetails() {
         </>
       ),
     },
-  ];
+  ]
 
   // Badges für Technologien
   const badges = [
@@ -62,7 +62,7 @@ export default function ColorPalDetails() {
     { label: 'Styled Components', icon: 'FaPalette', variant: 'success' },
     { label: 'JSON Handling', icon: 'FaFileCode', variant: 'accent' },
     { label: 'Dynamic Styling', icon: 'FaBrush', variant: 'secondary' },
-  ];
+  ]
 
   return (
     <>
@@ -171,5 +171,5 @@ export default function ColorPalDetails() {
         />
       )}
     </>
-  );
+  )
 }

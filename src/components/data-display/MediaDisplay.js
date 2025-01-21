@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import Lightbox from '../lightbox/Lightbox';
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import Lightbox from '../lightbox/Lightbox'
 
 // Styled Components
 const MediaGrid = styled.div`
@@ -19,7 +19,7 @@ const MediaGrid = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: ${({ theme }) => theme.spacing(1)};
   }
-`;
+`
 
 const MediaItem = styled.div`
   position: relative;
@@ -58,7 +58,7 @@ const MediaItem = styled.div`
       height: auto;
     }
   }
-`;
+`
 
 const MediaCaption = styled.div`
   margin-top: ${({ theme }) => theme.spacing(2)};
@@ -69,7 +69,7 @@ const MediaCaption = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: ${({ theme }) => theme.typography.fontSize.caption};
   }
-`;
+`
 
 const VideoWrapper = styled.div`
   position: relative;
@@ -85,21 +85,21 @@ const VideoWrapper = styled.div`
     height: 100%;
     object-fit: contain;
   }
-`;
+`
 
 // Component Definition
 export default function MediaDisplay({ media }) {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   const openLightbox = (index) => {
     if (media[index].type === 'image') {
-      setCurrentIndex(index);
-      setLightboxOpen(true);
+      setCurrentIndex(index)
+      setLightboxOpen(true)
     }
-  };
+  }
 
-  const closeLightbox = () => setLightboxOpen(false);
+  const closeLightbox = () => setLightboxOpen(false)
 
   return (
     <>
@@ -147,7 +147,7 @@ export default function MediaDisplay({ media }) {
         />
       )}
     </>
-  );
+  )
 }
 
 MediaDisplay.propTypes = {
@@ -161,4 +161,4 @@ MediaDisplay.propTypes = {
       trackLang: PropTypes.string,
     })
   ).isRequired,
-};
+}

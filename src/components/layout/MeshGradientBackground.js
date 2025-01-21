@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 function MeshGradientBackground({
   gradient1 = 'primaryLight',
@@ -10,7 +10,7 @@ function MeshGradientBackground({
       <GradientLayer gradient={gradient1} />
       <GradientLayer gradient={gradient2} position="bottom-right" />
     </BackgroundContainer>
-  );
+  )
 }
 
 const BackgroundContainer = styled.div`
@@ -20,7 +20,7 @@ const BackgroundContainer = styled.div`
   width: 100%;
   height: 100%;
   z-index: -1;
-`;
+`
 
 const GradientLayer = styled.div`
   position: absolute;
@@ -35,6 +35,6 @@ const GradientLayer = styled.div`
   opacity: 1.5;
   z-index: 1;
   mix-blend-mode: overlay;
-`;
+`
 
-export default MeshGradientBackground;
+export default MeshGradientBackground

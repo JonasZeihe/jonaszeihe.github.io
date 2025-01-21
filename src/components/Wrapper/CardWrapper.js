@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import WrapperBase from './WrapperBase';
+import styled from 'styled-components'
+import WrapperBase from './WrapperBase'
 
 const CardWrapper = styled(WrapperBase)`
   /* Grundstruktur */
@@ -42,6 +42,6 @@ const CardWrapper = styled(WrapperBase)`
   }
 
   }
-`;
+`
 
-export default CardWrapper;
+export default CardWrapper

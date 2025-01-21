@@ -1,5 +1,5 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
+import React from 'react'
+import styled, { css } from 'styled-components'
 
 const StyledTypography = styled.span`
   margin: 0;
@@ -7,8 +7,8 @@ const StyledTypography = styled.span`
 
   /* Farbverarbeitung ausschließlich mit Theme */
   color: ${({ theme, color, variant }) => {
-    const [colorKey, shade = 'main'] = (color || `${variant}.main`).split('.');
-    return theme.colors[colorKey]?.[shade] || theme.colors.primary.main;
+    const [colorKey, shade = 'main'] = (color || `${variant}.main`).split('.')
+    return theme.colors[colorKey]?.[shade] || theme.colors.primary.main
   }};
 
   /* Text-Ausrichtung */
@@ -76,11 +76,11 @@ const StyledTypography = styled.span`
         line-height: ${theme.typography.lineHeight.tight};
         margin-bottom: ${theme.spacing(2)};
       `,
-    };
+    }
 
-    return variantStyles[variant] || variantStyles.body;
+    return variantStyles[variant] || variantStyles.body
   }}
-`;
+`
 
 function Typography({
   variant = 'body',
@@ -96,9 +96,9 @@ function Typography({
     subhead: 'h4',
     caption: 'span',
     body: 'p',
-  };
+  }
 
-  const asTag = tagMap[variant] || 'p';
+  const asTag = tagMap[variant] || 'p'
 
   return (
     <StyledTypography
@@ -110,7 +110,7 @@ function Typography({
     >
       {children}
     </StyledTypography>
-  );
+  )
 }
 
-export default Typography;
+export default Typography

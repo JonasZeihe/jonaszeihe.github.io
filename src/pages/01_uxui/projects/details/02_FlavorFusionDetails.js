@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   HeroWrapper,
   SectionWrapper,
@@ -9,11 +9,11 @@ import {
   Badge,
   Button,
   Lightbox,
-} from '../../../../utils/sharedComponents';
-import FlavorFusionImage from '../../../../assets/images/Projects/flavorfusion_logo.png';
+} from '../../../../utils/sharedComponents'
+import FlavorFusionImage from '../../../../assets/images/Projects/flavorfusion_logo.png'
 
 export default function FlavorFusionDetails() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
   const features = [
     {
@@ -54,14 +54,14 @@ export default function FlavorFusionDetails() {
         </>
       ),
     },
-  ];
+  ]
 
   const badges = [
     { label: 'Figma', icon: 'FaFigma', variant: 'primary' },
     { label: 'FigJam', icon: 'FaPencilAlt', variant: 'secondary' },
     { label: 'Notion', icon: 'FaBook', variant: 'accent' },
     { label: 'ChatGPT', icon: 'FaRobot', variant: 'success' },
-  ];
+  ]
 
   return (
     <>
@@ -184,5 +184,5 @@ export default function FlavorFusionDetails() {
         />
       )}
     </>
-  );
+  )
 }

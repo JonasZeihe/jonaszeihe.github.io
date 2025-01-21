@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
-import ReactDOM from 'react-dom';
-import styled from 'styled-components';
-import { FaTimes } from 'react-icons/fa';
-import PropTypes from 'prop-types';
+import React, { useEffect, useRef } from 'react'
+import ReactDOM from 'react-dom'
+import styled from 'styled-components'
+import { FaTimes } from 'react-icons/fa'
+import PropTypes from 'prop-types'
 
 const Overlay = styled.div`
   position: fixed;
@@ -13,7 +13,7 @@ const Overlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
+`
 
 const ContentWrapper = styled.div`
   position: relative;
@@ -33,7 +33,7 @@ const ContentWrapper = styled.div`
     max-height: 85%;
     padding: ${({ theme }) => theme.spacing(1)};
   }
-`;
+`
 
 const CloseButton = styled.button`
   position: absolute;
@@ -58,43 +58,43 @@ const CloseButton = styled.button`
       theme.colors.primary.main}; /* Existierende Farbe */
     color: ${({ theme }) => theme.colors.neutral.ultraLight};
   }
-`;
+`
 
 export default function ModalOverlay({ onClose, children }) {
-  const modalRef = useRef(null);
+  const modalRef = useRef(null)
 
   // Fokus-Management
   useEffect(() => {
-    const previousActiveElement = document.activeElement;
+    const previousActiveElement = document.activeElement
 
     if (modalRef.current) {
-      modalRef.current.focus();
+      modalRef.current.focus()
     }
 
     return () => {
       if (previousActiveElement) {
-        previousActiveElement.focus();
+        previousActiveElement.focus()
       }
-    };
-  }, []);
+    }
+  }, [])
 
   // Escape-Taste zum Schließen des Modals
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        onClose();
+        onClose()
       }
-    };
+    }
 
-    document.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown)
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [onClose]);
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [onClose])
 
   // Fallback für SSR (kein `document` vorhanden)
   if (typeof document === 'undefined') {
-    return null;
+    return null
   }
 
   return ReactDOM.createPortal(
@@ -116,7 +116,7 @@ export default function ModalOverlay({ onClose, children }) {
       </ContentWrapper>
     </Overlay>,
     document.body
-  );
+  )
 }
 
 ModalOverlay.propTypes = {
@@ -128,4 +128,4 @@ ModalOverlay.propTypes = {
    * Inhalt des Modals (JSX).
    */
   children: PropTypes.node.isRequired,
-};
+}

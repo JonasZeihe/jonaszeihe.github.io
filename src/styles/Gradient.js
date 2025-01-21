@@ -1,5 +1,5 @@
 const createGradient = (color1, color2, angle = 135) =>
-  `linear-gradient(${angle}deg, ${color1}, ${color2})`;
+  `linear-gradient(${angle}deg, ${color1}, ${color2})`
 
 const gradients = (theme) => ({
   // Primary Palette (Erzeugt mehr Tiefe)
@@ -119,6 +119,6 @@ const gradients = (theme) => ({
     theme.colors.depth.main,
     theme.colors.accent.main
   ),
-});
+})
 
-export default gradients;
+export default gradients

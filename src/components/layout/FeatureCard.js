@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Button, Badge, Typography } from '../../utils/sharedComponents';
+import React from 'react'
+import styled from 'styled-components'
+import { Button, Badge, Typography } from '../../utils/sharedComponents'
 
 const CardWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.secondary.light};
@@ -13,7 +13,7 @@ const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-`;
+`
 
 const TagContainer = styled.div`
   display: flex;
@@ -22,18 +22,18 @@ const TagContainer = styled.div`
   flex-wrap: wrap;
   gap: ${({ theme }) => theme.spacing(1)};
   margin-bottom: ${({ theme }) => theme.spacing(2)};
-`;
+`
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: ${({ theme }) => theme.spacing(2)};
-`;
+`
 
 const scrollToSection = (id) => {
-  const section = document.getElementById(id);
-  if (section) section.scrollIntoView({ behavior: 'smooth' });
-};
+  const section = document.getElementById(id)
+  if (section) section.scrollIntoView({ behavior: 'smooth' })
+}
 
 export default function FeatureCard({
   title,
@@ -64,5 +64,5 @@ export default function FeatureCard({
         </Button>
       </ButtonContainer>
     </CardWrapper>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const CardGrid = styled.div`
   display: grid;
@@ -11,6 +11,6 @@ const CardGrid = styled.div`
     grid-template-columns: 1fr;
     margin-top: ${({ theme }) => theme.spacing(2)};
   }
-`;
+`
 
-export default CardGrid;
+export default CardGrid

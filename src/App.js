@@ -1,20 +1,20 @@
-import React, { useMemo } from 'react';
-import styled from 'styled-components';
+import React, { useMemo } from 'react'
+import styled from 'styled-components'
 
-import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
+import Header from './components/layout/Header'
+import Footer from './components/layout/Footer'
 
-import Introduction from './pages/01_Introduction';
-import UxUiPage from './pages/01_uxui/UxUiPage';
-import ReactPage from './pages/02_react/ReactPage';
-import PythonPage from './pages/03_python/PythonPage';
-import JavaPage from './pages/04_java/JavaPage';
+import Introduction from './pages/01_Introduction'
+import UxUiPage from './pages/01_uxui/UxUiPage'
+import ReactPage from './pages/02_react/ReactPage'
+import PythonPage from './pages/03_python/PythonPage'
+import JavaPage from './pages/04_java/JavaPage'
 
 const Main = styled.main`
   padding: ${({ theme }) => theme.spacing(4)} ${({ theme }) => theme.spacing(1)};
   max-width: ${({ theme }) => theme.breakpoints.xl};
   margin: auto;
-`;
+`
 
 export default function App() {
   const navSections = useMemo(
@@ -50,7 +50,7 @@ export default function App() {
       },
     ],
     []
-  );
+  )
 
   return (
     <>
@@ -74,9 +74,9 @@ export default function App() {
       </Main>
       <Footer />
     </>
-  );
+  )
 }
 
 const Section = styled.div`
   scroll-margin-top: 80px; /* Verhindert, dass der Header den Inhalt überlappt */
-`;
+`

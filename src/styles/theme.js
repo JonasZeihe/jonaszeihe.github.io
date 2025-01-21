@@ -1,10 +1,10 @@
-import gradients from './Gradient';
+import gradients from './Gradient'
 
-const baseFontSize = 18;
-const goldenRatio = 1.618;
-const scaleFont = (level) => `${(baseFontSize * goldenRatio ** level) / 16}rem`;
+const baseFontSize = 18
+const goldenRatio = 1.618
+const scaleFont = (level) => `${(baseFontSize * goldenRatio ** level) / 16}rem`
 const responsiveFontSize = (minSize, maxSize) =>
-  `clamp(${minSize}, calc(${minSize} + (${maxSize} - ${minSize}) * ((100vw - 320px) / (1200 - 320))), ${maxSize})`;
+  `clamp(${minSize}, calc(${minSize} + (${maxSize} - ${minSize}) * ((100vw - 320px) / (1200 - 320))), ${maxSize})`
 
 const colors = {
   primary: {
@@ -71,7 +71,7 @@ const colors = {
     darkest: '#131D28',
     deep: '#0B1118',
   },
-};
+}
 
 const theme = {
   colors,
@@ -128,8 +128,8 @@ const theme = {
     lg: '992px',
     xl: '1200px',
   },
-};
+}
 
-theme.gradients = gradients(theme);
+theme.gradients = gradients(theme)
 
-export default theme;
+export default theme

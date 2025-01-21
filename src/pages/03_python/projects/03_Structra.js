@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import ProjectCard from '../../../components/layout/ProjectCard';
-import ModalOverlay from '../../../components/lightbox/ModalOverlay';
-import StructraDetails from './details/03_StructraDetails';
-import StructraLogo from '../../../assets/images/Projects/structra_logo.png';
+import React, { useState } from 'react'
+import ProjectCard from '../../../components/layout/ProjectCard'
+import ModalOverlay from '../../../components/lightbox/ModalOverlay'
+import StructraDetails from './details/03_StructraDetails'
+import StructraLogo from '../../../assets/images/Projects/structra_logo.png'
 
 export default function Structra() {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   // Kompakte Projekt-Daten für die Card
   const structraProject = {
@@ -20,7 +20,7 @@ export default function Structra() {
       { label: 'Skryper-Integration', icon: 'FaPuzzlePiece', variant: 'info' },
     ],
     githubLink: 'https://github.com/jonaszeihe/structra',
-  };
+  }
 
   return (
     <>
@@ -37,5 +37,5 @@ export default function Structra() {
         </ModalOverlay>
       )}
     </>
-  );
+  )
 }

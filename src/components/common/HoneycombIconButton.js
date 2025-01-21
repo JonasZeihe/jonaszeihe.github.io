@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import * as Icons from 'react-icons/fa';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import * as Icons from 'react-icons/fa'
 
 const IconButtonWrapper = styled.button`
   display: flex;
@@ -25,18 +25,18 @@ const IconButtonWrapper = styled.button`
     transform: scale(1.1);
     box-shadow: ${({ theme }) => theme.boxShadow.heavy};
   }
-`;
+`
 
 export default function HoneycombIconButton({ icon, onClick }) {
-  const Icon = Icons[icon];
+  const Icon = Icons[icon]
   return (
     <IconButtonWrapper onClick={onClick}>
       <Icon size={20} />
     </IconButtonWrapper>
-  );
+  )
 }
 
 HoneycombIconButton.propTypes = {
   icon: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-};
+}

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { useSwipeable } from 'react-swipeable';
-import Lightbox from '../lightbox/Lightbox';
-import Button from '../common/Button';
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import { useSwipeable } from 'react-swipeable'
+import Lightbox from '../lightbox/Lightbox'
+import Button from '../common/Button'
 
 // Styled Components
 const Wrapper = styled.div`
@@ -12,13 +12,13 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: ${({ theme }) => theme?.breakpoints?.xl || '1200px'};
   margin: 0 auto;
-`;
+`
 
 const SlideContainer = styled.div`
   display: flex;
   transition: transform 0.5s ease-in-out;
   transform: translateX(calc(${({ activeIndex }) => -activeIndex} * 100%));
-`;
+`
 
 const Slide = styled.div`
   flex: 0 0 100%;
@@ -38,7 +38,7 @@ const Slide = styled.div`
       transform: scale(1.05);
     }
   }
-`;
+`
 
 const Controls = styled.div`
   position: absolute;
@@ -52,7 +52,7 @@ const Controls = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none; /* Hide controls for mobile views */
   }
-`;
+`
 
 const Dot = styled.button`
   width: 10px;
@@ -69,32 +69,30 @@ const Dot = styled.button`
   &:hover {
     background: ${({ theme }) => theme?.colors?.primary?.dark || '#0056b3'};
   }
-`;
+`
 
 const Dots = styled.div`
   display: flex;
   justify-content: center;
   margin-top: ${({ theme }) => theme?.spacing?.(3) || '12px'};
   gap: ${({ theme }) => theme?.spacing?.(1) || '8px'};
-`;
+`
 
 // Carousel Component
 function Carousel({ slides }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
-  const openLightbox = () => setLightboxOpen(true);
+  const openLightbox = () => setLightboxOpen(true)
 
   const navigate = (direction) => {
-    setActiveIndex(
-      (prev) => (prev + direction + slides.length) % slides.length
-    );
-  };
+    setActiveIndex((prev) => (prev + direction + slides.length) % slides.length)
+  }
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => navigate(1),
     onSwipedRight: () => navigate(-1),
-  });
+  })
 
   return (
     <>
@@ -152,7 +150,7 @@ function Carousel({ slides }) {
         />
       )}
     </>
-  );
+  )
 }
 
 // Prop Types
@@ -164,6 +162,6 @@ Carousel.propTypes = {
       alt: PropTypes.string,
     })
   ).isRequired,
-};
+}
 
-export default Carousel;
+export default Carousel

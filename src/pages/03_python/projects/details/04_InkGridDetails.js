@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   HeroWrapper,
   SectionWrapper,
@@ -9,11 +9,11 @@ import {
   Badge,
   Button,
   Lightbox,
-} from '../../../../utils/sharedComponents';
-import InkGridLogo from '../../../../assets/images/Projects/inkgrid_logo.png';
+} from '../../../../utils/sharedComponents'
+import InkGridLogo from '../../../../assets/images/Projects/inkgrid_logo.png'
 
 export default function InkGridDetails() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
   // Features von InkGrid
   const features = [
@@ -63,7 +63,7 @@ export default function InkGridDetails() {
         </>
       ),
     },
-  ];
+  ]
 
   // Badges für InkGrid
   const badges = [
@@ -76,7 +76,7 @@ export default function InkGridDetails() {
     },
     { label: 'Drag and Drop', icon: 'FaMousePointer', variant: 'warning' },
     { label: 'Windows-First', icon: 'FaWindows', variant: 'secondary' },
-  ];
+  ]
 
   return (
     <>
@@ -190,5 +190,5 @@ export default function InkGridDetails() {
         />
       )}
     </>
-  );
+  )
 }

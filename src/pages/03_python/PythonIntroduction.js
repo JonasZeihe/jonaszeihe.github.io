@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 import {
   HeroWrapper,
@@ -7,7 +7,7 @@ import {
   Typography,
   HighlightText,
   Badge,
-} from '../../utils/sharedComponents';
+} from '../../utils/sharedComponents'
 
 const BadgeGrid = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const BadgeGrid = styled.div`
   gap: ${({ theme }) => theme.spacing(2)};
   justify-content: center;
   margin-top: ${({ theme }) => theme.spacing(3)};
-`;
+`
 
 export default function PythonIntroduction() {
   const coreFeatures = [
@@ -49,7 +49,7 @@ export default function PythonIntroduction() {
       icon: 'FaTools',
       variant: 'warning',
     },
-  ];
+  ]
 
   return (
     <>
@@ -85,5 +85,5 @@ export default function PythonIntroduction() {
         </BadgeGrid>
       </SectionWrapper>
     </>
-  );
+  )
 }

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import ProjectCard from '../../../components/layout/ProjectCard';
-import ModalOverlay from '../../../components/lightbox/ModalOverlay';
-import NoctuaDetails from './details/01_NoctuaDetails';
-import NoctuaLogo from '../../../assets/images/Projects/noctua_logo.png';
+import React, { useState } from 'react'
+import ProjectCard from '../../../components/layout/ProjectCard'
+import ModalOverlay from '../../../components/lightbox/ModalOverlay'
+import NoctuaDetails from './details/01_NoctuaDetails'
+import NoctuaLogo from '../../../assets/images/Projects/noctua_logo.png'
 
 export default function Noctua() {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   // Kompakte Daten für die Card
   const noctuaProject = {
@@ -28,7 +28,7 @@ export default function Noctua() {
       { label: 'Markdown-Export', icon: 'FaFileAlt', variant: 'warning' },
     ],
     githubLink: 'https://github.com/jonaszeihe/noctua', // z. B., falls vorhanden
-  };
+  }
 
   return (
     <>
@@ -40,5 +40,5 @@ export default function Noctua() {
         </ModalOverlay>
       )}
     </>
-  );
+  )
 }

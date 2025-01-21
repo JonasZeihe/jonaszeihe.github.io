@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 import {
   CardGrid,
   HeroWrapper,
   SectionWrapper,
   Typography,
   HighlightText,
-} from '../utils/sharedComponents';
-import FeatureCard from '../components/layout/FeatureCard';
+} from '../utils/sharedComponents'
+import FeatureCard from '../components/layout/FeatureCard'
 
 export default function Introduction() {
   const featureProjects = [
@@ -31,7 +31,7 @@ export default function Introduction() {
         'Analyse und Visualisierung in perfekter Harmonie. Effiziente Verzeichnisscans und automatisierte Projektstrukturen.',
       tags: ['Python'],
     },
-  ];
+  ]
 
   return (
     <>
@@ -71,5 +71,5 @@ export default function Introduction() {
         </SectionWrapper>
       </SectionWrapper>
     </>
-  );
+  )
 }

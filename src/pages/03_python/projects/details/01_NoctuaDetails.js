@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   HeroWrapper,
   SectionWrapper,
@@ -9,11 +9,11 @@ import {
   Badge,
   Button,
   Lightbox,
-} from '../../../../utils/sharedComponents';
-import NoctuaLogo from '../../../../assets/images/Projects/noctua_logo.png';
+} from '../../../../utils/sharedComponents'
+import NoctuaLogo from '../../../../assets/images/Projects/noctua_logo.png'
 
 export default function NoctuaDetails() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
   // Features von Noctua
   const features = [
@@ -62,7 +62,7 @@ export default function NoctuaDetails() {
         </>
       ),
     },
-  ];
+  ]
 
   // Badges für Noctua
   const badges = [
@@ -79,7 +79,7 @@ export default function NoctuaDetails() {
       variant: 'secondary',
     },
     { label: 'Markdown-Export', icon: 'FaFileAlt', variant: 'warning' },
-  ];
+  ]
 
   return (
     <>
@@ -191,5 +191,5 @@ export default function NoctuaDetails() {
         />
       )}
     </>
-  );
+  )
 }

@@ -1,19 +1,19 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 import {
   HeroWrapper,
   SectionWrapper,
   Typography,
   HighlightText,
   Badge,
-} from '../../utils/sharedComponents';
+} from '../../utils/sharedComponents'
 
 const BadgeContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(2)};
   flex-wrap: wrap;
-`;
+`
 
 export default function ReactIntroduction() {
   const badges = [
@@ -23,7 +23,7 @@ export default function ReactIntroduction() {
     { label: 'State Management', icon: 'FaTasks', variant: 'secondary' },
     { label: 'Dynamic UIs', icon: 'FaCode', variant: 'primary' },
     { label: 'API Integration', icon: 'FaPlug', variant: 'success' },
-  ];
+  ]
 
   return (
     <>
@@ -53,5 +53,5 @@ export default function ReactIntroduction() {
         </BadgeContainer>
       </SectionWrapper>
     </>
-  );
+  )
 }
