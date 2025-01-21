@@ -11,11 +11,11 @@ export default function UxUiPage() {
     <>
       <UxUiIntroduction />
       <CardGrid>
-        <div>
-          {projects.map(({ name, component: ProjectComponent }) => (
-            <ProjectComponent key={name} id={name} />
-          ))}
-        </div>
+        {projects.map(({ name, component: ProjectComponent }) => (
+          <div key={name} id={name} style={{ scrollMarginTop: '80px' }}>
+            <ProjectComponent />
+          </div>
+        ))}
       </CardGrid>
     </>
   )

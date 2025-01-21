@@ -6,7 +6,6 @@ import SmoothScroller from '../utilities/SmoothScroller'
 export default function Header({ navSections = [] }) {
   const headerRef = useRef()
   const [activeSection, setActiveSection] = useState(null)
-  const [highlightedParent, setHighlightedParent] = useState(null)
 
   const initialState = { menuOpen: false, openSubNav: null }
 
@@ -30,24 +29,19 @@ export default function Header({ navSections = [] }) {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   const handleScroll = () => {
-    const offsets = navSections.flatMap((section) => [
-      {
-        id: section.id,
-        offsetTop: document.getElementById(section.id)?.offsetTop || 0,
-      },
-      ...(section.children || []).map((child) => ({
-        id: child.id,
-        offsetTop: document.getElementById(child.id)?.offsetTop || 0,
-        parentId: section.id,
-      })),
-    ])
+    const offsets = navSections.map((section) => ({
+      id: section.id,
+      offsetTop: document.getElementById(section.id)?.offsetTop || 0,
+    }))
+
     const scrollPosition = window.scrollY + window.innerHeight / 2
+
     const currentSection = offsets
       .filter(({ offsetTop }) => scrollPosition >= offsetTop)
       .pop()
+
     if (currentSection?.id !== activeSection) {
       setActiveSection(currentSection?.id)
-      setHighlightedParent(currentSection?.parentId || currentSection?.id)
     }
   }
 
@@ -72,7 +66,7 @@ export default function Header({ navSections = [] }) {
         return (
           <NavItemWrapper key={section.id}>
             <SmoothScroller targetId={section.id}>
-              <NavItem isActive={highlightedParent === section.id}>
+              <NavItem isActive={activeSection === section.id}>
                 {section.label}
               </NavItem>
             </SmoothScroller>
@@ -93,7 +87,7 @@ export default function Header({ navSections = [] }) {
           <React.Fragment key={section.id}>
             <MobileNavItem>
               <SmoothScroller targetId={section.id}>
-                <NavItem isActive={highlightedParent === section.id}>
+                <NavItem isActive={activeSection === section.id}>
                   {section.label}
                 </NavItem>
               </SmoothScroller>
