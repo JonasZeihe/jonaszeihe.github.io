@@ -150,46 +150,46 @@ const HeaderContainer = styled.header`
   top: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: ${({ theme }) => theme.colors.neutral.ultraLight};
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: ${({ theme }) => theme.boxShadow.medium};
 `
 
 const HeaderContent = styled.div`
-  max-width: 1200px;
+  max-width: ${({ theme }) => theme.breakpoints.xl};
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: ${({ theme }) => theme.spacing(2)};
 `
 
 const Logo = styled.div`
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: ${({ theme }) => theme.typography.fontSize.h4};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   cursor: pointer;
-  color: #333;
+  color: ${({ theme }) => theme.colors.neutral.darkest};
   &:hover {
-    color: #007bff;
+    color: ${({ theme }) => theme.colors.primary.main};
   }
 `
 
 const DesktopOnly = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
   }
 `
 
 const MobileOnly = styled.div`
   display: none;
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: block;
   }
 `
 
 const DesktopNav = styled.nav`
   display: flex;
-  gap: 2rem;
+  gap: ${({ theme }) => theme.spacing(8)};
 `
 
 const NavItemWrapper = styled.div`
@@ -200,12 +200,16 @@ const NavItemWrapper = styled.div`
 `
 
 const NavItem = styled.div`
-  font-size: 1rem;
+  font-size: ${({ theme }) => theme.typography.h3};
   cursor: pointer;
-  color: ${({ isActive }) => (isActive ? '#007bff' : '#333')};
-  font-weight: ${({ isActive }) => (isActive ? 'bold' : 'normal')};
+  color: ${({ isActive, theme }) =>
+    isActive ? theme.colors.primary.main : theme.colors.neutral.darkest};
+  font-weight: ${({ isActive, theme }) =>
+    isActive
+      ? theme.typography.fontWeight.bold
+      : theme.typography.fontWeight.regular};
   &:hover {
-    color: #007bff;
+    color: ${({ theme }) => theme.colors.primary.main};
   }
 `
 
@@ -213,20 +217,22 @@ const SubNav = styled.div`
   position: absolute;
   top: 100%;
   left: 0;
-  background: #f9f9f9;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: ${({ theme }) => theme.colors.neutral.darkest};
+  background: ${({ theme }) => theme.colors.neutral.ultraLight};
+  padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(2)}`};
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  box-shadow: ${({ theme }) => theme.boxShadow.light};
   display: none;
 `
 
 const SubNavItem = styled.div`
-  font-size: 0.9rem;
   cursor: pointer;
-  color: ${({ isActive }) => (isActive ? '#007bff' : '#333')};
-  padding: 0.4rem 0;
+  color: ${({ isActive, theme }) =>
+    isActive ? theme.colors.primary.main : theme.colors.neutral.dark};
+  padding: ${({ theme }) => theme.spacing(1)};
   &:hover {
-    color: #007bff;
+    color: ${({ theme }) => theme.colors.primary.main};
+    background-color: ${({ theme }) => theme.colors.neutral.ultraLight};
   }
 `
 
@@ -235,7 +241,7 @@ const MobileMenuButton = styled.button`
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #333;
+  color: ${({ theme }) => theme.colors.neutral.darkest};
 `
 
 const MobileMenu = styled.div`
@@ -243,9 +249,9 @@ const MobileMenu = styled.div`
   top: 100%;
   left: 0;
   right: 0;
-  background: white;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: ${({ theme }) => theme.colors.neutral.ultraLight};
+  padding: ${({ theme }) => theme.spacing(3)};
+  box-shadow: ${({ theme }) => theme.boxShadow.medium};
 `
 
 const MobileNavItem = styled.div`
@@ -258,10 +264,10 @@ const DropdownToggle = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
-  color: #333;
+  padding: ${({ theme }) => theme.spacing(1)};
+  color: ${({ theme }) => theme.colors.neutral.darkest};
   &:hover {
-    color: #007bff;
+    color: ${({ theme }) => theme.colors.primary.main};
   }
 `
 
@@ -271,30 +277,29 @@ const MobileSubNav = styled.div`
     max-height 0.3s ease,
     opacity 0.3s ease;
   max-height: ${({ isOpen }) => (isOpen ? '500px' : '0')};
-  opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
+  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   pointer-events: ${({ isOpen }) => (isOpen ? 'auto' : 'none')};
-  padding-left: 2rem; /* Zusätzliche Einrückung */
-  background-color: #f9f9f9;
+  padding-left: ${({ theme }) => theme.spacing(4)};
   display: flex;
   flex-direction: column;
-  gap: 0.5rem; /* Abstand zwischen den Elementen */
-  padding: 0.5rem 1rem; /* Innenabstand mit seitlicher Einrückung */
+  gap: ${({ theme }) => theme.spacing(1)};
+  padding: ${({ theme }) => theme.spacing(2)};
 
   & > div {
-    font-size: 0.9rem;
-    color: #333;
-    padding: 0.5rem;
-    border-bottom: 1px solid #eee;
-    background-color: #ffffff; /* Optional: Weißer Hintergrund für die Items */
-    border-radius: 4px; /* Optional: Leichte Abrundung für die Items */
+    font-size: ${({ theme }) => theme.typography.body};
+    color: ${({ theme }) => theme.colors.neutral.darkest};
+    padding: ${({ theme }) => theme.spacing(1)};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.neutral.light};
+    background-color: ${({ theme }) => theme.colors.neutral.ultraLight};
+    border-radius: ${({ theme }) => theme.borderRadius.small};
 
     &:last-child {
       border-bottom: none;
     }
 
     &:hover {
-      color: #007bff;
-      background-color: #f1f1f1; /* Leichte Farbänderung beim Hover */
+      color: ${({ theme }) => theme.colors.primary.main};
+      background-color: ${({ theme }) => theme.colors.neutral.lightest};
     }
   }
 `
