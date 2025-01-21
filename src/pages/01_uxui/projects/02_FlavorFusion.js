@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import ProjectCard from '../../../components/layout/ProjectCard';
-import ModalOverlay from '../../../components/lightbox/ModalOverlay';
-import FlavorFusionDetails from './details/02_FlavorFusionDetails';
-import FlavorFusionImage from '../../../assets/images/Projects/flavorfusion_logo.png';
+import React, { useState } from 'react'
+import ProjectCard from '../../../components/layout/ProjectCard'
+import ModalOverlay from '../../../components/lightbox/ModalOverlay'
+import FlavorFusionDetails from './details/02_FlavorFusionDetails'
+import FlavorFusionImage from '../../../assets/images/Projects/flavorfusion_logo.png'
 
 export default function FlavorFusion() {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   // Kompakte Daten für die Card-Ansicht
   const flavorFusionProject = {
@@ -20,7 +20,7 @@ export default function FlavorFusion() {
       { label: 'ChatGPT', icon: 'FaRobot', variant: 'success' },
     ],
     // Falls nötig: githubLink: 'https://github.com/...'
-  };
+  }
 
   return (
     <>
@@ -37,5 +37,5 @@ export default function FlavorFusion() {
         </ModalOverlay>
       )}
     </>
-  );
+  )
 }

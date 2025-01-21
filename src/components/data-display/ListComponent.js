@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const StyledList = styled.ul`
   margin: ${({ theme }) => theme.spacing(3)} 0;
@@ -9,7 +9,7 @@ const StyledList = styled.ul`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(2)};
   list-style: none;
-`;
+`
 
 const StyledListItem = styled.li`
   padding: ${({ theme }) => theme.spacing(2)};
@@ -25,7 +25,7 @@ const StyledListItem = styled.li`
     transform: translateY(-3px);
     background: ${({ theme }) => theme.colors.depth.main};
   }
-`;
+`
 
 function ListComponent({ items }) {
   return (
@@ -36,7 +36,7 @@ function ListComponent({ items }) {
         </StyledListItem>
       ))}
     </StyledList>
-  );
+  )
 }
 
 ListComponent.propTypes = {
@@ -46,6 +46,6 @@ ListComponent.propTypes = {
       content: PropTypes.node.isRequired,
     })
   ).isRequired,
-};
+}
 
-export default ListComponent;
+export default ListComponent

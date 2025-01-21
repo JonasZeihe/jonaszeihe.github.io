@@ -1,19 +1,19 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 import {
   HeroWrapper,
   SectionWrapper,
   Typography,
   HighlightText,
   Badge,
-} from '../../utils/sharedComponents';
+} from '../../utils/sharedComponents'
 
 const BadgeContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(2)};
   flex-wrap: wrap;
-`;
+`
 
 export default function JavaIntroduction() {
   const badges = [
@@ -24,7 +24,7 @@ export default function JavaIntroduction() {
     { label: 'JWT Auth', icon: 'FaKey', variant: 'warning' },
     { label: 'Docker', icon: 'FaDocker', variant: 'success' },
     { label: 'React', icon: 'FaReact', variant: 'primary' },
-  ];
+  ]
 
   return (
     <>
@@ -53,5 +53,5 @@ export default function JavaIntroduction() {
         </BadgeContainer>
       </SectionWrapper>
     </>
-  );
+  )
 }

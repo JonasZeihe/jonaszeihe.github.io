@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { useSwipeable } from 'react-swipeable';
-import Navigation from './Navigation';
+import React, { useState, useEffect } from 'react'
+import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import { FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { useSwipeable } from 'react-swipeable'
+import Navigation from './Navigation'
 
 const Overlay = styled.div`
   position: fixed;
@@ -17,14 +17,14 @@ const Overlay = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 9999;
-`;
+`
 
 const ContentWrapper = styled.div`
   position: relative;
   max-width: 90%;
   max-height: 90%;
   overflow: hidden;
-`;
+`
 
 const CloseButton = styled.button`
   position: absolute;
@@ -42,7 +42,7 @@ const CloseButton = styled.button`
     background: red;
     color: white;
   }
-`;
+`
 
 const NavigationButton = styled.button`
   position: absolute;
@@ -60,33 +60,33 @@ const NavigationButton = styled.button`
   &:hover {
     background: rgba(0, 0, 0, 0.8);
   }
-`;
+`
 
 function Lightbox({ media, currentIndex = 0, onClose }) {
-  const [activeIndex, setActiveIndex] = useState(currentIndex);
+  const [activeIndex, setActiveIndex] = useState(currentIndex)
 
-  const isCarousel = media.length > 1;
-  const isDesktop = window.innerWidth >= 768;
+  const isCarousel = media.length > 1
+  const isDesktop = window.innerWidth >= 768
 
   const navigate = (direction) => {
     setActiveIndex(
       (prevIndex) => (prevIndex + direction + media.length) % media.length
-    );
-  };
+    )
+  }
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => isCarousel && navigate(1),
     onSwipedRight: () => isCarousel && navigate(-1),
-  });
+  })
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden'
     return () => {
-      document.body.style.overflow = '';
-    };
-  }, []);
+      document.body.style.overflow = ''
+    }
+  }, [])
 
-  const activeMedia = media[activeIndex];
+  const activeMedia = media[activeIndex]
 
   return ReactDOM.createPortal(
     <Overlay onClick={onClose} {...swipeHandlers}>
@@ -126,7 +126,7 @@ function Lightbox({ media, currentIndex = 0, onClose }) {
       </ContentWrapper>
     </Overlay>,
     document.body
-  );
+  )
 }
 
 Lightbox.propTypes = {
@@ -139,10 +139,10 @@ Lightbox.propTypes = {
   ).isRequired,
   currentIndex: PropTypes.number,
   onClose: PropTypes.func.isRequired,
-};
+}
 
 Lightbox.defaultProps = {
   currentIndex: 0,
-};
+}
 
-export default Lightbox;
+export default Lightbox

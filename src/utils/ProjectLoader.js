@@ -5,7 +5,7 @@ const loadProjects = (context) => {
     .map((file) => ({
       name: file.replace('./', '').replace('.js', ''), // Extract project name
       component: context(file).default, // Dynamically load component
-    }));
-};
+    }))
+}
 
-export default loadProjects;
+export default loadProjects

@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import * as Icons from 'react-icons/fa'; // Dynamischer Icon-Import
+import React from 'react'
+import styled from 'styled-components'
+import * as Icons from 'react-icons/fa' // Dynamischer Icon-Import
 
 const BadgeContainer = styled.div`
   display: inline-flex;
@@ -25,7 +25,7 @@ const BadgeContainer = styled.div`
     font-size: ${({ theme }) => theme.typography.fontSize.xsmall};
     gap: ${({ theme }) => theme.spacing(0.6)};
   }
-`;
+`
 const IconWrapper = styled.span`
   display: flex;
   align-items: center;
@@ -36,7 +36,7 @@ const IconWrapper = styled.span`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: 1rem;
   }
-`;
+`
 
 export default function Badge({
   label,
@@ -44,7 +44,7 @@ export default function Badge({
   variant = 'primary',
   customColor,
 }) {
-  const Icon = Icons[icon];
+  const Icon = Icons[icon]
 
   return (
     <BadgeContainer variant={variant} customColor={customColor}>
@@ -55,5 +55,5 @@ export default function Badge({
       )}
       {label}
     </BadgeContainer>
-  );
+  )
 }

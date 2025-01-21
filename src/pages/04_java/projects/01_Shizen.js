@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import ProjectCard from '../../../components/layout/ProjectCard';
-import ModalOverlay from '../../../components/lightbox/ModalOverlay';
-import ShizenDetails from './details/01_ShizenDetails';
-import ShizenImage from '../../../assets/images/Projects/shizen-logo.png';
+import React, { useState } from 'react'
+import ProjectCard from '../../../components/layout/ProjectCard'
+import ModalOverlay from '../../../components/lightbox/ModalOverlay'
+import ShizenDetails from './details/01_ShizenDetails'
+import ShizenImage from '../../../assets/images/Projects/shizen-logo.png'
 
 export default function Shizen() {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   // Kompakte Projekt-Daten für Shizen
   const shizenProject = {
@@ -28,7 +28,7 @@ export default function Shizen() {
       { label: 'Gamification', icon: 'FaTrophy', variant: 'primary' },
     ],
     githubLink: 'https://github.com/jonaszeihe/shizen',
-  };
+  }
 
   return (
     <>
@@ -42,5 +42,5 @@ export default function Shizen() {
         </ModalOverlay>
       )}
     </>
-  );
+  )
 }

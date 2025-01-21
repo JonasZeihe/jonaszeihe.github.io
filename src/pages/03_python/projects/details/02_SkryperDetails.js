@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   HeroWrapper,
   SectionWrapper,
@@ -9,11 +9,11 @@ import {
   Badge,
   Button,
   Lightbox,
-} from '../../../../utils/sharedComponents';
-import SkryperLogo from '../../../../assets/images/Projects/skryper_logo.png';
+} from '../../../../utils/sharedComponents'
+import SkryperLogo from '../../../../assets/images/Projects/skryper_logo.png'
 
 export default function SkryperDetails() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
   // Features von Skryper
   const features = [
@@ -75,7 +75,7 @@ export default function SkryperDetails() {
         </>
       ),
     },
-  ];
+  ]
 
   // Badges für Technologie-Highlights
   const badges = [
@@ -84,7 +84,7 @@ export default function SkryperDetails() {
     { label: 'Modular Design', icon: 'FaCogs', variant: 'success' },
     { label: 'CLI Tool', icon: 'FaTerminal', variant: 'warning' },
     { label: 'Clean Code', icon: 'FaCode', variant: 'secondary' },
-  ];
+  ]
 
   return (
     <>
@@ -208,5 +208,5 @@ export default function SkryperDetails() {
         />
       )}
     </>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import WrapperBase from './WrapperBase';
+import styled from 'styled-components'
+import WrapperBase from './WrapperBase'
 
 const SectionWrapper = styled(WrapperBase)`
   /* Grundlayout */
@@ -28,6 +28,6 @@ const SectionWrapper = styled(WrapperBase)`
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     max-width: 1200px;
   }
-`;
+`
 
-export default SectionWrapper;
+export default SectionWrapper

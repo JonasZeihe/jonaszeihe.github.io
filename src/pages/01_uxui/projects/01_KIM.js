@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import ProjectCard from '../../../components/layout/ProjectCard';
-import ModalOverlay from '../../../components/lightbox/ModalOverlay';
-import KIMDetails from './details/01_KIMDetails';
-import KimImage from '../../../assets/images/Projects/kim_logo.png';
+import React, { useState } from 'react'
+import ProjectCard from '../../../components/layout/ProjectCard'
+import ModalOverlay from '../../../components/lightbox/ModalOverlay'
+import KIMDetails from './details/01_KIMDetails'
+import KimImage from '../../../assets/images/Projects/kim_logo.png'
 
 export default function KIM() {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   // Kompakte Projekt-Daten für die Card
   const kimProject = {
@@ -24,7 +24,7 @@ export default function KIM() {
       },
     ],
     // Falls du einen GitHub-Link hättest: githubLink: 'https://github.com/...',
-  };
+  }
 
   return (
     <>
@@ -38,5 +38,5 @@ export default function KIM() {
         </ModalOverlay>
       )}
     </>
-  );
+  )
 }

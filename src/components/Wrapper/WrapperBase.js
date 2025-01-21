@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 // Utility-Funktion zur Verarbeitung von Farben
 const resolveThemeColor = (theme, colorKey) => {
-  if (!colorKey) return theme.colors.neutral.lightest;
-  const [palette, shade] = colorKey.split('.');
-  return theme.colors[palette]?.[shade] || theme.colors.neutral.light;
-};
+  if (!colorKey) return theme.colors.neutral.lightest
+  const [palette, shade] = colorKey.split('.')
+  return theme.colors[palette]?.[shade] || theme.colors.neutral.light
+}
 
 const WrapperBase = styled.div`
   /* Dynamischer Hintergrund */
@@ -56,6 +56,6 @@ const WrapperBase = styled.div`
     border-radius: ${({ theme }) => theme.borderRadius.small};
     box-shadow: none;
   }
-`;
+`
 
-export default WrapperBase;
+export default WrapperBase

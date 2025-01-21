@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const HeroWrapper = styled.div`
   /* Breite und anfängliche Höhe */
@@ -47,6 +47,6 @@ const HeroWrapper = styled.div`
     & > * {
     }
   }
-`;
+`
 
-export default HeroWrapper;
+export default HeroWrapper

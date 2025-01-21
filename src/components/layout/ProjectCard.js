@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 import {
   Badge,
   Typography,
   Button,
   CardWrapper,
-} from '../../utils/sharedComponents';
+} from '../../utils/sharedComponents'
 
 // Styled Components
 const ImageWrapper = styled.div`
@@ -16,7 +16,7 @@ const ImageWrapper = styled.div`
     box-shadow: ${({ theme }) => theme.boxShadow.light};
     transition: transform 0.3s ease;
   }
-`;
+`
 
 const ContentWrapper = styled.div`
   padding: ${({ theme }) => theme.spacing(2)};
@@ -25,7 +25,7 @@ const ContentWrapper = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     padding: ${({ theme }) => theme.spacing(1)};
   }
-`;
+`
 
 const BadgeContainer = styled.div`
   display: flex;
@@ -37,7 +37,7 @@ const BadgeContainer = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     gap: ${({ theme }) => theme.spacing(0.5)};
   }
-`;
+`
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -50,24 +50,24 @@ const ButtonContainer = styled.div`
     flex-direction: column;
     gap: ${({ theme }) => theme.spacing(1)};
   }
-`;
+`
 
 export default function ProjectCard({ project, onOpen }) {
   const handleCardClick = () => {
-    onOpen();
-  };
+    onOpen()
+  }
 
   const handleOpenButtonClick = (e) => {
-    e.stopPropagation();
-    onOpen();
-  };
+    e.stopPropagation()
+    onOpen()
+  }
 
   const handleSecondButtonClick = (e) => {
-    e.stopPropagation();
+    e.stopPropagation()
     if (project.githubLink) {
-      window.open(project.githubLink, '_blank');
+      window.open(project.githubLink, '_blank')
     }
-  };
+  }
 
   return (
     <CardWrapper onClick={handleCardClick}>
@@ -103,5 +103,5 @@ export default function ProjectCard({ project, onOpen }) {
         </ButtonContainer>
       </ContentWrapper>
     </CardWrapper>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 // Wrapper für das Zitat
 const QuoteWrapper = styled.blockquote`
@@ -26,7 +26,7 @@ const QuoteWrapper = styled.blockquote`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: ${({ theme }) => theme.spacing(2)};
   }
-`;
+`
 
 // Styling für den Zitattext
 const QuoteText = styled.p`
@@ -38,7 +38,7 @@ const QuoteText = styled.p`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.typography.fontSize.body};
   }
-`;
+`
 
 // Optionaler Author-Wrapper
 const AuthorText = styled.p`
@@ -53,7 +53,7 @@ const AuthorText = styled.p`
     font-size: ${({ theme }) => theme.typography.fontSize.body};
     text-align: center;
   }
-`;
+`
 
 // Funktionale QuoteComponent
 export default function QuoteComponent({
@@ -67,7 +67,7 @@ export default function QuoteComponent({
       <QuoteText>{`"${text}"`}</QuoteText>
       {author && <AuthorText>- {author}</AuthorText>}
     </QuoteWrapper>
-  );
+  )
 }
 
 QuoteComponent.propTypes = {
@@ -75,10 +75,10 @@ QuoteComponent.propTypes = {
   author: PropTypes.string,
   backgroundColor: PropTypes.string, // Dynamischer Hintergrund
   borderColor: PropTypes.string, // Dynamische Farbe für den Balken
-};
+}
 
 QuoteComponent.defaultProps = {
   author: null,
   backgroundColor: 'neutral.main',
   borderColor: 'primary.main',
-};
+}

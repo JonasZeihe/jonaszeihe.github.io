@@ -1,19 +1,19 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 import {
   HeroWrapper,
   SectionWrapper,
   Typography,
   HighlightText,
   Badge,
-} from '../../utils/sharedComponents';
+} from '../../utils/sharedComponents'
 
 const BadgeContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(2)};
   flex-wrap: wrap;
-`;
+`
 
 export default function UxUiIntroduction() {
   const badges = [
@@ -21,7 +21,7 @@ export default function UxUiIntroduction() {
     { label: 'Figma & FigJam', icon: 'FaFigma', variant: 'success' },
     { label: 'User Research', icon: 'FaUserFriends', variant: 'accent' },
     { label: 'Prototyping', icon: 'FaDraftingCompass', variant: 'secondary' },
-  ];
+  ]
 
   return (
     <>
@@ -50,5 +50,5 @@ export default function UxUiIntroduction() {
         </BadgeContainer>
       </SectionWrapper>
     </>
-  );
+  )
 }

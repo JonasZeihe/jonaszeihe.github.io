@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   HeroWrapper,
   SectionWrapper,
@@ -9,11 +9,11 @@ import {
   Badge,
   Button,
   Lightbox,
-} from '../../../../utils/sharedComponents';
-import StructraLogo from '../../../../assets/images/Projects/structra_logo.png';
+} from '../../../../utils/sharedComponents'
+import StructraLogo from '../../../../assets/images/Projects/structra_logo.png'
 
 export default function StructraDetails() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
   // Features von Structra
   const features = [
@@ -62,7 +62,7 @@ export default function StructraDetails() {
         </>
       ),
     },
-  ];
+  ]
 
   // Badges für Structra
   const badges = [
@@ -71,7 +71,7 @@ export default function StructraDetails() {
     { label: 'Projektvorlagen', icon: 'FaFolderOpen', variant: 'success' },
     { label: 'Python 3.10+', icon: 'FaPython', variant: 'primary' },
     { label: 'Skryper-Integration', icon: 'FaPuzzlePiece', variant: 'info' },
-  ];
+  ]
 
   return (
     <>
@@ -209,5 +209,5 @@ export default function StructraDetails() {
         />
       )}
     </>
-  );
+  )
 }

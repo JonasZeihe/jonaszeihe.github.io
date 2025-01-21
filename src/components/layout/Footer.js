@@ -1,17 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 import {
   FaLinkedin,
   FaXing,
   FaArrowUp,
   FaEnvelope,
   FaGithub,
-} from 'react-icons/fa';
+} from 'react-icons/fa'
 
 export default function Footer() {
   const scrollToTop = () => {
-    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+    document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
     <FooterWrapper>
@@ -71,7 +71,7 @@ export default function Footer() {
         </ScrollToTopButton>
       </FooterBottom>
     </FooterWrapper>
-  );
+  )
 }
 
 const FooterWrapper = styled.footer`
@@ -82,7 +82,7 @@ const FooterWrapper = styled.footer`
   flex-direction: column;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(4)};
-`;
+`
 
 const FooterContent = styled.div`
   max-width: ${({ theme }) => theme.breakpoints.xl};
@@ -91,26 +91,26 @@ const FooterContent = styled.div`
   flex-direction: column;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(4)};
-`;
+`
 
 const FooterGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: ${({ theme }) => theme.spacing(4)};
   width: 100%;
-`;
+`
 
 const FooterColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(3)};
-`;
+`
 
 const FooterTitle = styled.h4`
   font-size: ${({ theme }) => theme.typography.fontSize.h4};
   color: ${({ theme }) => theme.colors.neutral.ultraLight};
   margin: 0;
-`;
+`
 
 const ContactList = styled.ul`
   list-style: none;
@@ -119,7 +119,7 @@ const ContactList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(2)};
-`;
+`
 
 const ContactItem = styled.li`
   display: flex;
@@ -127,7 +127,7 @@ const ContactItem = styled.li`
   gap: ${({ theme }) => theme.spacing(2)};
   font-size: ${({ theme }) => theme.typography.fontSize.body};
   color: ${({ theme }) => theme.colors.neutral.ultraLight};
-`;
+`
 
 const ContactLink = styled.a`
   color: ${({ theme }) => theme.colors.neutral.lightest};
@@ -137,12 +137,12 @@ const ContactLink = styled.a`
   &:hover {
     color: ${({ theme }) => theme.colors.accent.main};
   }
-`;
+`
 
 const SocialIcons = styled.div`
   display: flex;
   gap: ${({ theme }) => theme.spacing(2)};
-`;
+`
 
 const IconLink = styled.a`
   color: ${({ theme }) => theme.colors.neutral.ultraLight};
@@ -155,7 +155,7 @@ const IconLink = styled.a`
     color: ${({ theme }) => theme.colors.accent.main};
     transform: scale(1.1);
   }
-`;
+`
 
 const FooterBottom = styled.div`
   display: flex;
@@ -170,11 +170,11 @@ const FooterBottom = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
   }
-`;
+`
 
 const Copyright = styled.p`
   margin: 0;
-`;
+`
 
 const ScrollToTopButton = styled.button`
   background: ${({ theme }) => theme.colors.accent.main};
@@ -201,4 +201,4 @@ const ScrollToTopButton = styled.button`
     outline: 2px solid ${({ theme }) => theme.colors.accent.light};
     outline-offset: 2px;
   }
-`;
+`

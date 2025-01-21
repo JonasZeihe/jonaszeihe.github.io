@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   HeroWrapper,
   SectionWrapper,
@@ -9,11 +9,11 @@ import {
   Badge,
   Button,
   Lightbox,
-} from '../../../../utils/sharedComponents';
-import ShizenImage from '../../../../assets/images/Projects/shizen-logo.png';
+} from '../../../../utils/sharedComponents'
+import ShizenImage from '../../../../assets/images/Projects/shizen-logo.png'
 
 export default function ShizenDetails() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
   // Features von Shizen
   const features = [
@@ -66,7 +66,7 @@ export default function ShizenDetails() {
         </>
       ),
     },
-  ];
+  ]
 
   // Badges für Shizen
   const badges = [
@@ -79,7 +79,7 @@ export default function ShizenDetails() {
     { label: 'Responsive Design', icon: 'FaMobileAlt', variant: 'accent' },
     { label: 'UX/UI Best Practices', icon: 'FaPalette', variant: 'secondary' },
     { label: 'Gamification', icon: 'FaTrophy', variant: 'primary' },
-  ];
+  ]
 
   return (
     <>
@@ -195,5 +195,5 @@ export default function ShizenDetails() {
         />
       )}
     </>
-  );
+  )
 }

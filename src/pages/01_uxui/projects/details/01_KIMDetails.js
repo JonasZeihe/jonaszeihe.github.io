@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   HeroWrapper,
   SectionWrapper,
@@ -9,11 +9,11 @@ import {
   Badge,
   Button,
   Lightbox,
-} from '../../../../utils/sharedComponents';
-import KimImage from '../../../../assets/images/Projects/kim_logo.png';
+} from '../../../../utils/sharedComponents'
+import KimImage from '../../../../assets/images/Projects/kim_logo.png'
 
 export default function KIMDetails() {
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false)
 
   const features = [
     {
@@ -55,7 +55,7 @@ export default function KIMDetails() {
         </>
       ),
     },
-  ];
+  ]
 
   const badges = [
     { label: 'UX/UI Design', icon: 'FaPalette', variant: 'primary' },
@@ -67,7 +67,7 @@ export default function KIMDetails() {
       icon: 'FaUniversalAccess',
       variant: 'primary',
     },
-  ];
+  ]
 
   return (
     <>
@@ -196,5 +196,5 @@ export default function KIMDetails() {
         />
       )}
     </>
-  );
+  )
 }

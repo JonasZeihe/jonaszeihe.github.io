@@ -1,12 +1,12 @@
 // src/pages/react/projects/01_ColorPal.js
-import React, { useState } from 'react';
-import ProjectCard from '../../../components/layout/ProjectCard';
-import ModalOverlay from '../../../components/lightbox/ModalOverlay';
-import ColorPalDetails from './details/01_ColorPalDetails';
-import ColorPalImage from '../../../assets/images/Projects/colorpal_logo.png';
+import React, { useState } from 'react'
+import ProjectCard from '../../../components/layout/ProjectCard'
+import ModalOverlay from '../../../components/lightbox/ModalOverlay'
+import ColorPalDetails from './details/01_ColorPalDetails'
+import ColorPalImage from '../../../assets/images/Projects/colorpal_logo.png'
 
 export default function ColorPal() {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   // Projekt-Daten für die Card
   const colorPalProject = {
@@ -19,7 +19,7 @@ export default function ColorPal() {
       { label: 'JSON Handling', icon: 'FaFileCode', variant: 'accent' },
     ],
     githubLink: 'https://github.com/jonaszeihe/colorpal',
-  };
+  }
 
   return (
     <>
@@ -36,5 +36,5 @@ export default function ColorPal() {
         </ModalOverlay>
       )}
     </>
-  );
+  )
 }

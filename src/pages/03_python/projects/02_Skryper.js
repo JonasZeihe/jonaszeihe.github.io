@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import ProjectCard from '../../../components/layout/ProjectCard';
-import ModalOverlay from '../../../components/lightbox/ModalOverlay';
-import SkryperDetails from './details/02_SkryperDetails';
-import SkryperLogo from '../../../assets/images/Projects/skryper_logo.png';
+import React, { useState } from 'react'
+import ProjectCard from '../../../components/layout/ProjectCard'
+import ModalOverlay from '../../../components/lightbox/ModalOverlay'
+import SkryperDetails from './details/02_SkryperDetails'
+import SkryperLogo from '../../../assets/images/Projects/skryper_logo.png'
 
 export default function Skryper() {
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   // Kompakte Daten für die Card
   const skryperProject = {
@@ -20,7 +20,7 @@ export default function Skryper() {
       { label: 'Clean Code', icon: 'FaCode', variant: 'secondary' },
     ],
     githubLink: 'https://github.com/jonaszeihe/skryper',
-  };
+  }
 
   return (
     <>
@@ -34,5 +34,5 @@ export default function Skryper() {
         </ModalOverlay>
       )}
     </>
-  );
+  )
 }

@@ -1,32 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 function SmoothScroller({ targetId, children }) {
   const handleClick = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const target = document.getElementById(targetId);
+    const target = document.getElementById(targetId)
     if (target) {
       try {
         target.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
-        });
+        })
       } catch {
         window.scrollTo({
           top: target.offsetTop,
           behavior: 'smooth',
-        });
+        })
       }
     }
-  };
+  }
 
   const handleKeyDown = (e) => {
     if (['Enter', ' '].includes(e.key)) {
-      e.preventDefault();
-      handleClick(e);
+      e.preventDefault()
+      handleClick(e)
     }
-  };
+  }
 
   return (
     <button
@@ -41,12 +41,12 @@ function SmoothScroller({ targetId, children }) {
     >
       {children}
     </button>
-  );
+  )
 }
 
 SmoothScroller.propTypes = {
   targetId: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-};
+}
 
-export default SmoothScroller;
+export default SmoothScroller

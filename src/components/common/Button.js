@@ -1,6 +1,6 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import PropTypes from 'prop-types';
+import React from 'react'
+import styled, { css } from 'styled-components'
+import PropTypes from 'prop-types'
 
 // Styled Components
 const StyledButton = styled.button`
@@ -10,16 +10,16 @@ const StyledButton = styled.button`
       small: theme.typography.fontSize.caption,
       medium: theme.typography.fontSize.body,
       large: theme.typography.fontSize.h3,
-    };
-    return sizes[size] || sizes.medium;
+    }
+    return sizes[size] || sizes.medium
   }};
   padding: ${({ size, theme }) => {
     const paddings = {
       small: `${theme.spacing(2)} ${theme.spacing(3)}`,
       medium: `${theme.spacing(3)} ${theme.spacing(5)}`,
       large: `${theme.spacing(4)} ${theme.spacing(6)}`,
-    };
-    return paddings[size] || paddings.medium;
+    }
+    return paddings[size] || paddings.medium
   }};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   border: none;
@@ -77,8 +77,8 @@ const StyledButton = styled.button`
           box-shadow: ${theme.boxShadow.medium};
         }
       `,
-    };
-    return variants[$variant] || variants.primary;
+    }
+    return variants[$variant] || variants.primary
   }}
 
   /* Disabled Styling */
@@ -106,14 +106,14 @@ const StyledButton = styled.button`
   &:active {
     transform: scale(0.98);
   }
-`;
+`
 
 // Icon Wrapper
 const IconWrapper = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-`;
+`
 
 // Button Component
 function Button({
@@ -134,7 +134,7 @@ function Button({
       {icon && <IconWrapper>{icon}</IconWrapper>}
       {children}
     </StyledButton>
-  );
+  )
 }
 
 // Prop Types
@@ -151,7 +151,7 @@ Button.propTypes = {
   icon: PropTypes.node,
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
-};
+}
 
 // Default Props
 Button.defaultProps = {
@@ -160,6 +160,6 @@ Button.defaultProps = {
   disabled: false,
   icon: null,
   onClick: () => {},
-};
+}
 
-export default Button;
+export default Button
