@@ -11,7 +11,9 @@ export default function JavaPage() {
       <JavaIntroduction />
       <CardGrid>
         {projects.map(({ name, component: ProjectComponent }) => (
-          <ProjectComponent key={name} id={name} />
+          <div key={name} id={name} style={{ scrollMarginTop: '80px' }}>
+            <ProjectComponent />
+          </div>
         ))}
       </CardGrid>
     </>

@@ -15,7 +15,9 @@ export default function ReactPage() {
       {/* Projekte in Grid */}
       <CardGrid>
         {projects.map(({ name, component: ProjectComponent }) => (
-          <ProjectComponent key={name} id={name} />
+          <div key={name} id={name} style={{ scrollMarginTop: '80px' }}>
+            <ProjectComponent />
+          </div>
         ))}
       </CardGrid>
     </>
