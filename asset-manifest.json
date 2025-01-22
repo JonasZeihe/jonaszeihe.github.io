@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.483a27a7.js",
+    "main.js": "/static/js/main.c471b0ef.js",
     "static/media/flavorfusion_logo.png": "/static/media/flavorfusion_logo.7b7af6c135b430d1f24f.png",
     "static/media/kim_logo.png": "/static/media/kim_logo.d22cae88d40cb293012a.png",
     "static/media/skryper_logo.png": "/static/media/skryper_logo.ed49f4c05230f8238b55.png",
@@ -10,9 +10,9 @@
     "static/media/noctua_logo.png": "/static/media/noctua_logo.c500ffa8d5bc50fa23a2.png",
     "static/media/colorpal_logo.png": "/static/media/colorpal_logo.ab5e992f358da6d2d82b.png",
     "index.html": "/index.html",
-    "main.483a27a7.js.map": "/static/js/main.483a27a7.js.map"
+    "main.c471b0ef.js.map": "/static/js/main.c471b0ef.js.map"
   },
   "entrypoints": [
-    "static/js/main.483a27a7.js"
+    "static/js/main.c471b0ef.js"
   ]
 }
