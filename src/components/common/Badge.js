@@ -15,17 +15,29 @@ const BadgeContainer = styled.div`
       : theme.colors[variant]?.contrast || theme.colors.neutral.ultraLight};
   border-radius: ${({ theme }) => theme.borderRadius.pill};
   padding: ${({ theme }) => `${theme.spacing(0.8)} ${theme.spacing(2)}`};
+  font-size: ${({ theme }) => theme.typography.fontSize.body};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
+  white-space: nowrap;
   box-shadow: ${({ theme }) => theme.boxShadow.light};
   transition:
     background-color 0.3s ease,
     box-shadow 0.3s ease;
 
+  &:hover {
+    background-color: ${({ theme, variant, customColor }) =>
+      customColor
+        ? theme.colors.neutral.dark
+        : theme.colors[variant]?.dark || theme.colors.primary.dark};
+    box-shadow: ${({ theme }) => theme.boxShadow.medium};
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: ${({ theme }) => `${theme.spacing(0.6)} ${theme.spacing(1.5)}`};
-    font-size: ${({ theme }) => theme.typography.fontSize.xsmall};
+    font-size: ${({ theme }) => theme.typography.fontSize.small};
     gap: ${({ theme }) => theme.spacing(0.6)};
   }
 `
+
 const IconWrapper = styled.span`
   display: flex;
   align-items: center;

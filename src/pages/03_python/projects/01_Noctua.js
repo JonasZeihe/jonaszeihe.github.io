@@ -32,7 +32,11 @@ export default function Noctua() {
 
   return (
     <>
-      <ProjectCard project={noctuaProject} onOpen={() => setShowModal(true)} />
+      <ProjectCard
+        project={noctuaProject}
+        gradient="secondaryBold.subtle"
+        onOpen={() => setShowModal(true)}
+      />
 
       {showModal && (
         <ModalOverlay onClose={() => setShowModal(false)}>

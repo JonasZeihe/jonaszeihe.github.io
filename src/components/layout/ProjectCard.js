@@ -4,47 +4,69 @@ import {
   Badge,
   Typography,
   Button,
-  CardWrapper,
+  CardWrapper as BaseCardWrapper,
 } from '../../utils/sharedComponents'
 
 // Styled Components
+const CardWrapper = styled(BaseCardWrapper)`
+  background: ${({ theme, gradient }) =>
+    gradient ? theme.gradients[gradient] : theme.gradients.neutralSoft};
+  border: 1px solid ${({ theme }) => theme.colors.neutral.light};
+  border-radius: ${({ theme }) => theme.borderRadius.large};
+  box-shadow: ${({ theme }) => theme.boxShadow.medium};
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: ${({ theme }) => theme.boxShadow.heavy};
+  }
+`
+
 const ImageWrapper = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing(1)};
+  position: relative;
+  width: 100%;
+  padding: 50%;
+  overflow: hidden;
+
   img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    border-radius: ${({ theme }) => theme.borderRadius.medium};
-    box-shadow: ${({ theme }) => theme.boxShadow.light};
+    height: 100%;
+    object-fit: cover; /* Ensures consistent cropping */
     transition: transform 0.3s ease;
   }
 `
 
 const ContentWrapper = styled.div`
-  padding: ${({ theme }) => theme.spacing(2)};
+  padding: ${({ theme }) => theme.spacing(1)};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing(1)};
-  }
+  flex-grow: 1; /* Ensures content fills available space */
 `
 
 const BadgeContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: ${({ theme }) => theme.spacing(1)};
+  gap: ${({ theme }) => theme.spacing(1.5)};
   margin: ${({ theme }) => theme.spacing(1)} 0;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    gap: ${({ theme }) => theme.spacing(0.5)};
-  }
 `
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: ${({ theme }) => theme.spacing(2)};
-  margin-top: ${({ theme }) => theme.spacing(3)};
-  padding: ${({ theme }) => theme.spacing(2)};
+  gap: ${({ theme }) => theme.spacing(1)};
+  margin-top: ${({ theme }) => theme.spacing(2)};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
@@ -52,10 +74,8 @@ const ButtonContainer = styled.div`
   }
 `
 
-export default function ProjectCard({ project, onOpen }) {
-  const handleCardClick = () => {
-    onOpen()
-  }
+export default function ProjectCard({ project, gradient, onOpen }) {
+  const handleCardClick = () => onOpen()
 
   const handleOpenButtonClick = (e) => {
     e.stopPropagation()
@@ -70,7 +90,7 @@ export default function ProjectCard({ project, onOpen }) {
   }
 
   return (
-    <CardWrapper onClick={handleCardClick}>
+    <CardWrapper gradient={gradient} onClick={handleCardClick}>
       <ImageWrapper>
         <img src={project.image} alt={project.name} />
       </ImageWrapper>
@@ -78,7 +98,7 @@ export default function ProjectCard({ project, onOpen }) {
         <Typography variant="h2" align="center" color="primary.main">
           {project.name}
         </Typography>
-        <Typography variant="body" align="left" color="secondary.darkest">
+        <Typography variant="body" align="center" color="depth.darkest">
           {project.description}
         </Typography>
         <BadgeContainer>

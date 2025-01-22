@@ -71,8 +71,7 @@ export default function KIMDetails() {
 
   return (
     <>
-      {/* Hero-Bereich */}
-      <SectionWrapper backgroundColor="primary.lightest" elevated>
+      <SectionWrapper backgroundColor="primary.lightest">
         <HeroWrapper gradient="neutralSoft">
           <Typography variant="h1" align="center" color="depth.dark">
             🌟 KIM – Your Friend to Meet New Friends
@@ -106,7 +105,6 @@ export default function KIMDetails() {
         </Typography>
       </SectionWrapper>
 
-      {/* Feature-Liste */}
       <SectionWrapper backgroundColor="secondary.lightest">
         <Typography variant="h2" align="center" color="depth.dark">
           🚀 Features von <HighlightText>KIM</HighlightText>
@@ -114,8 +112,7 @@ export default function KIMDetails() {
         <ListComponent items={features} />
       </SectionWrapper>
 
-      {/* Badges */}
-      <SectionWrapper backgroundColor="primary.lightest" elevated>
+      <SectionWrapper backgroundColor="primary.lightest">
         <Typography variant="h2" align="center" color="depth.dark">
           🛡️ Technologien hinter <HighlightText>KIM</HighlightText>
         </Typography>
@@ -134,7 +131,6 @@ export default function KIMDetails() {
         </div>
       </SectionWrapper>
 
-      {/* Aktueller Stand */}
       <SectionWrapper backgroundColor="secondary.lightest">
         <Typography variant="h2" align="center" color="primary.dark">
           🚦 Aktueller Stand und nächste Schritte
@@ -152,7 +148,6 @@ export default function KIMDetails() {
         </Typography>
       </SectionWrapper>
 
-      {/* Call-to-Actions */}
       <SectionWrapper backgroundColor="neutral.lightest">
         <div
           style={{
@@ -187,7 +182,6 @@ export default function KIMDetails() {
         </div>
       </SectionWrapper>
 
-      {/* Lightbox (nur für Bildvergrößerung) */}
       {lightboxOpen && (
         <Lightbox
           media={[{ type: 'image', src: KimImage, alt: 'KIM Project Image' }]}
