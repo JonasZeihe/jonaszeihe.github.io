@@ -7,7 +7,7 @@ const CardWrapper = styled(WrapperBase)`
   margin: ${({ theme }) => theme.spacing(1)} auto;
   padding: ${({ theme }) => theme.spacing(1)};
 
-  padding: ${({ theme }) => theme.spacing(1)};
+  padding: ${({ theme }) => theme.spacing(0)};
   border-radius: ${({ theme }) => theme.borderRadius.large};
   box-shadow: ${({ theme }) => theme.boxShadow.medium};
   overflow: hidden;

@@ -29,7 +29,11 @@ export default function InkGrid() {
   return (
     <>
       {/* Kompakte Card-Ansicht */}
-      <ProjectCard project={inkGridProject} onOpen={() => setShowModal(true)} />
+      <ProjectCard
+        project={inkGridProject}
+        gradient="warmBold.subtle"
+        onOpen={() => setShowModal(true)}
+      />
 
       {/* Overlay mit Detail-Komponente */}
       {showModal && (

@@ -26,6 +26,7 @@ export default function ColorPal() {
       {/* Card-Ansicht (kompakt) */}
       <ProjectCard
         project={colorPalProject}
+        gradient="accentPlayful.subtle"
         onOpen={() => setShowModal(true)}
       />
 

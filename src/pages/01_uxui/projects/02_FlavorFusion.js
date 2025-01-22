@@ -27,6 +27,7 @@ export default function FlavorFusion() {
       {/* Card-Ansicht */}
       <ProjectCard
         project={flavorFusionProject}
+        gradient="accentSoft.subtle"
         onOpen={() => setShowModal(true)}
       />
 

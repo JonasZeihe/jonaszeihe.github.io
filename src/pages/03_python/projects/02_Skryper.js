@@ -25,7 +25,11 @@ export default function Skryper() {
   return (
     <>
       {/* Card-Ansicht */}
-      <ProjectCard project={skryperProject} onOpen={() => setShowModal(true)} />
+      <ProjectCard
+        project={skryperProject}
+        gradient="primaryToSecondary.subtle"
+        onOpen={() => setShowModal(true)}
+      />
 
       {/* Overlay mit Detail-Komponente */}
       {showModal && (

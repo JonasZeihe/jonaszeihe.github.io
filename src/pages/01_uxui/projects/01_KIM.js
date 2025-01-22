@@ -7,7 +7,6 @@ import KimImage from '../../../assets/images/Projects/kim_logo.png'
 export default function KIM() {
   const [showModal, setShowModal] = useState(false)
 
-  // Kompakte Projekt-Daten für die Card
   const kimProject = {
     image: KimImage,
     name: 'KIM',
@@ -23,17 +22,21 @@ export default function KIM() {
         variant: 'primary',
       },
     ],
-    // Falls du einen GitHub-Link hättest: githubLink: 'https://github.com/...',
   }
 
   return (
     <>
-      {/* Card-Ansicht */}
-      <ProjectCard project={kimProject} onOpen={() => setShowModal(true)} />
+      <ProjectCard
+        project={kimProject}
+        gradient="depthToHighlight.subtle"
+        onOpen={() => setShowModal(true)}
+      />
 
-      {/* ModalOverlay für die Detail-Komponente */}
       {showModal && (
-        <ModalOverlay onClose={() => setShowModal(false)}>
+        <ModalOverlay
+          onClose={() => setShowModal(false)}
+          gradient="depthToHighlight.subtle"
+        >
           <KIMDetails />
         </ModalOverlay>
       )}

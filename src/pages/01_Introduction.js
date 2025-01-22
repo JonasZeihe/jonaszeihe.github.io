@@ -16,6 +16,7 @@ export default function Introduction() {
       description:
         'Ein KI-gestütztes Tool für dynamische Persönlichkeitsprofile und Gruppenmatching.',
       tags: ['UX/UI Design'],
+      gradient: 'depthToHighlight.subtle', // Verwende die .subtle-Variante
     },
     {
       id: '01_Shizen',
@@ -23,6 +24,7 @@ export default function Introduction() {
       description:
         'Ein LMS mit dynamischen Kursinhalten, Gamification und skalierbarer Architektur.',
       tags: ['Java', 'React', 'MongoDB'],
+      gradient: 'primaryLight.subtle', // Subtle-Variante für sekundäre Palette
     },
     {
       id: '02_Skryper',
@@ -30,18 +32,19 @@ export default function Introduction() {
       description:
         'Analyse und Visualisierung in perfekter Harmonie. Effiziente Verzeichnisscans und automatisierte Projektstrukturen.',
       tags: ['Python'],
+      gradient: 'warmDynamic.subtle', // Subtle-Variante für Akzent-Palette
     },
   ]
 
   return (
     <>
-      <HeroWrapper gradient="accentToPrimary" elevated>
+      <HeroWrapper gradient="accentToPrimary">
         <Typography variant="h1" align="center" color="neutral.ultraLight">
           🎨 Design trifft Funktion – Mein Portfolio
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
+      <SectionWrapper backgroundColor="neutral.lightest">
         <Typography variant="h3" align="left" color="depth.main">
           <HighlightText>Willkommen</HighlightText> in meiner Welt, wo
           Kreativität auf Technologie trifft, um intuitive und skalierbare
@@ -65,6 +68,7 @@ export default function Introduction() {
                 description={project.description}
                 tags={project.tags}
                 targetId={project.id}
+                gradient={project.gradient}
               />
             ))}
           </CardGrid>

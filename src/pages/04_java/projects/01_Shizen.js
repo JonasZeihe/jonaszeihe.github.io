@@ -33,7 +33,11 @@ export default function Shizen() {
   return (
     <>
       {/* Kompakte Card-Ansicht */}
-      <ProjectCard project={shizenProject} onOpen={() => setShowModal(true)} />
+      <ProjectCard
+        project={shizenProject}
+        gradient="primaryLight.subtle"
+        onOpen={() => setShowModal(true)}
+      />
 
       {/* Overlay mit Detail-Komponente */}
       {showModal && (

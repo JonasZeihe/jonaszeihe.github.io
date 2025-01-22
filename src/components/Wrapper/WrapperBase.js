@@ -26,6 +26,7 @@ const WrapperBase = styled.div`
   margin: ${({ theme }) => theme.spacing(2)} auto;
   width: 100%;
   max-width: ${({ theme }) => theme.breakpoints.xl};
+  scroll-margin-top: 80px;
 
   /* Smooth Transition für alle wichtigen Eigenschaften */
   transition:

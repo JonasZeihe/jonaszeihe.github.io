@@ -27,6 +27,7 @@ export default function Structra() {
       {/* Card-Ansicht */}
       <ProjectCard
         project={structraProject}
+        gradient="warmDynamic.subtle"
         onOpen={() => setShowModal(true)}
       />
 
