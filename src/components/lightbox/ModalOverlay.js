@@ -30,7 +30,7 @@ const ContentWrapper = styled.div`
   color: ${({ theme }) => theme.colors.neutral.dark};
   border-radius: ${({ theme }) => theme.borderRadius.large};
   box-shadow: ${({ theme }) => theme.boxShadow.heavy};
-  padding: ${({ theme }) => theme.spacing(2)};
+  padding: ${({ theme }) => `0 ${theme.spacing(2)}`};
   scrollbar-width: thin;
   scrollbar-color: ${({ theme }) => theme.colors.neutral.dark}
     ${({ theme }) => theme.colors.neutral.ultraLight};

@@ -73,9 +73,6 @@ export default function KIMDetails() {
     <>
       <SectionWrapper backgroundColor="primary.lightest">
         <HeroWrapper gradient="neutralSoft">
-          <Typography variant="h1" align="center" color="depth.dark">
-            🌟 KIM – Your Friend to Meet New Friends
-          </Typography>
           <MediaDisplay
             media={[
               {
@@ -86,6 +83,9 @@ export default function KIMDetails() {
             ]}
             onClick={() => setLightboxOpen(true)}
           />
+          <Typography variant="h1" align="center" color="depth.dark">
+            🌟 KIM – Your Friend to Meet New Friends
+          </Typography>
         </HeroWrapper>
 
         <Typography
