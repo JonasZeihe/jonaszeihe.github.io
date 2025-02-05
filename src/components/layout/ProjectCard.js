@@ -7,7 +7,6 @@ import {
   CardWrapper as BaseCardWrapper,
 } from '../../utils/sharedComponents'
 
-// Styled Components
 const CardWrapper = styled(BaseCardWrapper)`
   background: ${({ theme, gradient }) =>
     gradient ? theme.gradients[gradient] : theme.gradients.neutralSoft};
@@ -74,7 +73,7 @@ const ButtonContainer = styled.div`
   }
 `
 
-export default function ProjectCard({ project, gradient, onOpen }) {
+function ProjectCard({ project, gradient, onOpen }) {
   const handleCardClick = () => onOpen()
 
   const handleOpenButtonClick = (e) => {
@@ -125,3 +124,5 @@ export default function ProjectCard({ project, gradient, onOpen }) {
     </CardWrapper>
   )
 }
+
+export default ProjectCard

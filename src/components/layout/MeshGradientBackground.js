@@ -25,14 +25,14 @@ const BackgroundContainer = styled.div`
 const GradientLayer = styled.div`
   position: absolute;
   width: 150%;
-  height: 150%;
+  height: 300%;
   top: ${({ position }) => (position === 'bottom-right' ? 'auto' : '-10%')};
   left: ${({ position }) => (position === 'bottom-right' ? 'auto' : '-10%')};
   bottom: ${({ position }) => (position === 'bottom-right' ? '-20%' : 'auto')};
   right: ${({ position }) => (position === 'bottom-right' ? '-20%' : 'auto')};
   background: ${({ theme, gradient }) => theme.gradients[gradient]};
-  filter: blur(120px);
-  opacity: 1.5;
+  filter: blur(200px);
+  opacity: 1.2;
   z-index: 1;
   mix-blend-mode: overlay;
 `

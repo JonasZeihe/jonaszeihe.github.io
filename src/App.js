@@ -11,7 +11,7 @@ import PythonPage from './pages/03_python/PythonPage'
 import JavaPage from './pages/04_java/JavaPage'
 
 const Main = styled.main`
-  padding: ${({ theme }) => theme.spacing(9)} ${({ theme }) => theme.spacing(1)};
+  padding: ${({ theme }) => theme.spacing(7)} ${({ theme }) => theme.spacing(1)};
   max-width: ${({ theme }) => theme.breakpoints.xl};
   margin: auto;
 `
@@ -78,5 +78,5 @@ export default function App() {
 }
 
 const Section = styled.div`
-  scroll-margin-top: ${({ theme }) => theme.spacing(9)};
+  scroll-margin-top: ${({ theme }) => theme.spacing(7)};
 `

@@ -1,8 +1,8 @@
 const createGradient = (color1, color2, angle = 135) =>
   `linear-gradient(${angle}deg, ${color1}, ${color2})`
 
-const createSubtleGradient = (color1, middleColor, color2, angle = 135) =>
-  `linear-gradient(${angle}deg, ${color1}, ${middleColor}, ${color2})`
+const createSubtleGradient = (color1, middleColor, color2, angle = 127) =>
+  `linear-gradient(${angle}deg, ${color1} 0%, ${color1} 10%, ${middleColor} 10%, ${middleColor} 90%, ${color2} 90%, ${color2} 100%)`
 
 const generateSubtleVariants = (baseGradients, theme) =>
   Object.entries(baseGradients).reduce((acc, [key, gradient]) => {
@@ -71,12 +71,12 @@ const gradients = (theme) => {
 
     // Highlight Palette (Auffallend und Lebendig)
     highlightSoft: createGradient(
-      theme.colors.highlight.ultraLight,
+      theme.colors.highlight.lightest,
       theme.colors.highlight.main
     ),
     highlightBright: createGradient(
-      theme.colors.highlight.main,
-      theme.colors.highlight.dark
+      theme.colors.highlight.light,
+      theme.colors.highlight.main
     ),
     highlightDynamic: createGradient(
       theme.colors.highlight.light,

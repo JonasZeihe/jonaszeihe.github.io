@@ -1,11 +1,16 @@
 import styled from 'styled-components'
 
 const HeroWrapper = styled.div`
+  /* Erzwingt, dass der Hero 100% der Viewport-Breite einnimmt */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
   /* Breite und anfängliche Höhe */
-  width: 100%;
   min-height: 50vh;
-  padding: ${({ theme }) => theme.spacing(4)};
-  margin: auto;
 
   /* Zentrierung und Ausrichtung */
   display: flex;
@@ -34,18 +39,13 @@ const HeroWrapper = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     min-height: 25vh;
     padding: ${({ theme }) => theme.spacing(2)};
-    & > * {
-    }
   }
 
   /* Anpassung für kleinere Bildschirme */
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     margin-top: ${({ theme }) => theme.spacing(2)};
-
     min-height: 20vh;
     padding: ${({ theme }) => theme.spacing(2)};
-    & > * {
-    }
   }
 `
 
