@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 import Lightbox from '../lightbox/Lightbox'
 
 // Styled Components
@@ -148,17 +147,4 @@ export default function MediaDisplay({ media }) {
       )}
     </>
   )
-}
-
-MediaDisplay.propTypes = {
-  media: PropTypes.arrayOf(
-    PropTypes.shape({
-      type: PropTypes.oneOf(['image', 'video']).isRequired,
-      src: PropTypes.string.isRequired,
-      alt: PropTypes.string,
-      caption: PropTypes.string,
-      trackSrc: PropTypes.string,
-      trackLang: PropTypes.string,
-    })
-  ).isRequired,
 }

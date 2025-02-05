@@ -8,8 +8,16 @@ const CardGrid = styled.div`
   align-items: start;
   margin: ${({ theme }) => theme.spacing(1)};
   padding: ${({ theme }) => theme.spacing(1)};
+  transition: all 0.3s ease-in-out;
 
-  /* Anpassung an kleinere Geräte */
+  /* On larger screens, if only one card is present, limit its width */
+  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+    & > *:only-child {
+      max-width: 500px;
+      justify-self: center;
+    }
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: ${({ theme }) => theme.spacing(1)};
@@ -22,9 +30,6 @@ const CardGrid = styled.div`
     padding: ${({ theme }) => theme.spacing(0)};
     margin: ${({ theme }) => theme.spacing(0)};
   }
-
-  /* Sanfte Übergänge */
-  transition: all 0.3s ease-in-out;
 `
 
 export default CardGrid
