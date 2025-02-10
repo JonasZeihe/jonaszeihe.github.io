@@ -1,54 +1,19 @@
 import React from 'react'
-import styled from 'styled-components'
-
 import {
   HeroWrapper,
   SectionWrapper,
   Typography,
   HighlightText,
-  Badge,
 } from '../../utils/sharedComponents'
-
-const BadgeGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${({ theme }) => theme.spacing(2)};
-  justify-content: center;
-  margin-top: ${({ theme }) => theme.spacing(3)};
-`
+import BadgeGrid from '../../components/common/BadgeGrid'
 
 export default function PythonIntroduction() {
   const coreFeatures = [
-    {
-      id: 'feature-1',
-      label: 'Strukturierte Entwicklung',
-      icon: 'FaFolderOpen',
-      variant: 'secondary',
-    },
-    {
-      id: 'feature-2',
-      label: 'Effizienz',
-      icon: 'FaBolt',
-      variant: 'success',
-    },
-    {
-      id: 'feature-3',
-      label: 'Skalierbarkeit',
-      icon: 'FaChartLine',
-      variant: 'info',
-    },
-    {
-      id: 'feature-4',
-      label: 'AI-Unterstützung',
-      icon: 'FaRobot',
-      variant: 'accent',
-    },
-    {
-      id: 'feature-5',
-      label: 'Flexibilität',
-      icon: 'FaTools',
-      variant: 'warning',
-    },
+    'structured-development',
+    'efficiency',
+    'scalability',
+    'ai-support',
+    'flexibility',
   ]
 
   return (
@@ -73,16 +38,7 @@ export default function PythonIntroduction() {
           während sie gleichzeitig Prozesse optimieren und die Kreativität
           fördern.
         </Typography>
-        <BadgeGrid>
-          {coreFeatures.map((feature) => (
-            <Badge
-              key={feature.id}
-              label={feature.label}
-              icon={feature.icon}
-              variant={feature.variant}
-            />
-          ))}
-        </BadgeGrid>
+        <BadgeGrid badges={coreFeatures} />
       </SectionWrapper>
     </>
   )

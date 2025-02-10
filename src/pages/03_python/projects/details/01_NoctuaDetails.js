@@ -6,16 +6,15 @@ import {
   Typography,
   HighlightText,
   ListComponent,
-  Badge,
   Button,
   Lightbox,
 } from '../../../../utils/sharedComponents'
+import BadgeGrid from '../../../../components/common/BadgeGrid'
 import NoctuaLogo from '../../../../assets/images/Projects/noctua_logo.png'
 
 export default function NoctuaDetails() {
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
-  // Features von Noctua
   const features = [
     {
       id: 'feature-1',
@@ -64,26 +63,16 @@ export default function NoctuaDetails() {
     },
   ]
 
-  // Badges für Noctua
   const badges = [
-    { label: 'Python 3.10+', icon: 'FaPython', variant: 'primary' },
-    { label: 'TDD', icon: 'FaBug', variant: 'success' },
-    {
-      label: 'Domain Driven Design',
-      icon: 'FaProjectDiagram',
-      variant: 'accent',
-    },
-    {
-      label: 'Benutzerfreundliche GUI',
-      icon: 'FaMousePointer',
-      variant: 'secondary',
-    },
-    { label: 'Markdown-Export', icon: 'FaFileAlt', variant: 'warning' },
+    'python',
+    'tdd',
+    'domain-driven-design',
+    'user-friendly-gui',
+    'markdown-export',
   ]
 
   return (
     <>
-      {/* Hero-Bereich */}
       <HeroWrapper gradient="secondaryBold">
         <MediaDisplay
           media={[{ type: 'image', src: NoctuaLogo, alt: 'Noctua Logo' }]}
@@ -95,7 +84,6 @@ export default function NoctuaDetails() {
         </Typography>
       </HeroWrapper>
 
-      {/* Einführung */}
       <SectionWrapper backgroundColor="primary.lightest" elevated>
         <SectionWrapper backgroundColor="depth.dark" elevated>
           <Typography variant="h2" align="center" color="accent.main">
@@ -110,7 +98,6 @@ export default function NoctuaDetails() {
           </Typography>
         </SectionWrapper>
 
-        {/* Aktueller Stand */}
         <SectionWrapper backgroundColor="depth.dark" elevated>
           <Typography variant="h3" align="center" color="accent.main">
             🚦 Aktueller Stand
@@ -131,7 +118,6 @@ export default function NoctuaDetails() {
           </Typography>
         </SectionWrapper>
 
-        {/* Features */}
         <SectionWrapper backgroundColor="depth.dark" elevated>
           <Typography variant="h2" align="center" color="primary.lightest">
             🔧 Funktionen von <HighlightText>Noctua</HighlightText>
@@ -139,27 +125,13 @@ export default function NoctuaDetails() {
           <ListComponent items={features} />
         </SectionWrapper>
 
-        {/* Badges */}
         <SectionWrapper backgroundColor="depth.dark">
           <Typography variant="h2" align="center" color="primary.lightest">
             🚀 Technologien hinter <HighlightText>Noctua</HighlightText>
           </Typography>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              gap: '1rem',
-              marginTop: '1rem',
-            }}
-          >
-            {badges.map(({ label, icon, variant }) => (
-              <Badge key={label} label={label} icon={icon} variant={variant} />
-            ))}
-          </div>
+          <BadgeGrid badges={badges} />
         </SectionWrapper>
 
-        {/* Call-to-Actions */}
         <SectionWrapper backgroundColor="depth.dark">
           <div
             style={{
@@ -182,7 +154,6 @@ export default function NoctuaDetails() {
         </SectionWrapper>
       </SectionWrapper>
 
-      {/* Lightbox (nur für das Logo) */}
       {lightboxOpen && (
         <Lightbox
           media={[{ type: 'image', src: NoctuaLogo, alt: 'Noctua Logo' }]}

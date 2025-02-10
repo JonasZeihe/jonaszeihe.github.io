@@ -1,18 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import * as Icons from 'react-icons/fa' // Dynamischer Icon-Import
+import * as Icons from 'react-icons/fa'
+import BadgeLibrary from './BadgeLibrary'
 
 const BadgeContainer = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(0.8)};
-  background-color: ${({ theme, variant, customColor }) =>
-    customColor || theme.colors[variant]?.main || theme.colors.primary.main};
-  color: ${({ theme, variant, customColor }) =>
-    customColor
-      ? theme.colors.neutral.ultraLight
-      : theme.colors[variant]?.contrast || theme.colors.neutral.ultraLight};
+  background-color: ${({ theme, customColor }) =>
+    customColor || theme.colors.primary.main};
+  color: ${({ theme }) => theme.colors.neutral.ultraLight};
   border-radius: ${({ theme }) => theme.borderRadius.pill};
   padding: ${({ theme }) => `${theme.spacing(0.8)} ${theme.spacing(2)}`};
   font-size: ${({ theme }) => theme.typography.fontSize.body};
@@ -24,10 +22,8 @@ const BadgeContainer = styled.div`
     box-shadow 0.3s ease;
 
   &:hover {
-    background-color: ${({ theme, variant, customColor }) =>
-      customColor
-        ? theme.colors.neutral.dark
-        : theme.colors[variant]?.dark || theme.colors.primary.dark};
+    background-color: ${({ theme, customColor }) =>
+      customColor ? theme.colors.neutral.dark : theme.colors.primary.dark};
     box-shadow: ${({ theme }) => theme.boxShadow.medium};
   }
 
@@ -50,16 +46,13 @@ const IconWrapper = styled.span`
   }
 `
 
-export default function Badge({
-  label,
-  icon,
-  variant = 'primary',
-  customColor,
-}) {
-  const Icon = Icons[icon]
+export default function Badge({ badgeKey, ...props }) {
+  const badge = BadgeLibrary[badgeKey] || {}
+  const { label, icon, customColor } = badge
+  const Icon = Icons[icon] || null
 
   return (
-    <BadgeContainer variant={variant} customColor={customColor}>
+    <BadgeContainer customColor={customColor} {...props}>
       {Icon && (
         <IconWrapper>
           <Icon />

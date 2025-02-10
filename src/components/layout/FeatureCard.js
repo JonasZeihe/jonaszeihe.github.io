@@ -1,12 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Badge, Typography } from '../../utils/sharedComponents'
+import { Button, Typography } from '../../utils/sharedComponents'
+import BadgeGrid from '../common/BadgeGrid'
 
-// Styled Components
 const CardWrapper = styled.div`
   background: ${({ theme, gradient }) =>
-    theme.gradients[gradient] ||
-    theme.gradients.secondaryLight}; // Dynamische Unterstützung aller Gradients
+    theme.gradients[gradient] || theme.gradients.secondaryLight};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   padding: ${({ theme }) => theme.spacing(3)};
   box-shadow: ${({ theme }) => theme.boxShadow.medium};
@@ -16,12 +15,11 @@ const CardWrapper = styled.div`
   align-items: center;
 `
 
-const TagContainer = styled.div`
+const ContentWrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  gap: ${({ theme }) => theme.spacing(1.5)};
-  justify-content: center;
-  margin: ${({ theme }) => theme.spacing(2)} 0;
+  flex-direction: column;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(2)};
 `
 
 const ButtonContainer = styled.div`
@@ -35,27 +33,24 @@ const scrollToSection = (id) => {
   if (section) section.scrollIntoView({ behavior: 'smooth' })
 }
 
-// FeatureCard Component
 export default function FeatureCard({
   title,
   description,
-  tags = [],
+  badges = [],
   targetId,
-  gradient, // Unterstützt alle Gradient-Varianten
+  gradient,
 }) {
   return (
     <CardWrapper gradient={gradient}>
-      <Typography variant="h2" align="center" color="primary.main">
-        {title}
-      </Typography>
-      <Typography variant="body" align="center" color="depth.dark">
-        {description}
-      </Typography>
-      <TagContainer>
-        {tags.map((tag) => (
-          <Badge key={tag} label={tag} variant="accent" />
-        ))}
-      </TagContainer>
+      <ContentWrapper>
+        <Typography variant="h2" align="center" color="primary.main">
+          {title}
+        </Typography>
+        <Typography variant="body" align="center" color="depth.dark">
+          {description}
+        </Typography>
+        <BadgeGrid badges={badges} />
+      </ContentWrapper>
       <ButtonContainer>
         <Button
           variant="primary"

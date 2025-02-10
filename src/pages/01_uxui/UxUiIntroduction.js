@@ -1,33 +1,20 @@
 import React from 'react'
-import styled from 'styled-components'
 import {
   HeroWrapper,
   SectionWrapper,
   Typography,
   HighlightText,
-  Badge,
 } from '../../utils/sharedComponents'
-
-const BadgeContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: ${({ theme }) => theme.spacing(2)};
-  flex-wrap: wrap;
-`
+import BadgeGrid from '../../components/common/BadgeGrid'
 
 export default function UxUiIntroduction() {
-  const badges = [
-    { label: 'UX/UI Design', icon: 'FaPalette', variant: 'primary' },
-    { label: 'Figma & FigJam', icon: 'FaFigma', variant: 'success' },
-    { label: 'User Research', icon: 'FaUserFriends', variant: 'accent' },
-    { label: 'Prototyping', icon: 'FaDraftingCompass', variant: 'secondary' },
-  ]
+  const badges = ['ux-ui-design', 'figma', 'user-research', 'prototyping']
 
   return (
     <>
       <HeroWrapper gradient="highlightSoft" elevated>
         <Typography variant="h1" align="center" color="depth.dark">
-          🌟 UX/UI Projekte
+          UX/UI Projekte
         </Typography>
       </HeroWrapper>
 
@@ -43,11 +30,7 @@ export default function UxUiIntroduction() {
           <HighlightText>Design und Technologie</HighlightText> harmonisch
           vereinen.
         </Typography>
-        <BadgeContainer>
-          {badges.map(({ label, icon, variant }) => (
-            <Badge key={label} label={label} icon={icon} variant={variant} />
-          ))}
-        </BadgeContainer>
+        <BadgeGrid badges={badges} />
       </SectionWrapper>
     </>
   )
