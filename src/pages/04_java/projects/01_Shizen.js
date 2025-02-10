@@ -7,39 +7,32 @@ import ShizenImage from '../../../assets/images/Projects/shizen-logo.png'
 export default function Shizen() {
   const [showModal, setShowModal] = useState(false)
 
-  // Kompakte Projekt-Daten für Shizen
   const shizenProject = {
     image: ShizenImage,
     name: 'Shizen',
     description: 'Die Plattform für modernes Lernen und Lehren',
     badges: [
-      { label: 'Java', icon: 'FaJava', variant: 'primary' },
-      { label: 'Spring Boot', icon: 'FaLeaf', variant: 'success' },
-      { label: 'Spring Security', icon: 'FaLock', variant: 'accent' },
-      { label: 'MongoDB', icon: 'FaDatabase', variant: 'secondary' },
-      { label: 'REST APIs', icon: 'FaNetworkWired', variant: 'primary' },
-      { label: 'React', icon: 'FaReact', variant: 'success' },
-      { label: 'Responsive Design', icon: 'FaMobileAlt', variant: 'accent' },
-      {
-        label: 'UX/UI Best Practices',
-        icon: 'FaPalette',
-        variant: 'secondary',
-      },
-      { label: 'Gamification', icon: 'FaTrophy', variant: 'primary' },
+      'java',
+      'spring-boot',
+      'spring-security',
+      'mongodb',
+      'rest-api',
+      'react',
+      'responsive-design',
+      'ux-ui-best-practices',
+      'gamification',
     ],
     githubLink: 'https://github.com/jonaszeihe/shizen',
   }
 
   return (
     <>
-      {/* Kompakte Card-Ansicht */}
       <ProjectCard
         project={shizenProject}
         gradient="primaryLight.subtle"
         onOpen={() => setShowModal(true)}
       />
 
-      {/* Overlay mit Detail-Komponente */}
       {showModal && (
         <ModalOverlay onClose={() => setShowModal(false)}>
           <ShizenDetails />

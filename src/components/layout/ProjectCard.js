@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import {
-  Badge,
   Typography,
   Button,
   CardWrapper as BaseCardWrapper,
 } from '../../utils/sharedComponents'
+import BadgeGrid from '../common/BadgeGrid'
 
 const CardWrapper = styled(BaseCardWrapper)`
   background: ${({ theme, gradient }) =>
@@ -39,7 +39,7 @@ const ImageWrapper = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures consistent cropping */
+    object-fit: cover;
     transition: transform 0.3s ease;
   }
 `
@@ -50,15 +50,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  flex-grow: 1; /* Ensures content fills available space */
-`
-
-const BadgeContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: ${({ theme }) => theme.spacing(1.5)};
-  margin: ${({ theme }) => theme.spacing(1)} 0;
+  flex-grow: 1;
 `
 
 const ButtonContainer = styled.div`
@@ -100,16 +92,7 @@ function ProjectCard({ project, gradient, onOpen }) {
         <Typography variant="body" align="center" color="depth.darkest">
           {project.description}
         </Typography>
-        <BadgeContainer>
-          {project.badges.map((badge) => (
-            <Badge
-              key={badge.label}
-              label={badge.label}
-              icon={badge.icon}
-              variant={badge.variant}
-            />
-          ))}
-        </BadgeContainer>
+        <BadgeGrid badges={project.badges} />
         <ButtonContainer>
           <Button variant="primary" onClick={handleOpenButtonClick}>
             Projekt ansehen

@@ -12,15 +12,11 @@ export default function KIM() {
     name: 'KIM',
     description: 'Your friend to meet new friends: KI & zugängliches Design.',
     badges: [
-      { label: 'UX/UI Design', icon: 'FaPalette', variant: 'primary' },
-      { label: 'Iteratives Prototyping', icon: 'FaRedo', variant: 'success' },
-      { label: 'Figma & FigJam', icon: 'FaFigma', variant: 'accent' },
-      { label: 'User-Centered Design', icon: 'FaUser', variant: 'secondary' },
-      {
-        label: 'Zugängliches Design',
-        icon: 'FaUniversalAccess',
-        variant: 'primary',
-      },
+      'ux-ui-design',
+      'iterative-prototyping',
+      'figma',
+      'user-centered-design',
+      'accessibility',
     ],
   }
 

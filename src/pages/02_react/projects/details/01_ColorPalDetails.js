@@ -1,4 +1,3 @@
-// src/pages/react/projects/details/01_ColorPalDetails.js
 import React, { useState } from 'react'
 import {
   HeroWrapper,
@@ -7,16 +6,15 @@ import {
   Typography,
   HighlightText,
   ListComponent,
-  Badge,
   Button,
   Lightbox,
 } from '../../../../utils/sharedComponents'
+import BadgeGrid from '../../../../components/common/BadgeGrid'
 import ColorPalImage from '../../../../assets/images/Projects/colorpal_logo.png'
 
 export default function ColorPalDetails() {
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
-  // Features von colorPal
   const features = [
     {
       id: 'feature-1',
@@ -56,17 +54,15 @@ export default function ColorPalDetails() {
     },
   ]
 
-  // Badges für Technologien
   const badges = [
-    { label: 'React', icon: 'FaReact', variant: 'primary' },
-    { label: 'Styled Components', icon: 'FaPalette', variant: 'success' },
-    { label: 'JSON Handling', icon: 'FaFileCode', variant: 'accent' },
-    { label: 'Dynamic Styling', icon: 'FaBrush', variant: 'secondary' },
+    'react',
+    'styled-components',
+    'json-handling',
+    'dynamic-styling',
   ]
 
   return (
     <>
-      {/* Hero-Bereich */}
       <HeroWrapper gradient="accentPlayful">
         <MediaDisplay
           media={[{ type: 'image', src: ColorPalImage, alt: 'ColorPal Logo' }]}
@@ -77,7 +73,6 @@ export default function ColorPalDetails() {
         </Typography>
       </HeroWrapper>
 
-      {/* Einführung */}
       <SectionWrapper backgroundColor="neutral.lightest" elevated>
         <Typography variant="h2" align="center" color="accent.dark">
           Warum <HighlightText>colorPal</HighlightText>?
@@ -91,7 +86,6 @@ export default function ColorPalDetails() {
           Daten auf eine kreative und intuitive Weise präsentieren möchten.
         </Typography>
 
-        {/* Features */}
         <SectionWrapper backgroundColor="neutral.lightest" elevated>
           <Typography variant="h2" align="center" color="accent.dark">
             🚀 Features von <HighlightText>colorPal</HighlightText>
@@ -99,27 +93,13 @@ export default function ColorPalDetails() {
           <ListComponent items={features} />
         </SectionWrapper>
 
-        {/* Badges */}
         <SectionWrapper backgroundColor="neutral.lightest">
           <Typography variant="h2" align="center" color="highlight.dark">
             🛡️ Technologien hinter <HighlightText>colorPal</HighlightText>
           </Typography>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              gap: '1rem',
-              marginTop: '1.5rem',
-            }}
-          >
-            {badges.map(({ label, icon, variant }) => (
-              <Badge key={label} label={label} icon={icon} variant={variant} />
-            ))}
-          </div>
+          <BadgeGrid badges={badges} />
         </SectionWrapper>
 
-        {/* Aktueller Stand */}
         <SectionWrapper backgroundColor="neutral.lightest" elevated>
           <Typography variant="h3" align="center" color="highlight.dark">
             🚦 Aktueller Stand
@@ -132,7 +112,6 @@ export default function ColorPalDetails() {
           </Typography>
         </SectionWrapper>
 
-        {/* Call-to-Actions */}
         <SectionWrapper backgroundColor="depth.main">
           <div
             style={{
@@ -162,7 +141,6 @@ export default function ColorPalDetails() {
         </SectionWrapper>
       </SectionWrapper>
 
-      {/* Lightbox nur für Bildvergrößerung */}
       {lightboxOpen && (
         <Lightbox
           media={[{ type: 'image', src: ColorPalImage, alt: 'ColorPal Logo' }]}

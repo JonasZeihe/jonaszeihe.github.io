@@ -7,35 +7,28 @@ import InkGridLogo from '../../../assets/images/Projects/inkgrid_logo.png'
 export default function InkGrid() {
   const [showModal, setShowModal] = useState(false)
 
-  // Kompakte Projekt-Daten für die Card
   const inkGridProject = {
     image: InkGridLogo,
     name: 'InkGrid',
     description: 'Farben mit Struktur',
     badges: [
-      { label: 'SVG-Optimierung', icon: 'FaShapes', variant: 'primary' },
-      { label: 'Light/Dark-Modus', icon: 'FaMoon', variant: 'accent' },
-      {
-        label: 'Design-System-Kompatibilität',
-        icon: 'FaPaintBrush',
-        variant: 'success',
-      },
-      { label: 'Drag and Drop', icon: 'FaMousePointer', variant: 'warning' },
-      { label: 'Windows-First', icon: 'FaWindows', variant: 'secondary' },
+      'svg-optimization',
+      'light-dark-mode',
+      'design-system',
+      'drag-and-drop',
+      'windows-first',
     ],
     githubLink: 'https://github.com/jonaszeihe/inkgrid',
   }
 
   return (
     <>
-      {/* Kompakte Card-Ansicht */}
       <ProjectCard
         project={inkGridProject}
         gradient="warmBold.subtle"
         onOpen={() => setShowModal(true)}
       />
 
-      {/* Overlay mit Detail-Komponente */}
       {showModal && (
         <ModalOverlay onClose={() => setShowModal(false)}>
           <InkGridDetails />

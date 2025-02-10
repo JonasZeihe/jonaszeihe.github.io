@@ -6,10 +6,11 @@ import {
   Typography,
   HighlightText,
   ListComponent,
-  Badge,
   Button,
   Lightbox,
 } from '../../../../utils/sharedComponents'
+import BadgeGrid from '../../../../components/common/BadgeGrid'
+
 import ShizenImage from '../../../../assets/images/Projects/shizen-logo.png'
 
 export default function ShizenDetails() {
@@ -41,8 +42,7 @@ export default function ShizenDetails() {
         <>
           🌟 <HighlightText>Gamification und Feedback:</HighlightText> Fördere
           Engagement durch Fortschrittsverfolgung, Abzeichen und interaktive
-          Elemente. Teilnehmer können Kurse bewerten, und Anbieter profitieren
-          von wertvollem Feedback.
+          Elemente.
         </>
       ),
     },
@@ -68,17 +68,17 @@ export default function ShizenDetails() {
     },
   ]
 
-  // Badges für Shizen
-  const badges = [
-    { label: 'Java', icon: 'FaJava', variant: 'primary' },
-    { label: 'Spring Boot', icon: 'FaLeaf', variant: 'success' },
-    { label: 'Spring Security', icon: 'FaLock', variant: 'accent' },
-    { label: 'MongoDB', icon: 'FaDatabase', variant: 'secondary' },
-    { label: 'REST APIs', icon: 'FaNetworkWired', variant: 'primary' },
-    { label: 'React', icon: 'FaReact', variant: 'success' },
-    { label: 'Responsive Design', icon: 'FaMobileAlt', variant: 'accent' },
-    { label: 'UX/UI Best Practices', icon: 'FaPalette', variant: 'secondary' },
-    { label: 'Gamification', icon: 'FaTrophy', variant: 'primary' },
+  // Badge Keys für dynamische Nutzung der BadgeLibrary
+  const badgeKeys = [
+    'java',
+    'spring-boot',
+    'spring-security',
+    'mongodb',
+    'rest-api',
+    'react',
+    'responsive-design',
+    'ux-ui-best-practices',
+    'gamification',
   ]
 
   return (
@@ -97,93 +97,72 @@ export default function ShizenDetails() {
 
       {/* Einführung */}
       <SectionWrapper backgroundColor="primary.main" elevated>
-        <SectionWrapper backgroundColor="primary.lightest" elevated>
-          <Typography variant="h2" align="center" color="primary.dark">
-            Warum <HighlightText>Shizen</HighlightText>?
-          </Typography>
-          <Typography variant="body" align="center" color="neutral.deep">
-            Shizen ist eine universelle Lernplattform, die moderne Technologien
-            mit benutzerfreundlichem Design kombiniert. Sie bietet dynamische
-            Kursverwaltungsfunktionen, Gamification-Elemente und datenbasiertes
-            Feedback, um Bildungsanbieter und Teilnehmer gleichermaßen zu
-            unterstützen. Egal ob für Yoga-, Sprach- oder Kochkurse – Shizen
-            setzt auf modernste Technologien wie Java, Spring Boot und React, um
-            Bildung effizienter und interaktiver zu gestalten.
-          </Typography>
-        </SectionWrapper>
+        <Typography variant="h2" align="center" color="primary.dark">
+          Warum <HighlightText>Shizen</HighlightText>?
+        </Typography>
+        <Typography variant="body" align="center" color="neutral.deep">
+          Shizen ist eine universelle Lernplattform, die moderne Technologien
+          mit benutzerfreundlichem Design kombiniert. Sie bietet dynamische
+          Kursverwaltungsfunktionen, Gamification-Elemente und datenbasiertes
+          Feedback, um Bildungsanbieter und Teilnehmer gleichermaßen zu
+          unterstützen.
+        </Typography>
+      </SectionWrapper>
 
-        {/* Features */}
-        <SectionWrapper backgroundColor="primary.lightest" elevated>
-          <Typography variant="h2" align="center" color="primary.dark">
-            🚀 Features von <HighlightText>Shizen</HighlightText>
-          </Typography>
-          <ListComponent items={features} />
-        </SectionWrapper>
+      {/* Features */}
+      <SectionWrapper backgroundColor="primary.lightest" elevated>
+        <Typography variant="h2" align="center" color="primary.dark">
+          🚀 Features von <HighlightText>Shizen</HighlightText>
+        </Typography>
+        <ListComponent items={features} />
+      </SectionWrapper>
 
-        {/* Badges */}
-        <SectionWrapper backgroundColor="neutral.ultraLight">
-          <Typography variant="h2" align="center" color="accent.main">
-            🛡️ Technologien hinter <HighlightText>Shizen</HighlightText>
-          </Typography>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              gap: '1rem',
-              marginTop: '1.5rem',
-            }}
+      {/* Badges */}
+      <SectionWrapper backgroundColor="neutral.ultraLight">
+        <Typography variant="h2" align="center" color="accent.main">
+          🛡️ Technologien hinter <HighlightText>Shizen</HighlightText>
+        </Typography>
+        <BadgeGrid badges={badgeKeys} />
+      </SectionWrapper>
+
+      {/* Aktueller Stand */}
+      <SectionWrapper backgroundColor="primary.lightest" elevated>
+        <Typography variant="h3" align="center" color="accent.main">
+          🚦 Aktueller Stand
+        </Typography>
+        <Typography variant="body" align="center" color="primary.darkest">
+          <HighlightText>Status:</HighlightText> Backend vollständig
+          implementiert mit rollenbasiertem Zugriff und API-Endpunkten.
+        </Typography>
+      </SectionWrapper>
+
+      {/* Call-to-Actions */}
+      <SectionWrapper backgroundColor="neutral.ultraLight">
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '1.5rem',
+            marginTop: '2rem',
+          }}
+        >
+          <Button
+            variant="primary"
+            onClick={() =>
+              window.open('https://github.com/jonaszeihe/shizen', '_blank')
+            }
           >
-            {badges.map(({ label, icon, variant }) => (
-              <Badge key={label} label={label} icon={icon} variant={variant} />
-            ))}
-          </div>
-        </SectionWrapper>
-
-        {/* Aktueller Stand */}
-        <SectionWrapper backgroundColor="primary.lightest" elevated>
-          <Typography variant="h3" align="center" color="accent.main">
-            🚦 Aktueller Stand
-          </Typography>
-          <Typography variant="body" align="center" color="primary.darkest">
-            <HighlightText>Status:</HighlightText> Backend vollständig
-            implementiert mit rollenbasiertem Zugriff und API-Endpunkten.
-            Frontend benötigt weitere UX/UI-Optimierungen.
-          </Typography>
-          <Typography variant="body" align="center" color="primary.darkest">
-            Gamification-Elemente sind in Entwicklung und werden in zukünftigen
-            Updates integriert.
-          </Typography>
-        </SectionWrapper>
-
-        {/* Call-to-Actions */}
-        <SectionWrapper backgroundColor="neutral.ultraLight">
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '1.5rem',
-              marginTop: '2rem',
-            }}
+            GitHub Repository
+          </Button>
+          <Button
+            variant="success"
+            onClick={() =>
+              window.open('https://shizen-dev.onrender.com/', '_blank')
+            }
           >
-            <Button
-              variant="primary"
-              onClick={() =>
-                window.open('https://github.com/jonaszeihe/shizen', '_blank')
-              }
-            >
-              GitHub Repository
-            </Button>
-            <Button
-              variant="success"
-              onClick={() =>
-                window.open('https://shizen-dev.onrender.com/', '_blank')
-              }
-            >
-              Shizen
-            </Button>
-          </div>
-        </SectionWrapper>
+            Shizen
+          </Button>
+        </div>
       </SectionWrapper>
 
       {/* Lightbox (nur für das Bild) */}

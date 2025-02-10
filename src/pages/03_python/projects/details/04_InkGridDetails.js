@@ -6,16 +6,15 @@ import {
   Typography,
   HighlightText,
   ListComponent,
-  Badge,
   Button,
   Lightbox,
 } from '../../../../utils/sharedComponents'
+import BadgeGrid from '../../../../components/common/BadgeGrid'
 import InkGridLogo from '../../../../assets/images/Projects/inkgrid_logo.png'
 
 export default function InkGridDetails() {
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
-  // Features von InkGrid
   const features = [
     {
       id: 'feature-1',
@@ -65,22 +64,16 @@ export default function InkGridDetails() {
     },
   ]
 
-  // Badges für InkGrid
   const badges = [
-    { label: 'SVG-Optimierung', icon: 'FaShapes', variant: 'primary' },
-    { label: 'Light/Dark-Modus', icon: 'FaMoon', variant: 'accent' },
-    {
-      label: 'Design-System-Kompatibilität',
-      icon: 'FaPaintBrush',
-      variant: 'success',
-    },
-    { label: 'Drag and Drop', icon: 'FaMousePointer', variant: 'warning' },
-    { label: 'Windows-First', icon: 'FaWindows', variant: 'secondary' },
+    'svg-optimization',
+    'light-dark-mode',
+    'design-system',
+    'drag-and-drop',
+    'windows-first',
   ]
 
   return (
     <>
-      {/* Hero-Bereich */}
       <HeroWrapper gradient="warmBold">
         <MediaDisplay
           media={[{ type: 'image', src: InkGridLogo, alt: 'InkGrid Logo' }]}
@@ -91,97 +84,77 @@ export default function InkGridDetails() {
         </Typography>
       </HeroWrapper>
 
-      {/* Einführung */}
       <SectionWrapper backgroundColor="secondaryHighlight.main" elevated>
-        <SectionWrapper backgroundColor="neutral.lightest" elevated>
-          <Typography variant="h2" align="center" color="depth.dark">
-            Warum <HighlightText>InkGrid</HighlightText>?
-          </Typography>
-          <Typography variant="body" align="center" color="depth.dark">
-            Farbpaletten sind essenziell für jedes Design. Mit{' '}
-            <HighlightText>InkGrid</HighlightText> wird der Prozess der
-            Erstellung und Organisation revolutioniert. Importiere Farbpaletten
-            aus Textdateien, passe sie an und exportiere perfekte SVG-Dateien –
-            bereit für Tools wie Figma oder AdobeXD. Mit automatisierter
-            Unterstützung für Light- und Dark-Modi sowie flexiblen Vorlagen
-            bietet <HighlightText>InkGrid</HighlightText> Designern und
-            Entwicklern eine unverzichtbare Lösung.
-          </Typography>
-        </SectionWrapper>
-
-        {/* Aktueller Stand */}
-        <SectionWrapper backgroundColor="neutral.lightest" elevated>
-          <Typography variant="h3" align="center" color="depth.dark">
-            🚦 Aktueller Stand
-          </Typography>
-          <Typography variant="body" align="center" color="depth.dark">
-            <HighlightText>Status:</HighlightText> Aktive Entwicklung.
-            Grundfunktionen sind stabil, zusätzliche Features folgen.
-          </Typography>
-        </SectionWrapper>
-
-        {/* Features */}
-        <SectionWrapper backgroundColor="neutral.lightest" elevated>
-          <Typography variant="h2" align="center" color="depth.dark">
-            🔧 Funktionen von <HighlightText>InkGrid</HighlightText>
-          </Typography>
-          <ListComponent items={features} />
-        </SectionWrapper>
-
-        {/* Badges */}
-        <SectionWrapper backgroundColor="depth.lightest">
-          <Typography variant="h2" align="center" color="neutral.black">
-            🚀 Technologien hinter <HighlightText>InkGrid</HighlightText>
-          </Typography>
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              gap: '1rem',
-              marginTop: '1rem',
-            }}
-          >
-            {badges.map(({ label, icon, variant }) => (
-              <Badge key={label} label={label} icon={icon} variant={variant} />
-            ))}
-          </div>
-        </SectionWrapper>
-
-        {/* Call-to-Actions */}
-        <SectionWrapper backgroundColor="neutral.lightest">
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '1.5rem',
-              marginTop: '2rem',
-            }}
-          >
-            <Button
-              variant="primary"
-              onClick={() =>
-                window.open('https://github.com/jonaszeihe/inkgrid', '_blank')
-              }
-            >
-              GitHub Repository
-            </Button>
-            <Button
-              variant="success"
-              onClick={() =>
-                window.open(
-                  'https://github.com/jonaszeihe/inkgrid/releases',
-                  '_blank'
-                )
-              }
-            >
-              Download
-            </Button>
-          </div>
-        </SectionWrapper>
+        <Typography variant="h2" align="center" color="depth.dark">
+          Warum <HighlightText>InkGrid</HighlightText>?
+        </Typography>
+        <Typography variant="body" align="center" color="depth.dark">
+          Farbpaletten sind essenziell für jedes Design. Mit{' '}
+          <HighlightText>InkGrid</HighlightText> wird der Prozess der Erstellung
+          und Organisation revolutioniert. Importiere Farbpaletten aus
+          Textdateien, passe sie an und exportiere perfekte SVG-Dateien – bereit
+          für Tools wie Figma oder AdobeXD. Mit automatisierter Unterstützung
+          für Light- und Dark-Modi sowie flexiblen Vorlagen bietet{' '}
+          <HighlightText>InkGrid</HighlightText> Designern und Entwicklern eine
+          unverzichtbare Lösung.
+        </Typography>
       </SectionWrapper>
 
-      {/* Lightbox (nur für das Logo) */}
+      <SectionWrapper backgroundColor="neutral.lightest" elevated>
+        <Typography variant="h3" align="center" color="depth.dark">
+          🚦 Aktueller Stand
+        </Typography>
+        <Typography variant="body" align="center" color="depth.dark">
+          <HighlightText>Status:</HighlightText> Aktive Entwicklung.
+          Grundfunktionen sind stabil, zusätzliche Features folgen.
+        </Typography>
+      </SectionWrapper>
+
+      <SectionWrapper backgroundColor="neutral.lightest" elevated>
+        <Typography variant="h2" align="center" color="depth.dark">
+          🔧 Funktionen von <HighlightText>InkGrid</HighlightText>
+        </Typography>
+        <ListComponent items={features} />
+      </SectionWrapper>
+
+      <SectionWrapper backgroundColor="depth.lightest">
+        <Typography variant="h2" align="center" color="neutral.black">
+          🚀 Technologien hinter <HighlightText>InkGrid</HighlightText>
+        </Typography>
+        <BadgeGrid badges={badges} />
+      </SectionWrapper>
+
+      <SectionWrapper backgroundColor="neutral.lightest">
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '1.5rem',
+            marginTop: '2rem',
+          }}
+        >
+          <Button
+            variant="primary"
+            onClick={() =>
+              window.open('https://github.com/jonaszeihe/inkgrid', '_blank')
+            }
+          >
+            GitHub Repository
+          </Button>
+          <Button
+            variant="success"
+            onClick={() =>
+              window.open(
+                'https://github.com/jonaszeihe/inkgrid/releases',
+                '_blank'
+              )
+            }
+          >
+            Download
+          </Button>
+        </div>
+      </SectionWrapper>
+
       {lightboxOpen && (
         <Lightbox
           media={[{ type: 'image', src: InkGridLogo, alt: 'InkGrid Logo' }]}

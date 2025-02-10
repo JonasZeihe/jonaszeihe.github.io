@@ -6,10 +6,10 @@ import {
   Typography,
   HighlightText,
   ListComponent,
-  Badge,
   Button,
   Lightbox,
 } from '../../../../utils/sharedComponents'
+import BadgeGrid from '../../../../components/common/BadgeGrid'
 import KimImage from '../../../../assets/images/Projects/kim_logo.png'
 
 export default function KIMDetails() {
@@ -58,15 +58,11 @@ export default function KIMDetails() {
   ]
 
   const badges = [
-    { label: 'UX/UI Design', icon: 'FaPalette', variant: 'primary' },
-    { label: 'Iteratives Prototyping', icon: 'FaRedo', variant: 'success' },
-    { label: 'Figma & FigJam', icon: 'FaFigma', variant: 'accent' },
-    { label: 'User-Centered Design', icon: 'FaUser', variant: 'secondary' },
-    {
-      label: 'Zugängliches Design',
-      icon: 'FaUniversalAccess',
-      variant: 'primary',
-    },
+    'ux-ui-design',
+    'iterative-prototyping',
+    'figma',
+    'user-centered-design',
+    'accessibility',
   ]
 
   return (
@@ -74,13 +70,7 @@ export default function KIMDetails() {
       <SectionWrapper backgroundColor="primary.lightest">
         <HeroWrapper gradient="neutralSoft">
           <MediaDisplay
-            media={[
-              {
-                type: 'image',
-                src: KimImage,
-                alt: 'KIM Project Image',
-              },
-            ]}
+            media={[{ type: 'image', src: KimImage, alt: 'KIM Project Image' }]}
             onClick={() => setLightboxOpen(true)}
           />
           <Typography variant="h1" align="center" color="depth.dark">
@@ -116,19 +106,7 @@ export default function KIMDetails() {
         <Typography variant="h2" align="center" color="depth.dark">
           🛡️ Technologien hinter <HighlightText>KIM</HighlightText>
         </Typography>
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: '1rem',
-            marginTop: '1rem',
-          }}
-        >
-          {badges.map(({ label, icon, variant }) => (
-            <Badge key={label} label={label} icon={icon} variant={variant} />
-          ))}
-        </div>
+        <BadgeGrid badges={badges} />
       </SectionWrapper>
 
       <SectionWrapper backgroundColor="secondary.lightest">

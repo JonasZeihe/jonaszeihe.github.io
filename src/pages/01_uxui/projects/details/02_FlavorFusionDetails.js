@@ -6,10 +6,10 @@ import {
   Typography,
   HighlightText,
   ListComponent,
-  Badge,
   Button,
   Lightbox,
 } from '../../../../utils/sharedComponents'
+import BadgeGrid from '../../../../components/common/BadgeGrid'
 import FlavorFusionImage from '../../../../assets/images/Projects/flavorfusion_logo.png'
 
 export default function FlavorFusionDetails() {
@@ -56,16 +56,10 @@ export default function FlavorFusionDetails() {
     },
   ]
 
-  const badges = [
-    { label: 'Figma', icon: 'FaFigma', variant: 'primary' },
-    { label: 'FigJam', icon: 'FaPencilAlt', variant: 'secondary' },
-    { label: 'Notion', icon: 'FaBook', variant: 'accent' },
-    { label: 'ChatGPT', icon: 'FaRobot', variant: 'success' },
-  ]
+  const badges = ['figma', 'figjam', 'notion', 'chatgpt']
 
   return (
     <>
-      {/* Hero-Bereich */}
       <HeroWrapper gradient="accentSoft">
         <MediaDisplay
           media={[
@@ -99,7 +93,6 @@ export default function FlavorFusionDetails() {
         </Typography>
       </SectionWrapper>
 
-      {/* Features */}
       <SectionWrapper backgroundColor="secondary.lightest">
         <Typography variant="h2" align="center" color="accent.dark">
           🚀 Highlights von <HighlightText>FlavorFusion</HighlightText>
@@ -107,27 +100,13 @@ export default function FlavorFusionDetails() {
         <ListComponent items={features} />
       </SectionWrapper>
 
-      {/* Technologien */}
       <SectionWrapper backgroundColor="accent.lightest" elevated>
         <Typography variant="h2" align="center" color="depth.darkest">
           🛠️ Tools und Technologien
         </Typography>
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            gap: '1rem',
-            marginTop: '1rem',
-          }}
-        >
-          {badges.map(({ label, icon, variant }) => (
-            <Badge key={label} label={label} icon={icon} variant={variant} />
-          ))}
-        </div>
+        <BadgeGrid badges={badges} />
       </SectionWrapper>
 
-      {/* Aktueller Stand */}
       <SectionWrapper backgroundColor="secondary.lightest">
         <Typography variant="h2" align="center" color="accent.dark">
           🚦 Aktueller Stand
@@ -138,7 +117,6 @@ export default function FlavorFusionDetails() {
         </Typography>
       </SectionWrapper>
 
-      {/* Call-to-Actions */}
       <SectionWrapper backgroundColor="accent.lightest">
         <div
           style={{
@@ -169,7 +147,6 @@ export default function FlavorFusionDetails() {
         </div>
       </SectionWrapper>
 
-      {/* Lightbox (nur für das Bild) */}
       {lightboxOpen && (
         <Lightbox
           media={[
