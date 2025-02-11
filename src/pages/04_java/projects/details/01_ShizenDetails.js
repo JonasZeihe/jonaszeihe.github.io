@@ -85,10 +85,6 @@ export default function ShizenDetails() {
     <>
       {/* Hero-Bereich */}
       <HeroWrapper gradient="primaryLight">
-        <MediaDisplay
-          media={[{ type: 'image', src: ShizenImage, alt: 'Shizen Logo' }]}
-          onClick={() => setLightboxOpen(true)}
-        />
         <Typography variant="h1" align="center" color="neutral.deep">
           📚 <HighlightText>Shizen</HighlightText> – Die Plattform für modernes
           Lernen und Lehren
@@ -96,17 +92,22 @@ export default function ShizenDetails() {
       </HeroWrapper>
 
       {/* Einführung */}
-      <SectionWrapper backgroundColor="primary.main" elevated>
-        <Typography variant="h2" align="center" color="primary.dark">
+      <SectionWrapper backgroundColor="primary.light" elevated>
+        <Typography variant="h2" align="center" color="primary.darkest">
           Warum <HighlightText>Shizen</HighlightText>?
         </Typography>
-        <Typography variant="body" align="center" color="neutral.deep">
+        <Typography variant="body" align="left" color="primary.darkest">
           Shizen ist eine universelle Lernplattform, die moderne Technologien
           mit benutzerfreundlichem Design kombiniert. Sie bietet dynamische
           Kursverwaltungsfunktionen, Gamification-Elemente und datenbasiertes
           Feedback, um Bildungsanbieter und Teilnehmer gleichermaßen zu
           unterstützen.
         </Typography>
+        <MediaDisplay
+          media={[{ type: 'image', src: ShizenImage, alt: 'Shizen Logo' }]}
+          onClick={() => setLightboxOpen(true)}
+          variant="medium"
+        />
       </SectionWrapper>
 
       {/* Features */}
@@ -137,7 +138,7 @@ export default function ShizenDetails() {
       </SectionWrapper>
 
       {/* Call-to-Actions */}
-      <SectionWrapper backgroundColor="neutral.ultraLight">
+      <SectionWrapper backgroundColor="primary.lightest">
         <div
           style={{
             display: 'flex',

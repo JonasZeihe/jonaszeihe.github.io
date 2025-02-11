@@ -10,7 +10,7 @@ export default function InkGrid() {
   const inkGridProject = {
     image: InkGridLogo,
     name: 'InkGrid',
-    description: 'Farben mit Struktur',
+    description: 'Professionelle Farbpaletten schnell integriert',
     badges: [
       'svg-optimization',
       'light-dark-mode',

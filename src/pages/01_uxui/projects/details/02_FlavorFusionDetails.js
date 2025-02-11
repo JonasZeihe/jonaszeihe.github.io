@@ -61,16 +61,6 @@ export default function FlavorFusionDetails() {
   return (
     <>
       <HeroWrapper gradient="accentSoft">
-        <MediaDisplay
-          media={[
-            {
-              type: 'image',
-              src: FlavorFusionImage,
-              alt: 'FlavorFusion Project Image',
-            },
-          ]}
-          onClick={() => setLightboxOpen(true)}
-        />
         <Typography variant="h1" align="center" color="neutral.black">
           🍴 FlavorFusion – Die Welt in deiner Küche
         </Typography>
@@ -79,7 +69,7 @@ export default function FlavorFusionDetails() {
       <SectionWrapper backgroundColor="accent.lightest" elevated>
         <Typography
           variant="body"
-          align="center"
+          align="left"
           color="depth.darkest"
           style={{ marginTop: '1rem' }}
         >
@@ -91,9 +81,20 @@ export default function FlavorFusionDetails() {
           nicht nur funktional, sondern auch eine emotionale Erfahrung, die Lust
           auf neue Rezepte macht.
         </Typography>
+        <MediaDisplay
+          media={[
+            {
+              type: 'image',
+              src: FlavorFusionImage,
+              alt: 'FlavorFusion Project Image',
+            },
+          ]}
+          onClick={() => setLightboxOpen(true)}
+          variant="medium"
+        />
       </SectionWrapper>
 
-      <SectionWrapper backgroundColor="secondary.lightest">
+      <SectionWrapper backgroundColor="secondary.lightest" elevated>
         <Typography variant="h2" align="center" color="accent.dark">
           🚀 Highlights von <HighlightText>FlavorFusion</HighlightText>
         </Typography>

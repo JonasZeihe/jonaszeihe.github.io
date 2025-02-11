@@ -10,7 +10,7 @@ export default function Structra() {
   const structraProject = {
     image: StructraLogo,
     name: 'Structra',
-    description: 'Strukturen leicht gemacht',
+    description: 'Strukturen schnell erstellt',
     badges: [
       'automation',
       'drag-and-drop',

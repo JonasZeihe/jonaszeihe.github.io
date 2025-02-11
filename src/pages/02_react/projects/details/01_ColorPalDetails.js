@@ -64,10 +64,6 @@ export default function ColorPalDetails() {
   return (
     <>
       <HeroWrapper gradient="accentPlayful">
-        <MediaDisplay
-          media={[{ type: 'image', src: ColorPalImage, alt: 'ColorPal Logo' }]}
-          onClick={() => setLightboxOpen(true)}
-        />
         <Typography variant="h1" align="center" color="accent.lightest">
           🎨 <HighlightText>colorPal</HighlightText> – Transform Data Into Art
         </Typography>
@@ -78,15 +74,20 @@ export default function ColorPalDetails() {
           Warum <HighlightText>colorPal</HighlightText>?
         </Typography>
 
-        <Typography variant="body" align="center" color="accent.dark">
+        <Typography variant="body" align="left" color="accent.dark">
           Daten müssen nicht langweilig sein. Mit{' '}
           <HighlightText>colorPal</HighlightText> lassen sich Diagramme in
           Echtzeit gestalten, dynamisch anpassen und als hochwertige SVG- oder
           PNG-Dateien exportieren. Es ist die perfekte Lösung für alle, die
           Daten auf eine kreative und intuitive Weise präsentieren möchten.
         </Typography>
+        <MediaDisplay
+          media={[{ type: 'image', src: ColorPalImage, alt: 'ColorPal Logo' }]}
+          onClick={() => setLightboxOpen(true)}
+          variant="medium"
+        />
 
-        <SectionWrapper backgroundColor="neutral.lightest" elevated>
+        <SectionWrapper backgroundColor="neutral.lightest">
           <Typography variant="h2" align="center" color="accent.dark">
             🚀 Features von <HighlightText>colorPal</HighlightText>
           </Typography>

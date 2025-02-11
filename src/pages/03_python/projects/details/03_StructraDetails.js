@@ -74,20 +74,16 @@ export default function StructraDetails() {
   return (
     <>
       <HeroWrapper gradient="warmDynamic">
-        <MediaDisplay
-          media={[{ type: 'image', src: StructraLogo, alt: 'Structra Logo' }]}
-          onClick={() => setLightboxOpen(true)}
-        />
         <Typography variant="h1" align="center" color="neutral.lightest">
           🏭 Structra – Strukturen leicht gemacht
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="secondaryHighlight.light" elevated>
+      <SectionWrapper backgroundColor="secondaryHighlight.lightest" elevated>
         <Typography variant="h2" align="center" color="secondaryHighlight.dark">
           Was ist <HighlightText>Structra</HighlightText>?
         </Typography>
-        <Typography variant="body" align="center" color="primary.dark">
+        <Typography variant="body" align="left" color="primary.darkest">
           Manuelle Verzeichnis- und Dateierstellungen sind zeitaufwendig und
           fehleranfällig. <HighlightText>Structra</HighlightText> automatisiert
           diesen Prozess, indem es textbasierte Baumvorlagen in reale
@@ -96,6 +92,11 @@ export default function StructraDetails() {
           leistungsstarkes Duo: Skryper analysiert bestehende Projektstrukturen,
           während Structra sie effizient wiederherstellt oder neue aufbaut.
         </Typography>
+        <MediaDisplay
+          media={[{ type: 'image', src: StructraLogo, alt: 'Structra Logo' }]}
+          onClick={() => setLightboxOpen(true)}
+          variant="medium"
+        />
       </SectionWrapper>
 
       <SectionWrapper backgroundColor="secondaryHighlight.lightest" elevated>
