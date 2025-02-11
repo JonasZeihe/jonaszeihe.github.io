@@ -2,12 +2,22 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Lightbox from '../lightbox/Lightbox'
 
-// Styled Components
 const MediaGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(1fr));
   width: 100%;
   justify-content: center;
+  gap: ${({ theme }) => theme.spacing(3)};
+
+  ${({ variant }) => {
+    switch (variant) {
+      case 'small':
+        return `grid-template-columns: repeat(auto-fit, 33%);`
+      case 'medium':
+        return `grid-template-columns: repeat(auto-fit, 50%);`
+      default:
+        return `grid-template-columns: repeat(auto-fit, 100%);`
+    }
+  }}
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     grid-template-columns: repeat(auto-fit, minmax(1fr));
@@ -25,23 +35,19 @@ const MediaItem = styled.div`
   cursor: ${({ isClickable }) => (isClickable ? 'pointer' : 'default')};
   overflow: hidden;
   border-radius: ${({ theme }) => theme.borderRadius.medium};
-  box-shadow: ${({ theme }) => theme.boxShadow.light};
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
-
-  &:hover {
-    transform: ${({ isClickable }) =>
-      isClickable ? 'translateY(-5px)' : 'none'};
-    box-shadow: ${({ theme, isClickable }) =>
-      isClickable ? theme.boxShadow.medium : theme.boxShadow.light};
-  }
+  width: 100% !important;
+  height: auto !important;
+  padding-bottom: ${({ theme }) =>
+    theme.spacing(2)}; /* Abstand unterhalb der Medien */
 
   img,
   video {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
     object-fit: cover;
     border-radius: ${({ theme }) => theme.borderRadius.medium};
   }
@@ -54,25 +60,29 @@ const MediaItem = styled.div`
 
     img,
     video {
-      height: auto;
+      height: auto !important;
     }
   }
 `
 
 const MediaCaption = styled.div`
   margin-top: ${({ theme }) => theme.spacing(2)};
+  margin-bottom: ${({ theme }) =>
+    theme.spacing(3)}; /* Abstand zur nächsten Sektion */
   text-align: center;
   font-size: ${({ theme }) => theme.typography.fontSize.small};
   color: ${({ theme }) => theme.colors.neutral.medium};
+  line-height: ${({ theme }) => theme.typography.lineHeight.normal};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     font-size: ${({ theme }) => theme.typography.fontSize.caption};
+    margin-bottom: ${({ theme }) => theme.spacing(2)};
   }
 `
 
 const VideoWrapper = styled.div`
   position: relative;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  padding-top: 56.25%;
   width: 100%;
   height: 0;
 
@@ -86,8 +96,7 @@ const VideoWrapper = styled.div`
   }
 `
 
-// Component Definition
-export default function MediaDisplay({ media }) {
+export default function MediaDisplay({ media, variant = 'large' }) {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -102,7 +111,7 @@ export default function MediaDisplay({ media }) {
 
   return (
     <>
-      <MediaGrid>
+      <MediaGrid variant={variant}>
         {media.map(
           (
             { type, src, alt, caption, trackSrc = '', trackLang = 'en' },
@@ -112,7 +121,9 @@ export default function MediaDisplay({ media }) {
               key={src}
               isClickable={type === 'image'}
               onClick={() => openLightbox(index)}
-              aria-label={`Open ${type === 'image' ? 'image' : 'video'} ${alt || `Media ${index + 1}`}`}
+              aria-label={`Open ${type === 'image' ? 'image' : 'video'} ${
+                alt || `Media ${index + 1}`
+              }`}
             >
               {type === 'image' && (
                 <img src={src} alt={alt || `Media ${index + 1}`} />
@@ -140,7 +151,7 @@ export default function MediaDisplay({ media }) {
 
       {lightboxOpen && (
         <Lightbox
-          media={media.filter(({ type }) => type === 'image')} // Only show images in Lightbox
+          media={media.filter(({ type }) => type === 'image')}
           currentIndex={currentIndex}
           onClose={closeLightbox}
         />

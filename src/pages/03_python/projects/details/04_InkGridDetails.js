@@ -75,20 +75,16 @@ export default function InkGridDetails() {
   return (
     <>
       <HeroWrapper gradient="warmBold">
-        <MediaDisplay
-          media={[{ type: 'image', src: InkGridLogo, alt: 'InkGrid Logo' }]}
-          onClick={() => setLightboxOpen(true)}
-        />
         <Typography variant="h1" align="center" color="highlight.lightest">
           🎨 InkGrid – Farben mit Struktur
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="secondaryHighlight.main" elevated>
-        <Typography variant="h2" align="center" color="depth.dark">
+      <SectionWrapper backgroundColor="secondaryHighlight.light" elevated>
+        <Typography variant="h2" align="center" color="depth.darkest">
           Warum <HighlightText>InkGrid</HighlightText>?
         </Typography>
-        <Typography variant="body" align="center" color="depth.dark">
+        <Typography variant="body" align="left" color="depth.darkest">
           Farbpaletten sind essenziell für jedes Design. Mit{' '}
           <HighlightText>InkGrid</HighlightText> wird der Prozess der Erstellung
           und Organisation revolutioniert. Importiere Farbpaletten aus
@@ -98,6 +94,11 @@ export default function InkGridDetails() {
           <HighlightText>InkGrid</HighlightText> Designern und Entwicklern eine
           unverzichtbare Lösung.
         </Typography>
+        <MediaDisplay
+          media={[{ type: 'image', src: InkGridLogo, alt: 'InkGrid Logo' }]}
+          onClick={() => setLightboxOpen(true)}
+          variant="medium"
+        />
       </SectionWrapper>
 
       <SectionWrapper backgroundColor="neutral.lightest" elevated>

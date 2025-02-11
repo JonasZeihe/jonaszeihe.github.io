@@ -10,7 +10,7 @@ export default function Noctua() {
   const noctuaProject = {
     image: NoctuaLogo,
     name: 'Noctua',
-    description: 'Systeminformationen mit Struktur',
+    description: 'Hardwaresteckbriefe in Markdown',
     badges: [
       'python',
       'tdd',

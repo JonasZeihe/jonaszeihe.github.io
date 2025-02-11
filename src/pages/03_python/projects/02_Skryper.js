@@ -10,7 +10,7 @@ export default function Skryper() {
   const skryperProject = {
     image: SkryperLogo,
     name: 'Skryper',
-    description: 'Projektstrukturen im Fokus',
+    description: 'Stromlinienförmige Projektbaumstrukturen',
     badges: [
       'python',
       'gitignore-support',

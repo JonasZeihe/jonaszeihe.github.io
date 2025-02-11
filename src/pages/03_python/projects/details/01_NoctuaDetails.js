@@ -74,84 +74,82 @@ export default function NoctuaDetails() {
   return (
     <>
       <HeroWrapper gradient="secondaryBold">
-        <MediaDisplay
-          media={[{ type: 'image', src: NoctuaLogo, alt: 'Noctua Logo' }]}
-          onClick={() => setLightboxOpen(true)}
-        />
         <Typography variant="h1" align="center" color="primary.lightest">
           🔧 <HighlightText>Noctua</HighlightText> – Systeminformationen mit
           Struktur
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="primary.lightest" elevated>
-        <SectionWrapper backgroundColor="depth.dark" elevated>
-          <Typography variant="h2" align="center" color="accent.main">
-            Warum <HighlightText>Noctua</HighlightText>?
-          </Typography>
-          <Typography variant="body" align="center" color="primary.lightest">
-            Hardwaredokumentation kann zeitaufwendig und kompliziert sein – doch
-            nicht mit <HighlightText>Noctua</HighlightText>. Egal ob
-            Kurzübersicht oder detaillierter Bericht, Noctua bietet dir alle
-            relevanten Informationen, kompakt oder tiefgehend, mit nur wenigen
-            Klicks.
-          </Typography>
-        </SectionWrapper>
+      <SectionWrapper backgroundColor="depth.dark">
+        <Typography variant="h2" align="center" color="accent.main">
+          Warum <HighlightText>Noctua</HighlightText>?
+        </Typography>
+        <Typography variant="body" align="left" color="primary.lightest">
+          Hardwaredokumentation kann zeitaufwendig und kompliziert sein – doch
+          nicht mit <HighlightText>Noctua</HighlightText>. Egal ob Kurzübersicht
+          oder detaillierter Bericht, Noctua bietet dir alle relevanten
+          Informationen, kompakt oder tiefgehend, mit nur wenigen Klicks.
+        </Typography>
+        <MediaDisplay
+          media={[{ type: 'image', src: NoctuaLogo, alt: 'Noctua Logo' }]}
+          onClick={() => setLightboxOpen(true)}
+          variant="medium"
+        />
+      </SectionWrapper>
 
-        <SectionWrapper backgroundColor="depth.dark" elevated>
-          <Typography variant="h3" align="center" color="accent.main">
-            🚦 Aktueller Stand
-          </Typography>
-          <Typography variant="body" align="center" color="primary.lightest">
-            <HighlightText>Status:</HighlightText> In aktiver Entwicklung.{' '}
-            <HighlightText>NoctuaLight</HighlightText> ist bereits verfügbar.
-          </Typography>
-          <Typography
-            variant="body"
-            align="center"
-            style={{ marginTop: '0.5rem' }}
-            color="primary.lightest"
+      <SectionWrapper backgroundColor="depth.darkest" elevated>
+        <Typography variant="h2" align="center" color="primary.lightest">
+          🔧 Funktionen von <HighlightText>Noctua</HighlightText>
+        </Typography>
+        <ListComponent items={features} />
+      </SectionWrapper>
+
+      <SectionWrapper backgroundColor="depth.dark">
+        <Typography variant="h2" align="center" color="primary.lightest">
+          🚀 Technologien hinter <HighlightText>Noctua</HighlightText>
+        </Typography>
+        <BadgeGrid badges={badges} />
+      </SectionWrapper>
+
+      <SectionWrapper backgroundColor="depth.dark" elevated>
+        <Typography variant="h3" align="center" color="accent.main">
+          🚦 Aktueller Stand
+        </Typography>
+        <Typography variant="body" align="center" color="primary.lightest">
+          <HighlightText>Status:</HighlightText> In aktiver Entwicklung.{' '}
+          <HighlightText>NoctuaLight</HighlightText> ist bereits verfügbar.
+        </Typography>
+        <Typography
+          variant="body"
+          align="center"
+          style={{ marginTop: '0.5rem' }}
+          color="primary.lightest"
+        >
+          <HighlightText>Funktionalitäten:</HighlightText> Grundlegende
+          Berichtsoptionen für Hardwareübersichten, Markdown-Export und
+          Checkbox-basierte GUI.
+        </Typography>
+      </SectionWrapper>
+
+      <SectionWrapper backgroundColor="depth.dark">
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '1.5rem',
+            marginTop: '2rem',
+          }}
+        >
+          <Button
+            variant="primary"
+            onClick={() =>
+              window.open('https://github.com/jonaszeihe/noctua', '_blank')
+            }
           >
-            <HighlightText>Funktionalitäten:</HighlightText> Grundlegende
-            Berichtsoptionen für Hardwareübersichten, Markdown-Export und
-            Checkbox-basierte GUI.
-          </Typography>
-        </SectionWrapper>
-
-        <SectionWrapper backgroundColor="depth.dark" elevated>
-          <Typography variant="h2" align="center" color="primary.lightest">
-            🔧 Funktionen von <HighlightText>Noctua</HighlightText>
-          </Typography>
-          <ListComponent items={features} />
-        </SectionWrapper>
-
-        <SectionWrapper backgroundColor="depth.dark">
-          <Typography variant="h2" align="center" color="primary.lightest">
-            🚀 Technologien hinter <HighlightText>Noctua</HighlightText>
-          </Typography>
-          <BadgeGrid badges={badges} />
-        </SectionWrapper>
-
-        <SectionWrapper backgroundColor="depth.dark">
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '1.5rem',
-              marginTop: '2rem',
-            }}
-          >
-            <Button
-              variant="primary"
-              onClick={() =>
-                window.open('https://github.com/jonaszeihe/noctua', '_blank')
-              }
-            >
-              GitHub Repository
-            </Button>
-            <Button variant="success">Download (Windows)</Button>
-          </div>
-        </SectionWrapper>
+            GitHub Repository
+          </Button>
+          <Button variant="success">Download (Windows)</Button>
+        </div>
       </SectionWrapper>
 
       {lightboxOpen && (

@@ -40,7 +40,7 @@ export default function Introduction() {
     <>
       <HeroWrapper gradient="accentToPrimary">
         <Typography variant="h1" align="center" color="neutral.ultraLight">
-          🎨 Design trifft Funktion – Mein Portfolio
+          🎨 Design trifft Entwicklung – Mein Portfolio
         </Typography>
       </HeroWrapper>
 
@@ -49,7 +49,7 @@ export default function Introduction() {
           <HighlightText>Willkommen</HighlightText> in meiner Welt, wo
           Kreativität auf Technologie trifft, um intuitive und skalierbare
           Lösungen zu schaffen. Als{' '}
-          <HighlightText>Fullstack Designer</HighlightText>
+          <HighlightText>Fullstack Designer </HighlightText>
           kombiniere ich <HighlightText>
             technische Präzision
           </HighlightText> mit{' '}

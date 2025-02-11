@@ -87,20 +87,16 @@ export default function SkryperDetails() {
   return (
     <>
       <HeroWrapper gradient="primaryToSecondary">
-        <MediaDisplay
-          media={[{ type: 'image', src: SkryperLogo, alt: 'Skryper Logo' }]}
-          onClick={() => setLightboxOpen(true)}
-        />
-        <Typography variant="h1" align="center" color="neutral.lightest">
+        <Typography variant="h1" align="center" color="neutral.ultraLight">
           📂 <HighlightText>Skryper</HighlightText> – Projektstrukturen im Fokus
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="secondary.dark" elevated>
-        <Typography variant="h2" align="center" color="neutral.lightest">
+      <SectionWrapper backgroundColor="secondary.darkest" elevated>
+        <Typography variant="h2" align="center" color="neutral.ultraLight">
           Warum <HighlightText>Skryper</HighlightText>?
         </Typography>
-        <Typography variant="body" align="center" color="neutral.lightest">
+        <Typography variant="body" align="left" color="neutral.ultraLight">
           Softwareprojekte wachsen schnell, und mit ihnen auch ihre
           Verzeichnisstrukturen. Skryper analysiert diese rekursiv,
           berücksichtigt `.gitignore`-Regeln und erstellt klare, lesbare
@@ -108,44 +104,49 @@ export default function SkryperDetails() {
           Dokumentation und einem Werkzeug, das speziell für die Bedürfnisse
           moderner Projekte entwickelt wurde.
         </Typography>
+        <MediaDisplay
+          media={[{ type: 'image', src: SkryperLogo, alt: 'Skryper Logo' }]}
+          onClick={() => setLightboxOpen(true)}
+          variant="medium"
+        />
       </SectionWrapper>
 
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h3" align="center" color="secondary.darkest">
+      <SectionWrapper backgroundColor="secondary.darkest" elevated>
+        <Typography variant="h3" align="center" color="neutral.ultraLight">
           🚦 Aktueller Stand
         </Typography>
-        <Typography variant="body" align="center" color="neutral.black">
+        <Typography variant="body" align="center" color="neutral.ultraLight">
           <HighlightText>Status:</HighlightText> Stabil und einsatzbereit mit
           allen Kernfunktionen.
         </Typography>
       </SectionWrapper>
 
-      <SectionWrapper backgroundColor="depth.lightest">
-        <Typography variant="h3" align="center" color="secondary.darkest">
+      <SectionWrapper backgroundColor="secondary.darkest">
+        <Typography variant="h3" align="center" color="neutral.ultraLight">
           🔮 Zukunft von <HighlightText>Skryper</HighlightText>
         </Typography>
-        <Typography variant="body" align="center" color="neutral.black">
+        <Typography variant="body" align="center" color="neutral.ultraLight">
           Geplante Features umfassen plattformübergreifende Unterstützung für
           Linux und macOS, erweiterte Logging-Funktionen und
           Performance-Optimierungen für große Verzeichnisse.
         </Typography>
       </SectionWrapper>
 
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h2" align="center" color="secondary.darkest">
+      <SectionWrapper backgroundColor="secondary.dark" elevated>
+        <Typography variant="h2" align="center" color="neutral.ultraLight">
           🔧 Funktionen von <HighlightText>Skryper</HighlightText>
         </Typography>
         <ListComponent items={features} />
       </SectionWrapper>
 
-      <SectionWrapper backgroundColor="depth.lightest">
-        <Typography variant="h2" align="center" color="neutral.black">
+      <SectionWrapper backgroundColor="secondary.darkest">
+        <Typography variant="h2" align="center" color="neutral.ultraLight">
           🚀 Technologien hinter <HighlightText>Skryper</HighlightText>
         </Typography>
         <BadgeGrid badges={badges} />
       </SectionWrapper>
 
-      <SectionWrapper backgroundColor="depth.lightest">
+      <SectionWrapper backgroundColor="secondary.darkest">
         <div
           style={{
             display: 'flex',

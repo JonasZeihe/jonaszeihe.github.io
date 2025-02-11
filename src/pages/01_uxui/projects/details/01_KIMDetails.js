@@ -67,20 +67,16 @@ export default function KIMDetails() {
 
   return (
     <>
-      <SectionWrapper backgroundColor="primary.lightest">
-        <HeroWrapper gradient="neutralSoft">
-          <MediaDisplay
-            media={[{ type: 'image', src: KimImage, alt: 'KIM Project Image' }]}
-            onClick={() => setLightboxOpen(true)}
-          />
-          <Typography variant="h1" align="center" color="depth.dark">
-            🌟 KIM – Your Friend to Meet New Friends
-          </Typography>
-        </HeroWrapper>
+      <HeroWrapper gradient="neutralSoft">
+        <Typography variant="h1" align="center" color="depth.dark">
+          🌟 KIM – Your Friend to Meet New Friends
+        </Typography>
+      </HeroWrapper>
 
+      <SectionWrapper backgroundColor="secondary.lightest">
         <Typography
           variant="body"
-          align="center"
+          align="left"
           color="neutral.deep"
           style={{ marginTop: '1rem' }}
         >
@@ -93,6 +89,11 @@ export default function KIMDetails() {
           Persönlichkeitsanalyse bis hin zu spielerischen Gruppenelementen – KIM
           bietet ein innovatives, interaktives Erlebnis.
         </Typography>
+        <MediaDisplay
+          media={[{ type: 'image', src: KimImage, alt: 'KIM Project Image' }]}
+          onClick={() => setLightboxOpen(true)}
+          variant="medium"
+        />
       </SectionWrapper>
 
       <SectionWrapper backgroundColor="secondary.lightest">
