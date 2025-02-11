@@ -71,6 +71,7 @@ export default function Introduction() {
                   description={description}
                   badges={badges}
                   gradient={gradient}
+                  targetId={id}
                 />
               )
             )}
