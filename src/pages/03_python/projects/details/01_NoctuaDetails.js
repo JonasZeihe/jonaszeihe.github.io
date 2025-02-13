@@ -143,7 +143,7 @@ export default function NoctuaDetails() {
           <Button
             variant="primary"
             onClick={() =>
-              window.open('https://github.com/jonaszeihe/noctua', '_blank')
+              window.open('https://github.com/jonaszeihe/noctuaLight', '_blank')
             }
           >
             GitHub Repository

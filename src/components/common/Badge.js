@@ -21,10 +21,12 @@ const BadgeContainer = styled.div`
     background-color 0.3s ease,
     box-shadow 0.3s ease;
 
+  transition:
+    background-color 0.2s ease-out,
+    opacity 0.2s ease-out;
   &:hover {
-    background-color: ${({ theme, customColor }) =>
-      customColor ? theme.colors.neutral.dark : theme.colors.primary.dark};
-    box-shadow: ${({ theme }) => theme.boxShadow.medium};
+    opacity: 0.7;
+    cursor: default;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

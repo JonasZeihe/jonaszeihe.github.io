@@ -18,7 +18,13 @@ export default function InkGrid() {
       'drag-and-drop',
       'windows-first',
     ],
-    githubLink: 'https://github.com/jonaszeihe/inkgrid',
+    buttons: [
+      {
+        text: 'GitHub',
+        link: 'https://github.com/jonaszeihe/inkgrid',
+        variant: 'github',
+      },
+    ],
   }
 
   return (

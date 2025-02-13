@@ -24,6 +24,7 @@ const StyledListItem = styled.li`
   &:hover {
     transform: translateY(-3px);
     background: ${({ theme }) => theme.colors.depth.main};
+    cursor: default;
   }
 `
 

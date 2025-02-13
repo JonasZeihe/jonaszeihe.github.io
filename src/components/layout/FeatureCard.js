@@ -1,36 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Typography } from '../../utils/sharedComponents'
+import {
+  Button,
+  Typography,
+  ButtonGrid,
+  CardWrapper,
+} from '../../utils/sharedComponents'
 import BadgeGrid from '../common/BadgeGrid'
-
-const CardWrapper = styled.div`
-  background: ${({ theme, gradient }) =>
-    theme.gradients[gradient] || theme.gradients.secondaryLight};
-  border-radius: ${({ theme }) => theme.borderRadius.medium};
-  padding: ${({ theme }) => theme.spacing(3)};
-  box-shadow: ${({ theme }) => theme.boxShadow.medium};
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-`
 
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing(2)};
-`
 
-const ButtonContainer = styled.div`
-  margin-top: ${({ theme }) => theme.spacing(3)};
-  display: flex;
-  justify-content: center;
+  gap: ${({ theme }) => theme.spacing(2)};
+  width: 100%;
+
+  /* Optimierung für mobile Geräte */
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: ${({ theme }) => theme.spacing(1)};
+  }
 `
 
 const scrollToSection = (id) => {
-  const section = document.getElementById(id)
-  if (section) section.scrollIntoView({ behavior: 'smooth' })
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
 
 export default function FeatureCard({
@@ -39,27 +32,28 @@ export default function FeatureCard({
   badges = [],
   targetId,
   gradient,
+  buttonText = 'Mehr erfahren',
+  buttonBackground,
 }) {
   return (
     <CardWrapper gradient={gradient}>
       <ContentWrapper>
-        <Typography variant="h2" align="center" color="primary.main">
+        <Typography variant="h2" color="secondary.dark" align="center">
           {title}
         </Typography>
-        <Typography variant="body" align="center" color="depth.dark">
+        <Typography variant="body" color="depth.dark" align="center">
           {description}
         </Typography>
         <BadgeGrid badges={badges} />
       </ContentWrapper>
-      <ButtonContainer>
+      <ButtonGrid>
         <Button
-          variant="primary"
-          size="medium"
+          buttonBackground={buttonBackground}
           onClick={() => scrollToSection(targetId)}
         >
-          Zum Projekt
+          {buttonText}
         </Button>
-      </ButtonContainer>
+      </ButtonGrid>
     </CardWrapper>
   )
 }

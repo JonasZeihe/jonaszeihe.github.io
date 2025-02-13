@@ -17,6 +17,8 @@ export default function Introduction() {
         'Ein KI-gestütztes Tool für dynamische Persönlichkeitsprofile und Gruppenmatching.',
       badges: ['ux-ui-design'],
       gradient: 'depthToHighlight.subtle',
+      buttonBackground: 'colors.depth.main',
+      buttonText: 'Zum KIM-Projekt',
     },
     {
       id: '01_Shizen',
@@ -25,14 +27,18 @@ export default function Introduction() {
         'Ein LMS mit dynamischen Kursinhalten, Gamification und skalierbarer Architektur.',
       badges: ['java', 'react', 'mongodb'],
       gradient: 'primaryLight.subtle',
+      buttonBackground: 'colors.primary.main',
+      buttonText: 'Shizen entdecken',
     },
     {
       id: '02_Skryper',
       title: 'Skryper & Structra',
       description:
-        'Analyse und Visualisierung in perfekter Harmonie. Effiziente Verzeichnisscans und automatisierte Projektstrukturen.',
+        'Analyse und Visualisierung von Projektbaumstrukturen – Effiziente Verzeichnisscans und automatisierte Generierung.',
       badges: ['python'],
       gradient: 'warmDynamic.subtle',
+      buttonBackground: 'colors.secondary.main',
+      buttonText: 'Mehr über Skryper & Structra',
     },
   ]
 
@@ -45,14 +51,12 @@ export default function Introduction() {
       </HeroWrapper>
 
       <SectionWrapper backgroundColor="neutral.lightest">
-        <Typography variant="h3" align="left" color="depth.main">
+        <Typography variant="h3" align="left" color="primary.dark">
           <HighlightText>Willkommen</HighlightText> in meiner Welt, wo
           Kreativität auf Technologie trifft, um intuitive und skalierbare
           Lösungen zu schaffen. Als{' '}
-          <HighlightText>Fullstack Designer </HighlightText>
-          kombiniere ich <HighlightText>
-            technische Präzision
-          </HighlightText> mit{' '}
+          <HighlightText>Fullstack Designer</HighlightText> kombiniere ich{' '}
+          <HighlightText>technische Präzision</HighlightText> mit{' '}
           <HighlightText>ästhetischem Design</HighlightText>, um Projekte zu
           schaffen, die inspirieren und Lösungen bieten.
         </Typography>
@@ -64,7 +68,15 @@ export default function Introduction() {
 
           <CardGrid>
             {featureProjects.map(
-              ({ id, title, description, badges, gradient }) => (
+              ({
+                id,
+                title,
+                description,
+                badges,
+                gradient,
+                buttonText,
+                buttonBackground,
+              }) => (
                 <FeatureCard
                   key={id}
                   title={title}
@@ -72,6 +84,8 @@ export default function Introduction() {
                   badges={badges}
                   gradient={gradient}
                   targetId={id}
+                  buttonBackground={buttonBackground}
+                  buttonText={buttonText}
                 />
               )
             )}
