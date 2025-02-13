@@ -7,6 +7,7 @@ import {
   HighlightText,
   ListComponent,
   Button,
+  ButtonGrid,
   Lightbox,
 } from '../../../../utils/sharedComponents'
 import BadgeGrid from '../../../../components/common/BadgeGrid'
@@ -119,18 +120,14 @@ export default function FlavorFusionDetails() {
       </SectionWrapper>
 
       <SectionWrapper backgroundColor="accent.lightest">
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '1.5rem',
-            marginTop: '2rem',
-          }}
-        >
+        <ButtonGrid>
           <Button
-            variant="primary"
+            variant="casestudy"
             onClick={() =>
-              window.open('https://jonaszeihe.github.io/casestudyFlavorFusion/')
+              window.open(
+                'https://jonaszeihe.github.io/casestudyFlavorFusion/',
+                '_blank'
+              )
             }
           >
             Case Study
@@ -139,13 +136,14 @@ export default function FlavorFusionDetails() {
             variant="success"
             onClick={() =>
               window.open(
-                'https://www.figma.com/proto/Gy9acaVeAmKcpYY2qLSE24/Projekt4_FIGMA_JONAS?page-id=606%3A5597&node-id=4114-3680&viewport=3715%2C1765%2C0.4&t=9FZnOndSTJA4elsZ-1&scaling=scale-down&content-scaling=fixed'
+                'https://www.figma.com/proto/Gy9acaVeAmKcpYY2qLSE24/Projekt4_FIGMA_JONAS?page-id=606%3A5597&node-id=4114-3680&viewport=3715%2C1765%2C0.4&t=9FZnOndSTJA4elsZ-1&scaling=scale-down&content-scaling=fixed',
+                '_blank'
               )
             }
           >
             Prototyp ansehen
           </Button>
-        </div>
+        </ButtonGrid>
       </SectionWrapper>
 
       {lightboxOpen && (

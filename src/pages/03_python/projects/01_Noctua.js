@@ -18,7 +18,13 @@ export default function Noctua() {
       'user-friendly-gui',
       'markdown-export',
     ],
-    githubLink: 'https://github.com/jonaszeihe/noctua',
+    buttons: [
+      {
+        text: 'GitHub',
+        link: 'https://github.com/jonaszeihe/noctuaLight',
+        variant: 'github',
+      },
+    ],
   }
 
   return (

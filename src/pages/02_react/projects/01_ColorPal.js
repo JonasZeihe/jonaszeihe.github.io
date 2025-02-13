@@ -12,7 +12,13 @@ export default function ColorPal() {
     name: 'ColorPal',
     description: 'Daten in Kunst verwandeln: dynamische Diagramme & Export.',
     badges: ['react', 'styled-components', 'json-handling'],
-    githubLink: 'https://github.com/jonaszeihe/colorpal',
+    buttons: [
+      {
+        text: 'GitHub',
+        link: 'https://github.com/jonaszeihe/colorpal',
+        variant: 'github',
+      },
+    ],
   }
 
   return (

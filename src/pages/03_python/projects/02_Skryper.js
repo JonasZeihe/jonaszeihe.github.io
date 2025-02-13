@@ -18,7 +18,13 @@ export default function Skryper() {
       'cli-tool',
       'clean-code',
     ],
-    githubLink: 'https://github.com/jonaszeihe/skryper',
+    buttons: [
+      {
+        text: 'GitHub',
+        link: 'https://github.com/jonaszeihe/skryper',
+        variant: 'github',
+      },
+    ],
   }
 
   return (

@@ -34,13 +34,6 @@ const WrapperBase = styled.div`
     box-shadow 0.3s ease,
     transform 0.3s ease;
 
-  /* Hover-Effekt */
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: ${({ theme, elevated }) =>
-      elevated ? theme.boxShadow.heavy : theme.boxShadow.light};
-  }
-
   /* Responsive Anpassungen */
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     padding: ${({ theme }) => theme.spacing(2)};

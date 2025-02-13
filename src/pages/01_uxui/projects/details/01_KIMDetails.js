@@ -67,7 +67,7 @@ export default function KIMDetails() {
 
   return (
     <>
-      <HeroWrapper gradient="neutralSoft">
+      <HeroWrapper gradient="secondaryWarm">
         <Typography variant="h1" align="center" color="depth.dark">
           🌟 KIM – Your Friend to Meet New Friends
         </Typography>
@@ -120,7 +120,7 @@ export default function KIMDetails() {
           KI-Funktionen und umfangreiche Usability-Tests zur Validierung des
           Designs.
         </Typography>
-        <Typography variant="body" align="center" style={{ marginTop: '1rem' }}>
+        <Typography variant="body" align="center" color="accent.dark">
           <HighlightText>Zukunftsvision:</HighlightText> Entwicklung einer
           vollfunktionsfähigen App mit Echtzeit-Feedback und personalisierten
           Matching-Algorithmen.
@@ -137,7 +137,7 @@ export default function KIMDetails() {
           }}
         >
           <Button
-            variant="primary"
+            variant="casestudy"
             onClick={() =>
               window.open(
                 'https://jonaszeihe.github.io/case-study-KIM/',

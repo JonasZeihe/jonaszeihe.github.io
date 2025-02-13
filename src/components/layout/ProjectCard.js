@@ -1,31 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import {
+  CardWrapper,
   Typography,
   Button,
-  CardWrapper as BaseCardWrapper,
+  ButtonGrid,
 } from '../../utils/sharedComponents'
 import BadgeGrid from '../common/BadgeGrid'
-
-const CardWrapper = styled(BaseCardWrapper)`
-  background: ${({ theme, gradient }) =>
-    gradient ? theme.gradients[gradient] : theme.gradients.neutralSoft};
-  border: 1px solid ${({ theme }) => theme.colors.neutral.light};
-  border-radius: ${({ theme }) => theme.borderRadius.large};
-  box-shadow: ${({ theme }) => theme.boxShadow.medium};
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: ${({ theme }) => theme.boxShadow.heavy};
-  }
-`
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -53,18 +34,6 @@ const ContentWrapper = styled.div`
   flex-grow: 1;
 `
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: ${({ theme }) => theme.spacing(1)};
-  margin-top: ${({ theme }) => theme.spacing(2)};
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    flex-direction: column;
-    gap: ${({ theme }) => theme.spacing(1)};
-  }
-`
-
 function ProjectCard({ project, gradient, onOpen }) {
   const handleCardClick = () => onOpen()
 
@@ -73,15 +42,17 @@ function ProjectCard({ project, gradient, onOpen }) {
     onOpen()
   }
 
-  const handleSecondButtonClick = (e) => {
+  const handleExternalButtonClick = (e, link) => {
     e.stopPropagation()
-    if (project.githubLink) {
-      window.open(project.githubLink, '_blank')
-    }
+    window.open(link, '_blank')
   }
 
   return (
-    <CardWrapper gradient={gradient} onClick={handleCardClick}>
+    <CardWrapper
+      gradient={gradient}
+      onClick={handleCardClick}
+      style={{ cursor: 'pointer' }}
+    >
       <ImageWrapper>
         <img src={project.image} alt={project.name} />
       </ImageWrapper>
@@ -93,16 +64,21 @@ function ProjectCard({ project, gradient, onOpen }) {
           {project.description}
         </Typography>
         <BadgeGrid badges={project.badges} />
-        <ButtonContainer>
+        <ButtonGrid>
           <Button variant="primary" onClick={handleOpenButtonClick}>
             Projekt ansehen
           </Button>
-          {project.githubLink && (
-            <Button variant="secondary" onClick={handleSecondButtonClick}>
-              GitHub
+          {project.buttons?.map(({ text, link, variant, buttonBackground }) => (
+            <Button
+              key={text}
+              variant={variant}
+              buttonBackground={buttonBackground}
+              onClick={(e) => handleExternalButtonClick(e, link)}
+            >
+              {text}
             </Button>
-          )}
-        </ButtonContainer>
+          ))}
+        </ButtonGrid>
       </ContentWrapper>
     </CardWrapper>
   )

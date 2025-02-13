@@ -150,7 +150,7 @@ export default function ShizenDetails() {
           <Button
             variant="primary"
             onClick={() =>
-              window.open('https://github.com/jonaszeihe/shizen', '_blank')
+              window.open('https://github.com/jonaszeihe/ninjin', '_blank')
             }
           >
             GitHub Repository

@@ -13,6 +13,18 @@ export default function FlavorFusion() {
     description:
       'Die Welt in deiner Küche: visuelles Storytelling & intuitive Navigation.',
     badges: ['figma', 'figjam', 'notion', 'chatgpt'],
+    buttons: [
+      {
+        text: 'Prototyp',
+        link: 'https://www.figma.com/proto/Gy9acaVeAmKcpYY2qLSE24/Projekt4_FIGMA_JONAS?page-id=606%3A5597&node-id=4114-3680&viewport=3715%2C1765%2C0.4&t=9FZnOndSTJA4elsZ-1&scaling=scale-down&content-scaling=fixed',
+        variant: 'success',
+      },
+      {
+        text: 'Case Study',
+        link: 'https://jonaszeihe.github.io/casestudyFlavorFusion/',
+        variant: 'casestudy',
+      },
+    ],
   }
 
   return (

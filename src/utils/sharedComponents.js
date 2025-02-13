@@ -3,6 +3,8 @@ export { default as Typography } from '../styles/Typography'
 export { default as HighlightText } from '../components/utilities/HighlightText'
 export { default as SmoothScroller } from '../components/utilities/SmoothScroller'
 export { default as Button } from '../components/common/Button'
+export { default as ButtonGrid } from '../components/common/ButtonGrid'
+
 export { default as Badge } from '../components/common/Badge'
 export { default as ListComponent } from '../components/data-display/ListComponent'
 export { default as MediaDisplay } from '../components/data-display/MediaDisplay'

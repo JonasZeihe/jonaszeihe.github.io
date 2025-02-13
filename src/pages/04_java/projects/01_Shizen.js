@@ -22,7 +22,13 @@ export default function Shizen() {
       'ux-ui-best-practices',
       'gamification',
     ],
-    githubLink: 'https://github.com/jonaszeihe/shizen',
+    buttons: [
+      {
+        text: 'GitHub',
+        link: 'https://github.com/jonaszeihe/ninjin',
+        variant: 'github',
+      },
+    ],
   }
 
   return (

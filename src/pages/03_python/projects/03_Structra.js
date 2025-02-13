@@ -18,7 +18,13 @@ export default function Structra() {
       'python',
       'skryper-integration',
     ],
-    githubLink: 'https://github.com/jonaszeihe/structra',
+    buttons: [
+      {
+        text: 'GitHub',
+        link: 'https://github.com/jonaszeihe/structra',
+        variant: 'github',
+      },
+    ],
   }
 
   return (

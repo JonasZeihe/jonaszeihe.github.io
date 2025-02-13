@@ -17,11 +17,12 @@ const CardWrapper = styled(WrapperBase)`
     box-shadow 0.2s ease,
     transform 0.2s ease;
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: ${({ theme }) => theme.boxShadow.medium};
-    background: ${({ theme }) => theme.colors.depth.lightest};
-  }
+&:hover {
+  transform: translateY(-3px);
+  box-shadow: ${({ theme }) => theme.boxShadow.medium};
+}
+
+
 
   /* Anpassungen für größere Bildschirme */
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -31,7 +32,7 @@ const CardWrapper = styled(WrapperBase)`
 
   /* Optimierung für mobile Geräte */
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin: ${({ theme }) => theme.spacing(0)} auto;
+    margin: ${({ theme }) => theme.spacing(1)} auto;
     border-radius: ${({ theme }) => theme.borderRadius.medium};
     box-shadow: ${({ theme }) => theme.boxShadow.heavy};
 

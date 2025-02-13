@@ -118,7 +118,7 @@ const gradients = (theme) => {
     // Neutral Gradients (Subtilität und Ausgewogenheit)
     neutralSoft: createGradient(
       theme.colors.neutral.light,
-      theme.colors.neutral.medium
+      theme.colors.neutral.main
     ),
     neutralStrong: createGradient(
       theme.colors.neutral.dark,
