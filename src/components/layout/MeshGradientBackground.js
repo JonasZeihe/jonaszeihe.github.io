@@ -1,40 +1,53 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes, useTheme } from 'styled-components'
 
-function MeshGradientBackground({
-  gradient1 = 'primaryLight',
-  gradient2 = 'secondaryWarm',
-}) {
+function MeshGradientBackground() {
+  const theme = useTheme()
+
+  if (!theme.backgroundBlobs || !Array.isArray(theme.backgroundBlobs))
+    return null
+
   return (
     <BackgroundContainer>
-      <GradientLayer gradient={gradient1} />
-      <GradientLayer gradient={gradient2} position="bottom-right" />
+      {theme.backgroundBlobs.map((blob) => (
+        <Blob
+          key={`blob-${blob.color}-${blob.size}`}
+          $color={blob.color}
+          $size={blob.size}
+          $delay={blob.delay}
+          style={blob.position}
+        />
+      ))}
     </BackgroundContainer>
   )
 }
 
-const BackgroundContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+const move = keyframes`
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(8%, -6%) scale(1.05); }
 `
 
-const GradientLayer = styled.div`
+const BackgroundContainer = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+`
+
+const Blob = styled.div`
   position: absolute;
-  width: 150%;
-  height: 300%;
-  top: ${({ position }) => (position === 'bottom-right' ? 'auto' : '-10%')};
-  left: ${({ position }) => (position === 'bottom-right' ? 'auto' : '-10%')};
-  bottom: ${({ position }) => (position === 'bottom-right' ? '-20%' : 'auto')};
-  right: ${({ position }) => (position === 'bottom-right' ? '-20%' : 'auto')};
-  background: ${({ theme, gradient }) => theme.gradients[gradient]};
-  filter: blur(200px);
-  opacity: 1.2;
-  z-index: 1;
-  mix-blend-mode: overlay;
+  width: ${({ $size }) => $size || '40vw'};
+  height: ${({ $size }) => $size || '40vw'};
+  background: ${({ theme, $color }) => {
+    const [key, shade = 'main'] = $color.split('.')
+    return theme.colors[key]?.[shade] || theme.colors.primary.main
+  }};
+  filter: blur(140px);
+  opacity: 0.35;
+  border-radius: 45% 55% 50% 50% / 60% 40% 60% 40%;
+  animation: ${move} 50s ease-in-out infinite;
+  animation-delay: ${({ $delay }) => $delay || '0s'};
 `
 
 export default MeshGradientBackground

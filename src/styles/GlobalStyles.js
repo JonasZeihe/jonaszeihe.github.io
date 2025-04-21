@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
     scroll-behavior: smooth;
     height: 100%;
     background: ${({ theme }) => theme.gradients.pageBackground};
+    color-scheme: ${({ theme }) => (theme.mode === 'dark' ? 'dark' : 'light')};
     overflow-x: hidden;
   }
 
@@ -37,7 +38,6 @@ const GlobalStyles = createGlobalStyle`
       outline: 2px solid ${({ theme }) => theme.colors.accent.main};
       outline-offset: 2px;
     }
-  }
 `
 
 export default GlobalStyles

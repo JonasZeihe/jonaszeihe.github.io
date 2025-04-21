@@ -2,7 +2,9 @@ import gradients from './Gradient'
 
 const baseFontSize = 18
 const goldenRatio = 1.618
+
 const scaleFont = (level) => `${(baseFontSize * goldenRatio ** level) / 16}rem`
+
 const responsiveFontSize = (minSize, maxSize) =>
   `clamp(${minSize}, calc(${minSize} + (${maxSize} - ${minSize}) * ((100vw - 320px) / (1200 - 320))), ${maxSize})`
 
@@ -48,10 +50,10 @@ const baseTheme = {
     pill: '9999px',
   },
   boxShadow: {
-    light: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-    medium: '0px 4px 8px rgba(0, 0, 0, 0.2)',
-    heavy: '0px 8px 16px rgba(0, 0, 0, 0.3)',
-    glow: '0 0 10px rgba(46, 204, 113, 0.5)',
+    light: '0 2px 4px rgba(0, 0, 0, 0.05)',
+    medium: '0 4px 8px rgba(0, 0, 0, 0.08)',
+    heavy: '0 8px 16px rgba(0, 0, 0, 0.12)',
+    glow: '0 0 10px rgba(46, 204, 113, 0.4)',
   },
   breakpoints: {
     xs: '320px',
@@ -62,6 +64,7 @@ const baseTheme = {
   },
 }
 
+// ===== LIGHT COLORS =====
 const lightColors = {
   primary: {
     ultraLight: '#FAFFFD',
@@ -129,42 +132,43 @@ const lightColors = {
   },
 }
 
+// ===== DARK COLORS =====
 const darkColors = {
   primary: {
-    ultraLight: '#0B1C17',
-    lightest: '#112E26',
-    light: '#3B7C65',
+    ultraLight: '#1E2D26',
+    lightest: '#295E4F',
+    light: '#4AA381',
     main: '#2ECC71',
     dark: '#A4DBC4',
-    darkest: '#F2FAF7',
-    deep: '#FAFFFD',
+    darkest: '#DCF5EC',
+    deep: '#F4FFFC',
   },
   secondary: {
-    ultraLight: '#0E1A1C',
-    lightest: '#193130',
-    light: '#38767F',
+    ultraLight: '#1C2D30',
+    lightest: '#234B51',
+    light: '#4F9CA6',
     main: '#63B4BF',
-    dark: '#C0E1E5',
-    darkest: '#F3F9FA',
-    deep: '#F9FEFE',
+    dark: '#D1EFF3',
+    darkest: '#ECF9FB',
+    deep: '#F8FEFE',
   },
   accent: {
-    ultraLight: '#251409',
+    ultraLight: '#2D1B10',
     lightest: '#3F240F',
     light: '#B52835',
     main: '#FF9340',
-    dark: '#FFB3B6',
-    darkest: '#FFE3E6',
-    deep: '#FFF8F3',
+    dark: '#FFD1AF',
+    darkest: '#FFECE3',
+    deep: '#FFF9F3',
   },
   highlight: {
-    ultraLight: '#5C4015',
-    lightest: '#996B26',
+    ultraLight: '#3B2D12',
+    lightest: '#8A6424',
     light: '#C99033',
     main: '#F5B041',
     dark: '#FFE1B3',
     darkest: '#FFF5E6',
-    deep: '#FFFDF8',
+    deep: '#FFFBF5',
   },
   secondaryHighlight: {
     ultraLight: '#3F2A2C',
@@ -176,44 +180,65 @@ const darkColors = {
     deep: '#FEF9F9',
   },
   neutral: {
-    ultraLight: '#0A0A0A',
-    lightest: '#1A1A1A',
-    light: '#2A2A2A',
-    main: '#4A4A4A',
-    dark: '#8A8A8A',
-    darkest: '#CCCCCC',
-    black: '#FFFFFF',
-    deep: '#EDEDED',
+    ultraLight: '#1A1A1A',
+    lightest: '#222222',
+    light: '#333333',
+    main: '#4D4D4D',
+    dark: '#A0A0A0',
+    darkest: '#DADADA',
+    black: '#F5F5F5',
+    deep: '#F0F0F0',
   },
   depth: {
-    ultraLight: '#111111',
-    lightest: '#1C1C1C',
+    ultraLight: '#101010',
+    lightest: '#1A1A1A',
     light: '#2A2A2A',
     main: '#2C3E50',
-    dark: '#E6EAEA',
-    darkest: '#F9FAFA',
+    dark: '#D6E0E0',
+    darkest: '#F2F4F5',
     deep: '#FFFFFF',
   },
 }
 
+// ===== THEMES EXPORT =====
 export const lightTheme = {
   ...baseTheme,
   colors: lightColors,
-  gradients: {
-    ...gradients({ colors: lightColors }),
-    pageBackground: 'linear-gradient(180deg, #FFFFFF, #F2F5F5)',
-  },
+  gradients: gradients({ colors: lightColors }),
+  backgroundBlobs: [
+    {
+      color: 'primary.light',
+      size: '60vw',
+      delay: '0s',
+      position: { top: '-10%', left: '-20%' },
+    },
+    {
+      color: 'highlight.light',
+      size: '50vw',
+      delay: '5s',
+      position: { bottom: '-20%', right: '-10%' },
+    },
+  ],
 }
 
 export const darkTheme = {
   ...baseTheme,
   colors: darkColors,
-  gradients: {
-    ...gradients({ colors: darkColors }),
-    pageBackground: 'linear-gradient(180deg, #0B1118, #1A1A1A)',
-  },
+  gradients: gradients({ colors: darkColors }),
+  backgroundBlobs: [
+    {
+      color: 'primary.dark',
+      size: '65vw',
+      delay: '0s',
+      position: { top: '-15%', left: '-25%' },
+    },
+    {
+      color: 'highlight.dark',
+      size: '50vw',
+      delay: '4s',
+      position: { bottom: '-15%', right: '-10%' },
+    },
+  ],
 }
 
-const theme = darkTheme
-
-export default theme
+export default lightTheme
