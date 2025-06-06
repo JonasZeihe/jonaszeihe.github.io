@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   HeroWrapper,
-  SectionWrapper,
   Typography,
   HighlightText,
 } from '../../utils/sharedComponents'
@@ -19,27 +18,31 @@ export default function ReactIntroduction() {
 
   return (
     <>
-      {/* Hero-Bereich */}
       <HeroWrapper gradient="secondaryDynamic">
         <Typography variant="h1" color="primary.dark" align="center">
           React Projekte
         </Typography>
       </HeroWrapper>
 
-      {/* Einleitung */}
-      <SectionWrapper backgroundColor="secondary.lightest" elevated>
-        <Typography variant="h2" align="left" color="primary.dark">
-          In Projekten wie <HighlightText>colorPal</HighlightText> und{' '}
-          <HighlightText>Shizen</HighlightText> sowie in meinen{' '}
-          <HighlightText>UX/UI Case Studies</HighlightText> setze ich auf React,
-          um herausragende Anwendungen zu entwickeln.
-        </Typography>
-        <Typography variant="h3" align="left" color="accent.dark">
-          Meine Expertise erstreckt sich von modularen Komponentenbibliotheken
-          bis hin zu nahtlosen Fullstack-Integrationen.
-        </Typography>
-        <BadgeGrid badges={badges} />
-      </SectionWrapper>
+      <Typography variant="h2" align="left" color="primary.dark">
+        In <HighlightText>colorPal</HighlightText>,{' '}
+        <HighlightText>Shizen</HighlightText> und weiteren Anwendungen zeige
+        ich, wie React mehr sein kann als ein Framework: nämlich eine Grundlage
+        für
+        <HighlightText>
+          {' '}
+          klare Strukturen und konsistente Nutzererlebnisse
+        </HighlightText>
+        .
+      </Typography>
+
+      <Typography variant="h3" align="left" color="accent.dark">
+        Vom Aufbau modularer Komponenten über komplexes State-Management bis zur
+        API-Integration: Ich nutze React, um funktionale Tiefe mit intuitiver
+        Bedienung zu verbinden.
+      </Typography>
+
+      <BadgeGrid badges={badges} />
     </>
   )
 }

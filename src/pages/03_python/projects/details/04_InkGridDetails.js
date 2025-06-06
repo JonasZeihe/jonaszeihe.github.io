@@ -17,59 +17,59 @@ export default function InkGridDetails() {
 
   const features = [
     {
-      id: 'feature-1',
+      id: 'f1',
       content: (
         <>
-          🌈 <HighlightText>Automatisierte SVG-Erstellung:</HighlightText>{' '}
-          Generiere klare, strukturierte Farbpaletten mit Gruppierungen und
-          Ebenen.
+          🧠 <HighlightText>Automatisierte SVG-Erstellung:</HighlightText>{' '}
+          Strukturiere und exportiere komplexe Farbpaletten mit Ebenen, Gruppen
+          und Bezeichnungen.
         </>
       ),
     },
     {
-      id: 'feature-2',
+      id: 'f2',
       content: (
         <>
-          🖌️ <HighlightText>Flexible Vorlagen:</HighlightText> Passe Farben,
-          Gruppen und Hierarchien individuell an.
+          🎨 <HighlightText>Design-System Integration:</HighlightText> Export
+          als JSON für nahtlosen Import via eigens entwickeltem Figma Plugin.
         </>
       ),
     },
     {
-      id: 'feature-3',
+      id: 'f3',
       content: (
         <>
-          🌗 <HighlightText>Light/Dark-Modus:</HighlightText> Automatisierte
-          Anpassung für verschiedene Themes.
+          🌗 <HighlightText>Light/Dark-Support:</HighlightText> Automatische
+          Themenerkennung und Umstellung.
         </>
       ),
     },
     {
-      id: 'feature-4',
+      id: 'f4',
       content: (
         <>
-          🚀 <HighlightText>Drag-and-Drop-Unterstützung:</HighlightText>{' '}
-          Importiere Textdateien mit Farbpaletten im Handumdrehen.
+          📥 <HighlightText>Drag-and-Drop:</HighlightText> Einfacher Import von
+          .txt- oder JSON-Dateien mit Palettendefinitionen.
         </>
       ),
     },
     {
-      id: 'feature-5',
+      id: 'f5',
       content: (
         <>
-          📜 <HighlightText>Strukturierte Ausgabe:</HighlightText> SVG-Dateien,
-          die sofort in Tools wie Figma oder AdobeXD verwendbar sind.
+          📦 <HighlightText>Sofort nutzbare Ausgabe:</HighlightText> SVGs & JSON
+          für direkte Verwendung in Figma, Adobe XD & Codebases.
         </>
       ),
     },
   ]
 
   const badges = [
-    'svg-optimization',
-    'light-dark-mode',
-    'design-system',
+    'svg-automation',
+    'json-output',
+    'design-system-integration',
     'drag-and-drop',
-    'windows-first',
+    'multi-platform',
   ]
 
   return (
@@ -81,18 +81,13 @@ export default function InkGridDetails() {
       </HeroWrapper>
 
       <SectionWrapper backgroundColor="secondaryHighlight.light" elevated>
-        <Typography variant="h2" align="center" color="depth.darkest">
-          Warum <HighlightText>InkGrid</HighlightText>?
-        </Typography>
         <Typography variant="body" align="left" color="depth.darkest">
-          Farbpaletten sind essenziell für jedes Design. Mit{' '}
-          <HighlightText>InkGrid</HighlightText> wird der Prozess der Erstellung
-          und Organisation revolutioniert. Importiere Farbpaletten aus
-          Textdateien, passe sie an und exportiere perfekte SVG-Dateien – bereit
-          für Tools wie Figma oder AdobeXD. Mit automatisierter Unterstützung
-          für Light- und Dark-Modi sowie flexiblen Vorlagen bietet{' '}
-          <HighlightText>InkGrid</HighlightText> Designern und Entwicklern eine
-          unverzichtbare Lösung.
+          Mit <HighlightText>InkGrid</HighlightText> gestaltest und exportierst
+          du vollständige Farbpaletten für Designsysteme – strukturiert,
+          thematisch differenziert und sofort einsatzbereit. Die App unterstützt
+          dich beim Aufbau von konsistenten Styles für{' '}
+          <HighlightText>Figma</HighlightText>,{' '}
+          <HighlightText>AdobeXD</HighlightText> und Code-Workflows.
         </Typography>
         <MediaDisplay
           media={[{ type: 'image', src: InkGridLogo, alt: 'InkGrid Logo' }]}
@@ -102,27 +97,43 @@ export default function InkGridDetails() {
       </SectionWrapper>
 
       <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h3" align="center" color="depth.dark">
-          🚦 Aktueller Stand
-        </Typography>
-        <Typography variant="body" align="center" color="depth.dark">
-          <HighlightText>Status:</HighlightText> Aktive Entwicklung.
-          Grundfunktionen sind stabil, zusätzliche Features folgen.
-        </Typography>
-      </SectionWrapper>
-
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
         <Typography variant="h2" align="center" color="depth.dark">
-          🔧 Funktionen von <HighlightText>InkGrid</HighlightText>
+          🚀 Highlights
         </Typography>
         <ListComponent items={features} />
       </SectionWrapper>
 
       <SectionWrapper backgroundColor="depth.lightest">
         <Typography variant="h2" align="center" color="neutral.black">
-          🚀 Technologien hinter <HighlightText>InkGrid</HighlightText>
+          🔧 Technologien & Konzepte
         </Typography>
         <BadgeGrid badges={badges} />
+      </SectionWrapper>
+
+      <SectionWrapper backgroundColor="neutral.lightest">
+        <Typography variant="h3" align="center" color="depth.dark">
+          🚦 Aktueller Stand
+        </Typography>
+        <Typography variant="body" align="center" color="depth.dark">
+          <HighlightText>Status:</HighlightText> Stabil auf Windows & macOS.
+          JSON-Schnittstelle für Token-Export integriert.
+        </Typography>
+        <Typography
+          variant="body"
+          align="center"
+          style={{ marginTop: '0.5rem' }}
+          color="depth.dark"
+        >
+          <HighlightText>Plugin-Support:</HighlightText> Direkter Import in
+          Figma über{' '}
+          <a
+            href="https://github.com/JonasZeihe/InkGrid-Tokens"
+            target="_blank"
+            rel="noreferrer"
+          >
+            InkGrid-Tokens
+          </a>
+        </Typography>
       </SectionWrapper>
 
       <SectionWrapper backgroundColor="neutral.lightest">
@@ -134,6 +145,7 @@ export default function InkGridDetails() {
             marginTop: '2rem',
           }}
         >
+          {' '}
           <Button
             variant="primary"
             onClick={() =>

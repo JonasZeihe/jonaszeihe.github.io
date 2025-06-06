@@ -8,6 +8,7 @@ import {
   ListComponent,
   Button,
   Lightbox,
+  ButtonGrid,
 } from '../../../../utils/sharedComponents'
 import BadgeGrid from '../../../../components/common/BadgeGrid'
 import ColorPalImage from '../../../../assets/images/Projects/colorpal_logo.png'
@@ -17,38 +18,38 @@ export default function ColorPalDetails() {
 
   const features = [
     {
-      id: 'feature-1',
+      id: 'cp1',
       content: (
         <>
-          🎨 <HighlightText>Dynamische Diagramme:</HighlightText> Unterstützung
-          für verschiedene Typen wie Pie, Donut und Radial Bar.
+          📊 <HighlightText>Interaktive Diagramme</HighlightText>: Unterstützt
+          Pie, Donut und RadialBar – live editierbar mit direkter Vorschau.
         </>
       ),
     },
     {
-      id: 'feature-2',
+      id: 'cp2',
       content: (
         <>
-          ✏️ <HighlightText>Echtzeit-Styling:</HighlightText> Anpassbare
-          Schatten, Glows und Farbverläufe.
+          🎨 <HighlightText>Styling in Echtzeit</HighlightText>: Schatten,
+          Glows, Gradients – alles on the fly anpassbar.
         </>
       ),
     },
     {
-      id: 'feature-3',
+      id: 'cp3',
       content: (
         <>
-          📊 <HighlightText>JSON-Integration:</HighlightText> Import und Export
-          von Daten zur nahtlosen Visualisierung.
+          🔗 <HighlightText>JSON-Schnittstelle</HighlightText>: Import & Export
+          komplexer Datensätze für dynamische Visualisierungen.
         </>
       ),
     },
     {
-      id: 'feature-4',
+      id: 'cp4',
       content: (
         <>
-          🚀 <HighlightText>Flexibler Export:</HighlightText> Ausgabe als SVG
-          oder PNG für vielseitige Anwendungen.
+          🚀 <HighlightText>Exportoptionen</HighlightText>: Hochauflösende
+          Ausgabe als PNG oder SVG – ready für Print und Web.
         </>
       ),
     },
@@ -65,81 +66,70 @@ export default function ColorPalDetails() {
     <>
       <HeroWrapper gradient="accentPlayful">
         <Typography variant="h1" align="center" color="accent.lightest">
-          🎨 <HighlightText>colorPal</HighlightText> – Transform Data Into Art
+          colorPal – Diagramme, die gestalten
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h2" align="center" color="accent.dark">
-          Warum <HighlightText>colorPal</HighlightText>?
+      <SectionWrapper backgroundColor="neutral.lightest">
+        <Typography variant="body" align="left" color="accent.dark">
+          <HighlightText>colorPal</HighlightText> ist ein Visualisierungstool,
+          das aus trockenen Zahlen visuelle Erlebnisse macht. Entwickelt in
+          React, mit Fokus auf dynamisches Styling und präzise
+          Datenrepräsentation. Ziel: maximale Ausdruckskraft bei minimalem
+          Aufwand.
         </Typography>
 
-        <Typography variant="body" align="left" color="accent.dark">
-          Daten müssen nicht langweilig sein. Mit{' '}
-          <HighlightText>colorPal</HighlightText> lassen sich Diagramme in
-          Echtzeit gestalten, dynamisch anpassen und als hochwertige SVG- oder
-          PNG-Dateien exportieren. Es ist die perfekte Lösung für alle, die
-          Daten auf eine kreative und intuitive Weise präsentieren möchten.
-        </Typography>
         <MediaDisplay
           media={[{ type: 'image', src: ColorPalImage, alt: 'ColorPal Logo' }]}
           onClick={() => setLightboxOpen(true)}
           variant="medium"
         />
+      </SectionWrapper>
 
-        <SectionWrapper backgroundColor="neutral.lightest">
-          <Typography variant="h2" align="center" color="accent.dark">
-            🚀 Features von <HighlightText>colorPal</HighlightText>
-          </Typography>
-          <ListComponent items={features} />
-        </SectionWrapper>
+      <SectionWrapper backgroundColor="neutral.lightest">
+        <Typography variant="h2" align="center" color="accent.dark">
+          Features
+        </Typography>
+        <ListComponent items={features} />
+      </SectionWrapper>
 
-        <SectionWrapper backgroundColor="neutral.lightest">
-          <Typography variant="h2" align="center" color="highlight.dark">
-            🛡️ Technologien hinter <HighlightText>colorPal</HighlightText>
-          </Typography>
-          <BadgeGrid badges={badges} />
-        </SectionWrapper>
+      <SectionWrapper backgroundColor="neutral.lightest">
+        <Typography variant="h2" align="center" color="highlight.dark">
+          Technologien & Tools
+        </Typography>
+        <BadgeGrid badges={badges} />
+      </SectionWrapper>
 
-        <SectionWrapper backgroundColor="neutral.lightest" elevated>
-          <Typography variant="h3" align="center" color="highlight.dark">
-            🚦 Aktueller Stand
-          </Typography>
-          <Typography variant="body" align="center" color="accent.dark">
-            <HighlightText>Status:</HighlightText> Solide Grundlage mit
-            funktionierenden Diagrammtypen und JSON-Handling. Weitere
-            Styling-Optionen und eine optimierte Benutzeroberfläche befinden
-            sich in Entwicklung.
-          </Typography>
-        </SectionWrapper>
+      <SectionWrapper backgroundColor="neutral.lightest">
+        <Typography variant="h2" align="center" color="accent.dark">
+          Aktueller Stand
+        </Typography>
+        <Typography variant="body" align="center" color="accent.dark">
+          Funktional und live einsetzbar. Erweiterungen in Arbeit:
+          Vorlagensystem, Drag & Drop, und visuelles Styling per
+          Tastatursteuerung.
+        </Typography>
+      </SectionWrapper>
 
-        <SectionWrapper backgroundColor="depth.main">
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '1.5rem',
-              marginTop: '2rem',
-            }}
+      <SectionWrapper backgroundColor="depth.main">
+        <ButtonGrid>
+          <Button
+            variant="primary"
+            onClick={() =>
+              window.open('https://github.com/jonaszeihe/colorpal', '_blank')
+            }
           >
-            <Button
-              variant="primary"
-              onClick={() =>
-                window.open('https://github.com/jonaszeihe/colorpal', '_blank')
-              }
-            >
-              GitHub Repository
-            </Button>
-            <Button
-              variant="success"
-              onClick={() =>
-                window.open('https://jonaszeihe.github.io/colorPal/', '_blank')
-              }
-            >
-              Website
-            </Button>
-          </div>
-        </SectionWrapper>
+            GitHub Repo
+          </Button>
+          <Button
+            variant="success"
+            onClick={() =>
+              window.open('https://jonaszeihe.github.io/colorPal/', '_blank')
+            }
+          >
+            Live-Demo
+          </Button>
+        </ButtonGrid>
       </SectionWrapper>
 
       {lightboxOpen && (
