@@ -2,7 +2,6 @@ import React from 'react'
 import {
   CardGrid,
   HeroWrapper,
-  SectionWrapper,
   Typography,
   HighlightText,
 } from '../utils/sharedComponents'
@@ -14,7 +13,7 @@ export default function Introduction() {
       id: '01_KIM',
       title: 'KIM',
       description:
-        'Ein KI-gestütztes Tool für dynamische Persönlichkeitsprofile und Gruppenmatching.',
+        'Ein KI-gestütztes Tool zur Vernetzung von Menschen – mit Designsystem, Matchinglogik und Usability-Fokus.',
       badges: ['ux-ui-design'],
       gradient: 'depthToHighlight.subtle',
       buttonBackground: 'colors.depth.main',
@@ -24,7 +23,7 @@ export default function Introduction() {
       id: '01_Shizen',
       title: 'Shizen',
       description:
-        'Ein LMS mit dynamischen Kursinhalten, Gamification und skalierbarer Architektur.',
+        'Ein modulares Lernsystem mit dynamischer Kursstruktur, Gamification und sicherem Fullstack-Backend.',
       badges: ['java', 'react', 'mongodb'],
       gradient: 'primaryLight.subtle',
       buttonBackground: 'colors.primary.main',
@@ -46,52 +45,47 @@ export default function Introduction() {
     <>
       <HeroWrapper gradient="accentToPrimary">
         <Typography variant="h1" align="center" color="neutral.ultraLight">
-          🎨 Design trifft Entwicklung – Mein Portfolio
+          Design trifft Entwicklung – Mein Portfolio
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="neutral.lightest">
-        <Typography variant="h3" align="left" color="primary.dark">
-          <HighlightText>Willkommen</HighlightText> in meiner Welt, wo
-          Kreativität auf Technologie trifft, um intuitive und skalierbare
-          Lösungen zu schaffen. Als{' '}
-          <HighlightText>Fullstack Designer</HighlightText> kombiniere ich{' '}
-          <HighlightText>technische Präzision</HighlightText> mit{' '}
-          <HighlightText>ästhetischem Design</HighlightText>, um Projekte zu
-          schaffen, die inspirieren und Lösungen bieten.
-        </Typography>
+      <Typography variant="h3" align="left" color="depth.dark">
+        <HighlightText>Was du hier findest:</HighlightText> Eine kuratierte
+        Auswahl meiner Projekte an der Schnittstelle von{' '}
+        <HighlightText>Softwareentwicklung</HighlightText> und{' '}
+        <HighlightText>User Experience</HighlightText>. Jedes Projekt wurde
+        konzipiert, gestaltet und technisch umgesetzt mit dem Anspruch, nicht
+        nur zu funktionieren – sondern zu überzeugen.
+      </Typography>
 
-        <SectionWrapper backgroundColor="neutral.ultraLight">
-          <Typography variant="h2" align="center" color="primary.darkest">
-            🌟 Eine kleine Auswahl meiner spannendsten Projekte
-          </Typography>
+      <Typography variant="h2" align="center" color="primary.darkest">
+        🌟 Meine persönlich ausgewählten Highlights
+      </Typography>
 
-          <CardGrid>
-            {featureProjects.map(
-              ({
-                id,
-                title,
-                description,
-                badges,
-                gradient,
-                buttonText,
-                buttonBackground,
-              }) => (
-                <FeatureCard
-                  key={id}
-                  title={title}
-                  description={description}
-                  badges={badges}
-                  gradient={gradient}
-                  targetId={id}
-                  buttonBackground={buttonBackground}
-                  buttonText={buttonText}
-                />
-              )
-            )}
-          </CardGrid>
-        </SectionWrapper>
-      </SectionWrapper>
+      <CardGrid>
+        {featureProjects.map(
+          ({
+            id,
+            title,
+            description,
+            badges,
+            gradient,
+            buttonText,
+            buttonBackground,
+          }) => (
+            <FeatureCard
+              key={id}
+              title={title}
+              description={description}
+              badges={badges}
+              gradient={gradient}
+              targetId={id}
+              buttonBackground={buttonBackground}
+              buttonText={buttonText}
+            />
+          )
+        )}
+      </CardGrid>
     </>
   )
 }

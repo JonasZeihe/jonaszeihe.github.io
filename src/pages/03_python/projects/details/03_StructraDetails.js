@@ -17,57 +17,58 @@ export default function StructraDetails() {
 
   const features = [
     {
-      id: 'feature-1',
+      id: 'f1',
       content: (
         <>
-          📂 <HighlightText>Automatisierte Generierung:</HighlightText> Erstellt
-          vollständige Verzeichnisse und Dateien aus textbasierten Baumvorlagen.
+          ⚙️ <HighlightText>Automatisierte Struktur-Generierung:</HighlightText>{' '}
+          Wandelt textbasierte Baumvorlagen in echte Verzeichnisse und Dateien
+          um.
         </>
       ),
     },
     {
-      id: 'feature-2',
+      id: 'f2',
       content: (
         <>
-          🖱️ <HighlightText>Drag-and-Drop-Unterstützung:</HighlightText>{' '}
-          Intuitives Interface für schnelle und einfache Bedienung.
+          🖱️ <HighlightText>Drag-and-Drop:</HighlightText> Bedienung über ein
+          visuelles Interface – ohne Konsole, ohne Umwege.
         </>
       ),
     },
     {
-      id: 'feature-3',
+      id: 'f3',
       content: (
         <>
-          🗂️ <HighlightText>Projektvorlagen:</HighlightText> Für
-          wiederverwendbare, skalierbare und konsistente Strukturen.
+          📁 <HighlightText>Projektvorlagen:</HighlightText> Reproduzierbare,
+          konsistente Startpunkte für neue Projekte.
         </>
       ),
     },
     {
-      id: 'feature-4',
+      id: 'f4',
       content: (
         <>
-          ✅ <HighlightText>Hohe Testabdeckung:</HighlightText> 90%
-          Testabdeckung für zuverlässige Funktionalität.
+          ✅ <HighlightText>Hohe Testabdeckung:</HighlightText> Verlässliche
+          Ergebnisse durch solide Testarchitektur.
         </>
       ),
     },
     {
-      id: 'feature-5',
+      id: 'f5',
       content: (
         <>
-          🌍 <HighlightText>Plattformpotenzial:</HighlightText> Architektur für
-          zukünftige Unterstützung von macOS und Linux.
+          🌐 <HighlightText>Plattformstrategie:</HighlightText> Architektur
+          vorbereitet für Windows, Linux & macOS.
         </>
       ),
     },
   ]
 
   const badges = [
+    'python',
     'automation',
     'drag-and-drop',
     'project-templates',
-    'python',
     'skryper-integration',
   ]
 
@@ -75,22 +76,17 @@ export default function StructraDetails() {
     <>
       <HeroWrapper gradient="warmDynamic">
         <Typography variant="h1" align="center" color="neutral.lightest">
-          🏭 Structra – Strukturen leicht gemacht
+          🏗️ Structra – Von Strukturvorlage zu System
         </Typography>
       </HeroWrapper>
 
       <SectionWrapper backgroundColor="secondaryHighlight.lightest" elevated>
-        <Typography variant="h2" align="center" color="secondaryHighlight.dark">
-          Was ist <HighlightText>Structra</HighlightText>?
-        </Typography>
         <Typography variant="body" align="left" color="primary.darkest">
-          Manuelle Verzeichnis- und Dateierstellungen sind zeitaufwendig und
-          fehleranfällig. <HighlightText>Structra</HighlightText> automatisiert
-          diesen Prozess, indem es textbasierte Baumvorlagen in reale
-          Verzeichnisse und Dateien umwandelt. Gemeinsam mit{' '}
-          <HighlightText>Skryper</HighlightText> bildet Structra ein
-          leistungsstarkes Duo: Skryper analysiert bestehende Projektstrukturen,
-          während Structra sie effizient wiederherstellt oder neue aufbaut.
+          <HighlightText>Structra</HighlightText> automatisiert den Aufbau
+          komplexer Verzeichnis- und Dateistrukturen. In Verbindung mit{' '}
+          <HighlightText>Skryper</HighlightText> entsteht ein Kreislauf: Skryper
+          analysiert, Structra rekonstruiert – schneller, konsistenter,
+          fehlertolerant.
         </Typography>
         <MediaDisplay
           media={[{ type: 'image', src: StructraLogo, alt: 'Structra Logo' }]}
@@ -99,37 +95,29 @@ export default function StructraDetails() {
         />
       </SectionWrapper>
 
-      <SectionWrapper backgroundColor="secondaryHighlight.lightest" elevated>
-        <Typography variant="h3" align="center" color="secondaryHighlight.dark">
-          🚦 Aktueller Stand
-        </Typography>
-        <Typography variant="body" align="center" color="primary.dark">
-          <HighlightText>Status:</HighlightText> Stabil und einsatzbereit mit
-          Drag-and-Drop-Unterstützung für Windows.
-        </Typography>
-      </SectionWrapper>
-
       <SectionWrapper backgroundColor="secondaryHighlight.lightest">
-        <Typography variant="h3" align="center" color="accent.main">
-          🔮 Zukunftsaussichten
-        </Typography>
-        <Typography variant="body" align="center" color="primary.dark">
-          Erweiterung der Plattformunterstützung, Integration zusätzlicher
-          Dateiformate wie `.dockerignore` und Optimierung der
-          Drag-and-Drop-Funktion.
-        </Typography>
-      </SectionWrapper>
-
-      <SectionWrapper backgroundColor="secondaryHighlight.lightest" elevated>
-        <Typography variant="h2" align="center" color="secondaryHighlight.dark">
-          🔧 Funktionen von <HighlightText>Structra</HighlightText>
+        <Typography variant="h2" align="center" color="primary.dark">
+          🛠 Funktionen von Structra
         </Typography>
         <ListComponent items={features} />
       </SectionWrapper>
 
+      <SectionWrapper backgroundColor="secondaryHighlight.lightest" elevated>
+        <Typography variant="h3" align="center" color="accent.main">
+          📦 Status & Roadmap
+        </Typography>
+        <Typography variant="body" align="center" color="primary.dark">
+          <HighlightText>Status:</HighlightText> Einsatzbereit auf Windows.
+          <br />
+          <HighlightText>Ausblick:</HighlightText> Erweiterte
+          Drag-and-Drop-Funktionalität, zusätzliche Dateiformate (.dockerignore
+          etc.), Plattformunabhängigkeit.
+        </Typography>
+      </SectionWrapper>
+
       <SectionWrapper backgroundColor="secondaryHighlight.lightest">
         <Typography variant="h2" align="center" color="primary.dark">
-          🚀 Technologien hinter <HighlightText>Structra</HighlightText>
+          🔧 Technologien & Konzepte
         </Typography>
         <BadgeGrid badges={badges} />
       </SectionWrapper>

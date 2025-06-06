@@ -2,6 +2,7 @@ import React, { useReducer, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { FiChevronDown, FiChevronUp, FiX, FiMenu } from 'react-icons/fi'
 import SmoothScroller from '../utilities/SmoothScroller'
+import ThemeToggleButton from '../common/ThemeToggleButton'
 
 export default function Header({ navSections = [] }) {
   const headerRef = useRef()
@@ -129,16 +130,24 @@ export default function Header({ navSections = [] }) {
   return (
     <HeaderContainer ref={headerRef}>
       <HeaderContent>
-        <Logo onClick={scrollToTop}>Jonas Zeihe</Logo>
-        <DesktopOnly>{renderDesktopNav()}</DesktopOnly>
-        <MobileOnly>
-          <MobileMenuButton
-            onClick={() => dispatch({ type: 'TOGGLE_MENU' })}
-            aria-label={state.menuOpen ? 'Close menu' : 'Open menu'}
-          >
-            {state.menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </MobileMenuButton>
-        </MobileOnly>
+        <LeftSide>
+          <Logo onClick={scrollToTop}>Jonas Zeihe</Logo>
+        </LeftSide>
+        <RightSide>
+          <DesktopOnly>
+            {renderDesktopNav()}
+            <ThemeToggleButton />
+          </DesktopOnly>
+          <MobileOnly>
+            <ThemeToggleButton />
+            <MobileMenuButton
+              onClick={() => dispatch({ type: 'TOGGLE_MENU' })}
+              aria-label={state.menuOpen ? 'Close menu' : 'Open menu'}
+            >
+              {state.menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            </MobileMenuButton>
+          </MobileOnly>
+        </RightSide>
       </HeaderContent>
       {state.menuOpen && <MobileOnly>{renderMobileNav()}</MobileOnly>}
     </HeaderContainer>
@@ -164,6 +173,17 @@ const HeaderContent = styled.div`
   padding: ${({ theme }) => theme.spacing(2)};
 `
 
+const LeftSide = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const RightSide = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(3)};
+`
+
 const Logo = styled.div`
   font-size: ${({ theme }) => theme.typography.fontSize.h4};
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
@@ -175,6 +195,9 @@ const Logo = styled.div`
 `
 
 const DesktopOnly = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(3)};
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: none;
   }

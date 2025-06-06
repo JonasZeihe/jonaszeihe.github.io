@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   HeroWrapper,
-  SectionWrapper,
   Typography,
   HighlightText,
 } from '../../utils/sharedComponents'
@@ -18,28 +17,23 @@ export default function PythonIntroduction() {
 
   return (
     <>
-      {/* Hero-Bereich */}
       <HeroWrapper gradient="depthDramatic">
         <Typography variant="h1" align="center" color="neutral.ultraLight">
           🐍 Python-Projekte
         </Typography>
       </HeroWrapper>
 
-      {/* Einleitung */}
-      <SectionWrapper backgroundColor="depth.dark">
-        <Typography variant="h3" align="left" color="neutral.ultraLight">
-          Hier findest du <HighlightText>innovative</HighlightText> und{' '}
-          <HighlightText>effiziente</HighlightText> Lösungen, die mit Liebe zum
-          Detail und einem klaren Fokus auf Skalierbarkeit entwickelt wurden.
-          Python ermöglicht es mir, komplexe Probleme mit klaren, innovativen
-          Lösungen zu lösen. Mein Ziel ist es, Werkzeuge zu schaffen, die
-          <HighlightText> technische Exzellenz</HighlightText> und
-          <HighlightText> Benutzerfreundlichkeit</HighlightText> vereinen,
-          während sie gleichzeitig Prozesse optimieren und die Kreativität
-          fördern.
-        </Typography>
-        <BadgeGrid badges={coreFeatures} />
-      </SectionWrapper>
+      <Typography variant="h3" align="left" color="depth.dark">
+        Ich nutze Python für{' '}
+        <HighlightText>strukturierte Datenverarbeitung</HighlightText>,
+        <HighlightText>skalierbare Anwendungen</HighlightText> und zur
+        Entwicklung von Tools, die technische Prozesse vereinfachen und
+        beschleunigen. In Projekten wie{' '}
+        <HighlightText>Skryper & Structra</HighlightText> stehen Klarheit,
+        Automatisierung und plattformübergreifende Umsetzung im Fokus.
+      </Typography>
+
+      <BadgeGrid badges={coreFeatures} />
     </>
   )
 }

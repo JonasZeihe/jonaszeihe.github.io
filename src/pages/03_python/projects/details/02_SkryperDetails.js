@@ -17,7 +17,7 @@ export default function SkryperDetails() {
 
   const features = [
     {
-      id: 'feature-1',
+      id: 's1',
       content: (
         <>
           📂 <HighlightText>Rekursive Verzeichnisscans:</HighlightText> Skryper
@@ -27,7 +27,7 @@ export default function SkryperDetails() {
       ),
     },
     {
-      id: 'feature-2',
+      id: 's2',
       content: (
         <>
           🔍 <HighlightText>.gitignore-Compliance:</HighlightText> Ignorierte
@@ -37,40 +37,38 @@ export default function SkryperDetails() {
       ),
     },
     {
-      id: 'feature-3',
+      id: 's3',
       content: (
         <>
-          🛠️ <HighlightText>Anpassbare Regeln:</HighlightText> Erstelle
-          benutzerdefinierte Filter, um spezifische Verzeichnisse ein- oder
-          auszuschließen.
+          ⚙️ <HighlightText>Individuelle Regeln</HighlightText> – per Filter
+          selektive Pfadein- und -ausschlüsse.
         </>
       ),
     },
     {
-      id: 'feature-4',
+      id: 's4',
       content: (
         <>
-          📋 <HighlightText>Klare Textausgaben:</HighlightText> Erstelle lesbare
-          und detaillierte Baumstrukturen, ideal für Dokumentationen und
-          Refactorings.
+          📜 <HighlightText>Formatierte Textausgabe</HighlightText> – ideal für
+          Dokumentationen, Reviews und Refactorings.
         </>
       ),
     },
     {
-      id: 'feature-5',
+      id: 's5',
       content: (
         <>
-          🚀 <HighlightText>Hohe Testabdeckung:</HighlightText> Zuverlässigkeit
-          durch rigoroses Test-Driven Development und sauberen, wartbaren Code.
+          ✅ <HighlightText>TDD-abgesichert</HighlightText> – solide
+          Architektur, hohe Testabdeckung, wartbarer Code.
         </>
       ),
     },
     {
-      id: 'feature-6',
+      id: 's6',
       content: (
         <>
-          ⚙️ <HighlightText>Modularität und Erweiterbarkeit:</HighlightText>{' '}
-          Einfach anpassbar für neue Dateiformate und komplexere Strukturen.
+          🧩 <HighlightText>Modular & erweiterbar</HighlightText> – bereit für
+          komplexere Projekte und zusätzliche Features.
         </>
       ),
     },
@@ -88,21 +86,16 @@ export default function SkryperDetails() {
     <>
       <HeroWrapper gradient="primaryToSecondary">
         <Typography variant="h1" align="center" color="neutral.ultraLight">
-          📂 <HighlightText>Skryper</HighlightText> – Projektstrukturen im Fokus
+          🧭 Skryper – Projektstruktur sichtbar machen
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="secondary.darkest" elevated>
-        <Typography variant="h2" align="center" color="neutral.ultraLight">
-          Warum <HighlightText>Skryper</HighlightText>?
-        </Typography>
+      <SectionWrapper backgroundColor="secondary.darkest">
         <Typography variant="body" align="left" color="neutral.ultraLight">
-          Softwareprojekte wachsen schnell, und mit ihnen auch ihre
-          Verzeichnisstrukturen. Skryper analysiert diese rekursiv,
-          berücksichtigt `.gitignore`-Regeln und erstellt klare, lesbare
-          Baumstrukturen. Entwickler profitieren von höherer Effizienz, besserer
-          Dokumentation und einem Werkzeug, das speziell für die Bedürfnisse
-          moderner Projekte entwickelt wurde.
+          <HighlightText>Skryper</HighlightText> hilft dir, gewachsene Codebasen
+          schnell zu verstehen. Ob als Tool für Architektur-Reviews,
+          Refactorings oder Dokumentation – Skryper liefert dir den klaren
+          Überblick über jede Projektstruktur.
         </Typography>
         <MediaDisplay
           media={[{ type: 'image', src: SkryperLogo, alt: 'Skryper Logo' }]}
@@ -111,39 +104,32 @@ export default function SkryperDetails() {
         />
       </SectionWrapper>
 
-      <SectionWrapper backgroundColor="secondary.darkest" elevated>
-        <Typography variant="h3" align="center" color="neutral.ultraLight">
-          🚦 Aktueller Stand
-        </Typography>
-        <Typography variant="body" align="center" color="neutral.ultraLight">
-          <HighlightText>Status:</HighlightText> Stabil und einsatzbereit mit
-          allen Kernfunktionen.
-        </Typography>
-      </SectionWrapper>
-
-      <SectionWrapper backgroundColor="secondary.darkest">
-        <Typography variant="h3" align="center" color="neutral.ultraLight">
-          🔮 Zukunft von <HighlightText>Skryper</HighlightText>
-        </Typography>
-        <Typography variant="body" align="center" color="neutral.ultraLight">
-          Geplante Features umfassen plattformübergreifende Unterstützung für
-          Linux und macOS, erweiterte Logging-Funktionen und
-          Performance-Optimierungen für große Verzeichnisse.
-        </Typography>
-      </SectionWrapper>
-
       <SectionWrapper backgroundColor="secondary.dark" elevated>
         <Typography variant="h2" align="center" color="neutral.ultraLight">
-          🔧 Funktionen von <HighlightText>Skryper</HighlightText>
+          🛠 Features im Überblick
         </Typography>
         <ListComponent items={features} />
       </SectionWrapper>
 
       <SectionWrapper backgroundColor="secondary.darkest">
         <Typography variant="h2" align="center" color="neutral.ultraLight">
-          🚀 Technologien hinter <HighlightText>Skryper</HighlightText>
+          🔧 Technologien & Konzepte
         </Typography>
         <BadgeGrid badges={badges} />
+      </SectionWrapper>
+
+      <SectionWrapper backgroundColor="secondary.darkest" elevated>
+        <Typography variant="h3" align="center" color="neutral.ultraLight">
+          📦 Status & Ausblick
+        </Typography>
+        <Typography variant="body" align="center" color="neutral.ultraLight">
+          <HighlightText>Status:</HighlightText> Stabil, produktionsbereit und
+          aktiv gepflegt.
+          <br />
+          <HighlightText>Nächste Schritte:</HighlightText>{' '}
+          Plattformunabhängigkeit (Linux/macOS), visuelles Output-Modul,
+          Performance-Tuning.
+        </Typography>
       </SectionWrapper>
 
       <SectionWrapper backgroundColor="secondary.darkest">

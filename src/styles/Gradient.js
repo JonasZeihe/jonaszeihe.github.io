@@ -6,145 +6,101 @@ const createSubtleGradient = (color1, middleColor, color2, angle = 127) =>
 
 const generateSubtleVariants = (baseGradients, theme) =>
   Object.entries(baseGradients).reduce((acc, [key, gradient]) => {
-    const colors = gradient.match(/#[0-9a-fA-F]{6}|rgba?\([^)]*\)/g)
-    if (colors && colors.length === 2) {
+    const matches = gradient.match(/#[0-9a-fA-F]{6}|rgba?\([^)]*\)/g)
+    if (matches && matches.length === 2) {
       acc[`${key}.subtle`] = createSubtleGradient(
-        colors[0],
-        theme.colors.neutral.ultraLight,
-        colors[1]
+        matches[0],
+        theme.colors.depth.light,
+        matches[1]
       )
     }
     return acc
   }, {})
 
-const gradients = (theme) => {
+const gradients = ({ colors }) => {
+  const isDark = colors.neutral.ultraLight === '#1A1A1A' // Hacky but effective check
+
+  const pageBackground = isDark
+    ? createGradient(colors.depth.ultraLight, colors.depth.main, 180)
+    : createGradient(
+        colors.primary.ultraLight,
+        colors.secondary.ultraLight,
+        180
+      )
+
   const baseGradients = {
-    // Primary Palette (Erzeugt mehr Tiefe)
-    primaryLightest: createGradient(
-      theme.colors.primary.lightest,
-      theme.colors.primary.light
-    ),
-    primaryLight: createGradient(
-      theme.colors.primary.lightest,
-      theme.colors.primary.main
-    ),
-    primaryDark: createGradient(
-      theme.colors.primary.dark,
-      theme.colors.primary.main
-    ),
-    primaryDynamic: createGradient(
-      theme.colors.primary.light,
-      theme.colors.secondary.lightest
-    ),
+    // === Base Page Background ===
+    pageBackground,
 
-    // Secondary Palette (Erzeugt Kontraste)
-    secondaryLight: createGradient(
-      theme.colors.secondary.lightest,
-      theme.colors.secondary.light
-    ),
-    secondaryWarm: createGradient(
-      theme.colors.secondary.lightest,
-      theme.colors.secondary.main
-    ),
-    secondaryBold: createGradient(
-      theme.colors.secondary.dark,
-      theme.colors.secondary.darkest
-    ),
-    secondaryDynamic: createGradient(
-      theme.colors.secondary.light,
-      theme.colors.accent.main
-    ),
+    // === Primary ===
+    primaryLight: createGradient(colors.primary.light, colors.primary.main),
+    primaryDark: createGradient(colors.primary.dark, colors.primary.main),
+    primaryDynamic: createGradient(colors.primary.light, colors.secondary.main),
 
-    // Accent Palette (Spielerisch und Frisch)
-    accentSoft: createGradient(
-      theme.colors.accent.lightest,
-      theme.colors.accent.main
+    // === Secondary ===
+    secondarySoft: createGradient(
+      colors.secondary.lightest,
+      colors.secondary.light
     ),
-    accentBright: createGradient(
-      theme.colors.accent.main,
-      theme.colors.accent.dark
-    ),
-    accentPlayful: createGradient(
-      theme.colors.accent.light,
-      theme.colors.secondary.main
-    ),
+    secondaryBold: createGradient(colors.secondary.dark, colors.secondary.main),
+    secondaryDynamic: createGradient(colors.secondary.main, colors.accent.main),
 
-    // Highlight Palette (Auffallend und Lebendig)
+    // === Accent ===
+    accentSoft: createGradient(colors.accent.light, colors.accent.main),
+    accentStrong: createGradient(colors.accent.main, colors.accent.dark),
+    accentDynamic: createGradient(colors.accent.main, colors.highlight.main),
+
+    // === Highlight ===
     highlightSoft: createGradient(
-      theme.colors.highlight.lightest,
-      theme.colors.highlight.main
+      colors.highlight.lightest,
+      colors.highlight.main
     ),
-    highlightBright: createGradient(
-      theme.colors.highlight.light,
-      theme.colors.highlight.main
+    highlightDramatic: createGradient(
+      colors.highlight.dark,
+      colors.highlight.main
     ),
-    highlightDynamic: createGradient(
-      theme.colors.highlight.light,
-      theme.colors.primary.main
+    highlightToPrimary: createGradient(
+      colors.highlight.main,
+      colors.primary.main
     ),
 
-    // Warm Palette (Sanfte Wärme)
-    warmSoft: createGradient(
-      theme.colors.secondaryHighlight.lightest,
-      theme.colors.secondaryHighlight.main
+    // === Warm Tones ===
+    warmGlow: createGradient(
+      colors.secondaryHighlight.light,
+      colors.accent.main
     ),
     warmBold: createGradient(
-      theme.colors.secondaryHighlight.dark,
-      theme.colors.secondaryHighlight.darkest
-    ),
-    warmDynamic: createGradient(
-      theme.colors.secondaryHighlight.light,
-      theme.colors.accent.main
+      colors.secondaryHighlight.dark,
+      colors.secondaryHighlight.darkest
     ),
 
-    // Cross-Palette (Kreativer Kontrast)
+    // === Cross Palette ===
     primaryToSecondary: createGradient(
-      theme.colors.primary.main,
-      theme.colors.secondary.main
+      colors.primary.main,
+      colors.secondary.main
     ),
     secondaryToAccent: createGradient(
-      theme.colors.secondary.dark,
-      theme.colors.accent.main
+      colors.secondary.dark,
+      colors.accent.main
     ),
-    accentToPrimary: createGradient(
-      theme.colors.accent.light,
-      theme.colors.primary.dark
-    ),
-    depthToHighlight: createGradient(
-      theme.colors.highlight.dark,
-      theme.colors.depth.main
-    ),
+    accentToPrimary: createGradient(colors.accent.main, colors.primary.dark),
 
-    // Neutral Gradients (Subtilität und Ausgewogenheit)
-    neutralSoft: createGradient(
-      theme.colors.neutral.light,
-      theme.colors.neutral.main
-    ),
-    neutralStrong: createGradient(
-      theme.colors.neutral.dark,
-      theme.colors.neutral.darkest
-    ),
+    // === Depth + Mood ===
+    depthSubtle: createGradient(colors.depth.light, colors.depth.main, 160),
+    depthFocus: createGradient(colors.depth.main, colors.depth.dark, 180),
+    depthMystic: createGradient(colors.depth.main, colors.accent.dark, 145),
 
-    // Depth Gradients (Subtil und Dunkel)
-    depthSubtle: createGradient(
-      theme.colors.depth.lightest,
-      theme.colors.depth.light,
-      180
-    ),
-    depthDramatic: createGradient(
-      theme.colors.depth.main,
-      theme.colors.depth.dark,
-      180
-    ),
-    depthVibrant: createGradient(
-      theme.colors.depth.main,
-      theme.colors.accent.main
-    ),
+    // === Neutral UI ===
+    neutralSoft: createGradient(colors.neutral.light, colors.neutral.main),
+    neutralFocus: createGradient(colors.neutral.dark, colors.neutral.darkest),
   }
 
-  const subtleVariants = generateSubtleVariants(baseGradients, theme)
+  const subtleVariants = generateSubtleVariants(baseGradients, { colors })
 
-  return { ...baseGradients, ...subtleVariants }
+  return {
+    ...baseGradients,
+    ...subtleVariants,
+  }
 }
 
 export default gradients

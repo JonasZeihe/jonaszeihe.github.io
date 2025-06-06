@@ -17,7 +17,7 @@ export default function NoctuaDetails() {
 
   const features = [
     {
-      id: 'feature-1',
+      id: 'nt1',
       content: (
         <>
           🛠️ <HighlightText>Flexibilität:</HighlightText> Erfasse gezielt CPU-,
@@ -26,38 +26,38 @@ export default function NoctuaDetails() {
       ),
     },
     {
-      id: 'feature-2',
+      id: 'nt2',
       content: (
         <>
-          📄 <HighlightText>Klarheit:</HighlightText> Markdown-Export für
-          übersichtliche und editierbare Berichte.
+          💾 <HighlightText>Markdown-Export</HighlightText>: Ausgabe klarer
+          Systemreports – direkt editierbar.
         </>
       ),
     },
     {
-      id: 'feature-3',
+      id: 'nt3',
       content: (
         <>
-          💡 <HighlightText>Bedienfreundlich:</HighlightText> Intuitive
-          Oberfläche mit Checkboxen für maßgeschneiderte Berichte.
+          ✅ <HighlightText>Checkbox-GUI</HighlightText>: Intuitive Filter für
+          selektive Hardwareinformationen.
         </>
       ),
     },
     {
-      id: 'feature-4',
+      id: 'nt4',
       content: (
         <>
-          🔌 <HighlightText>Modularität:</HighlightText> Erweiterbar für neue
-          Hardware und zukünftige Anforderungen.
+          🔧 <HighlightText>Detailtiefe nach Bedarf</HighlightText>: Von
+          Kurzübersicht bis Tiefenanalyse.
         </>
       ),
     },
     {
-      id: 'feature-5',
+      id: 'nt5',
       content: (
         <>
-          🚀 <HighlightText>NoctuaLight:</HighlightText> Reduzierte Version für
-          schnelle und kompakte Hardwareübersichten.
+          🚀 <HighlightText>NoctuaLight</HighlightText>: Kompakte Version für
+          schnelle Reports unterwegs.
         </>
       ),
     },
@@ -75,21 +75,17 @@ export default function NoctuaDetails() {
     <>
       <HeroWrapper gradient="secondaryBold">
         <Typography variant="h1" align="center" color="primary.lightest">
-          🔧 <HighlightText>Noctua</HighlightText> – Systeminformationen mit
-          Struktur
+          🛠 Noctua – Systeminfos, einfach verständlich
         </Typography>
       </HeroWrapper>
 
       <SectionWrapper backgroundColor="depth.dark">
-        <Typography variant="h2" align="center" color="accent.main">
-          Warum <HighlightText>Noctua</HighlightText>?
-        </Typography>
         <Typography variant="body" align="left" color="primary.lightest">
-          Hardwaredokumentation kann zeitaufwendig und kompliziert sein – doch
-          nicht mit <HighlightText>Noctua</HighlightText>. Egal ob Kurzübersicht
-          oder detaillierter Bericht, Noctua bietet dir alle relevanten
-          Informationen, kompakt oder tiefgehend, mit nur wenigen Klicks.
+          <HighlightText>Noctua</HighlightText> bringt Ordnung in komplexe
+          Hardwaredaten. Ob IT-Admin, Entwickler oder Power User – mit Noctua
+          generierst du klare Reports, exakt auf deinen Bedarf zugeschnitten.
         </Typography>
+
         <MediaDisplay
           media={[{ type: 'image', src: NoctuaLogo, alt: 'Noctua Logo' }]}
           onClick={() => setLightboxOpen(true)}
@@ -99,35 +95,26 @@ export default function NoctuaDetails() {
 
       <SectionWrapper backgroundColor="depth.darkest" elevated>
         <Typography variant="h2" align="center" color="primary.lightest">
-          🔧 Funktionen von <HighlightText>Noctua</HighlightText>
+          🔍 Features im Überblick
         </Typography>
         <ListComponent items={features} />
       </SectionWrapper>
 
       <SectionWrapper backgroundColor="depth.dark">
         <Typography variant="h2" align="center" color="primary.lightest">
-          🚀 Technologien hinter <HighlightText>Noctua</HighlightText>
+          ⚙️ Technologien & Konzepte
         </Typography>
         <BadgeGrid badges={badges} />
       </SectionWrapper>
 
       <SectionWrapper backgroundColor="depth.dark" elevated>
         <Typography variant="h3" align="center" color="accent.main">
-          🚦 Aktueller Stand
+          🧪 Status & Ausblick
         </Typography>
         <Typography variant="body" align="center" color="primary.lightest">
-          <HighlightText>Status:</HighlightText> In aktiver Entwicklung.{' '}
-          <HighlightText>NoctuaLight</HighlightText> ist bereits verfügbar.
-        </Typography>
-        <Typography
-          variant="body"
-          align="center"
-          style={{ marginTop: '0.5rem' }}
-          color="primary.lightest"
-        >
-          <HighlightText>Funktionalitäten:</HighlightText> Grundlegende
-          Berichtsoptionen für Hardwareübersichten, Markdown-Export und
-          Checkbox-basierte GUI.
+          <HighlightText>NoctuaLight</HighlightText> ist stabil und
+          einsatzbereit. Die Vollversion wird modularisiert, dokumentiert und
+          durch Benutzerrollen erweitert.
         </Typography>
       </SectionWrapper>
 

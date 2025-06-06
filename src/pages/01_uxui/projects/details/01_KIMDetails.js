@@ -17,41 +17,38 @@ export default function KIMDetails() {
 
   const features = [
     {
-      id: 'feature-1',
+      id: 'f1',
       content: (
         <>
-          🤖 <HighlightText>KI-Chatbot:</HighlightText> Erstelle dynamische
-          Persönlichkeitsprofile basierend auf Nutzerantworten und vergleiche
-          diese für Gruppenmatching.
+          🤖 <HighlightText>Persönlichkeitsanalyse per KI</HighlightText>:
+          Nutzerantworten erzeugen Profile für smartes Gruppenmatching.
         </>
       ),
     },
     {
-      id: 'feature-2',
+      id: 'f2',
       content: (
         <>
-          👫 <HighlightText>Gruppenmatching:</HighlightText>{' '}
-          Kompatibilitätsscores für bessere Interaktionen und tiefere
-          Verbindungen zwischen Nutzern.
+          👫 <HighlightText>Kompatibilitäts-Scores</HighlightText>: Präzise
+          Vorschläge für Gruppenzusammenstellungen mit sozialem Mehrwert.
         </>
       ),
     },
     {
-      id: 'feature-3',
+      id: 'f3',
       content: (
         <>
-          🧊 <HighlightText>Automatisierte Icebreaker:</HighlightText> Förderung
-          von Gruppendialogen durch spielerische Interaktionselemente.
+          🧊 <HighlightText>Automatisierte Icebreaker</HighlightText>: Spielbare
+          Einstiege für bessere Gruppendynamik.
         </>
       ),
     },
     {
-      id: 'feature-4',
+      id: 'f4',
       content: (
         <>
-          🎯 <HighlightText>Designsystem:</HighlightText> Einheitliche
-          Farbpalette und intuitive Interaktionen für ein konsistentes
-          Nutzererlebnis.
+          🎯 <HighlightText>Designsystem</HighlightText>: Skalierbar,
+          WCAG-konform, konsistent im Look & Feel.
         </>
       ),
     },
@@ -59,10 +56,10 @@ export default function KIMDetails() {
 
   const badges = [
     'ux-ui-design',
-    'iterative-prototyping',
     'figma',
     'user-centered-design',
     'accessibility',
+    'prototyping',
   ]
 
   return (
@@ -73,59 +70,44 @@ export default function KIMDetails() {
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="secondary.lightest">
-        <Typography
-          variant="body"
-          align="left"
-          color="neutral.deep"
-          style={{ marginTop: '1rem' }}
-        >
-          <HighlightText>KIM</HighlightText> wurde im Rahmen eines
-          interdisziplinären Capstone-Projekts entwickelt, um soziale
-          Verbindungen zu stärken. Die App nutzt{' '}
-          <HighlightText>KI</HighlightText> und{' '}
-          <HighlightText>zugängliches Design</HighlightText>, um Nutzern eine
-          sichere und einladende Umgebung zu bieten. Von der
-          Persönlichkeitsanalyse bis hin zu spielerischen Gruppenelementen – KIM
-          bietet ein innovatives, interaktives Erlebnis.
-        </Typography>
-        <MediaDisplay
-          media={[{ type: 'image', src: KimImage, alt: 'KIM Project Image' }]}
-          onClick={() => setLightboxOpen(true)}
-          variant="medium"
-        />
-      </SectionWrapper>
+      <Typography variant="body" align="center" color="neutral.deep">
+        <HighlightText>KIM</HighlightText> ist eine Matching-App, die mit Hilfe
+        von KI und barrierefreiem Design echte soziale Begegnungen fördert.
+        Entwickelt als Capstone-Projekt, zeigt sie, wie durchdachte
+        Persönlichkeitsanalyse, smarte Gruppenvorschläge und klare UX ein
+        starkes digitales Erlebnis schaffen können.
+      </Typography>
 
-      <SectionWrapper backgroundColor="secondary.lightest">
-        <Typography variant="h2" align="center" color="depth.dark">
-          🚀 Features von <HighlightText>KIM</HighlightText>
-        </Typography>
-        <ListComponent items={features} />
-      </SectionWrapper>
+      <MediaDisplay
+        media={[{ type: 'image', src: KimImage, alt: 'KIM Project' }]}
+        onClick={() => setLightboxOpen(true)}
+        variant="medium"
+      />
 
-      <SectionWrapper backgroundColor="primary.lightest">
-        <Typography variant="h2" align="center" color="depth.dark">
-          🛡️ Technologien hinter <HighlightText>KIM</HighlightText>
-        </Typography>
-        <BadgeGrid badges={badges} />
-      </SectionWrapper>
+      <Typography variant="h2" align="center" color="depth.dark">
+        Features
+      </Typography>
+      <ListComponent items={features} />
 
-      <SectionWrapper backgroundColor="secondary.lightest">
-        <Typography variant="h2" align="center" color="primary.dark">
-          🚦 Aktueller Stand und nächste Schritte
-        </Typography>
-        <Typography variant="body" align="center" color="neutral.deep">
-          Der High-Fidelity-Prototyp ist vollständig und wurde mit Erfolg
-          präsentiert. Zukünftige Schritte umfassen die Integration erweiterter
-          KI-Funktionen und umfangreiche Usability-Tests zur Validierung des
-          Designs.
-        </Typography>
-        <Typography variant="body" align="center" color="accent.dark">
-          <HighlightText>Zukunftsvision:</HighlightText> Entwicklung einer
-          vollfunktionsfähigen App mit Echtzeit-Feedback und personalisierten
-          Matching-Algorithmen.
-        </Typography>
-      </SectionWrapper>
+      <Typography variant="h2" align="center" color="depth.dark">
+        Technologien
+      </Typography>
+      <BadgeGrid badges={badges} />
+
+      <Typography variant="h2" align="center" color="depth.dark">
+        Stand & Vision
+      </Typography>
+      <Typography variant="body" align="center" color="neutral.deep">
+        Der High-Fidelity-Prototyp wurde im Rahmen des Bootcamps erfolgreich
+        getestet. Nächster Schritt: Validierung durch User Tests und erste
+        Entwicklungsetappen.
+      </Typography>
+
+      <Typography variant="body" align="center" color="accent.dark">
+        <HighlightText>Vision:</HighlightText> Eine produktionsreife App mit
+        Echtzeit-Matching, erweiterbaren Profiltypen und interaktiver
+        Feedbacklogik.
+      </Typography>
 
       <SectionWrapper backgroundColor="neutral.lightest">
         <div
@@ -145,7 +127,7 @@ export default function KIMDetails() {
               )
             }
           >
-            Case Study
+            Case Study öffnen
           </Button>
           <Button
             variant="success"
@@ -163,7 +145,7 @@ export default function KIMDetails() {
 
       {lightboxOpen && (
         <Lightbox
-          media={[{ type: 'image', src: KimImage, alt: 'KIM Project Image' }]}
+          media={[{ type: 'image', src: KimImage, alt: 'KIM Project' }]}
           currentIndex={0}
           onClose={() => setLightboxOpen(false)}
         />

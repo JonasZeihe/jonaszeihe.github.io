@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import {
   HeroWrapper,
-  SectionWrapper,
-  MediaDisplay,
   Typography,
   HighlightText,
   ListComponent,
+  MediaDisplay,
   Button,
   ButtonGrid,
   Lightbox,
@@ -18,40 +17,39 @@ export default function FlavorFusionDetails() {
 
   const features = [
     {
-      id: 'feature-1',
+      id: 'ff1',
       content: (
         <>
-          🎨 <HighlightText>Visuelles Storytelling:</HighlightText> Individuelle
-          Farbpaletten und kulturelle Karten, die die Vielfalt der Weltküchen
-          betonen.
+          🎨 <HighlightText>Visuelles Storytelling</HighlightText>: Kulinarische
+          Karten und individuelle Paletten, die kulturelle Vielfalt der
+          Weltküchen erlebbar machen.
         </>
       ),
     },
     {
-      id: 'feature-2',
+      id: 'ff2',
       content: (
         <>
-          🧩 <HighlightText>User-Centered Design:</HighlightText> Intuitive
-          Navigation und klar strukturierte Inhalte für eine optimale
-          Benutzererfahrung.
+          🧩 <HighlightText>UX durch Struktur</HighlightText>: Reduzierte
+          Navigation, klare Inhaltshierarchien, sofortige Orientierung.
         </>
       ),
     },
     {
-      id: 'feature-3',
+      id: 'ff3',
       content: (
         <>
-          ✏️ <HighlightText>High-Fidelity Prototyping:</HighlightText>{' '}
-          Realistischer und animierter Prototyp, der in Figma entwickelt wurde.
+          ✏️ <HighlightText>Prototyp mit Tiefe</HighlightText>:
+          High-Fidelity-Design in Figma, durchdacht und animiert.
         </>
       ),
     },
     {
-      id: 'feature-4',
+      id: 'ff4',
       content: (
         <>
-          🚀 <HighlightText>Interaktive Call-to-Actions:</HighlightText>{' '}
-          Animierte Buttons und Download-Optionen, die Nutzer zur App führen.
+          🚀 <HighlightText>Konversionsstarke UI</HighlightText>: Interaktive
+          Call-to-Actions, bewusste Triggerpunkte, klare Handlungsschritte.
         </>
       ),
     },
@@ -67,84 +65,68 @@ export default function FlavorFusionDetails() {
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="accent.lightest" elevated>
-        <Typography
-          variant="body"
-          align="left"
-          color="depth.darkest"
-          style={{ marginTop: '1rem' }}
+      <Typography variant="body" align="left" color="depth.darkest">
+        <HighlightText>FlavorFusion</HighlightText> ist eine digitale Bühne für
+        interkulturelle Rezeptwelten. Ziel war, nicht nur zu informieren,
+        sondern eine <HighlightText>emotionale Design-Erfahrung</HighlightText>{' '}
+        zu schaffen. Visuelles Storytelling trifft hier auf klare UX – für
+        Nutzer, die sich führen lassen wollen, ohne die Kontrolle zu verlieren.
+      </Typography>
+
+      <MediaDisplay
+        media={[
+          {
+            type: 'image',
+            src: FlavorFusionImage,
+            alt: 'FlavorFusion Project Image',
+          },
+        ]}
+        onClick={() => setLightboxOpen(true)}
+        variant="medium"
+      />
+
+      <Typography variant="h2" align="center" color="accent.dark">
+        Features
+      </Typography>
+      <ListComponent items={features} />
+
+      <Typography variant="h2" align="center" color="depth.darkest">
+        Tools & Methoden
+      </Typography>
+      <BadgeGrid badges={badges} />
+
+      <Typography variant="h2" align="center" color="accent.dark">
+        Aktueller Stand
+      </Typography>
+      <Typography variant="body" align="center" color="depth.darkest">
+        Der Prototyp ist abgeschlossen. Als interaktive Case Study in React
+        umgesetzt und bereits mobil getestet.
+      </Typography>
+
+      <ButtonGrid>
+        <Button
+          variant="casestudy"
+          onClick={() =>
+            window.open(
+              'https://jonaszeihe.github.io/casestudyFlavorFusion/',
+              '_blank'
+            )
+          }
         >
-          <HighlightText>FlavorFusion</HighlightText> ist eine interaktive
-          Landing Page, die Nutzer dazu inspiriert, die Vielfalt der Weltküchen
-          zu entdecken. Mit einem Fokus auf{' '}
-          <HighlightText>visuelles Storytelling</HighlightText> und{' '}
-          <HighlightText>intuitive Navigation</HighlightText> ist FlavorFusion
-          nicht nur funktional, sondern auch eine emotionale Erfahrung, die Lust
-          auf neue Rezepte macht.
-        </Typography>
-        <MediaDisplay
-          media={[
-            {
-              type: 'image',
-              src: FlavorFusionImage,
-              alt: 'FlavorFusion Project Image',
-            },
-          ]}
-          onClick={() => setLightboxOpen(true)}
-          variant="medium"
-        />
-      </SectionWrapper>
-
-      <SectionWrapper backgroundColor="secondary.lightest" elevated>
-        <Typography variant="h2" align="center" color="accent.dark">
-          🚀 Highlights von <HighlightText>FlavorFusion</HighlightText>
-        </Typography>
-        <ListComponent items={features} />
-      </SectionWrapper>
-
-      <SectionWrapper backgroundColor="accent.lightest" elevated>
-        <Typography variant="h2" align="center" color="depth.darkest">
-          🛠️ Tools und Technologien
-        </Typography>
-        <BadgeGrid badges={badges} />
-      </SectionWrapper>
-
-      <SectionWrapper backgroundColor="secondary.lightest">
-        <Typography variant="h2" align="center" color="accent.dark">
-          🚦 Aktueller Stand
-        </Typography>
-        <Typography variant="body" align="center" color="depth.darkest">
-          <HighlightText>Status:</HighlightText> Der High-Fidelity-Prototyp ist
-          abgeschlossen und als klickbare Case Study in React verfügbar.
-        </Typography>
-      </SectionWrapper>
-
-      <SectionWrapper backgroundColor="accent.lightest">
-        <ButtonGrid>
-          <Button
-            variant="casestudy"
-            onClick={() =>
-              window.open(
-                'https://jonaszeihe.github.io/casestudyFlavorFusion/',
-                '_blank'
-              )
-            }
-          >
-            Case Study
-          </Button>
-          <Button
-            variant="success"
-            onClick={() =>
-              window.open(
-                'https://www.figma.com/proto/Gy9acaVeAmKcpYY2qLSE24/Projekt4_FIGMA_JONAS?page-id=606%3A5597&node-id=4114-3680&viewport=3715%2C1765%2C0.4&t=9FZnOndSTJA4elsZ-1&scaling=scale-down&content-scaling=fixed',
-                '_blank'
-              )
-            }
-          >
-            Prototyp ansehen
-          </Button>
-        </ButtonGrid>
-      </SectionWrapper>
+          Case Study öffnen
+        </Button>
+        <Button
+          variant="success"
+          onClick={() =>
+            window.open(
+              'https://www.figma.com/proto/Gy9acaVeAmKcpYY2qLSE24/Projekt4_FIGMA_JONAS?page-id=606%3A5597&node-id=4114-3680&viewport=3715%2C1765%2C0.4&t=9FZnOndSTJA4elsZ-1&scaling=scale-down&content-scaling=fixed',
+              '_blank'
+            )
+          }
+        >
+          Prototyp ansehen
+        </Button>
+      </ButtonGrid>
 
       {lightboxOpen && (
         <Lightbox
@@ -152,7 +134,7 @@ export default function FlavorFusionDetails() {
             {
               type: 'image',
               src: FlavorFusionImage,
-              alt: 'FlavorFusion Project Image',
+              alt: 'FlavorFusion Project',
             },
           ]}
           currentIndex={0}

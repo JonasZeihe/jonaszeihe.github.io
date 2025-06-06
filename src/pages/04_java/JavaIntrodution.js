@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   HeroWrapper,
-  SectionWrapper,
   Typography,
   HighlightText,
 } from '../../utils/sharedComponents'
@@ -22,23 +21,20 @@ export default function JavaIntroduction() {
     <>
       <HeroWrapper gradient="primaryToSecondary">
         <Typography variant="h1" color="depth.dark" align="center">
-          Java / React / Fullstack Projekte
+          Java / React / Fullstack-Projekte
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="neutral.ultraLight" elevated>
-        <Typography variant="h3" align="left" color="depth.dark">
-          Meine <HighlightText>Java-Projekte</HighlightText> stehen für ein
-          Zusammenspiel aus robuster Backend-Entwicklung und modernen,
-          interaktiven Frontend-Lösungen. Mit Technologien wie{' '}
-          <HighlightText>Spring Boot</HighlightText>,{' '}
-          <HighlightText>MongoDB</HighlightText> und{' '}
-          <HighlightText>React</HighlightText> entwickle ich skalierbare,
-          sichere und zukunftsweisende Anwendungen.
-        </Typography>
+      <Typography variant="h3" align="left" color="depth.dark">
+        In Projekten wie <HighlightText>Shizen</HighlightText> nutze ich Java
+        und React nicht nur als Stack, sondern als Architekturprinzip. Es geht
+        mir darum, <HighlightText> strukturierte Datenflüsse</HighlightText>,
+        <HighlightText>authentifizierte APIs</HighlightText> und
+        <HighlightText> modulare Frontends</HighlightText> so zu verbinden, dass
+        Systeme verständlich bleiben – für Nutzer wie für Entwickler.
+      </Typography>
 
-        <BadgeGrid badges={badges} />
-      </SectionWrapper>
+      <BadgeGrid badges={badges} />
     </>
   )
 }
