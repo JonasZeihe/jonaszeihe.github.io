@@ -10,65 +10,49 @@ import {
   Lightbox,
 } from '../../../../utils/sharedComponents'
 import BadgeGrid from '../../../../components/common/BadgeGrid'
-import SkryperLogo from '../../../../assets/images/Projects/skryper_logo.png'
+import SkryperLogo from '../../../../assets/images/Projects/skryper_structra_logo.png'
 
 export default function SkryperDetails() {
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
   const features = [
     {
-      id: 's1',
+      id: 'f1',
       content: (
         <>
-          📂 <HighlightText>Rekursive Verzeichnisscans:</HighlightText> Skryper
-          analysiert komplette Projektverzeichnisse und erzeugt transparente
-          Baumstrukturen.
+          📂 <HighlightText>Projektstrukturen analysieren:</HighlightText>{' '}
+          Skryper erstellt rekursive, `.gitignore`-sensitive Verzeichnisbäume –
+          als Klartext, lesbar, dokumentierbar. Für Übersicht und sauberes
+          Refactoring.
         </>
       ),
     },
     {
-      id: 's2',
+      id: 'f2',
       content: (
         <>
-          🔍 <HighlightText>.gitignore-Compliance:</HighlightText> Ignorierte
-          Dateien und Verzeichnisse werden automatisch ausgeschlossen, um die
-          Übersichtlichkeit zu maximieren.
+          🧱 <HighlightText>Projektstrukturen generieren:</HighlightText>{' '}
+          Structra wandelt Templates in reale Ordner- und Dateistrukturen um.
+          Schnell, konsistent, wiederverwendbar.
         </>
       ),
     },
     {
-      id: 's3',
+      id: 'f3',
       content: (
         <>
-          ⚙️ <HighlightText>Individuelle Regeln</HighlightText> – per Filter
-          selektive Pfadein- und -ausschlüsse.
+          🔄 <HighlightText>Gemeinsamer Kreislauf:</HighlightText> Skryper
+          analysiert Bestehendes. Structra bildet Neues.
         </>
       ),
     },
     {
-      id: 's4',
+      id: 'f4',
       content: (
         <>
-          📜 <HighlightText>Formatierte Textausgabe</HighlightText> – ideal für
-          Dokumentationen, Reviews und Refactorings.
-        </>
-      ),
-    },
-    {
-      id: 's5',
-      content: (
-        <>
-          ✅ <HighlightText>TDD-abgesichert</HighlightText> – solide
-          Architektur, hohe Testabdeckung, wartbarer Code.
-        </>
-      ),
-    },
-    {
-      id: 's6',
-      content: (
-        <>
-          🧩 <HighlightText>Modular & erweiterbar</HighlightText> – bereit für
-          komplexere Projekte und zusätzliche Features.
+          🧪 <HighlightText>Solide Architektur:</HighlightText> Getestet,
+          dokumentiert, modular aufgebaut, MIT-lizenziert. Lauffähig auf Windows
+          und macOS.
         </>
       ),
     },
@@ -76,37 +60,55 @@ export default function SkryperDetails() {
 
   const badges = [
     'python',
-    'gitignore-support',
-    'modular-design',
+    'projektstruktur',
     'cli-tool',
+    'template-generator',
     'clean-code',
+    'test-coverage',
   ]
 
   return (
     <>
       <HeroWrapper gradient="primaryToSecondary">
         <Typography variant="h1" align="center" color="neutral.ultraLight">
-          🧭 Skryper – Projektstruktur sichtbar machen
+          Stromlinienförmige Projektstrukturbäume – lesbar & wiederverwendbar
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="secondary.darkest">
+      <MediaDisplay
+        media={[
+          {
+            type: 'image',
+            src: SkryperLogo,
+            alt: 'Skryper and Structra Logo',
+          },
+        ]}
+        onClick={() => setLightboxOpen(true)}
+        variant="medium"
+      />
+
+      <SectionWrapper backgroundColor="secondary.dark">
         <Typography variant="body" align="left" color="neutral.ultraLight">
-          <HighlightText>Skryper</HighlightText> hilft dir, gewachsene Codebasen
-          schnell zu verstehen. Ob als Tool für Architektur-Reviews,
-          Refactorings oder Dokumentation – Skryper liefert dir den klaren
-          Überblick über jede Projektstruktur.
+          Skryper entstand aus einem Problem: Ich wollte ein Projekt
+          überarbeiten – hatte aber keinen klaren Überblick. Ich suchte ein
+          Tool, das mir die Ordnerstruktur zeigt – `.gitignore`-konform, lesbar,
+          strukturiert. Es gab keins.
+          <br />
+          <br />
+          Als ich mit Skryper bestehende Projekte analysieren konnte, entstand
+          die nächste Idee: Warum nicht diese Strukturen direkt als Vorlage
+          nutzen? Structra war die Antwort. Aus Text wird Struktur –
+          automatisch, konsistent, formbar.
+          <br />
+          <br />
+          Ich nutze beide Tools bei fast jedem Projektstart – ob Software, CLI
+          oder sogar für Notizen – echte Werkzeuge, gebaut aus Notwendigkeit.
         </Typography>
-        <MediaDisplay
-          media={[{ type: 'image', src: SkryperLogo, alt: 'Skryper Logo' }]}
-          onClick={() => setLightboxOpen(true)}
-          variant="medium"
-        />
       </SectionWrapper>
 
-      <SectionWrapper backgroundColor="secondary.dark" elevated>
+      <SectionWrapper backgroundColor="secondary.dark">
         <Typography variant="h2" align="center" color="neutral.ultraLight">
-          🛠 Features im Überblick
+          Features
         </Typography>
         <ListComponent items={features} />
       </SectionWrapper>
@@ -116,20 +118,6 @@ export default function SkryperDetails() {
           🔧 Technologien & Konzepte
         </Typography>
         <BadgeGrid badges={badges} />
-      </SectionWrapper>
-
-      <SectionWrapper backgroundColor="secondary.darkest" elevated>
-        <Typography variant="h3" align="center" color="neutral.ultraLight">
-          📦 Status & Ausblick
-        </Typography>
-        <Typography variant="body" align="center" color="neutral.ultraLight">
-          <HighlightText>Status:</HighlightText> Stabil, produktionsbereit und
-          aktiv gepflegt.
-          <br />
-          <HighlightText>Nächste Schritte:</HighlightText>{' '}
-          Plattformunabhängigkeit (Linux/macOS), visuelles Output-Modul,
-          Performance-Tuning.
-        </Typography>
       </SectionWrapper>
 
       <SectionWrapper backgroundColor="secondary.darkest">
@@ -147,25 +135,28 @@ export default function SkryperDetails() {
               window.open('https://github.com/jonaszeihe/skryper', '_blank')
             }
           >
-            GitHub Repository
+            Zu Skryper auf GitHub
           </Button>
           <Button
-            variant="success"
+            variant="secondary"
             onClick={() =>
-              window.open(
-                'https://github.com/JonasZeihe/skryper/releases',
-                '_blank'
-              )
+              window.open('https://github.com/jonaszeihe/structra', '_blank')
             }
           >
-            Download
+            Zu Structra auf GitHub
           </Button>
         </div>
       </SectionWrapper>
 
       {lightboxOpen && (
         <Lightbox
-          media={[{ type: 'image', src: SkryperLogo, alt: 'Skryper Logo' }]}
+          media={[
+            {
+              type: 'image',
+              src: SkryperLogo,
+              alt: 'Skryper and Structra Logo',
+            },
+          ]}
           currentIndex={0}
           onClose={() => setLightboxOpen(false)}
         />

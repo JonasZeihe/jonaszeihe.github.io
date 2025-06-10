@@ -6,7 +6,6 @@ import Footer from './components/layout/Footer'
 
 import Introduction from './pages/01_Introduction'
 import UxUiPage from './pages/01_uxui/UxUiPage'
-import ReactPage from './pages/02_react/ReactPage'
 import PythonPage from './pages/03_python/PythonPage'
 import JavaPage from './pages/04_java/JavaPage'
 
@@ -27,11 +26,6 @@ export default function App() {
           { id: '01_KIM', label: 'KIM' },
           { id: '02_FlavorFusion', label: 'FlavorFusion' },
         ],
-      },
-      {
-        id: 'ReactPage',
-        label: 'React',
-        children: [{ id: '01_ColorPal', label: 'ColorPal' }],
       },
       {
         id: 'PythonPage',
@@ -61,9 +55,6 @@ export default function App() {
         </Section>
         <Section id="UxUiPage">
           <UxUiPage />
-        </Section>
-        <Section id="ReactPage">
-          <ReactPage />
         </Section>
         <Section id="PythonPage">
           <PythonPage />
