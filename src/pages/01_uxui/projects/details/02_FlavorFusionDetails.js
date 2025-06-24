@@ -20,9 +20,10 @@ export default function FlavorFusionDetails() {
       id: 'ff1',
       content: (
         <>
-          🎨 <HighlightText>Visuelles Storytelling</HighlightText>: Kulinarische
-          Karten und individuelle Paletten, die kulturelle Vielfalt der
-          Weltküchen erlebbar machen.
+          🎨 <HighlightText>Design durch Atmosphäre</HighlightText>: Acht
+          Weltküchen, acht Paletten – jede eigenständig, jede aus echten
+          Nationalgerichten entwickelt. Nicht generisch, nicht symbolisch.
+          Sondern haptisch, textural, glaubwürdig.
         </>
       ),
     },
@@ -30,8 +31,9 @@ export default function FlavorFusionDetails() {
       id: 'ff2',
       content: (
         <>
-          🧩 <HighlightText>UX durch Struktur</HighlightText>: Reduzierte
-          Navigation, klare Inhaltshierarchien, sofortige Orientierung.
+          🧭 <HighlightText>UX durch Reduktion</HighlightText>: Keine Ablenkung.
+          Keine Umwege. Alles so, dass man sich zurechtfindet – ohne zu merken,
+          dass man geführt wird.
         </>
       ),
     },
@@ -39,8 +41,9 @@ export default function FlavorFusionDetails() {
       id: 'ff3',
       content: (
         <>
-          ✏️ <HighlightText>Prototyp mit Tiefe</HighlightText>:
-          High-Fidelity-Design in Figma, durchdacht und animiert.
+          ✏️ <HighlightText>Promptbasiertes Design</HighlightText>: KI-Bilder,
+          ja. Aber nicht als Deko. Jeder Prompt überlegt, jeder Tisch ein echtes
+          Setting. Gebrauchsspuren statt Deko.
         </>
       ),
     },
@@ -48,8 +51,9 @@ export default function FlavorFusionDetails() {
       id: 'ff4',
       content: (
         <>
-          🚀 <HighlightText>Konversionsstarke UI</HighlightText>: Interaktive
-          Call-to-Actions, bewusste Triggerpunkte, klare Handlungsschritte.
+          📄 <HighlightText>Prozess sichtbar gemacht</HighlightText>: Figma,
+          React, Case Study – alles dokumentiert, nachvollziehbar, bewusst. Kein
+          Showcase. Ein Weg.
         </>
       ),
     },
@@ -61,16 +65,35 @@ export default function FlavorFusionDetails() {
     <>
       <HeroWrapper gradient="accentSoft">
         <Typography variant="h1" align="center" color="neutral.black">
-          🍴 FlavorFusion – Die Welt in deiner Küche
+          🍴 FlavorFusion – KI trifft Gestaltung trifft Kultur
         </Typography>
       </HeroWrapper>
 
       <Typography variant="body" align="left" color="depth.darkest">
-        <HighlightText>FlavorFusion</HighlightText> ist eine digitale Bühne für
-        interkulturelle Rezeptwelten. Ziel war, nicht nur zu informieren,
-        sondern eine <HighlightText>emotionale Design-Erfahrung</HighlightText>{' '}
-        zu schaffen. Visuelles Storytelling trifft hier auf klare UX – für
-        Nutzer, die sich führen lassen wollen, ohne die Kontrolle zu verlieren.
+        FlavorFusion war eine Aufgabenstellung – geworden ist es ein Stück
+        Designpraxis.
+        <br />
+        <br />
+        Ich hätte eine Oberfläche bauen können. Stattdessen habe ich mich
+        gefragt:
+        <em>
+          Wie lässt sich kulturelle Esskultur visuell erzählen, ohne sie zu
+          verflachen?
+        </em>
+        <br />
+        <br />
+        Die Antwort: Keine Icons, keine Klischees. Sondern Bildflächen, die nach
+        Küche aussehen. Mit Spuren, mit Unordnung, mit Material.
+        <br />
+        Acht Kulturkreise, jeweils mit eigenen Nationalgerichten als
+        Ausgangspunkt. Daraus: eigene Farbwelten, eigene Texturen – jeder Prompt
+        von Hand geschrieben. Kein Zufall. Kein Style ohne Substanz.
+        <br />
+        <br />
+        Die gesamte Journey: Konzeption, Bildentwicklung, UX, Prototyp, Case
+        Study. Nicht als Demo – sondern als ernst gemeinter Versuch, Gestaltung
+        als Sprache zu nutzen. Und KI nicht als Ersatz, sondern als Werkzeug zu
+        begreifen.
       </Typography>
 
       <MediaDisplay
@@ -86,21 +109,21 @@ export default function FlavorFusionDetails() {
       />
 
       <Typography variant="h2" align="center" color="accent.dark">
-        Features
+        🔍 Was hier wirklich passiert ist
       </Typography>
       <ListComponent items={features} />
 
       <Typography variant="h2" align="center" color="depth.darkest">
-        Tools & Methoden
+        🛠 Tools & Methoden
       </Typography>
       <BadgeGrid badges={badges} />
 
       <Typography variant="h2" align="center" color="accent.dark">
-        Aktueller Stand
+        📌 Ergebnis
       </Typography>
       <Typography variant="body" align="center" color="depth.darkest">
-        Der Prototyp ist abgeschlossen. Als interaktive Case Study in React
-        umgesetzt und bereits mobil getestet.
+        Ein vollständiger Figma-Prototyp. Eine eigenständige Case Study in
+        React. Nicht zur Schau – zur Anwendung gedacht.
       </Typography>
 
       <ButtonGrid>
@@ -124,7 +147,7 @@ export default function FlavorFusionDetails() {
             )
           }
         >
-          Prototyp ansehen
+          Figma Prototyp ansehen
         </Button>
       </ButtonGrid>
 

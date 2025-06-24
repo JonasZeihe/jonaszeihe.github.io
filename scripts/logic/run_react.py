@@ -5,6 +5,12 @@ import os
 import subprocess
 import datetime
 import sys
+import shutil
+import platform
+
+
+def resolve_npm_command():
+    return "npm.cmd" if platform.system() == "Windows" else "npm"
 
 
 def main():
@@ -20,8 +26,17 @@ def main():
         log.write(f"{timestamp}\n")
         log.write("========================\n")
 
+        npm_cmd = resolve_npm_command()
+
+        if shutil.which(npm_cmd) is None:
+            log.write("npm not found in PATH.\n")
+            print("npm not found in PATH. Please install Node.js or add npm to PATH.")
+            sys.exit(1)
+
         try:
-            subprocess.run(["npm", "run", "start"], check=True, stdout=log, stderr=log)
+            subprocess.run(
+                [npm_cmd, "run", "start"], check=True, stdout=log, stderr=log
+            )
             log.write("App started successfully!\n")
             print("App started successfully!")
         except subprocess.CalledProcessError:

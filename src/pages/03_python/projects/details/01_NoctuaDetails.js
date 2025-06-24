@@ -20,8 +20,9 @@ export default function NoctuaDetails() {
       id: 'nt1',
       content: (
         <>
-          🛠️ <HighlightText>Flexibilität:</HighlightText> Erfasse gezielt CPU-,
-          GPU-, BIOS-Daten oder mehr.
+          📂 <HighlightText>Kurzübersicht & Tiefenanalyse</HighlightText>:
+          Reports reichen von kompakten Steckbriefen bis zu technischen
+          Detailberichten – auf Knopfdruck.
         </>
       ),
     },
@@ -29,8 +30,8 @@ export default function NoctuaDetails() {
       id: 'nt2',
       content: (
         <>
-          💾 <HighlightText>Markdown-Export</HighlightText>: Ausgabe klarer
-          Systemreports – direkt editierbar.
+          🖱️ <HighlightText>Checkbox-Navigation</HighlightText>: Selektive
+          Datenwahl per GUI – nutzerfreundlich, flexibel, präzise.
         </>
       ),
     },
@@ -38,8 +39,8 @@ export default function NoctuaDetails() {
       id: 'nt3',
       content: (
         <>
-          ✅ <HighlightText>Checkbox-GUI</HighlightText>: Intuitive Filter für
-          selektive Hardwareinformationen.
+          📝 <HighlightText>Markdown-Export</HighlightText>: Klar strukturierte,
+          direkt nutzbare Berichte – editierbar, druckbar, versendbar.
         </>
       ),
     },
@@ -47,8 +48,8 @@ export default function NoctuaDetails() {
       id: 'nt4',
       content: (
         <>
-          🔧 <HighlightText>Detailtiefe nach Bedarf</HighlightText>: Von
-          Kurzübersicht bis Tiefenanalyse.
+          🧱 <HighlightText>Modularer Aufbau</HighlightText>: Architekturbasis
+          für Skalierung und gezielte Feature-Erweiterung.
         </>
       ),
     },
@@ -56,8 +57,8 @@ export default function NoctuaDetails() {
       id: 'nt5',
       content: (
         <>
-          🚀 <HighlightText>NoctuaLight</HighlightText>: Kompakte Version für
-          schnelle Reports unterwegs.
+          🚀 <HighlightText>NoctuaLight</HighlightText>: Die minimalistische
+          Variante – portabel, reduziert, sofort einsatzbereit.
         </>
       ),
     },
@@ -65,25 +66,35 @@ export default function NoctuaDetails() {
 
   const badges = [
     'python',
-    'tdd',
-    'domain-driven-design',
-    'user-friendly-gui',
+    'gui',
     'markdown-export',
+    'tdd',
+    'modular-design',
+    'system-reporting',
   ]
 
   return (
     <>
       <HeroWrapper gradient="secondaryBold">
         <Typography variant="h1" align="center" color="primary.lightest">
-          🛠 Noctua – Systeminfos, einfach verständlich
+          🛠 Noctua – Systeminfos, strukturiert & verständlich
         </Typography>
       </HeroWrapper>
 
       <SectionWrapper backgroundColor="depth.dark">
         <Typography variant="body" align="left" color="primary.lightest">
-          <HighlightText>Noctua</HighlightText> bringt Ordnung in komplexe
-          Hardwaredaten. Ob IT-Admin, Entwickler oder Power User – mit Noctua
-          generierst du klare Reports, exakt auf deinen Bedarf zugeschnitten.
+          <HighlightText>Noctua</HighlightText> entstand aus einer Lücke im
+          Alltag: Wer Hardware sauber dokumentieren will – sei es für Verkauf,
+          Diagnose oder Inventur – bekommt entweder unleserliche Datenmengen
+          oder zu wenig Substanz. Noctua setzt genau da an.
+          <br />
+          <br />
+          Entwickelt als persönlicher Einstieg in Python, verbindet Noctua klare
+          Datenstruktur mit gezielter Nutzerführung – und bildet gleichzeitig
+          das Fundament für spätere Tools wie{' '}
+          <HighlightText>Skryper</HighlightText> und{' '}
+          <HighlightText>Structra</HighlightText>. Vollständig getestet, modular
+          aufgebaut, bereit zur Weiterentwicklung.
         </Typography>
 
         <MediaDisplay
@@ -95,7 +106,7 @@ export default function NoctuaDetails() {
 
       <SectionWrapper backgroundColor="depth.darkest" elevated>
         <Typography variant="h2" align="center" color="primary.lightest">
-          🔍 Features im Überblick
+          🚀 Was steckt drin?
         </Typography>
         <ListComponent items={features} />
       </SectionWrapper>
@@ -109,12 +120,12 @@ export default function NoctuaDetails() {
 
       <SectionWrapper backgroundColor="depth.dark" elevated>
         <Typography variant="h3" align="center" color="accent.main">
-          🧪 Status & Ausblick
+          📈 Stand & Perspektive
         </Typography>
         <Typography variant="body" align="center" color="primary.lightest">
-          <HighlightText>NoctuaLight</HighlightText> ist stabil und
-          einsatzbereit. Die Vollversion wird modularisiert, dokumentiert und
-          durch Benutzerrollen erweitert.
+          <HighlightText>NoctuaLight</HighlightText> ist veröffentlicht. Die
+          Vollversion wird modularisiert erweitert – Ziel: erweiterbare Reports,
+          Nutzerrollen und potenzielle Monetarisierung.
         </Typography>
       </SectionWrapper>
 
@@ -135,7 +146,17 @@ export default function NoctuaDetails() {
           >
             GitHub Repository
           </Button>
-          <Button variant="success">Download (Windows)</Button>
+          <Button
+            variant="success"
+            onClick={() =>
+              window.open(
+                'https://github.com/jonaszeihe/noctuaLight/releases',
+                '_blank'
+              )
+            }
+          >
+            Download (Windows)
+          </Button>
         </div>
       </SectionWrapper>
 

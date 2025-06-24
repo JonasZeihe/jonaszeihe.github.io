@@ -1,27 +1,34 @@
 import React, { useState } from 'react'
 import ProjectCard from '../../../components/layout/ProjectCard'
 import ModalOverlay from '../../../components/lightbox/ModalOverlay'
-import SkryperDetails from './details/02_SkryperDetails'
-import SkryperLogo from '../../../assets/images/Projects/skryper_logo.png'
+import SkryStructraDetails from './details/02_SkryperDetails'
+import CombinedLogo from '../../../assets/images/Projects/skryper_structra_logo.png'
 
 export default function Skryper() {
   const [showModal, setShowModal] = useState(false)
 
-  const skryperProject = {
-    image: SkryperLogo,
-    name: 'Skryper',
-    description: 'Stromlinienförmige Projektbaumstrukturen',
+  const projectData = {
+    image: CombinedLogo,
+    name: 'Skryper & Structra',
+    description:
+      'Stromlinienförmige Projektbaumstrukturen analysieren & generieren',
     badges: [
       'python',
-      'gitignore-support',
-      'modular-design',
+      'projektstruktur',
       'cli-tool',
+      'template-generator',
+      'modular-design',
       'clean-code',
     ],
     buttons: [
       {
-        text: 'GitHub',
+        text: 'Skryper on GitHub',
         link: 'https://github.com/jonaszeihe/skryper',
+        variant: 'github',
+      },
+      {
+        text: 'Structra on GitHub',
+        link: 'https://github.com/jonaszeihe/structra',
         variant: 'github',
       },
     ],
@@ -30,14 +37,13 @@ export default function Skryper() {
   return (
     <>
       <ProjectCard
-        project={skryperProject}
+        project={projectData}
         gradient="primaryToSecondary.subtle"
         onOpen={() => setShowModal(true)}
       />
-
       {showModal && (
         <ModalOverlay onClose={() => setShowModal(false)}>
-          <SkryperDetails />
+          <SkryStructraDetails />
         </ModalOverlay>
       )}
     </>
