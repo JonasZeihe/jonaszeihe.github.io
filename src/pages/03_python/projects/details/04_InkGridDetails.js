@@ -17,78 +17,78 @@ export default function InkGridDetails() {
 
   const features = [
     {
-      id: 'f1',
+      id: 'ink1',
       content: (
         <>
-          🧠 <HighlightText>Automatisierte SVG-Erstellung:</HighlightText>{' '}
-          Strukturiere und exportiere komplexe Farbpaletten mit Ebenen, Gruppen
-          und Bezeichnungen.
+          🧠 <HighlightText>Automatisierte SVG-Erstellung</HighlightText>:
+          Farbpaletten als Swatches – mit Layerstruktur, Labeling und dualem
+          Hintergrund (Light/Dark) direkt exportierbar.
         </>
       ),
     },
     {
-      id: 'f2',
+      id: 'ink2',
       content: (
         <>
-          🎨 <HighlightText>Design-System Integration:</HighlightText> Export
-          als JSON für nahtlosen Import via eigens entwickeltem Figma Plugin.
+          🎨 <HighlightText>Designsystem-Export</HighlightText>: JSON-Ausgabe
+          für tokenbasierte Integration – nahtlos weiterverwendbar im Plugin
+          oder Code.
         </>
       ),
     },
     {
-      id: 'f3',
+      id: 'ink3',
       content: (
         <>
-          🌗 <HighlightText>Light/Dark-Support:</HighlightText> Automatische
-          Themenerkennung und Umstellung.
+          📥 <HighlightText>Drag-and-Drop Import</HighlightText>: .txt- und
+          .json-Dateien mit Farbcodes einfach reinziehen – der Rest geschieht
+          automatisch.
         </>
       ),
     },
     {
-      id: 'f4',
+      id: 'ink4',
       content: (
         <>
-          📥 <HighlightText>Drag-and-Drop:</HighlightText> Einfacher Import von
-          .txt- oder JSON-Dateien mit Palettendefinitionen.
-        </>
-      ),
-    },
-    {
-      id: 'f5',
-      content: (
-        <>
-          📦 <HighlightText>Sofort nutzbare Ausgabe:</HighlightText> SVGs & JSON
-          für direkte Verwendung in Figma, Adobe XD & Codebases.
+          ⚙️ <HighlightText>Multi-Plattform, Multi-Zweck</HighlightText>: Export
+          für Figma, Adobe XD, VSCode – oder jede andere Umgebung mit
+          Style-Logik.
         </>
       ),
     },
   ]
 
   const badges = [
-    'svg-automation',
-    'json-output',
-    'design-system-integration',
+    'svg-swatches',
+    'token-export',
+    'designsystem-integration',
     'drag-and-drop',
-    'multi-platform',
+    'batch-export',
   ]
 
   return (
     <>
       <HeroWrapper gradient="warmBold">
         <Typography variant="h1" align="center" color="highlight.lightest">
-          🎨 InkGrid – Farben mit Struktur
+          🎨 InkGrid – Struktur für Farbe
         </Typography>
       </HeroWrapper>
 
       <SectionWrapper backgroundColor="secondaryHighlight.light" elevated>
         <Typography variant="body" align="left" color="depth.darkest">
-          Mit <HighlightText>InkGrid</HighlightText> gestaltest und exportierst
-          du vollständige Farbpaletten für Designsysteme – strukturiert,
-          thematisch differenziert und sofort einsatzbereit. Die App unterstützt
-          dich beim Aufbau von konsistenten Styles für{' '}
-          <HighlightText>Figma</HighlightText>,{' '}
-          <HighlightText>AdobeXD</HighlightText> und Code-Workflows.
+          Wer mit Figma arbeitet und systematisch Farbpaletten anlegt, kennt den
+          Aufwand: Swatches zeichnen, Farbcodes vergeben, Ebenen beschriften –
+          und das Ganze bei jeder Designsystem-Iteration erneut. Ich habe lange
+          nach einem Tool gesucht, das genau das abnimmt. Gab’s nicht. Also:
+          gebaut.
+          <br />
+          <br />
+          <HighlightText>InkGrid</HighlightText> nimmt dir das ab – mit
+          strukturierter SVG-Erstellung, JSON-Export für Tokens und
+          Plugin-Anbindung für den direkten Weg in Figma. Schnell, zuverlässig,
+          erweiterbar.
         </Typography>
+
         <MediaDisplay
           media={[{ type: 'image', src: InkGridLogo, alt: 'InkGrid Logo' }]}
           onClick={() => setLightboxOpen(true)}
@@ -98,7 +98,7 @@ export default function InkGridDetails() {
 
       <SectionWrapper backgroundColor="neutral.lightest" elevated>
         <Typography variant="h2" align="center" color="depth.dark">
-          🚀 Highlights
+          🚀 Was InkGrid kann
         </Typography>
         <ListComponent items={features} />
       </SectionWrapper>
@@ -112,27 +112,11 @@ export default function InkGridDetails() {
 
       <SectionWrapper backgroundColor="neutral.lightest">
         <Typography variant="h3" align="center" color="depth.dark">
-          🚦 Aktueller Stand
+          📦 Aktueller Stand
         </Typography>
         <Typography variant="body" align="center" color="depth.dark">
-          <HighlightText>Status:</HighlightText> Stabil auf Windows & macOS.
-          JSON-Schnittstelle für Token-Export integriert.
-        </Typography>
-        <Typography
-          variant="body"
-          align="center"
-          style={{ marginTop: '0.5rem' }}
-          color="depth.dark"
-        >
-          <HighlightText>Plugin-Support:</HighlightText> Direkter Import in
-          Figma über{' '}
-          <a
-            href="https://github.com/JonasZeihe/InkGrid-Tokens"
-            target="_blank"
-            rel="noreferrer"
-          >
-            InkGrid-Tokens
-          </a>
+          Fertig kompilierte App für Windows und macOS. Plugin-Support aktiv.
+          JSON-Export integriert.
         </Typography>
       </SectionWrapper>
 
@@ -145,7 +129,6 @@ export default function InkGridDetails() {
             marginTop: '2rem',
           }}
         >
-          {' '}
           <Button
             variant="primary"
             onClick={() =>

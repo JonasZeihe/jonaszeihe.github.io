@@ -17,38 +17,42 @@ export default function KIMDetails() {
 
   const features = [
     {
-      id: 'f1',
+      id: 'kim1',
       content: (
         <>
-          🤖 <HighlightText>Persönlichkeitsanalyse per KI</HighlightText>:
-          Nutzerantworten erzeugen Profile für smartes Gruppenmatching.
+          🤖 <HighlightText>Persönlichkeitsmatching per KI</HighlightText>:
+          Nutzerantworten werden zu Profilen, daraus entstehen smarte
+          Gruppenvorschläge – nicht oberflächlich, sondern verbindend.
         </>
       ),
     },
     {
-      id: 'f2',
+      id: 'kim2',
       content: (
         <>
-          👫 <HighlightText>Kompatibilitäts-Scores</HighlightText>: Präzise
-          Vorschläge für Gruppenzusammenstellungen mit sozialem Mehrwert.
+          🧊 <HighlightText>Automatisierte Icebreaker</HighlightText>: Dynamisch
+          generierte Fragen erleichtern den Einstieg – spielerisch, intuitiv,
+          sozial.
         </>
       ),
     },
     {
-      id: 'f3',
+      id: 'kim3',
       content: (
         <>
-          🧊 <HighlightText>Automatisierte Icebreaker</HighlightText>: Spielbare
-          Einstiege für bessere Gruppendynamik.
+          🎨 <HighlightText>Designsystem mit Haltung</HighlightText>:
+          WCAG-konform, konsistent, responsiv – gedacht für reale Nutzung, nicht
+          nur fürs Showcase.
         </>
       ),
     },
     {
-      id: 'f4',
+      id: 'kim4',
       content: (
         <>
-          🎯 <HighlightText>Designsystem</HighlightText>: Skalierbar,
-          WCAG-konform, konsistent im Look & Feel.
+          📚 <HighlightText>Vollständiger UX-Prozess</HighlightText>: Von
+          Research bis Pitch – inklusive Marktanalyse, Interviews, User Flows,
+          Personas, User Journey, High-Fidelity-Prototyp und React-Case-Study.
         </>
       ),
     },
@@ -56,9 +60,10 @@ export default function KIMDetails() {
 
   const badges = [
     'ux-ui-design',
-    'figma',
-    'user-centered-design',
+    'teamarbeit',
+    'user-research',
     'accessibility',
+    'ki-integration',
     'prototyping',
   ]
 
@@ -66,16 +71,20 @@ export default function KIMDetails() {
     <>
       <HeroWrapper gradient="secondaryWarm">
         <Typography variant="h1" align="center" color="depth.dark">
-          🌟 KIM – Your Friend to Meet New Friends
+          🌟 KIM – Verbindungen, die tragen
         </Typography>
       </HeroWrapper>
 
-      <Typography variant="body" align="center" color="neutral.deep">
-        <HighlightText>KIM</HighlightText> ist eine Matching-App, die mit Hilfe
-        von KI und barrierefreiem Design echte soziale Begegnungen fördert.
-        Entwickelt als Capstone-Projekt, zeigt sie, wie durchdachte
-        Persönlichkeitsanalyse, smarte Gruppenvorschläge und klare UX ein
-        starkes digitales Erlebnis schaffen können.
+      <Typography variant="body" align="left" color="neutral.deep">
+        <HighlightText>KIM</HighlightText> war unser Capstone-Projekt – und es
+        wollte mehr als nur eine App sein. In vier Wochen entstanden Strukturen,
+        Flows, Interfaces und eine Vision: Wie schafft man Räume für echte
+        Begegnung – digital, sozial, tragfähig?
+        <br />
+        <br />
+        Was dabei herauskam, ist mehrschichtig. Psychologische Analyse trifft
+        Gruppendynamik. Matching-Logik trifft Icebreaker. Und das alles in einem
+        System, das zugänglich bleibt – in Form, Sprache, Code.
       </Typography>
 
       <MediaDisplay
@@ -85,31 +94,22 @@ export default function KIMDetails() {
       />
 
       <Typography variant="h2" align="center" color="depth.dark">
-        Features
+        🔍 Was steckt drin?
       </Typography>
       <ListComponent items={features} />
 
       <Typography variant="h2" align="center" color="depth.dark">
-        Technologien
+        🛠 Tools & Methoden
       </Typography>
       <BadgeGrid badges={badges} />
 
-      <Typography variant="h2" align="center" color="depth.dark">
-        Stand & Vision
-      </Typography>
-      <Typography variant="body" align="center" color="neutral.deep">
-        Der High-Fidelity-Prototyp wurde im Rahmen des Bootcamps erfolgreich
-        getestet. Nächster Schritt: Validierung durch User Tests und erste
-        Entwicklungsetappen.
-      </Typography>
-
-      <Typography variant="body" align="center" color="accent.dark">
-        <HighlightText>Vision:</HighlightText> Eine produktionsreife App mit
-        Echtzeit-Matching, erweiterbaren Profiltypen und interaktiver
-        Feedbacklogik.
-      </Typography>
-
       <SectionWrapper backgroundColor="neutral.lightest">
+        <Typography variant="body" align="center" color="neutral.deep">
+          Der Prototyp ist klickbar, der Prozess sichtbar. Die React-Case-Study
+          zeigt, was UX bedeuten kann, wenn Design nicht vorn aufhört – sondern
+          innen beginnt.
+        </Typography>
+
         <div
           style={{
             display: 'flex',
@@ -133,7 +133,7 @@ export default function KIMDetails() {
             variant="success"
             onClick={() =>
               window.open(
-                'https://www.figma.com/proto/zOqkBn4RzZ9vU8yIWpjbwx/capstone_Gruppe4_designsystem?page-id=1%3A2&node-id=1269-9613&viewport=6473%2C-426%2C0.65&t=glC7uXK0AhmNVLGg-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1184%3A20281',
+                'https://www.figma.com/proto/zOqkBn4RzZ9vU8yIWpjbwx/capstone_Gruppe4_designsystem?page-id=1%3A2&node-id=1269-9613',
                 '_blank'
               )
             }
