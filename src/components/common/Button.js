@@ -1,51 +1,46 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const getThemeValue = (path, theme) => {
-  const keys = path.split('.')
-  return keys.reduce((acc, key) => acc && acc[key], theme)
-}
+const getThemeValue = (path, theme) =>
+  path.split('.').reduce((acc, key) => acc && acc[key], theme)
 
-const getButtonBaseStyles = ({ variant, theme }) => {
-  const variants = {
-    primary: {
-      background: theme.colors.primary.main,
-      color: theme.colors.neutral.ultraLight,
-      border: 'none',
-    },
-    github: {
-      background: theme.colors.depth.main,
-      color: theme.colors.neutral.ultraLight,
-      border: 'none',
-    },
-    casestudy: {
-      background: theme.colors.secondary.main,
-      color: theme.colors.neutral.ultraLight,
-      border: 'none',
-    },
-    prototype: {
-      background: theme.colors.accent.main,
-      color: theme.colors.neutral.ultraLight,
-      border: 'none',
-    },
-    success: {
-      background: theme.colors.primary.dark,
-      color: theme.colors.neutral.ultraLight,
-      border: 'none',
-    },
-    outline: {
-      background: 'transparent',
-      color: theme.colors.primary.main,
-      border: `1px solid ${theme.colors.primary.main}`,
-    },
-    ghost: {
-      background: 'transparent',
-      color: theme.colors.neutral.main,
-      border: 'none',
-    },
-  }
-  return variants[variant] || variants.primary
-}
+const baseStyles = (theme) => ({
+  primary: {
+    background: theme.colors.primary.main,
+    color: theme.colors.neutral.ultraLight,
+    border: 'none',
+  },
+  github: {
+    background: theme.colors.depth.main,
+    color: theme.colors.neutral.ultraLight,
+    border: 'none',
+  },
+  casestudy: {
+    background: theme.colors.secondary.main,
+    color: theme.colors.neutral.ultraLight,
+    border: 'none',
+  },
+  prototype: {
+    background: theme.colors.accent.main,
+    color: theme.colors.neutral.ultraLight,
+    border: 'none',
+  },
+  success: {
+    background: theme.colors.primary.dark,
+    color: theme.colors.neutral.ultraLight,
+    border: 'none',
+  },
+  outline: {
+    background: 'transparent',
+    color: theme.colors.primary.main,
+    border: `1px solid ${theme.colors.primary.main}`,
+  },
+  ghost: {
+    background: 'transparent',
+    color: theme.colors.neutral.main,
+    border: 'none',
+  },
+})
 
 const StyledButton = styled.button`
   font-family: ${({ theme }) => theme.typography.fontFamily.button};
@@ -64,21 +59,20 @@ const StyledButton = styled.button`
     transform 0.2s ease,
     filter 0.2s ease;
 
-  ${({ background, variant, theme }) => {
-    const baseStyles = getButtonBaseStyles({ variant, theme })
-    const resolvedBackground = background
-      ? getThemeValue(background, theme)
-      : baseStyles.background
-
+  ${({ variant, theme, customBackground }) => {
+    const variantStyle = baseStyles(theme)[variant] || baseStyles(theme).primary
+    const bg = customBackground
+      ? getThemeValue(customBackground, theme)
+      : variantStyle.background
     return `
-      background: ${resolvedBackground};
-      color: ${baseStyles.color};
-      border: ${baseStyles.border};
+      background: ${bg};
+      color: ${variantStyle.color};
+      border: ${variantStyle.border};
 
       &:hover {
-        filter: brightness(0.95);
+        filter: brightness(0.92);
         transform: translateY(-1px);
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.08);
       }
     `
   }}
@@ -95,15 +89,14 @@ const StyledButton = styled.button`
 
 export default function Button({
   variant = 'primary',
-  background,
-  buttonBackground,
+  customBackground,
   children,
   onClick,
 }) {
   return (
     <StyledButton
       variant={variant}
-      background={buttonBackground || background}
+      customBackground={customBackground}
       onClick={onClick}
     >
       {children}

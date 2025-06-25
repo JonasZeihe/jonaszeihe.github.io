@@ -8,64 +8,32 @@ import {
 } from '../../utils/sharedComponents'
 import BadgeGrid from '../common/BadgeGrid'
 
-const ImageWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  padding: 50%;
-  overflow: hidden;
-
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-`
-
-const ContentWrapper = styled.div`
-  padding: ${({ theme }) => theme.spacing(1)};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  flex-grow: 1;
-`
-
-function ProjectCard({ project, gradient, onOpen }) {
-  const handleCardClick = () => onOpen()
-
-  const handleOpenButtonClick = (e) => {
-    e.stopPropagation()
-    onOpen()
-  }
-
-  const handleExternalButtonClick = (e, link) => {
-    e.stopPropagation()
-    window.open(link, '_blank')
-  }
-
+export default function ProjectCard({ project, gradient, onOpen }) {
   return (
     <CardWrapper
       gradient={gradient}
-      onClick={handleCardClick}
+      onClick={onOpen}
       style={{ cursor: 'pointer' }}
     >
       <ImageWrapper>
         <img src={project.image} alt={project.name} />
+        <Overlay />
       </ImageWrapper>
-      <ContentWrapper>
-        <Typography variant="h2" align="center" color="primary.main">
+      <Content>
+        <Typography variant="h2" color="primary.main" align="center">
           {project.name}
         </Typography>
-        <Typography variant="body" align="center" color="depth.darkest">
+        <Typography variant="body" color="depth.darkest" align="center">
           {project.description}
         </Typography>
         <BadgeGrid badges={project.badges} />
         <ButtonGrid>
-          <Button variant="primary" onClick={handleOpenButtonClick}>
+          <Button
+            onClick={(e) => {
+              e.stopPropagation()
+              onOpen()
+            }}
+          >
             Projekt ansehen
           </Button>
           {project.buttons?.map(({ text, link, variant, buttonBackground }) => (
@@ -73,15 +41,50 @@ function ProjectCard({ project, gradient, onOpen }) {
               key={text}
               variant={variant}
               buttonBackground={buttonBackground}
-              onClick={(e) => handleExternalButtonClick(e, link)}
+              onClick={(e) => {
+                e.stopPropagation()
+                window.open(link, '_blank')
+              }}
             >
               {text}
             </Button>
           ))}
         </ButtonGrid>
-      </ContentWrapper>
+      </Content>
     </CardWrapper>
   )
 }
 
-export default ProjectCard
+const ImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+`
+
+const Overlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+`
+
+const Content = styled.div`
+  padding: ${({ theme }) => theme.spacing(2)};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(2)};
+`

@@ -1,5 +1,9 @@
 import React from 'react'
 import {
+  PageWrapper,
+  ContentWrapper,
+  SectionWrapper,
+  ClusterWrapper,
   CardGrid,
   HeroWrapper,
   Typography,
@@ -15,8 +19,8 @@ export default function Introduction() {
       description:
         'Ein KI-gestütztes Tool zur Vernetzung von Menschen – mit Designsystem, Matchinglogik und Usability-Fokus.',
       badges: ['ux-ui-design'],
-      gradient: 'depthToHighlight.subtle',
-      buttonBackground: 'colors.depth.main',
+      gradient: 'depthFocus',
+      buttonBackground: 'primary.main',
       buttonText: 'Zum KIM-Projekt',
     },
     {
@@ -25,8 +29,8 @@ export default function Introduction() {
       description:
         'Ein modulares Lernsystem mit dynamischer Kursstruktur, Gamification und sicherem Fullstack-Backend.',
       badges: ['java', 'react', 'mongodb'],
-      gradient: 'primaryLight.subtle',
-      buttonBackground: 'colors.primary.main',
+      gradient: 'primaryLight',
+      buttonBackground: 'primary.main',
       buttonText: 'Shizen entdecken',
     },
     {
@@ -35,57 +39,65 @@ export default function Introduction() {
       description:
         'Analyse und Visualisierung von Projektbaumstrukturen – Effiziente Verzeichnisscans und automatisierte Generierung.',
       badges: ['python'],
-      gradient: 'warmDynamic.subtle',
-      buttonBackground: 'colors.secondary.main',
+      gradient: 'warmBold',
+      buttonBackground: 'secondary.main',
       buttonText: 'Mehr über Skryper & Structra',
     },
   ]
 
   return (
-    <>
-      <HeroWrapper gradient="accentToPrimary">
+    <PageWrapper>
+      <HeroWrapper gradient="accentToPrimary" textColor="neutral.ultraLight">
         <Typography variant="h1" align="center" color="neutral.ultraLight">
           Design trifft Entwicklung – Mein Portfolio
         </Typography>
       </HeroWrapper>
 
-      <Typography variant="h3" align="left" color="depth.dark">
-        <HighlightText>Was du hier findest:</HighlightText> Eine kuratierte
-        Auswahl meiner Projekte an der Schnittstelle von{' '}
-        <HighlightText>Softwareentwicklung</HighlightText> und{' '}
-        <HighlightText>User Experience</HighlightText>. Jedes Projekt wurde
-        konzipiert, gestaltet und technisch umgesetzt mit dem Anspruch, nicht
-        nur zu funktionieren – sondern zu überzeugen.
-      </Typography>
+      <ContentWrapper>
+        <SectionWrapper backgroundColor="neutral.ultraLight">
+          <Typography variant="h2" align="left" color="depth.dark">
+            <HighlightText>Was du hier findest:</HighlightText> Eine kuratierte
+            Auswahl meiner Projekte an der Schnittstelle von{' '}
+            <HighlightText>Softwareentwicklung</HighlightText> und{' '}
+            <HighlightText>User Experience</HighlightText>. Jedes Projekt wurde
+            konzipiert, gestaltet und technisch umgesetzt mit dem Anspruch,
+            nicht nur zu funktionieren – sondern zu überzeugen.
+          </Typography>
+        </SectionWrapper>
 
-      <Typography variant="h2" align="center" color="primary.darkest">
-        🌟 Meine persönlich ausgewählten Highlights
-      </Typography>
+        <SectionWrapper backgroundColor="neutral.ultraLight">
+          <Typography variant="h3" align="center" color="primary.darkest">
+            🌟 Meine persönlich ausgewählten Highlights
+          </Typography>
 
-      <CardGrid>
-        {featureProjects.map(
-          ({
-            id,
-            title,
-            description,
-            badges,
-            gradient,
-            buttonText,
-            buttonBackground,
-          }) => (
-            <FeatureCard
-              key={id}
-              title={title}
-              description={description}
-              badges={badges}
-              gradient={gradient}
-              targetId={id}
-              buttonBackground={buttonBackground}
-              buttonText={buttonText}
-            />
-          )
-        )}
-      </CardGrid>
-    </>
+          <ClusterWrapper>
+            <CardGrid>
+              {featureProjects.map(
+                ({
+                  id,
+                  title,
+                  description,
+                  badges,
+                  gradient,
+                  buttonText,
+                  buttonBackground,
+                }) => (
+                  <FeatureCard
+                    key={id}
+                    title={title}
+                    description={description}
+                    badges={badges}
+                    gradient={gradient}
+                    targetId={id}
+                    buttonBackground={buttonBackground}
+                    buttonText={buttonText}
+                  />
+                )
+              )}
+            </CardGrid>
+          </ClusterWrapper>
+        </SectionWrapper>
+      </ContentWrapper>
+    </PageWrapper>
   )
 }

@@ -7,20 +7,25 @@ export default function ThemeToggleButton() {
   const { isDarkMode, toggleTheme } = useThemeContext()
 
   return (
-    <ToggleButton onClick={toggleTheme} aria-label="Toggle theme">
+    <ToggleButton
+      onClick={toggleTheme}
+      aria-label="Toggle Theme"
+      $isDarkMode={isDarkMode}
+    >
       {isDarkMode ? <FiSun size={18} /> : <FiMoon size={18} />}
     </ToggleButton>
   )
 }
 
 const ToggleButton = styled.button`
-  background: ${({ theme }) => theme.colors.neutral.lightest};
-  color: ${({ theme }) => theme.colors.neutral.darkest};
+  background: ${({ theme, $isDarkMode }) =>
+    $isDarkMode ? theme.colors.depth.dark : theme.colors.neutral.lightest};
+  color: ${({ theme, $isDarkMode }) =>
+    $isDarkMode ? theme.colors.neutral.ultraLight : theme.colors.depth.dark};
   border: none;
   border-radius: ${({ theme }) => theme.borderRadius.pill};
   padding: ${({ theme }) => theme.spacing(1)} ${({ theme }) => theme.spacing(2)};
   cursor: pointer;
-  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;

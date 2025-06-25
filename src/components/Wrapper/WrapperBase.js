@@ -1,54 +1,59 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-// Utility-Funktion zur Verarbeitung von Farben
 const resolveThemeColor = (theme, colorKey) => {
-  if (!colorKey) return theme.colors.neutral.lightest
-  const [palette, shade] = colorKey.split('.')
-  return theme.colors[palette]?.[shade] || theme.colors.neutral.light
+  if (!colorKey) return 'transparent'
+  const [palette, shade = 'main'] = colorKey.split('.')
+  return theme.colors[palette]?.[shade] || 'transparent'
 }
 
 const WrapperBase = styled.div`
-  /* Dynamischer Hintergrund */
+  width: ${({ fluid }) => (fluid ? '100%' : 'auto')};
+  max-width: ${({ theme, maxWidth }) =>
+    maxWidth ? theme.breakpoints[maxWidth] || maxWidth : theme.breakpoints.xl};
+  margin: ${({ centered, theme }) =>
+    centered ? `${theme.spacing(2)} auto` : 'initial'};
+
+  padding: ${({ theme, padding }) =>
+    padding !== undefined ? theme.spacing(padding) : theme.spacing(2)};
+  gap: ${({ theme, gap }) => (gap !== undefined ? theme.spacing(gap) : '0')};
+
   background: ${({ theme, gradient, backgroundColor }) =>
     gradient
       ? theme.gradients[gradient]
       : resolveThemeColor(theme, backgroundColor)};
 
-  /* Border-Radius */
-  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  border-radius: ${({ theme, borderRadius }) =>
+    theme.borderRadius[borderRadius] || theme.borderRadius.medium};
 
-  /* Dynamische Box-Schatten (abhängig von "elevated") */
   box-shadow: ${({ theme, elevated }) =>
-    elevated ? theme.boxShadow.medium : theme.boxShadow.light};
+    elevated ? theme.boxShadow.medium : 'none'};
 
-  /* Standardabstände und Maximale Breite */
-  padding: ${({ theme }) => theme.spacing(2)};
-  margin: ${({ theme }) => theme.spacing(2)} auto;
-  width: 100%;
-  max-width: ${({ theme }) => theme.breakpoints.xl};
+  display: ${({ display }) => display || 'block'};
+  flex-direction: ${({ direction }) => direction || 'initial'};
+  align-items: ${({ alignItems }) => alignItems || 'initial'};
+  justify-content: ${({ justifyContent }) => justifyContent || 'initial'};
+
   scroll-margin-top: 80px;
-
-  /* Smooth Transition für alle wichtigen Eigenschaften */
   transition:
     background 0.3s ease,
     box-shadow 0.3s ease,
     transform 0.3s ease;
 
-  /* Responsive Anpassungen */
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    padding: ${({ theme }) => theme.spacing(2)};
-    border-radius: ${({ theme }) => theme.borderRadius.large};
-  }
+  ${({ fullHeight }) =>
+    fullHeight &&
+    css`
+      min-height: 100vh;
+    `}
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing(2)};
-    box-shadow: ${({ theme }) => theme.boxShadow.light};
+    padding: ${({ theme, paddingMobile }) =>
+      paddingMobile !== undefined
+        ? theme.spacing(paddingMobile)
+        : theme.spacing(2)};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing(1)};
     border-radius: ${({ theme }) => theme.borderRadius.small};
-    box-shadow: none;
   }
 `
 

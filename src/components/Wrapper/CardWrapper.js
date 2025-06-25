@@ -2,46 +2,32 @@ import styled from 'styled-components'
 import WrapperBase from './WrapperBase'
 
 const CardWrapper = styled(WrapperBase)`
-  /* Grundstruktur */
-  width: 95%;
-  margin: ${({ theme }) => theme.spacing(1)} auto;
-  padding: ${({ theme }) => theme.spacing(1)};
-
-  padding: ${({ theme }) => theme.spacing(0)};
-  border-radius: ${({ theme }) => theme.borderRadius.large};
+  width: 100%;
+  max-width: 95%;
+  margin: ${({ theme }) => theme.spacing(2)} auto;
+  padding: ${({ theme, padding }) => padding || theme.spacing(2)};
+  border-radius: ${({ theme, radius }) =>
+    theme.borderRadius[radius] || theme.borderRadius.large};
   box-shadow: ${({ theme }) => theme.boxShadow.medium};
   overflow: hidden;
-
-  /* Subtile Interaktivität */
   transition:
     box-shadow 0.2s ease,
     transform 0.2s ease;
 
-&:hover {
-  transform: translateY(-3px);
-  box-shadow: ${({ theme }) => theme.boxShadow.medium};
-}
-
-
-
-  /* Anpassungen für größere Bildschirme */
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing(2)};
-    border-radius: ${({ theme }) => theme.borderRadius.large};
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: ${({ theme }) => theme.boxShadow.heavy};
   }
 
-  /* Optimierung für mobile Geräte */
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin: ${({ theme }) => theme.spacing(1)} auto;
+    padding: ${({ theme }) => theme.spacing(1)};
     border-radius: ${({ theme }) => theme.borderRadius.medium};
-    box-shadow: ${({ theme }) => theme.boxShadow.heavy};
+    box-shadow: ${({ theme }) => theme.boxShadow.light};
 
     &:hover {
       transform: none;
       box-shadow: ${({ theme }) => theme.boxShadow.light};
     }
-  }
-
   }
 `
 
