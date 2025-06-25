@@ -1,13 +1,14 @@
+// src/pages/Introduction.js
 import React from 'react'
 import {
   PageWrapper,
-  ContentWrapper,
-  SectionWrapper,
-  ClusterWrapper,
-  CardGrid,
   HeroWrapper,
+  SectionWrapper,
+  ContentWrapper,
   Typography,
   HighlightText,
+  ClusterWrapper,
+  CardGrid,
 } from '../utils/sharedComponents'
 import FeatureCard from '../components/layout/FeatureCard'
 
@@ -47,26 +48,31 @@ export default function Introduction() {
 
   return (
     <PageWrapper>
-      <HeroWrapper gradient="accentToPrimary" textColor="neutral.ultraLight">
+      <HeroWrapper fullHeight gradient="accentToPrimary" intensity="strong">
         <Typography variant="h1" align="center" color="neutral.ultraLight">
           Design trifft Entwicklung – Mein Portfolio
         </Typography>
       </HeroWrapper>
 
-      <ContentWrapper>
-        <SectionWrapper backgroundColor="neutral.ultraLight">
-          <Typography variant="h2" align="left" color="depth.dark">
-            <HighlightText>Was du hier findest:</HighlightText> Eine kuratierte
-            Auswahl meiner Projekte an der Schnittstelle von{' '}
+      <SectionWrapper backgroundColor="neutral.ultraLight" padding={6}>
+        <ContentWrapper>
+          <Typography variant="h2" align="center" color="primary.main">
+            <HighlightText>Was du hier findest:</HighlightText>
+          </Typography>
+
+          <Typography variant="h3" align="center" color="depth.main">
+            Eine kuratierte Auswahl meiner Projekte an der Schnittstelle von{' '}
             <HighlightText>Softwareentwicklung</HighlightText> und{' '}
             <HighlightText>User Experience</HighlightText>. Jedes Projekt wurde
             konzipiert, gestaltet und technisch umgesetzt mit dem Anspruch,
             nicht nur zu funktionieren – sondern zu überzeugen.
           </Typography>
-        </SectionWrapper>
+        </ContentWrapper>
+      </SectionWrapper>
 
-        <SectionWrapper backgroundColor="neutral.ultraLight">
-          <Typography variant="h3" align="center" color="primary.darkest">
+      <SectionWrapper backgroundColor="depth.ultraLight" padding={6}>
+        <ContentWrapper>
+          <Typography variant="h3" align="center" color="secondary.main">
             🌟 Meine persönlich ausgewählten Highlights
           </Typography>
 
@@ -96,8 +102,8 @@ export default function Introduction() {
               )}
             </CardGrid>
           </ClusterWrapper>
-        </SectionWrapper>
-      </ContentWrapper>
+        </ContentWrapper>
+      </SectionWrapper>
     </PageWrapper>
   )
 }

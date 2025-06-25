@@ -5,6 +5,7 @@ const ClusterWrapper = styled.section`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(3)};
   margin-bottom: ${({ theme }) => theme.spacing(4)};
+  width: 100%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     gap: ${({ theme }) => theme.spacing(2)};
@@ -16,5 +17,4 @@ const ClusterWrapper = styled.section`
     margin-bottom: ${({ theme }) => theme.spacing(2)};
   }
 `
-
 export default ClusterWrapper

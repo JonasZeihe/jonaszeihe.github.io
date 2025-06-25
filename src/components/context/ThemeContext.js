@@ -1,28 +1,36 @@
+// src/components/context/ThemeContext.js
 import React, { createContext, useContext, useMemo, useState } from 'react'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 import { lightTheme, darkTheme } from '../../styles/theme'
 
-const ColorModeContext = createContext()
+const ThemeContext = createContext()
 
-export const useThemeContext = () => useContext(ColorModeContext)
+export const useThemeContext = () => useContext(ThemeContext)
 
 export function ThemeContextProvider({ children }) {
-  const [isDarkMode, setIsDarkMode] = useState(true)
-
-  const toggleTheme = () => setIsDarkMode((prev) => !prev)
+  const [mode, setMode] = useState('light')
 
   const theme = useMemo(
-    () => (isDarkMode ? darkTheme : lightTheme),
-    [isDarkMode]
+    () => (mode === 'dark' ? { ...darkTheme, mode } : { ...lightTheme, mode }),
+    [mode]
   )
-  const contextValue = useMemo(
-    () => ({ isDarkMode, toggleTheme }),
-    [isDarkMode]
+
+  const toggleTheme = () =>
+    setMode((prev) => (prev === 'dark' ? 'light' : 'dark'))
+
+  const value = useMemo(
+    () => ({
+      mode,
+      isDarkMode: mode === 'dark',
+      toggleTheme,
+      theme,
+    }),
+    [mode, theme]
   )
 
   return (
-    <ColorModeContext.Provider value={contextValue}>
+    <ThemeContext.Provider value={value}>
       <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>
-    </ColorModeContext.Provider>
+    </ThemeContext.Provider>
   )
 }

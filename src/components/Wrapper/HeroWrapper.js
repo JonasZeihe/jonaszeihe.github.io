@@ -1,43 +1,41 @@
 import styled from 'styled-components'
+import LumenWrapper from './LumenWrapper'
 
-const HeroWrapper = styled.section`
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-
+const HeroWrapper = styled(LumenWrapper).attrs(() => ({
+  as: 'header',
+  fluid: true,
+  centered: true,
+  padding: 3,
+  intensity: 'medium',
+  backgroundColor: 'surface.card',
+}))`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  min-height: 36vh;
+  max-width: 52rem;
+  margin: 0 auto;
+  z-index: 2;
+  box-shadow: none;
 
-  min-height: ${({ height }) => height || '50vh'};
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    max-width: 96vw;
+    min-height: 24vh;
+  }
 
-  padding: ${({ theme }) => theme.spacing(3)};
-  background: ${({ theme, gradient, customMesh }) =>
-    customMesh ||
-    theme.gradients[gradient] ||
-    theme.gradients.primaryToSecondary};
-
-  color: ${({ theme, textColor }) =>
-    theme.colors[textColor]?.main || theme.colors.neutral.ultraLight};
-
-  border-radius: ${({ theme, borderRadius }) =>
-    theme.borderRadius[borderRadius] || theme.borderRadius.none};
-  box-shadow: ${({ theme, shadow }) =>
-    shadow ? theme.boxShadow[shadow] : 'none'};
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    min-height: ${({ heightMd }) => heightMd || '40vh'};
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    min-height: 18vh;
+    padding-top: ${({ theme }) => theme.spacing(2)};
+    padding-bottom: ${({ theme }) => theme.spacing(2)};
+    max-width: 100vw;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing(2)};
-    min-height: ${({ heightSm }) => heightSm || '30vh'};
+    min-height: 12vh;
+    padding-top: ${({ theme }) => theme.spacing(1)};
+    padding-bottom: ${({ theme }) => theme.spacing(1)};
   }
 `
-
 export default HeroWrapper

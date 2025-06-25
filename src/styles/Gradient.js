@@ -1,42 +1,63 @@
+// src/styles/Gradient.js
 const createGradient = (from, to, angle = 135) =>
   `linear-gradient(${angle}deg, ${from}, ${to})`
 
-const gradients = ({ colors }, mode = 'light') => {
-  if (
-    !colors ||
-    !colors.primary ||
-    !colors.depth ||
-    !colors.accent ||
-    !colors.highlight ||
-    !colors.neutral ||
-    !colors.secondary
-  ) {
-    console.warn(
-      'Missing color definitions in theme. Gradient generation skipped.'
-    )
-    return {}
-  }
-
-  const bg =
-    mode === 'dark'
-      ? colors.depth.ultraLight || '#000000'
-      : colors.primary.ultraLight || '#ffffff'
+const gradients = ({ colors }) => {
+  const pick = (group, tone = 'main') =>
+    colors[group]?.[tone] ||
+    colors[group]?.main ||
+    Object.values(colors[group] || {})[0] ||
+    '#ccc'
 
   return {
-    backgroundPrimary: createGradient(bg, colors.primary.main),
-    backgroundAccent: createGradient(bg, colors.accent.main),
-    backgroundDepth: createGradient(colors.depth.light, colors.depth.dark, 180),
+    pageBackground: createGradient(pick('surface', 1), pick('surface', 2), 133),
+    backgroundPrimary: createGradient(
+      pick('primary', 1),
+      pick('primary', 4),
+      120
+    ),
+    backgroundSecondary: createGradient(
+      pick('secondary', 1),
+      pick('secondary', 3),
+      133
+    ),
+    backgroundAccent: createGradient(pick('accent', 1), pick('accent', 3), 123),
+    backgroundDepth: createGradient(pick('depth', 1), pick('depth', 3), 180),
+    backgroundSurface: createGradient(
+      pick('surface', 1),
+      pick('surface', 3),
+      180
+    ),
 
-    buttonPrimary: createGradient(colors.primary.light, colors.primary.main),
-    buttonAccent: createGradient(colors.accent.light, colors.accent.main),
+    buttonPrimary: createGradient(pick('primary', 2), pick('primary', 3), 115),
+    buttonSecondary: createGradient(
+      pick('secondary', 2),
+      pick('secondary', 3),
+      117
+    ),
+    buttonAccent: createGradient(pick('accent', 2), pick('accent', 3), 119),
 
-    highlight: createGradient(colors.highlight.light, colors.highlight.main),
-    focus: createGradient(colors.accent.main, colors.highlight.main),
-    danger: createGradient(colors.accent.dark, colors.accent.main),
-    info: createGradient(colors.secondary.main, colors.secondary.light),
+    focus: createGradient(pick('highlight', 3), pick('accent', 3), 88),
+    danger: createGradient(pick('accent', 5), pick('accent', 3), 111),
+    info: createGradient(pick('secondary', 3), pick('secondary', 2), 120),
 
-    dividerSoft: createGradient(colors.neutral.light, colors.neutral.main),
-    dividerHard: createGradient(colors.neutral.dark, colors.neutral.darkest),
+    hero: createGradient(pick('primary', 1), pick('secondary', 1), 127),
+    highlightSoft: createGradient(
+      pick('highlight', 1),
+      pick('neutral', 'grey'),
+      93
+    ),
+
+    dividerSoft: createGradient(
+      pick('neutral', 'light'),
+      pick('neutral', 'grey'),
+      90
+    ),
+    dividerHard: createGradient(
+      pick('neutral', 'dark'),
+      pick('neutral', 'black'),
+      90
+    ),
   }
 }
 

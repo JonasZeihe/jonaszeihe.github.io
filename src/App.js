@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 
+import LumenWrapper from './components/Wrapper/LumenWrapper'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 
@@ -8,12 +9,6 @@ import Introduction from './pages/01_Introduction'
 import UxUiPage from './pages/01_uxui/UxUiPage'
 import PythonPage from './pages/03_python/PythonPage'
 import JavaPage from './pages/04_java/JavaPage'
-
-const Main = styled.main`
-  padding: ${({ theme }) => theme.spacing(7)} ${({ theme }) => theme.spacing(1)};
-  max-width: ${({ theme }) => theme.breakpoints.xl};
-  margin: auto;
-`
 
 export default function App() {
   const navSections = useMemo(
@@ -49,7 +44,7 @@ export default function App() {
   return (
     <>
       <Header navSections={navSections} />
-      <Main>
+      <MainWrapper as="main" fluid centered padding={6} intensity="none">
         <Section id="Introduction">
           <Introduction />
         </Section>
@@ -62,12 +57,22 @@ export default function App() {
         <Section id="JavaPage">
           <JavaPage />
         </Section>
-      </Main>
+      </MainWrapper>
       <Footer />
     </>
   )
 }
 
-const Section = styled.div`
+const MainWrapper = styled(LumenWrapper)`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(6)};
+  background: none;
+  padding-top: ${({ theme }) => theme.spacing(7)};
+  min-height: 100vh;
+`
+
+const Section = styled.section`
   scroll-margin-top: ${({ theme }) => theme.spacing(7)};
 `

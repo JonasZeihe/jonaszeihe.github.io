@@ -1,34 +1,46 @@
 import styled from 'styled-components'
-import WrapperBase from './WrapperBase'
+import LumenWrapper from './LumenWrapper'
 
-const CardWrapper = styled(WrapperBase)`
+const CardWrapper = styled(LumenWrapper).attrs(() => ({
+  as: 'article',
+  centered: true,
+  padding: 2,
+  intensity: 'soft',
+  backgroundColor: 'surface.card',
+}))`
   width: 100%;
-  max-width: 95%;
+  max-width: 44rem;
   margin: ${({ theme }) => theme.spacing(2)} auto;
-  padding: ${({ theme, padding }) => padding || theme.spacing(2)};
-  border-radius: ${({ theme, radius }) =>
-    theme.borderRadius[radius] || theme.borderRadius.large};
-  box-shadow: ${({ theme }) => theme.boxShadow.medium};
   overflow: hidden;
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  box-shadow: none;
+  z-index: 2;
   transition:
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
+    transform 0.23s cubic-bezier(0.36, 0.4, 0.24, 1),
+    box-shadow 0.23s;
 
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: ${({ theme }) => theme.boxShadow.heavy};
+  &:hover,
+  &:focus-within {
+    transform: translateY(-2.5px) scale(1.012);
+    filter: brightness(${({ theme }) => (theme.mode === 'dark' ? 1.09 : 1.055)})
+      saturate(1.13);
+    z-index: 4;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    max-width: 98vw;
+    margin: ${({ theme }) => theme.spacing(1)} 0;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing(1)};
-    border-radius: ${({ theme }) => theme.borderRadius.medium};
-    box-shadow: ${({ theme }) => theme.boxShadow.light};
-
-    &:hover {
+    max-width: 100vw;
+    margin: 0;
+    border-radius: ${({ theme }) => theme.borderRadius.small};
+    &:hover,
+    &:focus-within {
       transform: none;
-      box-shadow: ${({ theme }) => theme.boxShadow.light};
+      filter: none;
     }
   }
 `
-
 export default CardWrapper

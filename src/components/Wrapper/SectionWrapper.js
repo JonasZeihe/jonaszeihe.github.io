@@ -1,35 +1,36 @@
 import styled from 'styled-components'
-import WrapperBase from './WrapperBase'
+import LumenWrapper from './LumenWrapper'
 
-const resolveBackground = (theme, backgroundColor, gradient) => {
-  if (gradient) return theme.gradients[gradient] || theme.gradients.neutralSoft
-  if (backgroundColor) {
-    const [palette, shade] = backgroundColor.split('.')
-    return theme.colors[palette]?.[shade] || theme.colors.neutral.ultraLight
+const SectionWrapper = styled(LumenWrapper).attrs(() => ({
+  as: 'section',
+  fluid: true,
+  centered: true,
+  padding: 3,
+  intensity: 'soft',
+  backgroundColor: 'surface.card',
+}))`
+  margin: ${({ theme }) => theme.spacing(4)} auto;
+  border-radius: ${({ theme }) => theme.borderRadius.large};
+  position: relative;
+  max-width: 72rem;
+  box-shadow: none;
+  z-index: 2;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    max-width: 98vw;
   }
-  return theme.colors.neutral.ultraLight
-}
-
-const SectionWrapper = styled(WrapperBase)`
-  padding: ${({ theme, padding }) => padding || theme.spacing(4)};
-  border-radius: ${({ theme, radius }) =>
-    theme.borderRadius[radius] || theme.borderRadius.large};
-  background: ${({ theme, backgroundColor, gradient }) =>
-    resolveBackground(theme, backgroundColor, gradient)};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing(3)};
-    margin: ${({ theme }) => theme.spacing(2)} auto;
+    padding: ${({ theme }) => theme.spacing(2)};
+    border-radius: ${({ theme }) => theme.borderRadius.medium};
+    margin: ${({ theme }) => theme.spacing(2)} 0;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing(2)};
-    border-radius: ${({ theme }) => theme.borderRadius.medium};
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    max-width: 1200px;
+    padding: ${({ theme }) => theme.spacing(1)};
+    border-radius: ${({ theme }) => theme.borderRadius.small};
+    margin: ${({ theme }) => theme.spacing(1)} 0;
+    max-width: 100vw;
   }
 `
-
 export default SectionWrapper
