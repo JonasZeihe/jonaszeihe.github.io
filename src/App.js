@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 
-import LumenWrapper from './components/Wrapper/LumenWrapper'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 
@@ -63,7 +62,7 @@ export default function App() {
   )
 }
 
-const MainWrapper = styled(LumenWrapper)`
+const MainWrapper = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;

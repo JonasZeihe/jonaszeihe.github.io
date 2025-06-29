@@ -8,7 +8,7 @@ const ThemeContext = createContext()
 export const useThemeContext = () => useContext(ThemeContext)
 
 export function ThemeContextProvider({ children }) {
-  const [mode, setMode] = useState('light')
+  const [mode, setMode] = useState('dark')
 
   const theme = useMemo(
     () => (mode === 'dark' ? { ...darkTheme, mode } : { ...lightTheme, mode }),

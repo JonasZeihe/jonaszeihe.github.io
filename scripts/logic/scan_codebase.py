@@ -2,8 +2,11 @@ import os
 import sys
 import datetime
 
-SRC_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'src')
+SRC_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "src"
+)
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 
 def build_tree(path, prefix=""):
     entries = sorted(os.listdir(path))
@@ -17,12 +20,16 @@ def build_tree(path, prefix=""):
             tree_lines.extend(build_tree(full_path, prefix + extension))
     return tree_lines
 
+
 def find_directory_by_name(base_path, target_name):
+    if target_name == "src":
+        return base_path
     for root, dirs, _ in os.walk(base_path):
         for d in dirs:
             if d == target_name:
                 return os.path.join(root, d)
     return None
+
 
 def collect_file_contents(path):
     entries = []
@@ -38,6 +45,7 @@ def collect_file_contents(path):
             entries.append(f"// --- {rel_path} ---\n{content.strip()}\n")
     return entries
 
+
 def write_output_file(data, folder_name):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
     filename = f"{timestamp}-{folder_name}.txt"
@@ -47,19 +55,23 @@ def write_output_file(data, folder_name):
             f.write(entry + "\n\n")
     print(f"\n✅ Written {len(data)} files to {output_path}")
 
+
 def main():
     if not os.path.exists(SRC_DIR):
         print(f"❌ Source directory not found: {SRC_DIR}")
         sys.exit(1)
 
-    print(f"📁 Project structure under 'src':\n")
-    tree = build_tree(SRC_DIR)
+    print(f"📁 Project structure under:\n")
+    print("src/")
+    tree = build_tree(SRC_DIR, prefix="│   ")
     for line in tree:
         print(line)
 
     while True:
-        folder_name = input("\n🔍 Enter folder name to scan (or 'exit' to quit): ").strip()
-        if folder_name.lower() == 'exit':
+        folder_name = input(
+            "\n🔍 Enter folder name to scan (or 'exit' to quit): "
+        ).strip()
+        if folder_name.lower() == "exit":
             break
 
         target_path = find_directory_by_name(SRC_DIR, folder_name)
@@ -70,9 +82,10 @@ def main():
         print(f"\n📄 Scanning files under '{folder_name}'...\n")
         entries = collect_file_contents(target_path)
         for entry in entries:
-            header = entry.split('\n', 1)[0]
+            header = entry.split("\n", 1)[0]
             print(f" - {header}")
         write_output_file(entries, folder_name)
+
 
 if __name__ == "__main__":
     main()
