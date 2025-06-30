@@ -69,26 +69,26 @@ export default function SkryperDetails() {
 
   return (
     <>
-      <HeroWrapper gradient="primaryToSecondary">
-        <Typography variant="h1" align="center" color="neutral.ultraLight">
+      <HeroWrapper>
+        <Typography variant="h1" align="center">
           Stromlinienförmige Projektstrukturbäume – lesbar & wiederverwendbar
         </Typography>
       </HeroWrapper>
 
-      <MediaDisplay
-        media={[
-          {
-            type: 'image',
-            src: SkryperLogo,
-            alt: 'Skryper and Structra Logo',
-          },
-        ]}
-        onClick={() => setLightboxOpen(true)}
-        variant="medium"
-      />
+      <SectionWrapper variant="none">
+        <MediaDisplay
+          media={[
+            {
+              type: 'image',
+              src: SkryperLogo,
+              alt: 'Skryper and Structra Logo',
+            },
+          ]}
+          onClick={() => setLightboxOpen(true)}
+          variant="medium"
+        />
 
-      <SectionWrapper backgroundColor="secondary.dark">
-        <Typography variant="body" align="left" color="neutral.ultraLight">
+        <Typography variant="body" align="left">
           Skryper entstand aus einem Problem: Ich wollte ein Projekt
           überarbeiten – hatte aber keinen klaren Überblick. Ich suchte ein
           Tool, das mir die Ordnerstruktur zeigt – `.gitignore`-konform, lesbar,
@@ -104,23 +104,17 @@ export default function SkryperDetails() {
           Ich nutze beide Tools bei fast jedem Projektstart – ob Software, CLI
           oder sogar für Notizen – echte Werkzeuge, gebaut aus Notwendigkeit.
         </Typography>
-      </SectionWrapper>
 
-      <SectionWrapper backgroundColor="secondary.dark">
-        <Typography variant="h2" align="center" color="neutral.ultraLight">
+        <Typography variant="h2" align="center">
           Features
         </Typography>
         <ListComponent items={features} />
-      </SectionWrapper>
 
-      <SectionWrapper backgroundColor="secondary.darkest">
-        <Typography variant="h2" align="center" color="neutral.ultraLight">
+        <Typography variant="h2" align="center">
           🔧 Technologien & Konzepte
         </Typography>
         <BadgeGrid badges={badges} />
-      </SectionWrapper>
 
-      <SectionWrapper backgroundColor="secondary.darkest">
         <div
           style={{
             display: 'flex',

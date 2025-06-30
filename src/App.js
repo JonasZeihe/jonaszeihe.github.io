@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
-import ContentWrapper from './components/Wrapper/ContentWrapper'
 
 import Introduction from './pages/01_Introduction'
 import UxUiPage from './pages/01_uxui/UxUiPage'
@@ -64,11 +63,18 @@ export default function App() {
   )
 }
 
-const MainWrapper = styled(ContentWrapper)`
-  flex: 1;
+const MainWrapper = styled.main`
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(6)};
-  padding-top: ${({ theme }) => theme.spacing(7)};
-  min-height: 100vh;
+  width: 100%;
+  max-width: ${({ theme }) => theme.breakpoints.xl};
+  margin: 0 auto;
+  padding-left: ${({ theme }) => theme.spacing(3)};
+  padding-right: ${({ theme }) => theme.spacing(3)};
+  padding-top: ${({ theme }) => theme.spacing(8)};
+  padding-bottom: ${({ theme }) => theme.spacing(8)};
+
+  min-height: 0;
+  box-sizing: border-box;
 `

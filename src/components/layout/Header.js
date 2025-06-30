@@ -155,7 +155,8 @@ export default function Header({ navSections = [] }) {
 const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
-  width: 100vw;
+  left: 0;
+  width: 100%;
   z-index: 1000;
   background: ${({ theme }) =>
     theme.mode === 'dark'
@@ -177,6 +178,8 @@ const HeaderContent = styled.div`
   align-items: center;
   padding: ${({ theme }) => theme.spacing(2)};
   height: 4.8rem;
+  width: 100%;
+  box-sizing: border-box;
 `
 
 const LeftSide = styled.div`

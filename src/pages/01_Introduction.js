@@ -45,7 +45,7 @@ export default function Introduction() {
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper variant="intense">
         <Typography variant="h2" align="center">
           <HighlightText>Was du hier findest:</HighlightText>
         </Typography>

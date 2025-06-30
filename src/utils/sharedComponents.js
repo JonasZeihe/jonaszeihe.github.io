@@ -24,8 +24,6 @@ export { default as MeshGradientBackground } from '../components/layout/MeshGrad
 
 // Wrappers
 export { default as PageWrapper } from '../components/Wrapper/PageWrapper'
-export { default as ContentWrapper } from '../components/Wrapper/ContentWrapper'
 export { default as SectionWrapper } from '../components/Wrapper/SectionWrapper'
-export { default as ClusterWrapper } from '../components/Wrapper/ClusterWrapper'
 export { default as CardWrapper } from '../components/Wrapper/CardWrapper'
 export { default as HeroWrapper } from '../components/Wrapper/HeroWrapper'
