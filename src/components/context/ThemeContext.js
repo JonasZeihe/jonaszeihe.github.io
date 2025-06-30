@@ -7,13 +7,31 @@ const ThemeContext = createContext()
 
 export const useThemeContext = () => useContext(ThemeContext)
 
+function failLoudProxy(obj, prefix = '') {
+  return new Proxy(obj, {
+    get(target, prop) {
+      if (prop in target) {
+        const value = target[prop]
+        if (typeof value === 'object' && value !== null) {
+          return failLoudProxy(value, `${prefix}${prop}.`)
+        }
+        return value
+      }
+      if (process.env.NODE_ENV !== 'production') {
+        throw new Error(`Missing theme key: ${prefix}${prop}`)
+      }
+      return '#FF00AA'
+    },
+  })
+}
+
 export function ThemeContextProvider({ children }) {
   const [mode, setMode] = useState('dark')
 
-  const theme = useMemo(
-    () => (mode === 'dark' ? { ...darkTheme, mode } : { ...lightTheme, mode }),
-    [mode]
-  )
+  const theme = useMemo(() => {
+    const baseTheme = mode === 'dark' ? darkTheme : lightTheme
+    return failLoudProxy({ ...baseTheme, mode })
+  }, [mode])
 
   const toggleTheme = () =>
     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'))

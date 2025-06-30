@@ -1,36 +1,33 @@
 import styled from 'styled-components'
 import LumenWrapper from './LumenWrapper'
 
-const SectionWrapper = styled(LumenWrapper).attrs(() => ({
+const SectionWrapper = styled(LumenWrapper).attrs({
   as: 'section',
-  fluid: true,
-  centered: true,
-  padding: 3,
-  intensity: 'soft',
-  backgroundColor: 'surface.card',
-}))`
-  margin: ${({ theme }) => theme.spacing(4)} auto;
-  border-radius: ${({ theme }) => theme.borderRadius.large};
-  position: relative;
-  max-width: 72rem;
-  box-shadow: none;
-  z-index: 2;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    max-width: 98vw;
-  }
+  radius: 'large',
+  interactive: false,
+  variant: 'intense',
+  animated: true,
+})`
+  margin: ${({ theme }) => theme.spacing?.(8) || '4rem'} auto;
+  max-width: 64rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing(2)};
-    border-radius: ${({ theme }) => theme.borderRadius.medium};
-    margin: ${({ theme }) => theme.spacing(2)} 0;
+    padding: ${({ theme }) => theme.spacing?.(3) || '1.5rem'};
+    border-radius: ${({ theme }) => theme.borderRadius?.medium || '0.7rem'};
+    margin: ${({ theme }) =>
+      `${theme.spacing?.(4) || '2rem'} ${theme.spacing?.(2) || '1rem'}`};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing(1)};
-    border-radius: ${({ theme }) => theme.borderRadius.small};
-    margin: ${({ theme }) => theme.spacing(1)} 0;
+    padding: ${({ theme }) => theme.spacing?.(2) || '1rem'};
+    border-radius: ${({ theme }) => theme.borderRadius?.small || '0.5rem'};
+    margin: ${({ theme }) =>
+      `${theme.spacing?.(3) || '1.5rem'} ${theme.spacing?.(1) || '0.5rem'}`};
     max-width: 100vw;
   }
 `
+
 export default SectionWrapper

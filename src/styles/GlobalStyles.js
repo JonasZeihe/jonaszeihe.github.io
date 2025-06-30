@@ -1,55 +1,54 @@
 // src/styles/GlobalStyles.js
+
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    width: 100vw;
+    min-height: 100vh;
   }
 
   html {
     font-size: 16px;
     scroll-behavior: smooth;
-    min-height: 100%;
-    width: 100vw;
-    overflow-x: hidden;
     color-scheme: ${({ theme }) => theme.mode || 'light'};
-    /* KEIN background! Sonst liegt es über dem Canvas! */
   }
 
   body {
     font-family: ${({ theme }) => theme.typography.fontFamily.primary};
     font-size: ${({ theme }) => theme.typography.fontSize.body};
     line-height: ${({ theme }) => theme.typography.lineHeight.normal};
+    color: ${({ theme }) => theme.colors.text.main};
+    background: transparent;
     min-height: 100vh;
     min-width: 100vw;
-    color: ${({ theme }) =>
-      theme.mode === 'dark'
-        ? theme.colors.neutral.black
-        : theme.colors.neutral.dark};
-    background: transparent;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition:
       color 0.23s cubic-bezier(.34,.54,.51,1),
       background-color 0.36s cubic-bezier(.38,.54,.51,1);
+  }
 
-    @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-      font-size: 95%;
-    }
-    @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-      font-size: 92%;
-    }
+  #root {
+    isolation: isolate; // verhindert z-index bugs bei Canvas-Hintergrund
+    min-height: 100vh;
+    min-width: 100vw;
+    background: transparent;
   }
 
   button, input, select, textarea {
     font-family: ${({ theme }) => theme.typography.fontFamily.button};
     font-size: ${({ theme }) => theme.typography.fontSize.body};
+    color: inherit;
     background: none;
     border: none;
     outline: none;
-    color: inherit;
     transition: color 0.22s;
   }
 
@@ -91,7 +90,7 @@ const GlobalStyles = createGlobalStyle`
 
   ul, ol {
     list-style: none;
+    padding-left: 0;
   }
 `
-
 export default GlobalStyles

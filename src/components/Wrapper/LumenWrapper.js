@@ -1,146 +1,109 @@
 import React from 'react'
-import styled, { css, keyframes } from 'styled-components'
+import styled, { css } from 'styled-components'
+import AuroraLayer from './AuroraLayer'
 
-const glossPulse = keyframes`
-  0%, 100% { opacity: 0.15; }
-  50% { opacity: 0.33; }
-`
-
-const getIntensity = (intensity, theme) => {
-  switch (intensity) {
-    case 'hard':
-      return css`
-        backdrop-filter: blur(22px) saturate(1.12);
-        box-shadow:
-          0 8px 54px 0 ${theme.colors.primary.main}24,
-          0 2px 24px 0 ${theme.colors.accent.main}15;
-      `
-    case 'medium':
-      return css`
-        backdrop-filter: blur(13px) saturate(1.07);
-        box-shadow:
-          0 2.5px 28px 0 ${theme.colors.primary[2]}17,
-          0 0.5px 8px 0 ${theme.colors.accent[2]}10;
-      `
-    case 'soft':
-    default:
-      return css`
-        backdrop-filter: blur(7px) saturate(1.03);
-        box-shadow: 0 1.5px 13px 0 ${theme.colors.primary[1]}0C;
-      `
-  }
-}
-
-const StyledLumenWrapper = styled.div`
-  position: relative;
-  overflow: hidden;
-  border-radius: ${({ theme }) => theme.borderRadius.large};
-  padding: ${({ theme, padding }) => theme.spacing(padding || 4)};
-  background: ${({ theme, backgroundColor }) =>
-    backgroundColor
-      ? (() => {
-          const [group, shade = 'main'] = backgroundColor.split('.')
-          return theme.colors[group]?.[shade] || theme.colors.surface.card
-        })()
-      : theme.gradients.backgroundPrimary};
-  ${({ intensity, theme }) => getIntensity(intensity, theme)}
-  transition: box-shadow 0.28s cubic-bezier(.24,.53,.37,1), background 0.32s;
-  isolation: isolate;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 2;
-    background: linear-gradient(
-      120deg,
-      ${({ theme }) => theme.colors.accent.main}08 0%,
-      transparent 80%
-    );
-    opacity: ${({ theme }) => (theme.mode === 'dark' ? 0.24 : 0.18)};
-    filter: blur(2.5px);
-    mix-blend-mode: soft-light;
-    animation: ${glossPulse} 4.1s infinite alternate;
-    transition: opacity 0.26s;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 3;
-    background: linear-gradient(
-      0deg,
-      ${({ theme }) => theme.colors.neutral[6]}0C 0%,
-      transparent 33% 66%,
-      ${({ theme }) => theme.colors.neutral[1]}11 100%
-    );
-    opacity: ${({ theme }) => (theme.mode === 'dark' ? 0.21 : 0.11)};
-    filter: blur(1.6px);
-    mix-blend-mode: lighten;
-    transition: opacity 0.27s;
-  }
-
-  &:hover,
-  &:focus-within {
-    box-shadow:
-      0 10px 92px 0 ${({ theme }) => theme.colors.primary.main}2A,
-      0 0 0 2px ${({ theme }) => theme.colors.accent.main}18;
-    &::before {
-      opacity: 0.23;
-      filter: blur(3.4px);
-    }
-    &::after {
-      opacity: 0.29;
-      filter: blur(4.4px);
-    }
-  }
-
-  > * {
-    position: relative;
-    z-index: 10;
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme, padding }) =>
-      theme.spacing(Math.max((padding || 4) - 1, 2))};
-    border-radius: ${({ theme }) => theme.borderRadius.medium};
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme, padding }) =>
-      theme.spacing(Math.max((padding || 4) - 2, 1))};
-    border-radius: ${({ theme }) => theme.borderRadius.small};
-    &::before,
-    &::after {
-      opacity: 0.09;
-      filter: blur(1px);
-    }
-  }
-`
-
-function LumenWrapper(props) {
-  const {
-    children,
-    intensity = 'medium',
-    backgroundColor,
-    padding,
-    ...rest
-  } = props
+export default function LumenWrapper({
+  children,
+  radius = 'large',
+  padding,
+  variant = 'intense',
+  animated = true,
+  interactive = true,
+  backgroundColor,
+  as = 'div',
+  ...rest
+}) {
   return (
-    <StyledLumenWrapper
-      intensity={intensity}
-      backgroundColor={backgroundColor}
-      padding={padding}
+    <Container
+      as={as}
+      $radius={radius}
+      $padding={padding}
+      $interactive={interactive}
+      $backgroundColor={backgroundColor}
+      $variant={variant}
       {...rest}
     >
-      {children}
-    </StyledLumenWrapper>
+      <AuroraLayer
+        variant={variant}
+        animated={animated}
+        interactive={interactive}
+      />
+      <Content>{children}</Content>
+    </Container>
   )
 }
 
-export default LumenWrapper
+function resolvePadding(theme, padding) {
+  if (padding) return padding
+  return `clamp(1rem, 2vw, 2rem) clamp(0.9rem, 2.5vw, 1.7rem)`
+}
+
+function resolveBg(theme, bg, variant) {
+  if (bg) return bg
+  if (theme.mode === 'dark') {
+    return variant === 'intense'
+      ? 'rgba(32, 38, 54, 0.82)'
+      : 'rgba(43, 52, 77, 0.65)'
+  }
+  return variant === 'intense'
+    ? 'rgba(250,254,255,0.93)'
+    : 'rgba(255,255,255,0.84)'
+}
+
+function resolveHoverBg(theme, variant) {
+  if (theme.mode === 'dark') {
+    return variant === 'intense' ? 'rgba(42,61,105,0.92)' : 'rgba(38,49,72,0.7)'
+  }
+  return variant === 'intense'
+    ? 'rgba(246,255,255,0.97)'
+    : 'rgba(250,252,255,0.92)'
+}
+
+const Container = styled.div`
+  position: relative;
+  overflow: hidden;
+  border-radius: ${({ theme, $radius }) =>
+    theme.borderRadius?.[$radius] || '1.05rem'};
+  padding: ${({ theme, $padding }) => resolvePadding(theme, $padding)};
+  background: ${({ theme, $backgroundColor, $variant }) =>
+    resolveBg(theme, $backgroundColor, $variant)};
+  backdrop-filter: blur(8px) saturate(1.05) brightness(1.04) contrast(1.05);
+  box-shadow:
+    0 3px 18px 0 rgba(0, 0, 0, 0.07),
+    0 11px 39px 0 ${({ theme }) => theme.colors.accent.main}0D;
+  transition:
+    box-shadow 0.19s cubic-bezier(0.44, 0.13, 0.43, 0.95),
+    background 0.15s cubic-bezier(0.62, 0.16, 0.49, 0.97),
+    transform 0.13s cubic-bezier(0.68, 0.19, 0.46, 0.98);
+  ${({ $interactive, theme, $variant }) =>
+    $interactive &&
+    css`
+      &:hover,
+      &:focus-within {
+        box-shadow:
+          0 18px 54px ${theme.colors.accent.main}20,
+          0 4.5px 15px ${theme.colors.primary.main}09;
+        background: ${resolveHoverBg(theme, $variant)};
+        transform: translateY(-2px) scale(1.005);
+      }
+    `}
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: clamp(0.85rem, 2vw, 1.2rem) clamp(0.7rem, 2vw, 1rem);
+    border-radius: ${({ theme }) => theme.borderRadius?.medium || '0.7rem'};
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: clamp(0.5rem, 1vw, 0.8rem);
+    border-radius: ${({ theme }) => theme.borderRadius?.small || '0.5rem'};
+    max-width: 100vw;
+  }
+`
+
+const Content = styled.div`
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`

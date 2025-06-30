@@ -1,4 +1,5 @@
 // src/styles/Gradient.js
+
 const createGradient = (from, to, angle = 135) =>
   `linear-gradient(${angle}deg, ${from}, ${to})`
 

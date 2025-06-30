@@ -24,11 +24,6 @@ const StyledTypography = styled.span`
     const b = theme.breakpoints
     const ls = theme.typography.letterSpacing
 
-    const getTextColor = (defaultColor) =>
-      theme.mode === 'dark'
-        ? theme.colors.neutral.black
-        : defaultColor || theme.colors.neutral.dark
-
     const variants = {
       h1: css`
         font-size: ${f.h1};
@@ -36,7 +31,7 @@ const StyledTypography = styled.span`
         line-height: ${l.tight};
         letter-spacing: ${ls.tight};
         margin-bottom: ${s(5)};
-        color: ${getTextColor(theme.colors.primary.main)};
+        color: ${theme.colors.text.main};
         @media (max-width: ${b.md}) {
           font-size: ${f.h2};
           margin-bottom: ${s(3)};
@@ -48,7 +43,7 @@ const StyledTypography = styled.span`
         line-height: ${l.tight};
         letter-spacing: ${ls.tight};
         margin-bottom: ${s(4)};
-        color: ${getTextColor(theme.colors.primary[4])};
+        color: ${theme.colors.text.main};
         @media (max-width: ${b.md}) {
           font-size: ${f.h3};
           margin-bottom: ${s(2)};
@@ -60,7 +55,7 @@ const StyledTypography = styled.span`
         line-height: ${l.normal};
         letter-spacing: ${ls.normal};
         margin-bottom: ${s(3)};
-        color: ${getTextColor(theme.colors.primary.main)};
+        color: ${theme.colors.text.main};
         @media (max-width: ${b.md}) {
           font-size: ${f.body};
         }
@@ -69,14 +64,14 @@ const StyledTypography = styled.span`
         font-size: ${f.body};
         font-weight: ${w.medium};
         line-height: ${l.normal};
-        color: ${getTextColor(theme.colors.accent.main)};
+        color: ${theme.colors.accent.main};
         margin-bottom: ${s(2)};
       `,
       body: css`
         font-size: ${f.body};
         font-weight: ${w.regular};
         line-height: ${l.normal};
-        color: ${getTextColor(theme.colors.neutral.dark)};
+        color: ${theme.colors.text.main};
         margin-bottom: ${s(2)};
         @media (max-width: ${b.md}) {
           font-size: ${f.small};
@@ -86,7 +81,7 @@ const StyledTypography = styled.span`
         font-size: ${f.small};
         font-weight: ${w.light};
         line-height: ${l.tight};
-        color: ${theme.colors.neutral.grey};
+        color: ${theme.colors.text.subtle};
         margin-bottom: ${s(1)};
       `,
     }
