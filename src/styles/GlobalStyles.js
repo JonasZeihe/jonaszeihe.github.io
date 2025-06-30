@@ -1,43 +1,96 @@
+// src/styles/GlobalStyles.js
+
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    width: 100vw;
+    min-height: 100vh;
   }
 
   html {
     font-size: 16px;
     scroll-behavior: smooth;
-    height: 100%;
-    background: ${({ theme }) => theme.gradients.pageBackground};
-    color-scheme: ${({ theme }) => (theme.mode === 'dark' ? 'dark' : 'light')};
-    overflow-x: hidden;
+    color-scheme: ${({ theme }) => theme.mode || 'light'};
   }
 
   body {
-    font-family: ${({ theme }) => theme.typography.fontFamily.secondary};
+    font-family: ${({ theme }) => theme.typography.fontFamily.primary};
     font-size: ${({ theme }) => theme.typography.fontSize.body};
     line-height: ${({ theme }) => theme.typography.lineHeight.normal};
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    overflow-x: hidden;
+    color: ${({ theme }) => theme.colors.text.main};
+    background: transparent;
+    min-height: 100vh;
+    min-width: 100vw;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition:
+      color 0.23s cubic-bezier(.34,.54,.51,1),
+      background-color 0.36s cubic-bezier(.38,.54,.51,1);
+  }
+
+  #root {
+    isolation: isolate; // verhindert z-index bugs bei Canvas-Hintergrund
+    min-height: 100vh;
+    min-width: 100vw;
+    background: transparent;
+  }
+
+  button, input, select, textarea {
+    font-family: ${({ theme }) => theme.typography.fontFamily.button};
+    font-size: ${({ theme }) => theme.typography.fontSize.body};
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+    transition: color 0.22s;
   }
 
   button {
-    font-family: ${({ theme }) => theme.typography.fontFamily.button};
-    font-size: ${({ theme }) => theme.typography.fontSize.body};
     cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-
-    &:focus {
-      outline: 2px solid ${({ theme }) => theme.colors.accent.main};
+    border-radius: ${({ theme }) => theme.borderRadius.medium};
+    box-shadow: ${({ theme }) => theme.boxShadow.xs};
+    transition: box-shadow 0.19s;
+    &:focus-visible {
+      outline: 2.5px solid ${({ theme }) => theme.colors.accent.main};
       outline-offset: 2px;
+      box-shadow: 0 0 0 4px ${({ theme }) => theme.colors.accent[1]}44;
     }
-`
+    &:hover {
+      box-shadow: ${({ theme }) => theme.boxShadow.medium};
+      filter: brightness(1.05);
+    }
+    &:active {
+      filter: brightness(0.95);
+    }
+  }
 
+  a {
+    color: ${({ theme }) => theme.colors.primary.main};
+    text-decoration: none;
+    transition: color 0.19s;
+    &:hover,
+    &:focus-visible {
+      color: ${({ theme }) => theme.colors.accent.main};
+      text-decoration: underline;
+    }
+  }
+
+  img, svg {
+    max-width: 100%;
+    display: block;
+    user-select: none;
+  }
+
+  ul, ol {
+    list-style: none;
+    padding-left: 0;
+  }
+`
 export default GlobalStyles

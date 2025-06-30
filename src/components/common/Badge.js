@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import * as Icons from 'react-icons/fa'
 import BadgeLibrary from './BadgeLibrary'
 
@@ -8,9 +8,8 @@ const BadgeContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(0.8)};
-  background-color: ${({ theme, customColor }) =>
-    customColor || theme.colors.primary.main};
-  color: ${({ theme }) => theme.colors.neutral.ultraLight};
+  background-color: ${({ background }) => background};
+  color: #ffffff;
   border-radius: ${({ theme }) => theme.borderRadius.pill};
   padding: ${({ theme }) => `${theme.spacing(0.8)} ${theme.spacing(2)}`};
   font-size: ${({ theme }) => theme.typography.fontSize.body};
@@ -18,14 +17,11 @@ const BadgeContainer = styled.div`
   white-space: nowrap;
   box-shadow: ${({ theme }) => theme.boxShadow.light};
   transition:
-    background-color 0.3s ease,
-    box-shadow 0.3s ease;
-
-  transition:
     background-color 0.2s ease-out,
     opacity 0.2s ease-out;
+
   &:hover {
-    opacity: 0.7;
+    opacity: 0.75;
     cursor: default;
   }
 
@@ -49,12 +45,18 @@ const IconWrapper = styled.span`
 `
 
 export default function Badge({ badgeKey, ...props }) {
-  const badge = BadgeLibrary[badgeKey] || {}
-  const { label, icon, customColor } = badge
+  const theme = useTheme()
+  const badge = BadgeLibrary[badgeKey]
+
+  if (!badge) return null
+
+  const { label, icon, colorLight, colorDark } = badge
   const Icon = Icons[icon] || null
+  const isDarkMode = theme.mode === 'dark'
+  const background = isDarkMode ? colorDark : colorLight
 
   return (
-    <BadgeContainer customColor={customColor} {...props}>
+    <BadgeContainer background={background} {...props}>
       {Icon && (
         <IconWrapper>
           <Icon />

@@ -1,90 +1,94 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const getThemeValue = (path, theme) => {
-  const keys = path.split('.')
-  return keys.reduce((acc, key) => acc && acc[key], theme)
+  if (!path) return undefined
+  return path.split('.').reduce((acc, key) => acc?.[key], theme)
 }
 
-const getButtonBaseStyles = ({ variant, theme }) => {
-  const variants = {
-    primary: {
-      background: theme.colors.primary.main,
-      color: theme.colors.neutral.ultraLight,
-      border: 'none',
-    },
-    github: {
-      background: theme.colors.depth.main,
-      color: theme.colors.neutral.ultraLight,
-      border: 'none',
-    },
-    casestudy: {
-      background: theme.colors.secondary.main,
-      color: theme.colors.neutral.ultraLight,
-      border: 'none',
-    },
-    prototype: {
-      background: theme.colors.accent.main,
-      color: theme.colors.neutral.ultraLight,
-      border: 'none',
-    },
-    success: {
-      background: theme.colors.primary.dark,
-      color: theme.colors.neutral.ultraLight,
-      border: 'none',
-    },
-    outline: {
-      background: 'transparent',
-      color: theme.colors.primary.main,
-      border: `1px solid ${theme.colors.primary.main}`,
-    },
-    ghost: {
-      background: 'transparent',
-      color: theme.colors.neutral.main,
-      border: 'none',
-    },
-  }
-  return variants[variant] || variants.primary
-}
+const baseStyles = (theme) => ({
+  primary: {
+    background: theme.colors.primary.main,
+    color: theme.colors.neutral.white,
+    border: 'none',
+  },
+  github: {
+    background: theme.colors.depth.main,
+    color: theme.colors.neutral.white,
+    border: 'none',
+  },
+  casestudy: {
+    background: theme.colors.secondary.main,
+    color: theme.colors.neutral.white,
+    border: 'none',
+  },
+  prototype: {
+    background: theme.colors.accent.main,
+    color: theme.colors.neutral.white,
+    border: 'none',
+  },
+  success: {
+    background: theme.colors.primary.main,
+    color: theme.colors.neutral.white,
+    border: 'none',
+  },
+  outline: {
+    background: 'transparent',
+    color: theme.colors.primary.main,
+    border: `1.5px solid ${theme.colors.primary.main}`,
+  },
+  ghost: {
+    background: 'transparent',
+    color: theme.colors.text.main,
+    border: 'none',
+  },
+})
 
 const StyledButton = styled.button`
   font-family: ${({ theme }) => theme.typography.fontFamily.button};
   font-size: ${({ theme }) => theme.typography.fontSize.body};
-  padding: ${({ theme }) => `${theme.spacing(1.5)} ${theme.spacing(3)}`};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
+  padding: ${({ theme }) => `${theme.spacing(1.2)} ${theme.spacing(2.6)}`};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 140px;
+  min-width: 130px;
   cursor: pointer;
   text-align: center;
   transition:
-    background-color 0.2s ease,
-    box-shadow 0.3s ease,
-    transform 0.2s ease,
-    filter 0.2s ease;
+    background 0.18s,
+    color 0.16s,
+    box-shadow 0.22s,
+    transform 0.14s,
+    filter 0.18s;
 
-  ${({ background, variant, theme }) => {
-    const baseStyles = getButtonBaseStyles({ variant, theme })
-    const resolvedBackground = background
-      ? getThemeValue(background, theme)
-      : baseStyles.background
+  ${({ variant, theme, customBackground, customColor }) => {
+    const base = baseStyles(theme)[variant] || baseStyles(theme).primary
+    const bg =
+      (customBackground && getThemeValue(customBackground, theme)) ||
+      base.background
+    const color =
+      (customColor && getThemeValue(customColor, theme)) || base.color
+    const { border } = base
 
-    return `
-      background: ${resolvedBackground};
-      color: ${baseStyles.color};
-      border: ${baseStyles.border};
-
-      &:hover {
-        filter: brightness(0.95);
-        transform: translateY(-1px);
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    return css`
+      background: ${bg};
+      color: ${color};
+      border: ${border};
+      &:hover,
+      &:focus-visible {
+        filter: brightness(0.93);
+        transform: translateY(-2px) scale(1.013);
+        box-shadow: 0 5px 16px 0 rgba(32, 48, 66, 0.11);
+        outline: none;
       }
     `
   }}
 
   &:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
+    filter: brightness(0.92);
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
@@ -95,16 +99,19 @@ const StyledButton = styled.button`
 
 export default function Button({
   variant = 'primary',
-  background,
-  buttonBackground,
+  customBackground,
+  customColor,
   children,
   onClick,
+  ...rest
 }) {
   return (
     <StyledButton
       variant={variant}
-      background={buttonBackground || background}
+      customBackground={customBackground}
+      customColor={customColor}
       onClick={onClick}
+      {...rest}
     >
       {children}
     </StyledButton>

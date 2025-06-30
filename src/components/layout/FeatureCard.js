@@ -8,52 +8,58 @@ import {
 } from '../../utils/sharedComponents'
 import BadgeGrid from '../common/BadgeGrid'
 
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: ${({ theme }) => theme.spacing(2)};
-  width: 100%;
-
-  /* Optimierung für mobile Geräte */
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing(1)};
-  }
-`
-
-const scrollToSection = (id) => {
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-}
-
 export default function FeatureCard({
-  title,
-  description,
+  title = '',
+  description = '',
   badges = [],
   targetId,
   gradient,
   buttonText = 'Mehr erfahren',
-  buttonBackground,
+  customBackground,
 }) {
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <CardWrapper gradient={gradient}>
-      <ContentWrapper>
-        <Typography variant="h2" color="secondary.dark" align="center">
-          {title}
-        </Typography>
-        <Typography variant="body" color="depth.dark" align="center">
-          {description}
-        </Typography>
-        <BadgeGrid badges={badges} />
-      </ContentWrapper>
-      <ButtonGrid>
-        <Button
-          buttonBackground={buttonBackground}
-          onClick={() => scrollToSection(targetId)}
-        >
-          {buttonText}
-        </Button>
-      </ButtonGrid>
+      <Inner>
+        <Header>
+          <Typography variant="h2" color="accent.main" align="center">
+            {title}
+          </Typography>
+          <Typography variant="body" align="center">
+            {description}
+          </Typography>
+        </Header>
+
+        {badges?.length > 0 && <BadgeGrid badges={badges} />}
+
+        <ButtonGrid>
+          <Button
+            customBackground={customBackground}
+            onClick={() => scrollToSection(targetId)}
+          >
+            {buttonText}
+          </Button>
+        </ButtonGrid>
+      </Inner>
     </CardWrapper>
   )
 }
+
+const Inner = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(2)};
+  width: 100%;
+  padding: ${({ theme }) => theme.spacing(2)};
+`
+
+const Header = styled.header`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(1)};
+`

@@ -75,14 +75,14 @@ export default function NoctuaDetails() {
 
   return (
     <>
-      <HeroWrapper gradient="secondaryBold">
-        <Typography variant="h1" align="center" color="primary.lightest">
+      <HeroWrapper>
+        <Typography variant="h1" align="center">
           🛠 Noctua – Systeminfos, strukturiert & verständlich
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="depth.dark">
-        <Typography variant="body" align="left" color="primary.lightest">
+      <SectionWrapper>
+        <Typography variant="body" align="left">
           <HighlightText>Noctua</HighlightText> entstand aus einer Lücke im
           Alltag: Wer Hardware sauber dokumentieren will – sei es für Verkauf,
           Diagnose oder Inventur – bekommt entweder unleserliche Datenmengen
@@ -104,22 +104,22 @@ export default function NoctuaDetails() {
         />
       </SectionWrapper>
 
-      <SectionWrapper backgroundColor="depth.darkest" elevated>
-        <Typography variant="h2" align="center" color="primary.lightest">
+      <SectionWrapper>
+        <Typography variant="h2" align="center">
           🚀 Was steckt drin?
         </Typography>
         <ListComponent items={features} />
       </SectionWrapper>
 
-      <SectionWrapper backgroundColor="depth.dark">
-        <Typography variant="h2" align="center" color="primary.lightest">
+      <SectionWrapper>
+        <Typography variant="h2" align="center">
           ⚙️ Technologien & Konzepte
         </Typography>
         <BadgeGrid badges={badges} />
       </SectionWrapper>
 
-      <SectionWrapper backgroundColor="depth.dark" elevated>
-        <Typography variant="h3" align="center" color="accent.main">
+      <SectionWrapper>
+        <Typography variant="h3" align="center">
           📈 Stand & Perspektive
         </Typography>
         <Typography variant="body" align="center" color="primary.lightest">
@@ -129,7 +129,7 @@ export default function NoctuaDetails() {
         </Typography>
       </SectionWrapper>
 
-      <SectionWrapper backgroundColor="depth.dark">
+      <SectionWrapper>
         <div
           style={{
             display: 'flex',

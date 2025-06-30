@@ -12,14 +12,6 @@ export default function Skryper() {
     name: 'Skryper & Structra',
     description:
       'Stromlinienförmige Projektbaumstrukturen analysieren & generieren',
-    badges: [
-      'python',
-      'projektstruktur',
-      'cli-tool',
-      'template-generator',
-      'modular-design',
-      'clean-code',
-    ],
     buttons: [
       {
         text: 'Skryper on GitHub',

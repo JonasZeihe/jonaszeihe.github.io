@@ -11,17 +11,6 @@ export default function Shizen() {
     image: ShizenImage,
     name: 'Shizen',
     description: 'Die Plattform für modernes Lernen und Lehren',
-    badges: [
-      'java',
-      'spring-boot',
-      'spring-security',
-      'mongodb',
-      'rest-api',
-      'react',
-      'responsive-design',
-      'ux-ui-best-practices',
-      'gamification',
-    ],
     buttons: [
       {
         text: 'GitHub',
@@ -33,11 +22,7 @@ export default function Shizen() {
 
   return (
     <>
-      <ProjectCard
-        project={shizenProject}
-        gradient="primaryLight.subtle"
-        onOpen={() => setShowModal(true)}
-      />
+      <ProjectCard project={shizenProject} onOpen={() => setShowModal(true)} />
 
       {showModal && (
         <ModalOverlay onClose={() => setShowModal(false)}>

@@ -12,7 +12,6 @@ export default function FlavorFusion() {
     name: 'FlavorFusion',
     description:
       'Die Welt in deiner Küche: visuelles Storytelling & intuitive Navigation.',
-    badges: ['figma', 'figjam', 'notion', 'chatgpt'],
     buttons: [
       {
         text: 'Prototyp',

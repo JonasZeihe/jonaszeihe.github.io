@@ -1,47 +1,49 @@
 import styled from 'styled-components'
-import WrapperBase from './WrapperBase'
+import LumenWrapper from './LumenWrapper'
 
-const CardWrapper = styled(WrapperBase)`
-  /* Grundstruktur */
-  width: 95%;
-  margin: ${({ theme }) => theme.spacing(1)} auto;
-  padding: ${({ theme }) => theme.spacing(1)};
-
-  padding: ${({ theme }) => theme.spacing(0)};
-  border-radius: ${({ theme }) => theme.borderRadius.large};
-  box-shadow: ${({ theme }) => theme.boxShadow.medium};
+const CardWrapper = styled(LumenWrapper).attrs(() => ({
+  as: 'article',
+  variant: 'subtle',
+  animated: false,
+  interactive: true,
+  radius: 'medium',
+  backgroundColor: 'colors.surface.card',
+  padding: undefined,
+}))`
+  width: 100%;
+  max-width: 44rem;
+  margin: ${({ theme }) => theme.spacing(2)} auto;
   overflow: hidden;
-
-  /* Subtile Interaktivität */
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  box-shadow: none;
+  z-index: 2;
   transition:
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
+    transform 0.17s cubic-bezier(0.36, 0.4, 0.24, 1),
+    box-shadow 0.19s cubic-bezier(0.42, 0.12, 0.45, 1);
 
-&:hover {
-  transform: translateY(-3px);
-  box-shadow: ${({ theme }) => theme.boxShadow.medium};
-}
-
-
-
-  /* Anpassungen für größere Bildschirme */
-  @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing(2)};
-    border-radius: ${({ theme }) => theme.borderRadius.large};
+  &:hover,
+  &:focus-within {
+    transform: translateY(-2px) scale(1.008);
+    filter: brightness(
+      ${({ theme }) => (theme.mode === 'dark' ? 1.06 : 1.025)}
+    );
+    z-index: 4;
   }
 
-  /* Optimierung für mobile Geräte */
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    max-width: 98vw;
+    margin: ${({ theme }) => theme.spacing(1)} 0;
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    margin: ${({ theme }) => theme.spacing(1)} auto;
-    border-radius: ${({ theme }) => theme.borderRadius.medium};
-    box-shadow: ${({ theme }) => theme.boxShadow.heavy};
-
-    &:hover {
+    max-width: 100vw;
+    margin: 0;
+    border-radius: ${({ theme }) => theme.borderRadius.small};
+    &:hover,
+    &:focus-within {
       transform: none;
-      box-shadow: ${({ theme }) => theme.boxShadow.light};
+      filter: none;
     }
-  }
-
   }
 `
 

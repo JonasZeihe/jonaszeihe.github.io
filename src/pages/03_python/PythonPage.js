@@ -1,5 +1,4 @@
 // PythonPage.js
-import React from 'react'
 import PythonIntroduction from './PythonIntroduction'
 import loadProjects from '../../utils/ProjectLoader'
 import CardGrid from '../../components/layout/CardGrid'
