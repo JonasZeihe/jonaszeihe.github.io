@@ -11,13 +11,6 @@ export default function InkGrid() {
     image: InkGridLogo,
     name: 'InkGrid',
     description: 'Professionelle Farbpaletten schnell integriert',
-    badges: [
-      'svg-optimization',
-      'light-dark-mode',
-      'design-system',
-      'drag-and-drop',
-      'windows-first',
-    ],
     buttons: [
       {
         text: 'GitHub',

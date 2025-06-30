@@ -15,7 +15,7 @@ export default function FeatureCard({
   targetId,
   gradient,
   buttonText = 'Mehr erfahren',
-  buttonBackground,
+  customBackground,
 }) {
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -25,19 +25,19 @@ export default function FeatureCard({
     <CardWrapper gradient={gradient}>
       <Inner>
         <Header>
-          <Typography variant="h2" color="secondary.dark" align="center">
+          <Typography variant="h2" color="accent.main" align="center">
             {title}
           </Typography>
-          <Typography variant="body" color="depth.dark" align="center">
+          <Typography variant="body" align="center">
             {description}
           </Typography>
         </Header>
 
-        {badges.length > 0 && <BadgeGrid badges={badges} />}
+        {badges?.length > 0 && <BadgeGrid badges={badges} />}
 
         <ButtonGrid>
           <Button
-            buttonBackground={buttonBackground}
+            customBackground={customBackground}
             onClick={() => scrollToSection(targetId)}
           >
             {buttonText}

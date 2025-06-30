@@ -3,10 +3,12 @@ import LumenWrapper from './LumenWrapper'
 
 const CardWrapper = styled(LumenWrapper).attrs(() => ({
   as: 'article',
-  centered: true,
-  padding: 2,
-  intensity: 'soft',
-  backgroundColor: 'surface.card',
+  variant: 'subtle',
+  animated: false,
+  interactive: true,
+  radius: 'medium',
+  backgroundColor: 'colors.surface.card',
+  padding: undefined,
 }))`
   width: 100%;
   max-width: 44rem;
@@ -16,14 +18,15 @@ const CardWrapper = styled(LumenWrapper).attrs(() => ({
   box-shadow: none;
   z-index: 2;
   transition:
-    transform 0.23s cubic-bezier(0.36, 0.4, 0.24, 1),
-    box-shadow 0.23s;
+    transform 0.17s cubic-bezier(0.36, 0.4, 0.24, 1),
+    box-shadow 0.19s cubic-bezier(0.42, 0.12, 0.45, 1);
 
   &:hover,
   &:focus-within {
-    transform: translateY(-2.5px) scale(1.012);
-    filter: brightness(${({ theme }) => (theme.mode === 'dark' ? 1.09 : 1.055)})
-      saturate(1.13);
+    transform: translateY(-2px) scale(1.008);
+    filter: brightness(
+      ${({ theme }) => (theme.mode === 'dark' ? 1.06 : 1.025)}
+    );
     z-index: 4;
   }
 
@@ -43,4 +46,5 @@ const CardWrapper = styled(LumenWrapper).attrs(() => ({
     }
   }
 `
+
 export default CardWrapper

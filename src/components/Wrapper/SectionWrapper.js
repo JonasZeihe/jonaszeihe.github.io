@@ -1,32 +1,31 @@
 import styled from 'styled-components'
 import LumenWrapper from './LumenWrapper'
 
-const SectionWrapper = styled(LumenWrapper).attrs({
-  as: 'section',
-  radius: 'large',
+const SectionWrapper = styled(LumenWrapper).attrs(() => ({
   interactive: false,
   variant: 'intense',
   animated: true,
-})`
-  margin: ${({ theme }) => theme.spacing?.(8) || '4rem'} auto;
-  max-width: 64rem;
+}))`
   width: 100%;
+  max-width: 64rem;
+  margin: ${({ theme }) => theme.spacing(8)} auto;
   display: flex;
   flex-direction: column;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing?.(3) || '1.5rem'};
-    border-radius: ${({ theme }) => theme.borderRadius?.medium || '0.7rem'};
-    margin: ${({ theme }) =>
-      `${theme.spacing?.(4) || '2rem'} ${theme.spacing?.(2) || '1rem'}`};
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    max-width: 98vw;
+    margin: ${({ theme }) => theme.spacing(6)} auto;
   }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing?.(2) || '1rem'};
-    border-radius: ${({ theme }) => theme.borderRadius?.small || '0.5rem'};
-    margin: ${({ theme }) =>
-      `${theme.spacing?.(3) || '1.5rem'} ${theme.spacing?.(1) || '0.5rem'}`};
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     max-width: 100vw;
+    margin: ${({ theme }) => theme.spacing(4)}
+      ${({ theme }) => theme.spacing(1.5)};
+    border-radius: ${({ theme }) => theme.borderRadius.medium};
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    margin: ${({ theme }) => theme.spacing(2.2)}
+      ${({ theme }) => theme.spacing(0.5)};
+    border-radius: ${({ theme }) => theme.borderRadius.small};
   }
 `
 

@@ -29,32 +29,28 @@ export default function Header({ navSections = [] }) {
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  const handleScroll = () => {
-    const offsets = navSections.map((section) => ({
-      id: section.id,
-      offsetTop: document.getElementById(section.id)?.offsetTop || 0,
-    }))
-
-    const scrollPosition = window.scrollY + window.innerHeight / 2
-
-    const currentSection = offsets
-      .filter(({ offsetTop }) => scrollPosition >= offsetTop)
-      .pop()
-
-    if (currentSection?.id !== activeSection) {
-      setActiveSection(currentSection?.id)
-    }
-  }
-
   useEffect(() => {
+    function handleScroll() {
+      const offsets = navSections.map((section) => ({
+        id: section.id,
+        offsetTop: document.getElementById(section.id)?.offsetTop || 0,
+      }))
+      const scrollPosition = window.scrollY + window.innerHeight / 2
+      const currentSection = offsets
+        .filter(({ offsetTop }) => scrollPosition >= offsetTop)
+        .pop()
+      if (currentSection?.id !== activeSection) {
+        setActiveSection(currentSection?.id)
+      }
+    }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [activeSection])
+  }, [activeSection, navSections])
 
   const renderSubNavItems = (children) =>
     children.map((child) => (
       <SmoothScroller key={child.id} targetId={child.id}>
-        <SubNavItem isActive={activeSection === child.id}>
+        <SubNavItem $isActive={activeSection === child.id}>
           {child.label}
         </SubNavItem>
       </SmoothScroller>
@@ -67,7 +63,7 @@ export default function Header({ navSections = [] }) {
         return (
           <NavItemWrapper key={section.id}>
             <SmoothScroller targetId={section.id}>
-              <NavItem isActive={activeSection === section.id}>
+              <NavItem $isActive={activeSection === section.id}>
                 {section.label}
               </NavItem>
             </SmoothScroller>
@@ -88,7 +84,7 @@ export default function Header({ navSections = [] }) {
           <React.Fragment key={section.id}>
             <MobileNavItem>
               <SmoothScroller targetId={section.id}>
-                <NavItem isActive={activeSection === section.id}>
+                <NavItem $isActive={activeSection === section.id}>
                   {section.label}
                 </NavItem>
               </SmoothScroller>
@@ -99,8 +95,8 @@ export default function Header({ navSections = [] }) {
                   }
                   aria-label={
                     state.openSubNav === section.id
-                      ? 'Close submenu'
-                      : 'Open submenu'
+                      ? 'Subnavigation schließen'
+                      : 'Subnavigation öffnen'
                   }
                 >
                   {state.openSubNav === section.id ? (
@@ -112,7 +108,7 @@ export default function Header({ navSections = [] }) {
               )}
             </MobileNavItem>
             {hasChildren && (
-              <MobileSubNav isOpen={state.openSubNav === section.id}>
+              <MobileSubNav $isOpen={state.openSubNav === section.id}>
                 {renderSubNavItems(section.children)}
               </MobileSubNav>
             )}
@@ -131,7 +127,9 @@ export default function Header({ navSections = [] }) {
     <HeaderContainer ref={headerRef}>
       <HeaderContent>
         <LeftSide>
-          <Logo onClick={scrollToTop}>Jonas Zeihe</Logo>
+          <Logo as="button" type="button" onClick={scrollToTop}>
+            Jonas Zeihe
+          </Logo>
         </LeftSide>
         <RightSide>
           <DesktopOnly>
@@ -142,7 +140,7 @@ export default function Header({ navSections = [] }) {
             <ThemeToggleButton />
             <MobileMenuButton
               onClick={() => dispatch({ type: 'TOGGLE_MENU' })}
-              aria-label={state.menuOpen ? 'Close menu' : 'Open menu'}
+              aria-label={state.menuOpen ? 'Menü schließen' : 'Menü öffnen'}
             >
               {state.menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </MobileMenuButton>
@@ -157,11 +155,18 @@ export default function Header({ navSections = [] }) {
 const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 1000;
-  background-color: ${({ theme }) => theme.colors.neutral.ultraLight};
-  backdrop-filter: blur(10px);
+  background: ${({ theme }) =>
+    theme.mode === 'dark'
+      ? theme.colors.surface.cardAlpha
+      : theme.colors.surface.card};
+  backdrop-filter: blur(13px) saturate(1.11);
   box-shadow: ${({ theme }) => theme.boxShadow.medium};
+  border-bottom: 1.5px solid ${({ theme }) => theme.colors.surface[4]};
+  transition:
+    background 0.33s,
+    box-shadow 0.23s;
 `
 
 const HeaderContent = styled.div`
@@ -171,6 +176,7 @@ const HeaderContent = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: ${({ theme }) => theme.spacing(2)};
+  height: 4.8rem;
 `
 
 const LeftSide = styled.div`
@@ -184,13 +190,21 @@ const RightSide = styled.div`
   gap: ${({ theme }) => theme.spacing(3)};
 `
 
-const Logo = styled.div`
-  font-size: ${({ theme }) => theme.typography.fontSize.h4};
+const Logo = styled.span`
+  font-size: ${({ theme }) => theme.typography.fontSize.h3};
+  font-family: ${({ theme }) => theme.typography.fontFamily.secondary};
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.neutral.darkest};
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary.main};
+  color: ${({ theme }) => theme.colors.primary.main};
+  letter-spacing: ${({ theme }) => theme.typography.letterSpacing.tight};
+  padding: 0 ${({ theme }) => theme.spacing(1.2)};
+  background: none;
+  border: none;
+  transition: color 0.2s;
+  &:hover,
+  &:focus-visible {
+    color: ${({ theme }) => theme.colors.accent.main};
+    outline: none;
   }
 `
 
@@ -212,7 +226,7 @@ const MobileOnly = styled.div`
 
 const DesktopNav = styled.nav`
   display: flex;
-  gap: ${({ theme }) => theme.spacing(8)};
+  gap: ${({ theme }) => theme.spacing(7)};
 `
 
 const NavItemWrapper = styled.div`
@@ -223,16 +237,17 @@ const NavItemWrapper = styled.div`
 `
 
 const NavItem = styled.div`
-  font-size: ${({ theme }) => theme.typography.h3};
-  cursor: pointer;
-  color: ${({ isActive, theme }) =>
-    isActive ? theme.colors.primary.main : theme.colors.neutral.darkest};
-  font-weight: ${({ isActive, theme }) =>
-    isActive
+  font-size: ${({ theme }) => theme.typography.fontSize.h4};
+  font-weight: ${({ $isActive, theme }) =>
+    $isActive
       ? theme.typography.fontWeight.bold
       : theme.typography.fontWeight.regular};
+  color: ${({ $isActive, theme }) =>
+    $isActive ? theme.colors.primary.main : theme.colors.text.main};
+  cursor: pointer;
+  transition: color 0.17s;
   &:hover {
-    color: ${({ theme }) => theme.colors.primary.main};
+    color: ${({ theme }) => theme.colors.accent.main};
   }
 `
 
@@ -240,31 +255,48 @@ const SubNav = styled.div`
   position: absolute;
   top: 100%;
   left: 0;
-  color: ${({ theme }) => theme.colors.neutral.darkest};
-  background: ${({ theme }) => theme.colors.neutral.ultraLight};
-  padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(2)}`};
+  background: ${({ theme }) => theme.colors.surface.cardAlpha};
+  color: ${({ theme }) => theme.colors.text.main};
+  min-width: 13rem;
+  padding: ${({ theme }) => theme.spacing(1)};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
-  box-shadow: ${({ theme }) => theme.boxShadow.light};
+  box-shadow: ${({ theme }) => theme.boxShadow.medium};
   display: none;
+  z-index: 2;
 `
 
 const SubNavItem = styled.div`
+  font-size: ${({ theme }) => theme.typography.fontSize.body};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
+  color: ${({ $isActive, theme }) =>
+    $isActive ? theme.colors.primary.main : theme.colors.text.main};
   cursor: pointer;
-  color: ${({ isActive, theme }) =>
-    isActive ? theme.colors.primary.main : theme.colors.neutral.dark};
-  padding: ${({ theme }) => theme.spacing(1)};
+  padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(2)}`};
+  border-radius: ${({ theme }) => theme.borderRadius.small};
+  background: transparent;
+  transition:
+    background 0.16s,
+    color 0.18s;
   &:hover {
-    color: ${({ theme }) => theme.colors.primary.main};
-    background-color: ${({ theme }) => theme.colors.neutral.ultraLight};
+    color: ${({ theme }) => theme.colors.accent.main};
+    background: ${({ theme }) => theme.colors.surface.hover};
   }
 `
 
 const MobileMenuButton = styled.button`
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.neutral.darkest};
+  color: ${({ theme }) => theme.colors.primary.main};
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  &:hover,
+  &:focus-visible {
+    color: ${({ theme }) => theme.colors.accent.main};
+    outline: none;
+  }
 `
 
 const MobileMenu = styled.div`
@@ -272,57 +304,49 @@ const MobileMenu = styled.div`
   top: 100%;
   left: 0;
   right: 0;
-  background: ${({ theme }) => theme.colors.neutral.ultraLight};
+  background: ${({ theme }) => theme.colors.surface.cardAlpha};
   padding: ${({ theme }) => theme.spacing(3)};
   box-shadow: ${({ theme }) => theme.boxShadow.medium};
+  z-index: 10;
+  border-bottom-left-radius: ${({ theme }) => theme.borderRadius.medium};
+  border-bottom-right-radius: ${({ theme }) => theme.borderRadius.medium};
 `
 
 const MobileNavItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: ${({ theme }) => `${theme.spacing(1.5)} 0`};
 `
 
 const DropdownToggle = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  padding: ${({ theme }) => theme.spacing(1)};
-  color: ${({ theme }) => theme.colors.neutral.darkest};
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary.main};
+  color: ${({ theme }) => theme.colors.primary.main};
+  padding: 0 ${({ theme }) => theme.spacing(1)};
+  font-size: 1.1rem;
+  transition: color 0.19s;
+  &:hover,
+  &:focus-visible {
+    color: ${({ theme }) => theme.colors.accent.main};
+    outline: none;
   }
 `
 
 const MobileSubNav = styled.div`
   overflow: hidden;
   transition:
-    max-height 0.3s ease,
-    opacity 0.3s ease;
-  max-height: ${({ isOpen }) => (isOpen ? '500px' : '0')};
-  opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
-  pointer-events: ${({ isOpen }) => (isOpen ? 'auto' : 'none')};
-  padding-left: ${({ theme }) => theme.spacing(4)};
+    max-height 0.33s cubic-bezier(0.4, 0.2, 0.6, 1),
+    opacity 0.25s;
+  max-height: ${({ $isOpen }) => ($isOpen ? '320px' : '0')};
+  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+  pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
+  margin-left: ${({ theme }) => theme.spacing(2)};
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(1)};
-  padding: ${({ theme }) => theme.spacing(2)};
-
-  & > div {
-    font-size: ${({ theme }) => theme.typography.body};
-    color: ${({ theme }) => theme.colors.neutral.darkest};
-    padding: ${({ theme }) => theme.spacing(1)};
-    border-bottom: 1px solid ${({ theme }) => theme.colors.neutral.light};
-    background-color: ${({ theme }) => theme.colors.neutral.ultraLight};
-    border-radius: ${({ theme }) => theme.borderRadius.small};
-
-    &:last-child {
-      border-bottom: none;
-    }
-
-    &:hover {
-      color: ${({ theme }) => theme.colors.primary.main};
-      background-color: ${({ theme }) => theme.colors.neutral.lightest};
-    }
-  }
+  padding: ${({ $isOpen, theme }) => ($isOpen ? theme.spacing(1) : 0)};
+  background: ${({ theme }) => theme.colors.surface.cardAlpha};
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
 `

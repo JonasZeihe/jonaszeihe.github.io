@@ -2,50 +2,44 @@ import React, { useId } from 'react'
 import styled, { keyframes, css } from 'styled-components'
 
 const auroraMotion = keyframes`
-  0%   { background-position: 16% 80%; opacity: 0.82; }
-  39%  { background-position: 78% 14%; opacity: 0.95; }
-  62%  { background-position: 56% 98%; opacity: 0.88; }
-  100% { background-position: 16% 80%; opacity: 0.82; }
+  0%   { background-position: 18% 72%; opacity: 0.65; }
+  33%  { background-position: 84% 28%; opacity: 0.77; }
+  66%  { background-position: 52% 97%; opacity: 0.71; }
+  100% { background-position: 18% 72%; opacity: 0.65; }
 `
 
 const variantMap = {
   subtle: {
-    opacity: 0.09,
-    blur: '8px',
-    size: '120% 120%',
-    scale: 7,
-    freq: '0.012 0.044',
+    opacity: 0.048,
+    blur: '14px',
+    size: '180% 160%',
+    scale: 6,
+    freq: '0.007 0.017',
+    anim: '18s',
   },
   intense: {
-    opacity: 0.19,
-    blur: '15px',
-    size: '210% 210%',
-    scale: 13,
-    freq: '0.029 0.072',
+    opacity: 0.09,
+    blur: '24px',
+    size: '240% 200%',
+    scale: 11,
+    freq: '0.013 0.026',
+    anim: '14s',
   },
 }
 
 const getHighlight = (theme) =>
-  theme.mode === 'dark'
-    ? theme.colors.primary.main
-    : theme.colors.primary[2] || theme.colors.primary.main
-
-const getAuroraTint = (theme) =>
-  theme.mode === 'dark'
-    ? `${theme.colors.accent.main}55`
-    : `${theme.colors.accent.main}22`
+  theme.mode === 'dark' ? 'rgba(110,180,255,0.15)' : 'rgba(140,210,255,0.11)'
 
 const getWaterTint = (theme) =>
-  theme.mode === 'dark' ? '#52cfff12' : '#a0eaff13'
+  theme.mode === 'dark' ? '#63cffc18' : '#8eefff1a'
 
 export default function AuroraLayer({
   variant = 'intense',
   animated = true,
-  interactive = true,
   ...props
 }) {
   const filterId = useId()
-  const { opacity, blur, size, scale, freq } =
+  const { opacity, blur, size, scale, freq, anim } =
     variantMap[variant] || variantMap.intense
 
   return (
@@ -56,14 +50,14 @@ export default function AuroraLayer({
             type="fractalNoise"
             baseFrequency={freq}
             numOctaves="2"
-            seed="18"
+            seed="27"
             result="turb"
           >
             {animated && (
               <animate
                 attributeName="baseFrequency"
                 values={`${freq};0.09 0.11;${freq}`}
-                dur="14s"
+                dur={anim}
                 repeatCount="indefinite"
               />
             )}
@@ -77,7 +71,7 @@ export default function AuroraLayer({
             result="disp"
           />
           <feGaussianBlur
-            stdDeviation={blur === '8px' ? 1.3 : 2.2}
+            stdDeviation={blur === '14px' ? 2.0 : 3.2}
             result="blur"
           />
         </filter>
@@ -88,7 +82,7 @@ export default function AuroraLayer({
         $blur={blur}
         $size={size}
         $animated={animated}
-        $interactive={interactive}
+        $anim={anim}
         {...props}
       />
     </>
@@ -102,25 +96,19 @@ const AuroraFX = styled.div`
   z-index: 3;
   border-radius: inherit;
   background: radial-gradient(
-      ellipse 57% 33% at 36% 19%,
-      ${({ theme }) => getAuroraTint(theme)} 0%,
-      transparent 90%
-    ),
-    radial-gradient(
-      ellipse 49% 25% at 68% 26%,
-      ${({ theme }) => getHighlight(theme)} 0%,
-      transparent 96%
-    ),
-    radial-gradient(
-      ellipse 90% 12% at 30% 90%,
+      ellipse 95% 45% at 55% 100%,
       ${({ theme }) => getWaterTint(theme)} 0%,
-      transparent 94%
+      transparent 78%
     ),
-    linear-gradient(
-      115deg,
-      rgba(255, 255, 255, 0.06) 11%,
-      ${({ theme }) => getAuroraTint(theme)} 47%,
-      transparent 95%
+    radial-gradient(
+      ellipse 55% 22% at 40% 15%,
+      ${({ theme }) => getHighlight(theme)} 0%,
+      transparent 99%
+    ),
+    radial-gradient(
+      ellipse 68% 13% at 65% 85%,
+      ${({ theme }) => getWaterTint(theme)} 0%,
+      transparent 93%
     );
   background-size: ${({ $size }) => $size};
   background-repeat: no-repeat;
@@ -128,24 +116,14 @@ const AuroraFX = styled.div`
   opacity: ${({ $opacity }) => $opacity};
   mix-blend-mode: lighten;
   transition:
-    opacity 0.17s,
-    filter 0.21s,
-    background-size 0.16s;
-  ${({ $animated }) =>
+    opacity 0.19s cubic-bezier(0.43, 0.09, 0.46, 0.99),
+    filter 0.23s cubic-bezier(0.32, 0.12, 0.43, 0.98),
+    background-size 0.17s cubic-bezier(0.44, 0.19, 0.42, 0.98);
+
+  ${({ $animated, $anim }) =>
     $animated &&
     css`
-      animation: ${auroraMotion} 15s cubic-bezier(0.68, 0.21, 0.41, 0.92)
+      animation: ${auroraMotion} ${$anim} cubic-bezier(0.66, 0.21, 0.41, 0.88)
         infinite alternate;
-    `}
-  ${({ $interactive }) =>
-    $interactive &&
-    css`
-      html:not([data-mouse-down]) &:hover,
-      html:not([data-mouse-down]) &:focus-within {
-        opacity: 0.92;
-        filter: ${({ $filter, $blur }) =>
-          `${$filter} blur(calc(${$blur} * 1.09)) brightness(1.07)`};
-        background-size: 250% 250%;
-      }
     `}
 `

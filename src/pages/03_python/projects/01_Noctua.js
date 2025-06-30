@@ -11,13 +11,6 @@ export default function Noctua() {
     image: NoctuaLogo,
     name: 'Noctua',
     description: 'Hardwaresteckbriefe in Markdown',
-    badges: [
-      'python',
-      'tdd',
-      'domain-driven-design',
-      'user-friendly-gui',
-      'markdown-export',
-    ],
     buttons: [
       {
         text: 'GitHub',

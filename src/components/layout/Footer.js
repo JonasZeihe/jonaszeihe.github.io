@@ -38,19 +38,22 @@ export default function Footer() {
               </ContactItem>
             </ContactList>
           </FooterColumn>
-
           <FooterColumn>
             <FooterTitle>Social Media</FooterTitle>
             <SocialIcons>
               <IconLink
                 href="https://de.linkedin.com/in/jonas-zeihe"
                 aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaLinkedin />
               </IconLink>
               <IconLink
                 href="https://www.xing.com/profile/Jonas_Zeihe3"
                 aria-label="Xing"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaXing />
               </IconLink>
@@ -58,7 +61,6 @@ export default function Footer() {
           </FooterColumn>
         </FooterGrid>
       </FooterContent>
-
       <FooterBottom>
         <Copyright>
           © {new Date().getFullYear()} Jonas Zeihe. Alle Rechte vorbehalten.
@@ -66,6 +68,7 @@ export default function Footer() {
         <ScrollToTopButton
           onClick={scrollToTop}
           aria-label="Nach oben scrollen"
+          title="Nach oben"
         >
           <FaArrowUp />
         </ScrollToTopButton>
@@ -75,9 +78,11 @@ export default function Footer() {
 }
 
 const FooterWrapper = styled.footer`
-  background: ${({ theme }) => theme.gradients.primaryDark};
-  color: ${({ theme }) => theme.colors.neutral.ultraLight};
-  padding: ${({ theme }) => theme.spacing(3)} ${({ theme }) => theme.spacing(4)};
+  background: ${({ theme }) =>
+    theme.gradients?.backgroundDepth || theme.colors.surface.main || '#232536'};
+  color: ${({ theme }) => theme.colors.text.main};
+  padding: ${({ theme }) => theme.spacing(5)} ${({ theme }) => theme.spacing(2)};
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,57 +90,63 @@ const FooterWrapper = styled.footer`
 `
 
 const FooterContent = styled.div`
-  max-width: ${({ theme }) => theme.breakpoints.xl};
   width: 100%;
+  max-width: ${({ theme }) => theme.breakpoints.xl};
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing(4)};
+  gap: ${({ theme }) => theme.spacing(3)};
 `
 
 const FooterGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: ${({ theme }) => theme.spacing(4)};
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: ${({ theme }) => theme.spacing(3)};
 `
 
 const FooterColumn = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(3)};
+  gap: ${({ theme }) => theme.spacing(2)};
 `
 
 const FooterTitle = styled.h4`
   font-size: ${({ theme }) => theme.typography.fontSize.h4};
-  color: ${({ theme }) => theme.colors.neutral.ultraLight};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   margin: 0;
 `
 
 const ContactList = styled.ul`
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(2)};
+  gap: ${({ theme }) => theme.spacing(1.3)};
 `
 
 const ContactItem = styled.li`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing(2)};
+  gap: ${({ theme }) => theme.spacing(1)};
   font-size: ${({ theme }) => theme.typography.fontSize.body};
-  color: ${({ theme }) => theme.colors.neutral.ultraLight};
+
+  svg {
+    font-size: 1.15em;
+  }
 `
 
 const ContactLink = styled.a`
-  color: ${({ theme }) => theme.colors.neutral.lightest};
+  color: ${({ theme }) => theme.colors.text.main};
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
+  transition: color 0.23s;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     color: ${({ theme }) => theme.colors.accent.main};
+    outline: none;
   }
 `
 
@@ -145,30 +156,33 @@ const SocialIcons = styled.div`
 `
 
 const IconLink = styled.a`
-  color: ${({ theme }) => theme.colors.neutral.ultraLight};
+  color: ${({ theme }) => theme.colors.text.main};
   font-size: 1.5rem;
   transition:
-    color 0.3s ease,
-    transform 0.3s ease;
+    color 0.23s,
+    transform 0.15s;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     color: ${({ theme }) => theme.colors.accent.main};
-    transform: scale(1.1);
+    transform: scale(1.13);
+    outline: none;
   }
 `
 
 const FooterBottom = styled.div`
+  width: 100%;
+  max-width: ${({ theme }) => theme.breakpoints.xl};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: ${({ theme }) => theme.breakpoints.xl};
   font-size: ${({ theme }) => theme.typography.fontSize.small};
-  color: ${({ theme }) => theme.colors.neutral.ultraLight};
+  color: ${({ theme }) => theme.colors.text.main};
   gap: ${({ theme }) => theme.spacing(2)};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
+    gap: ${({ theme }) => theme.spacing(2)};
   }
 `
 
@@ -178,27 +192,26 @@ const Copyright = styled.p`
 
 const ScrollToTopButton = styled.button`
   background: ${({ theme }) => theme.colors.accent.main};
-  color: ${({ theme }) => theme.colors.neutral.ultraLight};
+  color: ${({ theme }) => theme.colors.text.main};
   border: none;
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.18rem;
   cursor: pointer;
+  box-shadow: ${({ theme }) => theme.boxShadow.xs};
   transition:
-    background 0.3s ease,
-    transform 0.3s ease;
+    background 0.2s,
+    transform 0.15s;
 
-  &:hover {
-    background: ${({ theme }) => theme.colors.accent.dark};
+  &:hover,
+  &:focus-visible {
+    background: ${({ theme }) =>
+      theme.colors.accent[4] || theme.colors.accent.main};
     transform: scale(1.1);
-  }
-
-  &:focus {
-    outline: 2px solid ${({ theme }) => theme.colors.accent.light};
-    outline-offset: 2px;
+    outline: none;
   }
 `

@@ -1,4 +1,3 @@
-// src/styles/Typography.js
 import React from 'react'
 import styled, { css } from 'styled-components'
 
@@ -17,88 +16,103 @@ const StyledTypography = styled.span`
   text-align: ${({ align }) => align};
 
   ${({ variant, theme }) => {
-    const f = theme.typography.fontSize
-    const w = theme.typography.fontWeight
-    const l = theme.typography.lineHeight
+    const { fontSize, fontWeight, lineHeight, letterSpacing } = theme.typography
     const s = theme.spacing
     const b = theme.breakpoints
-    const ls = theme.typography.letterSpacing
+    const accentColor = theme.colors.accent.main
+    const textMain = theme.colors.text.main
+    const textSubtle = theme.colors.text.subtle
 
     const variants = {
       h1: css`
-        font-size: ${f.h1};
-        font-weight: ${w.bold};
-        line-height: ${l.tight};
-        letter-spacing: ${ls.tight};
+        font-size: ${fontSize.h1};
+        font-weight: ${fontWeight.bold};
+        line-height: ${lineHeight.tight};
+        letter-spacing: ${letterSpacing.tight};
         margin-bottom: ${s(5)};
-        color: ${theme.colors.text.main};
+        color: ${textMain};
         @media (max-width: ${b.md}) {
-          font-size: ${f.h2};
+          font-size: ${fontSize.h2};
           margin-bottom: ${s(3)};
         }
       `,
       h2: css`
-        font-size: ${f.h2};
-        font-weight: ${w.medium};
-        line-height: ${l.tight};
-        letter-spacing: ${ls.tight};
+        font-size: ${fontSize.h2};
+        font-weight: ${fontWeight.medium};
+        line-height: ${lineHeight.tight};
+        letter-spacing: ${letterSpacing.tight};
         margin-bottom: ${s(4)};
-        color: ${theme.colors.text.main};
+        color: ${textMain};
         @media (max-width: ${b.md}) {
-          font-size: ${f.h3};
+          font-size: ${fontSize.h3};
           margin-bottom: ${s(2)};
         }
       `,
       h3: css`
-        font-size: ${f.h3};
-        font-weight: ${w.medium};
-        line-height: ${l.normal};
-        letter-spacing: ${ls.normal};
+        font-size: ${fontSize.h3};
+        font-weight: ${fontWeight.medium};
+        line-height: ${lineHeight.normal};
+        letter-spacing: ${letterSpacing.normal};
         margin-bottom: ${s(3)};
-        color: ${theme.colors.text.main};
+        color: ${textMain};
         @media (max-width: ${b.md}) {
-          font-size: ${f.body};
+          font-size: ${fontSize.body};
         }
       `,
       subhead: css`
-        font-size: ${f.body};
-        font-weight: ${w.medium};
-        line-height: ${l.normal};
-        color: ${theme.colors.accent.main};
+        font-size: ${fontSize.body};
+        font-weight: ${fontWeight.medium};
+        line-height: ${lineHeight.normal};
+        color: ${accentColor};
         margin-bottom: ${s(2)};
       `,
       body: css`
-        font-size: ${f.body};
-        font-weight: ${w.regular};
-        line-height: ${l.normal};
-        color: ${theme.colors.text.main};
+        font-size: ${fontSize.body};
+        font-weight: ${fontWeight.regular};
+        line-height: ${lineHeight.normal};
+        color: ${textMain};
         margin-bottom: ${s(2)};
         @media (max-width: ${b.md}) {
-          font-size: ${f.small};
+          font-size: ${fontSize.small};
         }
       `,
       caption: css`
-        font-size: ${f.small};
-        font-weight: ${w.light};
-        line-height: ${l.tight};
-        color: ${theme.colors.text.subtle};
+        font-size: ${fontSize.small};
+        font-weight: ${fontWeight.light};
+        line-height: ${lineHeight.tight};
+        color: ${textSubtle};
         margin-bottom: ${s(1)};
       `,
     }
     return variants[variant] || variants.body
   }}
 
-  color: ${({ theme, color }) => {
-    if (!color) return undefined
-    const [group, tone = 'main'] = color.split('.')
-    return theme.colors[group]?.[tone] || color
-  }};
+  ${({ color, theme }) =>
+    color &&
+    css`
+      color: ${(() => {
+        const [group, tone = 'main'] = color.split('.')
+        return theme.colors[group]?.[tone] || theme.colors.text?.[tone] || color
+      })()};
+    `}
 `
 
-function Typography({ variant = 'body', color, align = 'left', children }) {
+function Typography({
+  variant = 'body',
+  color,
+  align = 'left',
+  children,
+  ...rest
+}) {
   const asTag = tagMap[variant] || 'p'
   return (
-    <StyledTypography as={asTag} variant={variant} color={color} align={align}>
+    <StyledTypography
+      as={asTag}
+      variant={variant}
+      color={color}
+      align={align}
+      {...rest}
+    >
       {children}
     </StyledTypography>
   )

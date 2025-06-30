@@ -11,13 +11,7 @@ export default function KIM() {
     image: KimImage,
     name: 'KIM',
     description: 'Your friend to meet new friends: KI & zugängliches Design.',
-    badges: [
-      'ux-ui-design',
-      'iterative-prototyping',
-      'figma',
-      'user-centered-design',
-      'accessibility',
-    ],
+
     buttons: [
       {
         text: 'Prototyp',

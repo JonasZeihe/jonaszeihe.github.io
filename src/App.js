@@ -3,11 +3,13 @@ import styled from 'styled-components'
 
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
+import ContentWrapper from './components/Wrapper/ContentWrapper'
 
 import Introduction from './pages/01_Introduction'
 import UxUiPage from './pages/01_uxui/UxUiPage'
 import PythonPage from './pages/03_python/PythonPage'
 import JavaPage from './pages/04_java/JavaPage'
+import { PageWrapper } from './utils/sharedComponents'
 
 export default function App() {
   const navSections = useMemo(
@@ -43,35 +45,30 @@ export default function App() {
   return (
     <>
       <Header navSections={navSections} />
-      <MainWrapper as="main" fluid centered padding={6} intensity="none">
-        <Section id="Introduction">
+      <MainWrapper as="main">
+        <PageWrapper id="Introduction">
           <Introduction />
-        </Section>
-        <Section id="UxUiPage">
+        </PageWrapper>
+        <PageWrapper id="UxUiPage">
           <UxUiPage />
-        </Section>
-        <Section id="PythonPage">
+        </PageWrapper>
+        <PageWrapper id="PythonPage">
           <PythonPage />
-        </Section>
-        <Section id="JavaPage">
+        </PageWrapper>
+        <PageWrapper id="JavaPage">
           <JavaPage />
-        </Section>
+        </PageWrapper>
       </MainWrapper>
       <Footer />
     </>
   )
 }
 
-const MainWrapper = styled.div`
+const MainWrapper = styled(ContentWrapper)`
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(6)};
-  background: none;
   padding-top: ${({ theme }) => theme.spacing(7)};
   min-height: 100vh;
-`
-
-const Section = styled.section`
-  scroll-margin-top: ${({ theme }) => theme.spacing(7)};
 `

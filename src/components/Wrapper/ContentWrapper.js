@@ -9,14 +9,22 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(3)};
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     padding: ${({ theme }) => theme.spacing(3)}
       ${({ theme }) => theme.spacing(2)};
   }
 
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing(2.3)}
+      ${({ theme }) => theme.spacing(1.3)};
+    gap: ${({ theme }) => theme.spacing(2)};
+  }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing(2)}
-      ${({ theme }) => theme.spacing(1)};
+    padding: ${({ theme }) => theme.spacing(1.4)}
+      ${({ theme }) => theme.spacing(0.7)};
+    gap: ${({ theme }) => theme.spacing(1)};
   }
 `
+
 export default ContentWrapper
