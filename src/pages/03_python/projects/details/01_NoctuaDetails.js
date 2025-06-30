@@ -81,7 +81,7 @@ export default function NoctuaDetails() {
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper variant="none">
         <Typography variant="body" align="left">
           <HighlightText>Noctua</HighlightText> entstand aus einer Lücke im
           Alltag: Wer Hardware sauber dokumentieren will – sei es für Verkauf,
@@ -102,34 +102,26 @@ export default function NoctuaDetails() {
           onClick={() => setLightboxOpen(true)}
           variant="medium"
         />
-      </SectionWrapper>
 
-      <SectionWrapper>
         <Typography variant="h2" align="center">
           🚀 Was steckt drin?
         </Typography>
         <ListComponent items={features} />
-      </SectionWrapper>
 
-      <SectionWrapper>
         <Typography variant="h2" align="center">
           ⚙️ Technologien & Konzepte
         </Typography>
         <BadgeGrid badges={badges} />
-      </SectionWrapper>
 
-      <SectionWrapper>
         <Typography variant="h3" align="center">
           📈 Stand & Perspektive
         </Typography>
-        <Typography variant="body" align="center" color="primary.lightest">
+        <Typography variant="body" align="center">
           <HighlightText>NoctuaLight</HighlightText> ist veröffentlicht. Die
           Vollversion wird modularisiert erweitert – Ziel: erweiterbare Reports,
           Nutzerrollen und potenzielle Monetarisierung.
         </Typography>
-      </SectionWrapper>
 
-      <SectionWrapper>
         <div
           style={{
             display: 'flex',

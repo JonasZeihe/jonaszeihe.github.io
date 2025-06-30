@@ -1,45 +1,48 @@
 import styled from 'styled-components'
 import LumenWrapper from './LumenWrapper'
 
-const HeroWrapper = styled(LumenWrapper).attrs(() => ({
-  fluid: true,
+const HeroWrapper = styled(LumenWrapper).attrs((props) => ({
+  variant: props.variant || 'intense',
+  minIntensity: props.minIntensity ?? 0.26,
 }))`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 32vh;
   width: 100%;
-  max-width: 48rem;
-  margin: 0 auto;
-  padding-top: ${({ theme }) => theme.spacing(5)};
-  padding-bottom: ${({ theme }) => theme.spacing(5)};
-  background: none;
-  box-shadow: none;
+  margin: ${({ theme }) => theme.spacing(7)} auto 0 auto; /* Abstand nach oben */
+  gap: ${({ theme }) => theme.spacing(2.6)};
+  min-height: 24vh;
+  padding: ${({ theme }) => theme.spacing(7)} ${({ theme }) => theme.spacing(3)};
   border-radius: ${({ theme }) => theme.borderRadius.large};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
-    max-width: 97vw;
-    min-height: 20vh;
-    padding-top: ${({ theme }) => theme.spacing(4)};
-    padding-bottom: ${({ theme }) => theme.spacing(4)};
+    min-height: 16vh;
+    margin-top: ${({ theme }) => theme.spacing(5)};
+    padding: ${({ theme }) => theme.spacing(5)}
+      ${({ theme }) => theme.spacing(1.5)};
     border-radius: ${({ theme }) => theme.borderRadius.medium};
   }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    max-width: 99vw;
-    min-height: 13vh;
-    padding-top: ${({ theme }) => theme.spacing(2.5)};
-    padding-bottom: ${({ theme }) => theme.spacing(2.5)};
+    min-height: 10vh;
+    margin-top: ${({ theme }) => theme.spacing(3)};
+    padding: ${({ theme }) => theme.spacing(3.5)}
+      ${({ theme }) => theme.spacing(0.7)};
     border-radius: ${({ theme }) => theme.borderRadius.medium};
+    gap: ${({ theme }) => theme.spacing(1.5)};
   }
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    max-width: 100vw;
-    min-height: 7.5vh;
-    padding-top: ${({ theme }) => theme.spacing(1)};
-    padding-bottom: ${({ theme }) => theme.spacing(1.2)};
-    margin-bottom: ${({ theme }) => theme.spacing(2.2)};
+    min-height: 6vh;
+    margin-top: ${({ theme }) => theme.spacing(2)};
+    padding: ${({ theme }) => theme.spacing(2)}
+      ${({ theme }) => theme.spacing(0.3)};
     border-radius: ${({ theme }) => theme.borderRadius.small};
+    gap: ${({ theme }) => theme.spacing(1)};
+    margin-bottom: ${({ theme }) => theme.spacing(1.5)};
   }
 `
+
 export default HeroWrapper

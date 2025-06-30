@@ -68,14 +68,14 @@ export default function InkGridDetails() {
 
   return (
     <>
-      <HeroWrapper gradient="warmBold">
-        <Typography variant="h1" align="center" color="highlight.lightest">
+      <HeroWrapper>
+        <Typography variant="h1" align="center">
           🎨 InkGrid – Struktur für Farbe
         </Typography>
       </HeroWrapper>
 
-      <SectionWrapper backgroundColor="secondaryHighlight.light" elevated>
-        <Typography variant="body" align="left" color="depth.darkest">
+      <SectionWrapper variant="none">
+        <Typography variant="body" align="left">
           Wer mit Figma arbeitet und systematisch Farbpaletten anlegt, kennt den
           Aufwand: Swatches zeichnen, Farbcodes vergeben, Ebenen beschriften –
           und das Ganze bei jeder Designsystem-Iteration erneut. Ich habe lange
@@ -94,33 +94,25 @@ export default function InkGridDetails() {
           onClick={() => setLightboxOpen(true)}
           variant="medium"
         />
-      </SectionWrapper>
 
-      <SectionWrapper backgroundColor="neutral.lightest" elevated>
-        <Typography variant="h2" align="center" color="depth.dark">
+        <Typography variant="h2" align="center">
           🚀 Was InkGrid kann
         </Typography>
         <ListComponent items={features} />
-      </SectionWrapper>
 
-      <SectionWrapper backgroundColor="depth.lightest">
-        <Typography variant="h2" align="center" color="neutral.black">
+        <Typography variant="h2" align="center">
           🔧 Technologien & Konzepte
         </Typography>
         <BadgeGrid badges={badges} />
-      </SectionWrapper>
 
-      <SectionWrapper backgroundColor="neutral.lightest">
-        <Typography variant="h3" align="center" color="depth.dark">
+        <Typography variant="h3" align="center">
           📦 Aktueller Stand
         </Typography>
-        <Typography variant="body" align="center" color="depth.dark">
+        <Typography variant="body" align="center">
           Fertig kompilierte App für Windows und macOS. Plugin-Support aktiv.
           JSON-Export integriert.
         </Typography>
-      </SectionWrapper>
 
-      <SectionWrapper backgroundColor="neutral.lightest">
         <div
           style={{
             display: 'flex',

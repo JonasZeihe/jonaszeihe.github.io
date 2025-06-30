@@ -1,10 +1,9 @@
 import styled from 'styled-components'
 import LumenWrapper from './LumenWrapper'
 
-const SectionWrapper = styled(LumenWrapper).attrs(() => ({
-  interactive: false,
-  variant: 'intense',
-  animated: true,
+const SectionWrapper = styled(LumenWrapper).attrs((props) => ({
+  variant: props.variant || 'intense',
+  minIntensity: props.minIntensity,
 }))`
   width: 100%;
   max-width: 64rem;

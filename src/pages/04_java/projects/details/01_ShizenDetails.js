@@ -16,7 +16,6 @@ import ShizenImage from '../../../../assets/images/Projects/shizen-logo.png'
 export default function ShizenDetails() {
   const [lightboxOpen, setLightboxOpen] = useState(false)
 
-  // Features von Shizen
   const features = [
     {
       id: 'feature-1',
@@ -68,7 +67,6 @@ export default function ShizenDetails() {
     },
   ]
 
-  // Badge Keys für dynamische Nutzung der BadgeLibrary
   const badgeKeys = [
     'java',
     'spring-boot',
@@ -83,20 +81,18 @@ export default function ShizenDetails() {
 
   return (
     <>
-      {/* Hero-Bereich */}
-      <HeroWrapper gradient="primaryLight">
-        <Typography variant="h1" align="center" color="neutral.deep">
+      <HeroWrapper>
+        <Typography variant="h1" align="center">
           📚 <HighlightText>Shizen</HighlightText> – Die Plattform für modernes
           Lernen und Lehren
         </Typography>
       </HeroWrapper>
 
-      {/* Einführung */}
-      <SectionWrapper backgroundColor="primary.light" elevated>
-        <Typography variant="h2" align="center" color="primary.darkest">
+      <SectionWrapper variant="none">
+        <Typography variant="h2" align="center">
           Warum <HighlightText>Shizen</HighlightText>?
         </Typography>
-        <Typography variant="body" align="left" color="primary.darkest">
+        <Typography variant="body" align="left">
           Shizen ist eine universelle Lernplattform, die moderne Technologien
           mit benutzerfreundlichem Design kombiniert. Sie bietet dynamische
           Kursverwaltungsfunktionen, Gamification-Elemente und datenbasiertes
@@ -108,37 +104,25 @@ export default function ShizenDetails() {
           onClick={() => setLightboxOpen(true)}
           variant="medium"
         />
-      </SectionWrapper>
 
-      {/* Features */}
-      <SectionWrapper backgroundColor="primary.lightest" elevated>
-        <Typography variant="h2" align="center" color="primary.dark">
+        <Typography variant="h2" align="center">
           🚀 Features von <HighlightText>Shizen</HighlightText>
         </Typography>
         <ListComponent items={features} />
-      </SectionWrapper>
 
-      {/* Badges */}
-      <SectionWrapper backgroundColor="neutral.ultraLight">
-        <Typography variant="h2" align="center" color="accent.main">
+        <Typography variant="h2" align="center">
           🛡️ Technologien hinter <HighlightText>Shizen</HighlightText>
         </Typography>
         <BadgeGrid badges={badgeKeys} />
-      </SectionWrapper>
 
-      {/* Aktueller Stand */}
-      <SectionWrapper backgroundColor="primary.lightest" elevated>
-        <Typography variant="h3" align="center" color="accent.main">
+        <Typography variant="h3" align="center">
           🚦 Aktueller Stand
         </Typography>
-        <Typography variant="body" align="center" color="primary.darkest">
+        <Typography variant="body" align="center">
           <HighlightText>Status:</HighlightText> Backend vollständig
           implementiert mit rollenbasiertem Zugriff und API-Endpunkten.
         </Typography>
-      </SectionWrapper>
 
-      {/* Call-to-Actions */}
-      <SectionWrapper backgroundColor="primary.lightest">
         <div
           style={{
             display: 'flex',
@@ -166,7 +150,6 @@ export default function ShizenDetails() {
         </div>
       </SectionWrapper>
 
-      {/* Lightbox (nur für das Bild) */}
       {lightboxOpen && (
         <Lightbox
           media={[{ type: 'image', src: ShizenImage, alt: 'Shizen Logo' }]}

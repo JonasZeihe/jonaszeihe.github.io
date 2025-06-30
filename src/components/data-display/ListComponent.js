@@ -6,7 +6,6 @@ const StyledList = styled.ul`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(1.5)};
   margin: ${({ theme }) => theme.spacing(2)} 0;
-  padding: 0;
   list-style: none;
 `
 
@@ -17,9 +16,7 @@ const StyledListItem = styled.li`
   padding: ${({ theme }) => `${theme.spacing(1.25)} ${theme.spacing(2)}`};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   background: ${({ theme }) => theme.colors.surface.card};
-  color: ${({ theme }) => theme.colors.text.primary};
   font-size: ${({ theme }) => theme.typography.fontSize.body};
-  line-height: ${({ theme }) => theme.typography.lineHeight.normal};
   box-shadow: ${({ theme }) => theme.boxShadow.xs};
   transition: background 0.3s ease;
 
@@ -28,7 +25,7 @@ const StyledListItem = styled.li`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(1.5)}`};
+    padding: ${({ theme }) => `${theme.spacing(0.8)} ${theme.spacing(1.2)}`};
     font-size: ${({ theme }) => theme.typography.fontSize.small};
   }
 `

@@ -10,8 +10,10 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html, body, #root {
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
+    min-width: 0;
+    overflow-x: hidden;
   }
 
   html {
@@ -27,7 +29,6 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.colors.text.main};
     background: transparent;
     min-height: 100vh;
-    min-width: 100vw;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition:
@@ -36,9 +37,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   #root {
-    isolation: isolate; // verhindert z-index bugs bei Canvas-Hintergrund
+    isolation: isolate;
     min-height: 100vh;
-    min-width: 100vw;
     background: transparent;
   }
 

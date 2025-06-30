@@ -1,21 +1,14 @@
 import styled from 'styled-components'
 import LumenWrapper from './LumenWrapper'
 
-const CardWrapper = styled(LumenWrapper).attrs(() => ({
-  as: 'article',
-  variant: 'subtle',
-  animated: false,
-  interactive: true,
-  radius: 'medium',
-  backgroundColor: 'colors.surface.card',
-  padding: undefined,
+const CardWrapper = styled(LumenWrapper).attrs((props) => ({
+  variant: props.variant || 'intense',
+  minIntensity: props.minIntensity,
 }))`
   width: 100%;
   max-width: 44rem;
   margin: ${({ theme }) => theme.spacing(2)} auto;
   overflow: hidden;
-  border-radius: ${({ theme }) => theme.borderRadius.medium};
-  box-shadow: none;
   z-index: 2;
   transition:
     transform 0.17s cubic-bezier(0.36, 0.4, 0.24, 1),

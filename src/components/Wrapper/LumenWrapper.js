@@ -1,15 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import AuroraLayer from './AuroraLayer'
 
 export default function LumenWrapper({
   children,
   radius = 'large',
   padding,
-  variant = 'intense',
-  animated = true,
   backgroundColor,
   as = 'div',
+  variant = 'intense',
+  minIntensity,
   ...rest
 }) {
   return (
@@ -19,29 +18,53 @@ export default function LumenWrapper({
       $padding={padding}
       $backgroundColor={backgroundColor}
       $variant={variant}
+      $minIntensity={minIntensity}
       {...rest}
     >
-      <AuroraLayer variant={variant} animated={animated} />
       <Content>{children}</Content>
     </Container>
   )
 }
 
-function resolvePadding(theme, padding) {
-  if (padding) return padding
-  return `clamp(1rem, 2vw, 2rem) clamp(0.9rem, 2.5vw, 1.7rem)`
+const resolvePadding = (props) => {
+  if (props.$padding) return props.$padding
+  return 'clamp(1.1rem, 2vw, 2.2rem) clamp(1rem, 2.5vw, 1.7rem)'
 }
 
-function resolveBg(theme, bg, variant) {
-  if (bg) return bg
-  if (theme.mode === 'dark') {
-    return variant === 'intense'
-      ? 'rgba(32, 38, 54, 0.84)'
-      : 'rgba(43, 52, 77, 0.63)'
+const resolveBg = (props) => {
+  const { theme, $backgroundColor, $variant, $minIntensity } = props
+  if ($variant === 'none') {
+    return theme.mode === 'dark'
+      ? theme.colors.surface.card || '#23262d'
+      : '#fff'
   }
-  return variant === 'intense'
-    ? 'rgba(250,254,255,0.93)'
-    : 'rgba(255,255,255,0.79)'
+  if ($backgroundColor) return $backgroundColor
+  const isDark = theme.mode === 'dark'
+  if ($variant === 'subtle') {
+    return isDark ? 'rgba(55,60,75,0.86)' : 'rgba(255,255,255,0.92)'
+  }
+  let glass = 0.19
+  if (typeof $minIntensity === 'number') glass = $minIntensity
+  if (isDark) {
+    glass = typeof $minIntensity === 'number' ? $minIntensity : 0.28
+    return `rgba(55,60,75,${glass})`
+  }
+  return `rgba(255,255,255,${glass})`
+}
+
+const resolveShadow = (props) => {
+  const { $variant } = props
+  if ($variant === 'none') return 'none'
+  if ($variant === 'subtle') {
+    return `
+      0 2px 12px 0 rgba(60,70,110,0.10),
+      0 1.5px 9px 0 rgba(120,130,170,0.07)
+    `
+  }
+  return `
+    0 2px 18px 0 rgba(80,100,150,0.10),
+    0 8px 32px 0 rgba(80,100,150,0.06)
+  `
 }
 
 const Container = styled.div`
@@ -49,17 +72,13 @@ const Container = styled.div`
   overflow: hidden;
   border-radius: ${({ theme, $radius }) =>
     theme.borderRadius?.[$radius] || '1.05rem'};
-  padding: ${({ theme, $padding }) => resolvePadding(theme, $padding)};
-  background: ${({ theme, $backgroundColor, $variant }) =>
-    resolveBg(theme, $backgroundColor, $variant)};
-  backdrop-filter: blur(8px) saturate(1.04) brightness(1.04) contrast(1.05);
-  box-shadow:
-    0 2.5px 16px 0 rgba(0, 0, 0, 0.06),
-    0 8px 36px 0 ${({ theme }) => theme.colors.accent.main}14;
+  padding: ${resolvePadding};
+  background: ${resolveBg};
+  box-shadow: ${resolveShadow};
   transition:
-    box-shadow 0.16s cubic-bezier(0.44, 0.13, 0.43, 0.95),
-    background 0.13s cubic-bezier(0.62, 0.16, 0.49, 0.97),
-    transform 0.11s cubic-bezier(0.68, 0.19, 0.46, 0.98);
+    box-shadow 0.16s cubic-bezier(0.46, 0.17, 0.43, 0.98),
+    background 0.16s cubic-bezier(0.52, 0.18, 0.49, 0.95),
+    transform 0.12s cubic-bezier(0.67, 0.21, 0.45, 0.97);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     padding: clamp(0.85rem, 2vw, 1.2rem) clamp(0.7rem, 2vw, 1rem);
@@ -74,7 +93,7 @@ const Container = styled.div`
 
 const Content = styled.div`
   position: relative;
-  z-index: 5;
+  z-index: 1;
   width: 100%;
   min-width: 0;
   display: flex;

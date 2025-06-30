@@ -8,50 +8,56 @@ const fadeIn = keyframes`
   to { opacity: 1; }
 `
 
-const Overlay = styled.div`
+export const Overlay = styled.div`
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 9999;
+  background: ${({ theme }) =>
+    theme.mode === 'dark' ? 'rgba(16,17,29,0.93)' : 'rgba(26,30,38,0.66)'};
+  z-index: 12000;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: ${fadeIn} 0.3s ease-out;
-  overflow-x: hidden;
+  overflow: auto;
+  padding: 2vw;
 `
 
 const ContentWrapper = styled.div`
   position: relative;
   max-width: 90%;
   max-height: 90%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  background-color: ${({ theme }) => theme.colors.neutral.ultraLight};
-  color: ${({ theme }) => theme.colors.neutral.dark};
+  background: ${({ theme }) =>
+    theme.mode === 'dark'
+      ? theme.colors.surface.cardAlpha
+      : theme.colors.surface.cardAlpha};
   border-radius: ${({ theme }) => theme.borderRadius.large};
   box-shadow: ${({ theme }) => theme.boxShadow.heavy};
-  padding: ${({ theme }) => `0 ${theme.spacing(2)}`};
+  padding: ${({ theme }) => theme.spacing(4)};
+  overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-width: thin;
-  scrollbar-color: ${({ theme }) => theme.colors.neutral.dark}
-    ${({ theme }) => theme.colors.neutral.ultraLight};
+  scrollbar-color: ${({ theme }) => theme.colors.primary[2]}
+    ${({ theme }) => theme.colors.surface[1]};
+  outline: none;
 
   &::-webkit-scrollbar {
     width: 8px;
   }
   &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.neutral.ultraLight};
+    background: ${({ theme }) => theme.colors.surface[1]};
     border-radius: ${({ theme }) => theme.borderRadius.large};
   }
   &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.neutral.dark};
+    background-color: ${({ theme }) => theme.colors.primary[2]};
     border-radius: ${({ theme }) => theme.borderRadius.large};
-    border: 2px solid ${({ theme }) => theme.colors.neutral.ultraLight};
+    border: 2px solid ${({ theme }) => theme.colors.surface[1]};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     max-width: 95%;
     max-height: 85%;
     padding: ${({ theme }) => theme.spacing(2)};
+    border-radius: ${({ theme }) => theme.borderRadius.medium};
   }
 `
 
@@ -59,23 +65,26 @@ const CloseButton = styled.button`
   position: absolute;
   top: ${({ theme }) => theme.spacing(2)};
   right: ${({ theme }) => theme.spacing(2)};
-  background: ${({ theme }) => theme.colors.neutral.lightest};
-  color: ${({ theme }) => theme.colors.neutral.darkest};
+  background: ${({ theme }) => theme.colors.surface[2]};
+  color: ${({ theme }) => theme.colors.text.subtle};
   border: none;
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-size: 1.3rem;
   transition:
-    background 0.3s ease,
-    color 0.3s ease;
+    background 0.18s,
+    color 0.18s;
   z-index: 10;
-  &:hover {
+  &:hover,
+  &:focus-visible {
     background: ${({ theme }) => theme.colors.primary.main};
-    color: ${({ theme }) => theme.colors.neutral.ultraLight};
+    color: ${({ theme }) => theme.colors.surface[1]};
+    outline: none;
   }
 `
 
@@ -84,38 +93,28 @@ function ModalOverlay({ onClose, children }) {
 
   useEffect(() => {
     const originalBodyOverflow = document.body.style.overflow
-    const originalBodyMargin = document.body.style.margin
-    const originalHtmlOverflow = document.documentElement.style.overflow
-    const originalHtmlMargin = document.documentElement.style.margin
     document.body.style.overflow = 'hidden'
-    document.body.style.margin = '0'
-    document.documentElement.style.overflow = 'hidden'
-    document.documentElement.style.margin = '0'
     return () => {
       document.body.style.overflow = originalBodyOverflow
-      document.body.style.margin = originalBodyMargin
-      document.documentElement.style.overflow = originalHtmlOverflow
-      document.documentElement.style.margin = originalHtmlMargin
     }
   }, [])
 
   useEffect(() => {
-    const previousActiveElement = document.activeElement
+    const prevActive = document.activeElement
     if (modalRef.current) modalRef.current.focus()
     return () => {
-      if (previousActiveElement && previousActiveElement.focus)
-        previousActiveElement.focus()
+      if (prevActive && prevActive.focus) prevActive.focus()
     }
   }, [])
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose()
-      else if (e.key === 'Tab' && modalRef.current) {
+      if (e.key === 'Tab' && modalRef.current) {
         const focusable = modalRef.current.querySelectorAll(
           'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex]:not([tabindex="-1"])'
         )
-        if (focusable.length === 0) {
+        if (!focusable.length) {
           e.preventDefault()
           return
         }
@@ -132,9 +131,7 @@ function ModalOverlay({ onClose, children }) {
       }
     }
     document.addEventListener('keydown', handleKeyDown)
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown)
-    }
+    return () => document.removeEventListener('keydown', handleKeyDown)
   }, [onClose])
 
   if (typeof document === 'undefined') return null
@@ -151,7 +148,7 @@ function ModalOverlay({ onClose, children }) {
         onClick={(e) => e.stopPropagation()}
         tabIndex={-1}
       >
-        <CloseButton onClick={onClose} aria-label="Close Modal">
+        <CloseButton onClick={onClose} aria-label="Modal schließen">
           <FaTimes size={20} />
         </CloseButton>
         {children}

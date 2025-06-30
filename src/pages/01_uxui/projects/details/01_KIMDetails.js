@@ -69,42 +69,41 @@ export default function KIMDetails() {
 
   return (
     <>
-      <HeroWrapper gradient="secondaryWarm">
-        <Typography variant="h1" align="center" color="depth.dark">
+      <HeroWrapper variant="intense">
+        <Typography variant="h1" align="center">
           🌟 KIM – Verbindungen, die tragen
         </Typography>
       </HeroWrapper>
+      <SectionWrapper variant="none">
+        <Typography variant="body" align="left">
+          <HighlightText>KIM</HighlightText> war unser Capstone-Projekt – und es
+          wollte mehr als nur eine App sein. In vier Wochen entstanden
+          Strukturen, Flows, Interfaces und eine Vision: Wie schafft man Räume
+          für echte Begegnung – digital, sozial, tragfähig?
+          <br />
+          <br />
+          Was dabei herauskam, ist mehrschichtig. Psychologische Analyse trifft
+          Gruppendynamik. Matching-Logik trifft Icebreaker. Und das alles in
+          einem System, das zugänglich bleibt – in Form, Sprache, Code.
+        </Typography>
 
-      <Typography variant="body" align="left" color="neutral.deep">
-        <HighlightText>KIM</HighlightText> war unser Capstone-Projekt – und es
-        wollte mehr als nur eine App sein. In vier Wochen entstanden Strukturen,
-        Flows, Interfaces und eine Vision: Wie schafft man Räume für echte
-        Begegnung – digital, sozial, tragfähig?
-        <br />
-        <br />
-        Was dabei herauskam, ist mehrschichtig. Psychologische Analyse trifft
-        Gruppendynamik. Matching-Logik trifft Icebreaker. Und das alles in einem
-        System, das zugänglich bleibt – in Form, Sprache, Code.
-      </Typography>
+        <MediaDisplay
+          media={[{ type: 'image', src: KimImage, alt: 'KIM Project' }]}
+          onClick={() => setLightboxOpen(true)}
+          variant="medium"
+        />
 
-      <MediaDisplay
-        media={[{ type: 'image', src: KimImage, alt: 'KIM Project' }]}
-        onClick={() => setLightboxOpen(true)}
-        variant="medium"
-      />
+        <Typography variant="h2" align="center">
+          🔍 Was steckt drin?
+        </Typography>
+        <ListComponent items={features} />
 
-      <Typography variant="h2" align="center" color="depth.dark">
-        🔍 Was steckt drin?
-      </Typography>
-      <ListComponent items={features} />
+        <Typography variant="h2" align="center">
+          🛠 Tools & Methoden
+        </Typography>
+        <BadgeGrid badges={badges} />
 
-      <Typography variant="h2" align="center" color="depth.dark">
-        🛠 Tools & Methoden
-      </Typography>
-      <BadgeGrid badges={badges} />
-
-      <SectionWrapper backgroundColor="neutral.lightest">
-        <Typography variant="body" align="center" color="neutral.deep">
+        <Typography variant="body" align="center">
           Der Prototyp ist klickbar, der Prozess sichtbar. Die React-Case-Study
           zeigt, was UX bedeuten kann, wenn Design nicht vorn aufhört – sondern
           innen beginnt.
