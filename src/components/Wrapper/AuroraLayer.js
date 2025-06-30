@@ -95,8 +95,7 @@ const AuroraFX = styled.div`
   inset: 0;
   z-index: 3;
   border-radius: inherit;
-  background:
-    radial-gradient(
+  background: radial-gradient(
       ellipse 95% 45% at 55% 100%,
       ${({ theme }) => getWaterTint(theme)} 0%,
       transparent 78%
