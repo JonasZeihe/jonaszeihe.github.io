@@ -5,6 +5,30 @@ import os
 import subprocess
 import datetime
 import sys
+import shutil
+
+
+def delete_path(path, log):
+    if os.path.isdir(path):
+        log.write(f"Deleting directory {path}...\n")
+        try:
+            shutil.rmtree(path)
+            log.write(f"{path} directory deleted successfully.\n")
+        except Exception as e:
+            log.write(f"Failed to delete {path} directory: {e}\n")
+            print(f"Failed to delete {path} directory. Check the log file.")
+            sys.exit(1)
+    elif os.path.isfile(path):
+        log.write(f"Deleting file {path}...\n")
+        try:
+            os.remove(path)
+            log.write(f"{path} deleted successfully.\n")
+        except Exception as e:
+            log.write(f"Failed to delete {path}: {e}\n")
+            print(f"Failed to delete {path}. Check the log file.")
+            sys.exit(1)
+    else:
+        log.write(f"{path} does not exist. Skipping.\n")
 
 
 def main():
@@ -22,38 +46,18 @@ def main():
 
         def run_or_log_error(cmd, desc):
             try:
-                subprocess.run(cmd, check=True, stdout=log, stderr=log)
+                subprocess.run(
+                    cmd, check=True, stdout=log, stderr=log, shell=(os.name == "nt")
+                )
                 log.write(f"{desc} completed successfully.\n")
             except subprocess.CalledProcessError:
                 log.write(f"Failed to {desc.lower()}.\n")
                 print(f"Failed to {desc.lower()}. Check the log file: {logfile}")
                 sys.exit(1)
 
-        if os.path.exists("node_modules"):
-            log.write("Deleting node_modules folder...\n")
-            run_or_log_error(["rm", "-rf", "node_modules"], "delete node_modules")
-        else:
-            log.write("node_modules folder does not exist. Skipping.\n")
-
-        if os.path.exists("package-lock.json"):
-            log.write("Deleting package-lock.json...\n")
-            try:
-                os.remove("package-lock.json")
-                log.write("package-lock.json deleted successfully.\n")
-            except Exception:
-                log.write("Failed to delete package-lock.json.\n")
-                print(
-                    f"Failed to delete package-lock.json. Check the log file: {logfile}"
-                )
-                sys.exit(1)
-        else:
-            log.write("package-lock.json does not exist. Skipping.\n")
-
-        if os.path.exists("build"):
-            log.write("Deleting build folder...\n")
-            run_or_log_error(["rm", "-rf", "build"], "delete build folder")
-        else:
-            log.write("build folder does not exist. Skipping.\n")
+        delete_path("node_modules", log)
+        delete_path("package-lock.json", log)
+        delete_path("build", log)
 
         log.write("Running npm install...\n")
         run_or_log_error(["npm", "install"], "npm install")

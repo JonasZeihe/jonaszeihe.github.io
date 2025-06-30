@@ -14,7 +14,7 @@ def main():
     timestamp = datetime.datetime.now().strftime("%Y-%m-%dT%H-%M")
     logfile = f"03_build_log_{timestamp}.txt"
 
-    with open(logfile, "w") as log:
+    with open(logfile, "w", encoding="utf-8") as log:
         log.write("Starting Build Process...\n")
         log.write("========================\n")
         log.write(f"{timestamp}\n")
@@ -22,12 +22,28 @@ def main():
         log.write("Running npm run build...\n")
 
         try:
-            subprocess.run(["npm", "run", "build"], check=True, stdout=log, stderr=log)
-            log.write("Build completed successfully!\n")
-            print("Build completed successfully!")
-        except subprocess.CalledProcessError:
-            log.write("Build failed.\n")
-            print(f"Build failed. Check the log file: {logfile}")
+            process = subprocess.Popen(
+                ["npm", "run", "build"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                encoding="utf-8",
+                shell=(os.name == "nt"),
+            )
+            for line in process.stdout:
+                print(line, end="")  # Konsole
+                log.write(line)  # Logfile
+            process.wait()
+            if process.returncode == 0:
+                log.write("Build completed successfully!\n")
+                print("Build completed successfully!")
+            else:
+                log.write("Build failed.\n")
+                print(f"Build failed. Check the log file: {logfile}")
+                sys.exit(1)
+        except Exception as e:
+            log.write(f"Build failed: {e}\n")
+            print(f"Build failed: {e}. Check the log file: {logfile}")
             sys.exit(1)
 
 

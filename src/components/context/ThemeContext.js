@@ -19,8 +19,6 @@ function failLoudProxy(obj, prefix = '') {
       }
       if (process.env.NODE_ENV !== 'production') {
         const error = new Error(`Missing theme key: ${prefix}${prop}`)
-        console.error(error)
-        console.trace('Theme key trace:', `${prefix}${prop}`)
         throw error
       }
       return '#FF00AA'
