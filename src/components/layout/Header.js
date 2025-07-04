@@ -158,10 +158,7 @@ const HeaderContainer = styled.header`
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: ${({ theme }) =>
-    theme.mode === 'dark'
-      ? theme.colors.surface.cardAlpha
-      : theme.colors.surface.card};
+  background: ${({ theme }) => theme.colors.surface.cardAlpha};
   backdrop-filter: blur(13px) saturate(1.11);
   box-shadow: ${({ theme }) => theme.boxShadow.medium};
   border-bottom: 1.5px solid ${({ theme }) => theme.colors.surface[4]};

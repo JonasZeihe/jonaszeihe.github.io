@@ -9,7 +9,12 @@ import {
 
 export default function ProjectCard({ project, onOpen }) {
   return (
-    <CardWrapper style={{ cursor: 'pointer' }} as="article" variant="subtle">
+    <CardWrapper
+      onClick={onOpen}
+      style={{ cursor: 'pointer' }}
+      as="article"
+      variant="subtle"
+    >
       <ImageWrapper>
         <ProjectImage src={project.image} alt={project.name} />
         <Overlay />
@@ -31,9 +36,10 @@ export default function ProjectCard({ project, onOpen }) {
           >
             Projekt ansehen
           </Button>
-          {project.buttons?.map(({ text, link }) => (
+          {project.buttons?.map(({ text, link, variant }) => (
             <Button
               key={text}
+              variant={variant}
               onClick={(e) => {
                 e.stopPropagation()
                 window.open(link, '_blank')

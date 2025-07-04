@@ -64,7 +64,7 @@ export default function FlavorFusionDetails() {
 
   return (
     <>
-      <HeroWrapper variant="intense">
+      <HeroWrapper variant="none">
         <Typography variant="h1" align="center">
           🍴 FlavorFusion – KI trifft Gestaltung trifft Kultur
         </Typography>
@@ -77,7 +77,7 @@ export default function FlavorFusionDetails() {
           <br />
           <br />
           Ich hätte eine Oberfläche bauen können. Stattdessen habe ich mich
-          gefragt:
+          gefragt: <br />
           <em>
             Wie lässt sich kulturelle Esskultur visuell erzählen, ohne sie zu
             verflachen?
@@ -88,8 +88,8 @@ export default function FlavorFusionDetails() {
           nach Küche aussehen. Mit Spuren, mit Unordnung, mit Material.
           <br />
           Acht Kulturkreise, jeweils mit eigenen Nationalgerichten als
-          Ausgangspunkt. Daraus: eigene Farbwelten, eigene Texturen – jeder
-          Prompt von Hand geschrieben. Kein Zufall. Kein Style ohne Substanz.
+          Ausgangspunkt. Daraus: eigene Farbwelten, eigene Texturen und
+          Linolschnittkarten.
           <br />
           <br />
           Die gesamte Journey: Konzeption, Bildentwicklung, UX, Prototyp, Case
@@ -124,8 +124,8 @@ export default function FlavorFusionDetails() {
           📌 Ergebnis
         </Typography>
         <Typography variant="body" align="center">
-          Ein vollständiger Figma-Prototyp. Eine eigenständige Case Study in
-          React. Nicht zur Schau – zur Anwendung gedacht.
+          Ein vollständiger Figma-Prototyp und dazu der gesamte Designprozess
+          als Case Study in React.
         </Typography>
 
         <ButtonGrid>

@@ -11,7 +11,7 @@ export default function UxUiIntroduction() {
   return (
     <>
       <HeroWrapper variant="intense">
-        <Typography variant="h1" align="center" color="primary.main">
+        <Typography variant="h1" align="center">
           UX/UI Projekte
         </Typography>
       </HeroWrapper>

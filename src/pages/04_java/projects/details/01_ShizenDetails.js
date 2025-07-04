@@ -7,6 +7,7 @@ import {
   HighlightText,
   ListComponent,
   Button,
+  ButtonGrid,
   Lightbox,
 } from '../../../../utils/sharedComponents'
 import BadgeGrid from '../../../../components/common/BadgeGrid'
@@ -81,7 +82,7 @@ export default function ShizenDetails() {
 
   return (
     <>
-      <HeroWrapper>
+      <HeroWrapper variant="none">
         <Typography variant="h1" align="center">
           📚 <HighlightText>Shizen</HighlightText> – Die Plattform für modernes
           Lernen und Lehren
@@ -123,16 +124,9 @@ export default function ShizenDetails() {
           implementiert mit rollenbasiertem Zugriff und API-Endpunkten.
         </Typography>
 
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '1.5rem',
-            marginTop: '2rem',
-          }}
-        >
+        <ButtonGrid>
           <Button
-            variant="primary"
+            variant="github"
             onClick={() =>
               window.open('https://github.com/jonaszeihe/ninjin', '_blank')
             }
@@ -147,7 +141,7 @@ export default function ShizenDetails() {
           >
             Shizen
           </Button>
-        </div>
+        </ButtonGrid>
       </SectionWrapper>
 
       {lightboxOpen && (

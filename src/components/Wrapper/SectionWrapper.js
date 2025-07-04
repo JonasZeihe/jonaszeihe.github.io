@@ -1,16 +1,17 @@
 import styled from 'styled-components'
 import LumenWrapper from './LumenWrapper'
 
-const SectionWrapper = styled(LumenWrapper).attrs((props) => ({
-  variant: props.variant || 'intense',
-  minIntensity: props.minIntensity,
-}))`
+const SectionWrapper = styled(LumenWrapper).attrs(
+  ({ variant = 'intense', minIntensity }) => ({
+    variant,
+    minIntensity,
+  })
+)`
   width: 100%;
   max-width: 64rem;
   margin: ${({ theme }) => theme.spacing(8)} auto;
   display: flex;
   flex-direction: column;
-
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     max-width: 98vw;
     margin: ${({ theme }) => theme.spacing(6)} auto;

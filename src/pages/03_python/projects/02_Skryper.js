@@ -14,12 +14,12 @@ export default function Skryper() {
       'Stromlinienförmige Projektbaumstrukturen analysieren & generieren',
     buttons: [
       {
-        text: 'Skryper on GitHub',
+        text: 'Skryper GitHub',
         link: 'https://github.com/jonaszeihe/skryper',
         variant: 'github',
       },
       {
-        text: 'Structra on GitHub',
+        text: 'Structra GitHub',
         link: 'https://github.com/jonaszeihe/structra',
         variant: 'github',
       },

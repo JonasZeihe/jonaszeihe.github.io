@@ -7,6 +7,7 @@ import {
   HighlightText,
   ListComponent,
   Button,
+  ButtonGrid,
   Lightbox,
 } from '../../../../utils/sharedComponents'
 import BadgeGrid from '../../../../components/common/BadgeGrid'
@@ -61,14 +62,13 @@ export default function InkGridDetails() {
   const badges = [
     'svg-swatches',
     'token-export',
-    'designsystem-integration',
+    'design-system',
     'drag-and-drop',
-    'batch-export',
   ]
 
   return (
     <>
-      <HeroWrapper>
+      <HeroWrapper variant="none">
         <Typography variant="h1" align="center">
           🎨 InkGrid – Struktur für Farbe
         </Typography>
@@ -113,16 +113,9 @@ export default function InkGridDetails() {
           JSON-Export integriert.
         </Typography>
 
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '1.5rem',
-            marginTop: '2rem',
-          }}
-        >
+        <ButtonGrid>
           <Button
-            variant="primary"
+            variant="github"
             onClick={() =>
               window.open('https://github.com/jonaszeihe/inkgrid', '_blank')
             }
@@ -140,7 +133,7 @@ export default function InkGridDetails() {
           >
             Download
           </Button>
-        </div>
+        </ButtonGrid>
       </SectionWrapper>
 
       {lightboxOpen && (

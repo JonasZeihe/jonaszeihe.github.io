@@ -1,65 +1,145 @@
-// src/styles/Gradient.js
-
-const createGradient = (from, to, angle = 135) =>
+const createLinear = (from, to, angle = 135) =>
   `linear-gradient(${angle}deg, ${from}, ${to})`
 
-const gradients = ({ colors }) => {
-  const pick = (group, tone = 'main') =>
-    colors[group]?.[tone] ||
-    colors[group]?.main ||
-    Object.values(colors[group] || {})[0] ||
-    '#ccc'
+const luminance = (hex) => {
+  const norm = hex.replace('#', '').padEnd(6, hex.slice(1))
+  const val = (i) => parseInt(norm.slice(i, i + 2), 16) / 255
+  const lin = (x) => (x <= 0.03928 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4)
+  return 0.2126 * lin(val(0)) + 0.7152 * lin(val(2)) + 0.0722 * lin(val(4))
+}
 
-  return {
-    pageBackground: createGradient(pick('surface', 1), pick('surface', 2), 133),
-    backgroundPrimary: createGradient(
-      pick('primary', 1),
-      pick('primary', 4),
-      120
-    ),
-    backgroundSecondary: createGradient(
-      pick('secondary', 1),
-      pick('secondary', 3),
+const contrastRatio = (a, b) => {
+  const [l1, l2] = [luminance(a), luminance(b)].sort((x, y) => y - x)
+  return (l1 + 0.05) / (l2 + 0.05)
+}
+
+const pickColor = (group, colors, target = 'main', mode = 'light') => {
+  const base = colors[group] || {}
+  const baseColor =
+    base[target] || base.main || Object.values(base)[0] || '#ccc'
+
+  if (mode === 'dark' && contrastRatio(baseColor, '#fff') < 2) {
+    const keys = ['0', '1', '2', 'main', '4', '5', '6']
+    const fallback = keys.find(
+      (k) => base[k] && contrastRatio(base[k], '#fff') >= 2
+    )
+    return fallback ? base[fallback] : baseColor
+  }
+
+  return baseColor
+}
+
+const extractHex = (gradient) => gradient.match(/#(?:[\da-f]{3}){1,2}/gi) || []
+
+const gradients = ({ colors }) => {
+  const mode = luminance(colors.text?.main || '#000') < 0.5 ? 'dark' : 'light'
+
+  const g = {
+    pageBackground: createLinear(
+      pickColor('surface', colors, '1', mode),
+      pickColor('surface', colors, '2', mode),
       133
     ),
-    backgroundAccent: createGradient(pick('accent', 1), pick('accent', 3), 123),
-    backgroundDepth: createGradient(pick('depth', 1), pick('depth', 3), 180),
-    backgroundSurface: createGradient(
-      pick('surface', 1),
-      pick('surface', 3),
+    backgroundPrimary: createLinear(
+      pickColor('primary', colors, '1', mode),
+      pickColor('primary', colors, '4', mode),
+      120
+    ),
+    backgroundSecondary: createLinear(
+      pickColor('secondary', colors, '1', mode),
+      pickColor('secondary', colors, '3', mode),
+      133
+    ),
+    backgroundAccent: createLinear(
+      pickColor('accent', colors, '1', mode),
+      pickColor('accent', colors, '3', mode),
+      123
+    ),
+    backgroundDepth: createLinear(
+      pickColor('depth', colors, '1', mode),
+      pickColor('depth', colors, '3', mode),
       180
     ),
-
-    buttonPrimary: createGradient(pick('primary', 2), pick('primary', 3), 115),
-    buttonSecondary: createGradient(
-      pick('secondary', 2),
-      pick('secondary', 3),
+    backgroundSurface: createLinear(
+      pickColor('surface', colors, '1', mode),
+      pickColor('surface', colors, '3', mode),
+      180
+    ),
+    buttonPrimary: createLinear(
+      pickColor('primary', colors, '2', mode),
+      pickColor('primary', colors, '3', mode),
+      115
+    ),
+    buttonSecondary: createLinear(
+      pickColor('secondary', colors, '2', mode),
+      pickColor('secondary', colors, '3', mode),
       117
     ),
-    buttonAccent: createGradient(pick('accent', 2), pick('accent', 3), 119),
-
-    focus: createGradient(pick('highlight', 3), pick('accent', 3), 88),
-    danger: createGradient(pick('accent', 5), pick('accent', 3), 111),
-    info: createGradient(pick('secondary', 3), pick('secondary', 2), 120),
-
-    hero: createGradient(pick('primary', 1), pick('secondary', 1), 127),
-    highlightSoft: createGradient(
-      pick('highlight', 1),
-      pick('neutral', 'grey'),
+    buttonAccent: createLinear(
+      pickColor('accent', colors, '2', mode),
+      pickColor('accent', colors, '3', mode),
+      119
+    ),
+    focus: createLinear(
+      pickColor('highlight', colors, '3', mode),
+      pickColor('accent', colors, '3', mode),
+      88
+    ),
+    danger: createLinear(
+      pickColor('accent', colors, '5', mode),
+      pickColor('accent', colors, '3', mode),
+      111
+    ),
+    info: createLinear(
+      pickColor('secondary', colors, '3', mode),
+      pickColor('secondary', colors, '2', mode),
+      120
+    ),
+    hero: createLinear(
+      pickColor('primary', colors, '1', mode),
+      pickColor('secondary', colors, '1', mode),
+      127
+    ),
+    highlightSoft: createLinear(
+      pickColor('highlight', colors, '1', mode),
+      pickColor('neutral', colors, 'grey', mode),
       93
     ),
-
-    dividerSoft: createGradient(
-      pick('neutral', 'light'),
-      pick('neutral', 'grey'),
+    dividerSoft: createLinear(
+      pickColor('neutral', colors, 'light', mode),
+      pickColor('neutral', colors, 'grey', mode),
       90
     ),
-    dividerHard: createGradient(
-      pick('neutral', 'dark'),
-      pick('neutral', 'black'),
+    dividerHard: createLinear(
+      pickColor('neutral', colors, 'dark', mode),
+      pickColor('neutral', colors, 'black', mode),
       90
     ),
   }
+
+  const meshSource = [
+    ...extractHex(g.backgroundPrimary),
+    ...extractHex(g.backgroundAccent),
+    ...extractHex(g.hero),
+  ]
+
+  const meshBase = meshSource.length
+    ? meshSource.slice(0, 8)
+    : ['#9999ff', '#ff99cc', '#99e6ff']
+
+  g.meshPalette = meshBase.map((hex) => {
+    const l = luminance(hex)
+    if (l <= 0.55) return hex
+    const clean = hex.replace('#', '').padEnd(6, hex.slice(1))
+    const rgb = [0, 2, 4].map((i) => parseInt(clean.slice(i, i + 2), 16))
+    const darkened = rgb
+      .map((v) => Math.max(0, Math.round(v * 0.75)))
+      .map((v) => v.toString(16).padStart(2, '0'))
+      .join('')
+    return `#${darkened}`
+  })
+
+  return g
 }
 
 export default gradients
