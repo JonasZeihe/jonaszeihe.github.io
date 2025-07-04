@@ -1,3 +1,5 @@
+// src/styles/GlobalStyles.js
+
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
@@ -5,15 +7,10 @@ const GlobalStyles = createGlobalStyle`
 
   html,body,#root{width:100%;min-height:100vh;min-width:0;overflow-x:hidden}
 
-  html{font-size:16px;scroll-behavior:smooth;color-scheme:${({ theme }) => theme.mode || 'light'}}
-
-  @media(prefers-color-scheme:dark){
-    html:not([data-theme]){color-scheme:dark}
-  }
-
-  @media(prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    *,*::before,*::after{transition:none!important;animation:none!important}
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    color-scheme: ${({ theme }) => theme.mode || 'light'};
   }
 
   body{
@@ -50,11 +47,11 @@ const GlobalStyles = createGlobalStyle`
     outline:2.5px solid ${({ theme }) => theme.colors.accent.main};
     outline-offset:2px;
     box-shadow:0 0 0 4px ${({ theme }) => theme.colors.accent[1]}44
-  }
+    }
   button:hover{
     box-shadow:${({ theme }) => theme.boxShadow.medium};
     filter:brightness(1.05)
-  }
+    }
   button:active{filter:brightness(.95)}
 
   input:focus-visible,textarea:focus-visible,select:focus-visible{
