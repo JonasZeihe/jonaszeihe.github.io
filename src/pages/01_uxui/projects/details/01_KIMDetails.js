@@ -7,6 +7,7 @@ import {
   HighlightText,
   ListComponent,
   Button,
+  ButtonGrid,
   Lightbox,
 } from '../../../../utils/sharedComponents'
 import BadgeGrid from '../../../../components/common/BadgeGrid'
@@ -69,7 +70,7 @@ export default function KIMDetails() {
 
   return (
     <>
-      <HeroWrapper variant="intense">
+      <HeroWrapper variant="none">
         <Typography variant="h1" align="center">
           🌟 KIM – Verbindungen, die tragen
         </Typography>
@@ -84,7 +85,8 @@ export default function KIMDetails() {
           <br />
           Was dabei herauskam, ist mehrschichtig. Psychologische Analyse trifft
           Gruppendynamik. Matching-Logik trifft Icebreaker. Und das alles in
-          einem System, das zugänglich bleibt – in Form, Sprache, Code.
+          einem System, das zugänglich bleibt – in Form, Sprache, und
+          Designprozess.
         </Typography>
 
         <MediaDisplay
@@ -104,19 +106,11 @@ export default function KIMDetails() {
         <BadgeGrid badges={badges} />
 
         <Typography variant="body" align="center">
-          Der Prototyp ist klickbar, der Prozess sichtbar. Die React-Case-Study
-          zeigt, was UX bedeuten kann, wenn Design nicht vorn aufhört – sondern
-          innen beginnt.
+          Der Prototyp ist klickbar, die React-Case-Study zeigt unseren gesamten
+          Designprozess- vom ersten Moodboard bis zum Präsentationsvideo.
         </Typography>
 
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '1.5rem',
-            marginTop: '2rem',
-          }}
-        >
+        <ButtonGrid>
           <Button
             variant="casestudy"
             onClick={() =>
@@ -129,7 +123,7 @@ export default function KIMDetails() {
             Case Study öffnen
           </Button>
           <Button
-            variant="success"
+            variant="prototype"
             onClick={() =>
               window.open(
                 'https://www.figma.com/proto/zOqkBn4RzZ9vU8yIWpjbwx/capstone_Gruppe4_designsystem?page-id=1%3A2&node-id=1269-9613',
@@ -139,7 +133,7 @@ export default function KIMDetails() {
           >
             Prototyp ansehen
           </Button>
-        </div>
+        </ButtonGrid>
       </SectionWrapper>
 
       {lightboxOpen && (

@@ -7,6 +7,7 @@ import {
   HighlightText,
   ListComponent,
   Button,
+  ButtonGrid,
   Lightbox,
 } from '../../../../utils/sharedComponents'
 import BadgeGrid from '../../../../components/common/BadgeGrid'
@@ -69,7 +70,7 @@ export default function SkryperDetails() {
 
   return (
     <>
-      <HeroWrapper>
+      <HeroWrapper variant="none">
         <Typography variant="h1" align="center">
           Stromlinienförmige Projektstrukturbäume – lesbar & wiederverwendbar
         </Typography>
@@ -115,16 +116,9 @@ export default function SkryperDetails() {
         </Typography>
         <BadgeGrid badges={badges} />
 
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '1.5rem',
-            marginTop: '2rem',
-          }}
-        >
+        <ButtonGrid>
           <Button
-            variant="primary"
+            variant="github"
             onClick={() =>
               window.open('https://github.com/jonaszeihe/skryper', '_blank')
             }
@@ -132,14 +126,14 @@ export default function SkryperDetails() {
             Zu Skryper auf GitHub
           </Button>
           <Button
-            variant="secondary"
+            variant="github"
             onClick={() =>
               window.open('https://github.com/jonaszeihe/structra', '_blank')
             }
           >
             Zu Structra auf GitHub
           </Button>
-        </div>
+        </ButtonGrid>
       </SectionWrapper>
 
       {lightboxOpen && (

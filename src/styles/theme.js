@@ -129,7 +129,7 @@ export const lightTheme = createTheme('light', {
     5: '#C9CDD8',
     6: '#B3B7C4',
     card: '#FFFFFF',
-    cardAlpha: 'rgba(255,255,255,0.81)',
+    cardAlpha: 'rgba(255,255,255,0.73)',
     hover: '#F5F7FA',
     backdrop: '#E6E9F0',
   },

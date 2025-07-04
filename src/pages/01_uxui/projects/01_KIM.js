@@ -16,7 +16,7 @@ export default function KIM() {
       {
         text: 'Prototyp',
         link: 'https://www.figma.com/proto/zOqkBn4RzZ9vU8yIWpjbwx/capstone_Gruppe4_designsystem?page-id=1%3A2&node-id=1269-9613&viewport=6473%2C-426%2C0.65&t=glC7uXK0AhmNVLGg-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1184%3A20281',
-        variant: 'success',
+        variant: 'prototype',
       },
       {
         text: 'Case Study',

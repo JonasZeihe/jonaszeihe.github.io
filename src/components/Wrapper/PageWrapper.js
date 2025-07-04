@@ -12,7 +12,6 @@ const PageWrapper = styled.div`
   background: none;
   color: ${({ theme }) => theme.colors.text.main || 'inherit'};
   position: relative;
-  overflow-x: hidden;
   transition:
     background 0.3s cubic-bezier(0.32, 1, 0.62, 0.98),
     color 0.22s cubic-bezier(0.42, 0.12, 0.45, 1);

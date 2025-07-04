@@ -7,6 +7,7 @@ import {
   HighlightText,
   ListComponent,
   Button,
+  ButtonGrid,
   Lightbox,
 } from '../../../../utils/sharedComponents'
 import BadgeGrid from '../../../../components/common/BadgeGrid'
@@ -75,7 +76,7 @@ export default function NoctuaDetails() {
 
   return (
     <>
-      <HeroWrapper>
+      <HeroWrapper variant="none">
         <Typography variant="h1" align="center">
           🛠 Noctua – Systeminfos, strukturiert & verständlich
         </Typography>
@@ -122,16 +123,9 @@ export default function NoctuaDetails() {
           Nutzerrollen und potenzielle Monetarisierung.
         </Typography>
 
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '1.5rem',
-            marginTop: '2rem',
-          }}
-        >
+        <ButtonGrid>
           <Button
-            variant="primary"
+            variant="github"
             onClick={() =>
               window.open('https://github.com/jonaszeihe/noctuaLight', '_blank')
             }
@@ -149,7 +143,7 @@ export default function NoctuaDetails() {
           >
             Download (Windows)
           </Button>
-        </div>
+        </ButtonGrid>
       </SectionWrapper>
 
       {lightboxOpen && (

@@ -39,24 +39,20 @@ const resolveBackground = ({
   $variant,
   $minIntensity,
 }) => {
-  if ($variant === 'none') {
-    return (
-      theme.colors.surface.card || (theme.mode === 'dark' ? '#23262d' : '#fff')
-    )
-  }
-
+  if ($variant === 'none') return theme.colors.surface.card
   if ($backgroundColor) return $backgroundColor
 
   const isDark = theme.mode === 'dark'
-  const fallbackIntensity = isDark ? 0.28 : 0.14
-  const glass =
-    typeof $minIntensity === 'number' ? $minIntensity : fallbackIntensity
+  const fallback = isDark ? 0.18 : 0.1
+  const intensity = typeof $minIntensity === 'number' ? $minIntensity : fallback
 
   if ($variant === 'subtle') {
-    return isDark ? 'rgba(55,60,75,0.88)' : 'rgba(255,255,255,0.94)'
+    return isDark ? 'rgba(45,50,60,0.9)' : 'rgba(255,255,255,0.9)'
   }
 
-  return isDark ? `rgba(55,60,75,${glass})` : `rgba(255,255,255,${glass})`
+  return isDark
+    ? `rgba(35,40,50,${intensity})`
+    : `rgba(255,255,255,${intensity + 0.02})`
 }
 
 const resolveBoxShadow = ({ $variant }) => {
@@ -69,7 +65,6 @@ const resolveBoxShadow = ({ $variant }) => {
 
 const Container = styled.div`
   position: relative;
-  overflow: hidden;
   border-radius: ${({ theme, $radius }) =>
     theme.borderRadius?.[$radius] || '1rem'};
   padding: ${resolvePadding};
@@ -91,15 +86,6 @@ const Container = styled.div`
     border-radius: ${({ theme }) => theme.borderRadius?.small || '.5rem'};
     max-width: 100vw;
   }
-`
-
-const Content = styled.div`
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
 `
 
 export default memo(LumenWrapper)

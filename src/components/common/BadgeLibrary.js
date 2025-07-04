@@ -169,6 +169,12 @@ const BadgeLibrary = {
     colorLight: '#6554C0',
     colorDark: '#B8A1F7',
   },
+  'token-export': {
+    label: 'Token Export',
+    icon: 'FaFileAlt',
+    colorLight: '#6554C0',
+    colorDark: '#B8A1F7',
+  },
   'gitignore-support': {
     label: '.gitignore Support',
     icon: 'FaShieldAlt',
@@ -217,8 +223,8 @@ const BadgeLibrary = {
     colorLight: '#00875A',
     colorDark: '#5CBF8F',
   },
-  'svg-optimization': {
-    label: 'SVG Optimization',
+  'svg-swatches': {
+    label: 'SVG swatches',
     icon: 'FaShapes',
     colorLight: '#FF5630',
     colorDark: '#FF8A70',
