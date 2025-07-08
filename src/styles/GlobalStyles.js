@@ -49,7 +49,7 @@ const GlobalStyles = createGlobalStyle`
     box-shadow:0 0 0 4px ${({ theme }) => theme.colors.accent[1]}44
     }
   button:hover{
-    box-shadow:${({ theme }) => theme.boxShadow.medium};
+    box-shadow:${({ theme }) => theme.boxShadow.md};
     filter:brightness(1.05)
     }
   button:active{filter:brightness(.95)}

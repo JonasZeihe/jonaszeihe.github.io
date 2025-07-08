@@ -55,7 +55,7 @@ const MediaItem = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     &:hover {
       transform: none;
-      box-shadow: ${({ theme }) => theme.boxShadow.light};
+      box-shadow: ${({ theme }) => theme.boxShadow.sm};
     }
 
     img,

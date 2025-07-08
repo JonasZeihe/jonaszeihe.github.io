@@ -160,7 +160,7 @@ const HeaderContainer = styled.header`
   z-index: 1000;
   background: ${({ theme }) => theme.colors.surface.cardAlpha};
   backdrop-filter: blur(13px) saturate(1.11);
-  box-shadow: ${({ theme }) => theme.boxShadow.medium};
+  box-shadow: ${({ theme }) => theme.boxShadow.md};
   border-bottom: 1.5px solid ${({ theme }) => theme.colors.surface[4]};
   transition:
     background 0.33s,
@@ -195,7 +195,7 @@ const Logo = styled.span`
   font-family: ${({ theme }) => theme.typography.fontFamily.secondary};
   font-weight: ${({ theme }) => theme.typography.fontWeight.bold};
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.primary.main};
+  color: ${({ theme }) => theme.colors.primary.base};
   letter-spacing: ${({ theme }) => theme.typography.letterSpacing.tight};
   padding: 0 ${({ theme }) => theme.spacing(1.2)};
   background: none;
@@ -203,7 +203,7 @@ const Logo = styled.span`
   transition: color 0.2s;
   &:hover,
   &:focus-visible {
-    color: ${({ theme }) => theme.colors.accent.main};
+    color: ${({ theme }) => theme.colors.accent.base};
     outline: none;
   }
 `
@@ -243,11 +243,11 @@ const NavItem = styled.div`
       ? theme.typography.fontWeight.bold
       : theme.typography.fontWeight.regular};
   color: ${({ $isActive, theme }) =>
-    $isActive ? theme.colors.primary.main : theme.colors.text.main};
+    $isActive ? theme.colors.primary.base : theme.colors.text.main};
   cursor: pointer;
   transition: color 0.17s;
   &:hover {
-    color: ${({ theme }) => theme.colors.accent.main};
+    color: ${({ theme }) => theme.colors.accent.base};
   }
 `
 
@@ -260,7 +260,7 @@ const SubNav = styled.div`
   min-width: 13rem;
   padding: ${({ theme }) => theme.spacing(1)};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
-  box-shadow: ${({ theme }) => theme.boxShadow.medium};
+  box-shadow: ${({ theme }) => theme.boxShadow.md};
   display: none;
   z-index: 2;
 `
@@ -269,7 +269,7 @@ const SubNavItem = styled.div`
   font-size: ${({ theme }) => theme.typography.fontSize.body};
   font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
   color: ${({ $isActive, theme }) =>
-    $isActive ? theme.colors.primary.main : theme.colors.text.main};
+    $isActive ? theme.colors.primary.base : theme.colors.text.main};
   cursor: pointer;
   padding: ${({ theme }) => `${theme.spacing(1)} ${theme.spacing(2)}`};
   border-radius: ${({ theme }) => theme.borderRadius.small};
@@ -278,7 +278,7 @@ const SubNavItem = styled.div`
     background 0.16s,
     color 0.18s;
   &:hover {
-    color: ${({ theme }) => theme.colors.accent.main};
+    color: ${({ theme }) => theme.colors.accent.base};
     background: ${({ theme }) => theme.colors.surface.hover};
   }
 `
@@ -288,13 +288,13 @@ const MobileMenuButton = styled.button`
   border: none;
   font-size: 1.7rem;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.primary.main};
+  color: ${({ theme }) => theme.colors.primary.base};
   display: flex;
   align-items: center;
   transition: color 0.2s;
   &:hover,
   &:focus-visible {
-    color: ${({ theme }) => theme.colors.accent.main};
+    color: ${({ theme }) => theme.colors.accent.base};
     outline: none;
   }
 `
@@ -306,7 +306,7 @@ const MobileMenu = styled.div`
   right: 0;
   background: ${({ theme }) => theme.colors.surface.cardAlpha};
   padding: ${({ theme }) => theme.spacing(3)};
-  box-shadow: ${({ theme }) => theme.boxShadow.medium};
+  box-shadow: ${({ theme }) => theme.boxShadow.md};
   z-index: 10;
   border-bottom-left-radius: ${({ theme }) => theme.borderRadius.medium};
   border-bottom-right-radius: ${({ theme }) => theme.borderRadius.medium};
@@ -323,13 +323,13 @@ const DropdownToggle = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.primary.main};
+  color: ${({ theme }) => theme.colors.primary.base};
   padding: 0 ${({ theme }) => theme.spacing(1)};
   font-size: 1.1rem;
   transition: color 0.19s;
   &:hover,
   &:focus-visible {
-    color: ${({ theme }) => theme.colors.accent.main};
+    color: ${({ theme }) => theme.colors.accent.base};
     outline: none;
   }
 `

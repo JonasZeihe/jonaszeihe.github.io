@@ -9,9 +9,8 @@ import {
 } from 'react-icons/fa'
 
 export default function Footer() {
-  const scrollToTop = () => {
+  const scrollToTop = () =>
     document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
-  }
 
   return (
     <FooterWrapper>
@@ -77,10 +76,13 @@ export default function Footer() {
   )
 }
 
+const textColor = ({ theme }) =>
+  theme.mode === 'light' ? theme.colors.text.inverse : theme.colors.text.main
+
 const FooterWrapper = styled.footer`
   background: ${({ theme }) =>
-    theme.gradients?.backgroundDepth || theme.colors.surface.main || '#232536'};
-  color: ${({ theme }) => theme.colors.text.main};
+    theme.gradients?.backgroundDepth || theme.colors.surface.main};
+  color: ${textColor};
   padding: ${({ theme }) => theme.spacing(5)} ${({ theme }) => theme.spacing(2)};
   width: 100%;
   display: flex;
@@ -138,7 +140,7 @@ const ContactItem = styled.li`
 `
 
 const ContactLink = styled.a`
-  color: ${({ theme }) => theme.colors.text.main};
+  color: ${textColor};
   text-decoration: none;
   font-weight: ${({ theme }) => theme.typography.fontWeight.medium};
   transition: color 0.23s;
@@ -156,7 +158,7 @@ const SocialIcons = styled.div`
 `
 
 const IconLink = styled.a`
-  color: ${({ theme }) => theme.colors.text.main};
+  color: ${textColor};
   font-size: 1.5rem;
   transition:
     color 0.23s,
@@ -177,7 +179,7 @@ const FooterBottom = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: ${({ theme }) => theme.typography.fontSize.small};
-  color: ${({ theme }) => theme.colors.text.main};
+  color: ${textColor};
   gap: ${({ theme }) => theme.spacing(2)};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -192,7 +194,7 @@ const Copyright = styled.p`
 
 const ScrollToTopButton = styled.button`
   background: ${({ theme }) => theme.colors.accent.main};
-  color: ${({ theme }) => theme.colors.text.main};
+  color: ${textColor};
   border: none;
   border-radius: 50%;
   width: 2.5rem;

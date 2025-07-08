@@ -61,32 +61,32 @@ export default function Introduction() {
         <Typography variant="h3" align="center">
           🌟 Meine persönlich ausgewählten Highlights
         </Typography>
-
-        <CardGrid>
-          {featureProjects.map(
-            ({
-              id,
-              title,
-              description,
-              badges,
-              gradient,
-              buttonText,
-              variant,
-            }) => (
-              <FeatureCard
-                key={id}
-                title={title}
-                description={description}
-                badges={badges}
-                gradient={gradient}
-                targetId={id}
-                buttonText={buttonText}
-                variant={variant}
-              />
-            )
-          )}
-        </CardGrid>
       </SectionWrapper>
+
+      <CardGrid>
+        {featureProjects.map(
+          ({
+            id,
+            title,
+            description,
+            badges,
+            gradient,
+            buttonText,
+            variant,
+          }) => (
+            <FeatureCard
+              key={id}
+              title={title}
+              description={description}
+              badges={badges}
+              gradient={gradient}
+              targetId={id}
+              buttonText={buttonText}
+              variant={variant}
+            />
+          )
+        )}
+      </CardGrid>
     </PageWrapper>
   )
 }

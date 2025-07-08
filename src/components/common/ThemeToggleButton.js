@@ -42,9 +42,9 @@ const ToggleButton = styled.button`
 
   &:hover,
   &:focus-visible {
-    background: ${({ theme }) => theme.colors.primary.main};
-    color: ${({ theme }) => theme.colors.neutral.white};
-    box-shadow: ${({ theme }) => theme.boxShadow.medium};
+    background: ${({ theme }) => theme.colors.primary.base};
+    color: ${({ theme }) => theme.colors.text.inverse};
+    box-shadow: ${({ theme }) => theme.boxShadow.md};
     outline: none;
   }
 `
