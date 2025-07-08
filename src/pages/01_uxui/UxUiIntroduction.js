@@ -22,7 +22,7 @@ export default function UxUiIntroduction() {
           <HighlightText>klickbaren Prototypen</HighlightText>
         </Typography>
 
-        <Typography variant="body" align="center">
+        <Typography variant="h3" align="center">
           Gute Interfaces entstehen nicht im Editor, sondern im Dialog. Ich
           kombiniere strukturierte Nutzerforschung mit iterativem Prototyping –
           damit aus Anforderungen echte Erlebnisse werden. Hier zeige ich, wie{' '}

@@ -25,7 +25,7 @@ const ListItem = styled.li`
 
   &:hover {
     background: ${({ theme }) => theme.colors.surface.hover};
-    box-shadow: ${({ theme }) => theme.boxShadow.light};
+    box-shadow: ${({ theme }) => theme.boxShadow.md};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

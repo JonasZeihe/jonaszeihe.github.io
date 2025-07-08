@@ -15,7 +15,7 @@ export default function JavaIntroduction() {
       </HeroWrapper>
 
       <SectionWrapper>
-        <Typography variant="h2" align="center">
+        <Typography variant="h3" align="center">
           In Projekten wie <HighlightText>Shizen</HighlightText> nutze ich Java
           und React nicht nur als Stack, sondern als Architekturprinzip. Es geht
           mir darum, <HighlightText>strukturierte Datenflüsse</HighlightText>,{' '}

@@ -31,7 +31,7 @@ const ContentWrapper = styled.div`
       ? theme.colors.surface.cardAlpha
       : theme.colors.surface.cardAlpha};
   border-radius: ${({ theme }) => theme.borderRadius.large};
-  box-shadow: ${({ theme }) => theme.boxShadow.heavy};
+  box-shadow: ${({ theme }) => theme.boxShadow.lg};
   padding: ${({ theme }) => theme.spacing(4)};
   overflow-y: auto;
   overflow-x: hidden;

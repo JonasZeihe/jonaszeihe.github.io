@@ -1,61 +1,46 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-const getThemeValue = (path, theme) => {
-  if (!path) return undefined
-  return path.split('.').reduce((acc, key) => acc?.[key], theme)
+const baseStyles = (theme) => {
+  const textColor = '#FFFFFF'
+  return {
+    primary: {
+      background: theme.colors.primary.base,
+      border: 'none',
+      hover: theme.colors.primary.hover,
+      active: theme.colors.primary.active,
+      color: textColor,
+    },
+    github: {
+      background: '#24292e',
+      border: 'none',
+      hover: '#2f363d',
+      active: '#1b1f23',
+      color: textColor,
+    },
+    casestudy: {
+      background: theme.colors.secondary.base,
+      border: 'none',
+      hover: theme.colors.secondary.hover,
+      active: theme.colors.secondary.active,
+      color: textColor,
+    },
+    prototype: {
+      background: theme.colors.accent.base,
+      border: 'none',
+      hover: theme.colors.accent.hover,
+      active: theme.colors.accent.active,
+      color: textColor,
+    },
+    success: {
+      background: theme.colors.highlight.base,
+      border: 'none',
+      hover: theme.colors.highlight.hover,
+      active: theme.colors.highlight.active,
+      color: textColor,
+    },
+  }
 }
-
-const baseStyles = (theme) => ({
-  primary: {
-    background: theme.colors.primary.main,
-    color: theme.colors.neutral.white,
-    border: 'none',
-    hover: theme.colors.primary[4],
-    active: theme.colors.primary[5],
-  },
-  outline: {
-    background: 'transparent',
-    color: theme.colors.primary.main,
-    border: `1.5px solid ${theme.colors.primary.main}`,
-    hover: theme.colors.primary[1],
-    active: theme.colors.primary[2],
-  },
-  ghost: {
-    background: 'transparent',
-    border: 'none',
-    hover: theme.colors.surface.hover,
-    active: theme.colors.surface[4],
-  },
-  github: {
-    background: '#24292e',
-    color: '#ffffff',
-    border: 'none',
-    hover: '#2f363d',
-    active: '#1b1f23',
-  },
-  casestudy: {
-    background: theme.colors.secondary.main,
-    color: theme.colors.neutral.white,
-    border: 'none',
-    hover: theme.colors.secondary[4],
-    active: theme.colors.secondary[5],
-  },
-  prototype: {
-    background: theme.colors.accent.main,
-    color: theme.colors.neutral.white,
-    border: 'none',
-    hover: theme.colors.accent[4],
-    active: theme.colors.accent[5],
-  },
-  success: {
-    background: theme.colors.highlight.main,
-    color: theme.colors.text.inverse,
-    border: 'none',
-    hover: theme.colors.highlight[4],
-    active: theme.colors.highlight[5],
-  },
-})
 
 const StyledButton = styled.button`
   font-family: ${({ theme }) => theme.typography.fontFamily.button};
@@ -80,14 +65,10 @@ const StyledButton = styled.button`
     transform 0.14s ease,
     filter 0.18s ease;
 
-  ${({ variant, theme, customBackground, customColor, disabled }) => {
+  ${({ variant, theme, customBackground, disabled }) => {
     const base = baseStyles(theme)[variant] || baseStyles(theme).primary
-    const bg =
-      (customBackground && getThemeValue(customBackground, theme)) ||
-      base.background
-    const color =
-      (customColor && getThemeValue(customColor, theme)) || base.color
-    const { border, hover, active } = base
+    const bg = customBackground || base.background
+    const { border, hover, active, color } = base
 
     return css`
       background: ${bg};
@@ -98,7 +79,7 @@ const StyledButton = styled.button`
       &:focus-visible {
         background: ${hover};
         transform: translateY(-1px) scale(1.012);
-        box-shadow: 0 4px 16px rgba(32, 44, 66, 0.12);
+        box-shadow: ${theme.boxShadow.sm};
         outline: none;
       }
 
@@ -111,7 +92,7 @@ const StyledButton = styled.button`
 
       ${disabled &&
       css`
-        opacity: 0.5;
+        opacity: 0.48;
         cursor: not-allowed;
         pointer-events: none;
         filter: grayscale(0.4);
@@ -134,7 +115,6 @@ const StyledButton = styled.button`
 export default function Button({
   variant = 'primary',
   customBackground,
-  customColor,
   children,
   onClick,
   disabled = false,
@@ -144,7 +124,6 @@ export default function Button({
     <StyledButton
       variant={variant}
       customBackground={customBackground}
-      customColor={customColor}
       onClick={onClick}
       disabled={disabled}
       {...rest}

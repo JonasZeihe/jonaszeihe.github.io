@@ -1,35 +1,6 @@
 import { forwardRef, memo } from 'react'
 import styled from 'styled-components'
 
-const LumenWrapper = forwardRef(
-  (
-    {
-      children,
-      as = 'div',
-      radius = 'large',
-      padding,
-      backgroundColor,
-      variant = 'intense',
-      minIntensity,
-      ...rest
-    },
-    ref
-  ) => (
-    <Container
-      ref={ref}
-      as={as}
-      $radius={radius}
-      $padding={padding}
-      $backgroundColor={backgroundColor}
-      $variant={variant}
-      $minIntensity={minIntensity}
-      {...rest}
-    >
-      <Content>{children}</Content>
-    </Container>
-  )
-)
-
 const resolvePadding = ({ $padding }) =>
   $padding || 'clamp(1.1rem, 2vw, 2.2rem) clamp(1rem, 2.5vw, 1.7rem)'
 
@@ -40,17 +11,12 @@ const resolveBackground = ({
   $minIntensity,
 }) => {
   if ($variant === 'none') return theme.colors.surface.card
-
   if ($backgroundColor) return $backgroundColor
-
   const isDark = theme.mode === 'dark'
   const fallback = isDark ? 0.18 : 0.1
   const intensity = typeof $minIntensity === 'number' ? $minIntensity : fallback
-
-  if ($variant === 'subtle') {
+  if ($variant === 'subtle')
     return isDark ? 'rgba(45,50,60,0.9)' : 'rgba(255,255,255,0.9)'
-  }
-
   return isDark
     ? `rgba(35,40,50,${intensity})`
     : `rgba(255,255,255,${intensity + 0.02})`
@@ -59,15 +25,9 @@ const resolveBackground = ({
 const resolveBoxShadow = ({ $variant }) => {
   if ($variant === 'none') return 'none'
   if ($variant === 'subtle') {
-    return `
-      0 2px 12px 0 rgba(60,70,110,0.10),
-      0 1.5px 9px 0 rgba(120,130,170,0.07)
-    `
+    return `0 2px 12px rgba(60,70,110,0.1), 0 1.5px 9px rgba(120,130,170,0.07)`
   }
-  return `
-    0 2px 18px 0 rgba(80,100,150,0.10),
-    0 8px 32px 0 rgba(80,100,150,0.06)
-  `
+  return `0 2px 18px rgba(80,100,150,0.1), 0 8px 32px rgba(80,100,150,0.06)`
 }
 
 const Container = styled.div`
@@ -104,5 +64,34 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
 `
+
+const LumenWrapper = forwardRef(
+  (
+    {
+      children,
+      as = 'div',
+      radius = 'large',
+      padding,
+      backgroundColor,
+      variant = 'intense',
+      minIntensity,
+      ...rest
+    },
+    ref
+  ) => (
+    <Container
+      ref={ref}
+      as={as}
+      $radius={radius}
+      $padding={padding}
+      $backgroundColor={backgroundColor}
+      $variant={variant}
+      $minIntensity={minIntensity}
+      {...rest}
+    >
+      <Content>{children}</Content>
+    </Container>
+  )
+)
 
 export default memo(LumenWrapper)
