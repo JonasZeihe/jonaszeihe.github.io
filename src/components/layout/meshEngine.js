@@ -1,18 +1,22 @@
 const createBlob = (color, radius, alphaHex, dpr) => {
   const size = Math.ceil(radius * 2 * dpr)
-  const cv = document.createElement('canvas')
-  cv.width = size
-  cv.height = size
-  const ctx = cv.getContext('2d')
+  const canvas = document.createElement('canvas')
+  canvas.width = size
+  canvas.height = size
+
+  const ctx = canvas.getContext('2d')
   const r = size / 2
-  const g = ctx.createRadialGradient(r, r, 0, r, r, r)
-  g.addColorStop(0, `${color}${alphaHex}`)
-  g.addColorStop(1, `${color}00`)
-  ctx.fillStyle = g
+  const gradient = ctx.createRadialGradient(r, r, 0, r, r, r)
+
+  gradient.addColorStop(0, `${color}${alphaHex}`)
+  gradient.addColorStop(1, `${color}00`)
+
+  ctx.fillStyle = gradient
   ctx.beginPath()
   ctx.arc(r, r, r, 0, Math.PI * 2)
   ctx.fill()
-  return cv
+
+  return canvas
 }
 
 const initMeshEngine = (canvasElement, mode = 'light', palette = []) => {
@@ -21,103 +25,81 @@ const initMeshEngine = (canvasElement, mode = 'light', palette = []) => {
   const canvas = canvasElement
   const ctx = canvas.getContext('2d')
   const dpr = window.devicePixelRatio || 1
-  const profile =
-    mode === 'dark' ? { alpha: 0.34, hex: 'b4' } : { alpha: 0.43, hex: 'cc' }
 
-  const blobCache = new Map()
+  const alphaHex = mode === 'dark' ? 'b4' : 'cc'
+  const alpha = mode === 'dark' ? 0.32 : 0.42
 
-  let w = window.innerWidth
-  let h = window.innerHeight
-  let running = true
-  let visible = document.visibilityState === 'visible'
-  let last = performance.now()
-
-  const count = Math.max(4, Math.min(palette.length, 7))
+  const count = Math.min(8, palette.length)
 
   const xs = new Float32Array(count)
   const ys = new Float32Array(count)
-  const vxs = new Float32Array(count)
-  const vys = new Float32Array(count)
   const rs = new Float32Array(count)
-  const vrs = new Float32Array(count)
+  const phases = new Float32Array(count)
   const depths = new Float32Array(count)
-  const colors = new Array(count)
+  const speeds = new Float32Array(count)
+  const colors = palette.slice(0, count)
+  const cache = new Map()
 
-  const resize = () => {
-    w = window.innerWidth
-    h = window.innerHeight
-    canvas.width = Math.round(w * dpr)
-    canvas.height = Math.round(h * dpr)
-    canvas.style.width = `${w}px`
-    canvas.style.height = `${h}px`
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-    blobCache.clear()
-  }
+  let width = window.innerWidth
+  let height = window.innerHeight
+  let running = true
+  let visible = document.visibilityState === 'visible'
+  let { scrollY } = window
 
   const rand = () => Math.random()
-  const initPoints = () => {
-    for (let i = 0; i < count; i += 1) {
-      xs[i] = rand()
-      ys[i] = rand()
-      vxs[i] = (rand() - 0.5) * 0.07
-      vys[i] = (rand() - 0.5) * 0.07
-      rs[i] = 0.27 + 0.13 * rand()
-      vrs[i] = (rand() - 0.5) * 0.012
-      depths[i] = 0.5 + 0.5 * rand()
-      colors[i] = palette[i % palette.length]
-    }
+
+  for (let i = 0; i < count; i += 1) {
+    xs[i] = rand()
+    ys[i] = rand()
+    rs[i] = 0.2 + rand() * 0.15
+    phases[i] = rand() * Math.PI * 2
+    speeds[i] = 0.00002 + rand() * 0.00003
+    depths[i] = 0.5 + rand() * 0.5
   }
 
-  const roundRadius = (r) => Math.round(r / 12) * 12
+  const resize = () => {
+    width = window.innerWidth
+    height = window.innerHeight
+
+    canvas.width = width * dpr
+    canvas.height = height * dpr
+    canvas.style.width = `${width}px`
+    canvas.style.height = `${height}px`
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    cache.clear()
+  }
+
+  const round = (r) => Math.round(r / 12) * 12
+
   const getBlob = (color, radius) => {
-    const key = `${color}-${roundRadius(radius)}`
-    if (!blobCache.has(key)) {
-      blobCache.set(
-        key,
-        createBlob(color, roundRadius(radius), profile.hex, dpr)
-      )
+    const key = `${color}-${round(radius)}`
+    if (!cache.has(key)) {
+      cache.set(key, createBlob(color, round(radius), alphaHex, dpr))
     }
-    return blobCache.get(key)
+    return cache.get(key)
   }
 
-  const mouse = { x: 0.5, y: 0.5 }
-  const target = { x: 0.5, y: 0.5 }
+  const smooth = (t, offset = 0) =>
+    Math.sin(t + offset) * 0.5 +
+    Math.sin(t * 0.7 + offset * 0.3) * 0.3 +
+    Math.sin(t * 0.3 + offset * 0.7) * 0.2
 
-  const update = (dt) => {
-    mouse.x += (target.x - mouse.x) * 0.09
-    mouse.y += (target.y - mouse.y) * 0.09
-
-    ctx.clearRect(0, 0, w, h)
-    ctx.globalAlpha = profile.alpha
+  const update = (time) => {
+    ctx.clearRect(0, 0, width, height)
+    ctx.globalAlpha = alpha
 
     for (let i = 0; i < count; i += 1) {
-      let x = xs[i]
-      let y = ys[i]
-      let r = rs[i]
-      let vx = vxs[i]
-      let vy = vys[i]
-      let vr = vrs[i]
+      const t = time * speeds[i]
+      const offset = phases[i]
 
-      x += vx * dt * 0.00006
-      y += vy * dt * 0.00006
-      r += vr * dt * 0.00003
+      const nx = smooth(t, offset)
+      const ny = smooth(t, offset + 100)
 
-      if (x < 0.06 || x > 0.94) vx *= -1
-      if (y < 0.07 || y > 0.93) vy *= -1
-      if (r < 0.21 || r > 0.47) vr *= -1
-
-      xs[i] = x
-      ys[i] = y
-      rs[i] = r
-      vxs[i] = vx
-      vys[i] = vy
-      vrs[i] = vr
-
-      const radius = w * r
-      const px = (mouse.x - 0.5) * w * 0.04 * depths[i]
-      const py = (mouse.y - 0.5) * h * 0.04 * depths[i]
-      const cx = w * (0.08 + 0.84 * x) + px
-      const cy = h * (0.06 + 0.88 * y) + py
+      const radius = rs[i] * width
+      const scrollOffset = (scrollY / height) * 0.1 * depths[i]
+      const cx = width * (xs[i] + nx * 0.03)
+      const cy = height * (ys[i] + ny * 0.03 + scrollOffset)
 
       ctx.drawImage(
         getBlob(colors[i], radius),
@@ -130,37 +112,30 @@ const initMeshEngine = (canvasElement, mode = 'light', palette = []) => {
   }
 
   const frame = (time) => {
-    if (!running) return
-    if (visible) {
-      const dt = time - last
-      last = time
-      update(dt)
-    }
-    window.requestAnimationFrame(frame)
+    if (running && visible) update(time)
+    requestAnimationFrame(frame)
   }
 
-  const move = (e) => {
-    target.x = e.clientX / window.innerWidth
-    target.y = e.clientY / window.innerHeight
+  const onScroll = () => {
+    ;({ scrollY } = window)
   }
 
-  const visibility = () => {
+  const onVisibility = () => {
     visible = document.visibilityState === 'visible'
   }
 
   resize()
-  initPoints()
-  window.requestAnimationFrame(frame)
+  requestAnimationFrame(frame)
 
   window.addEventListener('resize', resize, { passive: true })
-  window.addEventListener('pointermove', move, { passive: true })
-  document.addEventListener('visibilitychange', visibility, { passive: true })
+  window.addEventListener('scroll', onScroll, { passive: true })
+  document.addEventListener('visibilitychange', onVisibility, { passive: true })
 
   return () => {
     running = false
     window.removeEventListener('resize', resize)
-    window.removeEventListener('pointermove', move)
-    document.removeEventListener('visibilitychange', visibility)
+    window.removeEventListener('scroll', onScroll)
+    document.removeEventListener('visibilitychange', onVisibility)
   }
 }
 

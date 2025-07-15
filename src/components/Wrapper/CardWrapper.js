@@ -1,28 +1,26 @@
 import styled from 'styled-components'
 import LumenWrapper from './LumenWrapper'
 
-const CardWrapper = styled(LumenWrapper).attrs(
-  ({ variant = 'intense', minIntensity }) => ({
-    variant,
-    minIntensity,
-  })
-)`
-  width: 100%;
-  max-width: 44rem;
-  margin: ${({ theme }) => theme.spacing(2)} auto;
+const CardWrapper = styled(LumenWrapper).attrs({
+  variant: 'subtle',
+})`
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border-radius: ${({ theme }) => theme.borderRadius.large};
   overflow: hidden;
+  width: 100%;
   z-index: 2;
-  will-change: transform, filter, box-shadow;
   transition:
-    transform 0.17s cubic-bezier(0.36, 0.4, 0.24, 1),
-    box-shadow 0.19s cubic-bezier(0.42, 0.12, 0.45, 1);
+    transform 0.2s ease,
+    filter 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover,
   &:focus-within {
-    transform: translateY(-2px) scale(1.008);
-    filter: brightness(
-      ${({ theme }) => (theme.mode === 'dark' ? 1.06 : 1.025)}
-    );
+    transform: translateY(-2px) scale(1.005);
+    filter: brightness(${({ theme }) => (theme.mode === 'dark' ? 1.05 : 1.02)});
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
     z-index: 4;
   }
 
@@ -38,8 +36,9 @@ const CardWrapper = styled(LumenWrapper).attrs(
 
     &:hover,
     &:focus-within {
-      transform: none;
-      filter: none;
+      transform: scale(1.002);
+      filter: brightness(1.01);
+      box-shadow: none;
     }
   }
 `
