@@ -1,20 +1,18 @@
-const visualProfile = (mode = 'light') =>
+const visualProfile = (mode) =>
   mode === 'dark'
     ? {
-        blur: 22,
-        opacity: 0.67,
-        meshAlpha: 0.34,
-        saturation: 1.08,
+        blur: 26,
+        opacity: 0.6,
+        saturation: 1.06,
         contrast: 1.1,
-        brightness: 1.03,
+        brightness: 1.02,
         alphaHex: 'b4',
       }
     : {
         blur: 36,
-        opacity: 0.82,
-        meshAlpha: 0.43,
-        saturation: 1.15,
-        contrast: 1.12,
+        opacity: 0.78,
+        saturation: 1.12,
+        contrast: 1.08,
         brightness: 1.04,
         alphaHex: 'cc',
       }

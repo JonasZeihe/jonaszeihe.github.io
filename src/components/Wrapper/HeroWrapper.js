@@ -38,7 +38,6 @@ const HeroWrapper = styled(LumenWrapper).attrs(
     margin-top: ${({ theme }) => theme.spacing(2)};
     padding: ${({ theme }) => theme.spacing(2)}
       ${({ theme }) => theme.spacing(0.3)};
-    border-radius: ${({ theme }) => theme.borderRadius.small};
     gap: ${({ theme }) => theme.spacing(1)};
     margin-bottom: ${({ theme }) => theme.spacing(1.5)};
   }

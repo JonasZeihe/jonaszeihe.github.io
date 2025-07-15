@@ -8,37 +8,34 @@ const fadeIn = keyframes`
   to { opacity: 1; }
 `
 
-export const Overlay = styled.div`
+const Overlay = styled.div`
   position: fixed;
   inset: 0;
-  background: ${({ theme }) =>
-    theme.mode === 'dark' ? 'rgba(16,17,29,0.93)' : 'rgba(26,30,38,0.66)'};
   z-index: 12000;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${fadeIn} 0.3s ease-out;
-  overflow: auto;
   padding: 2vw;
+  overflow: auto;
+  background: ${({ theme }) =>
+    theme.mode === 'dark' ? 'rgba(16,17,29,0.93)' : 'rgba(26,30,38,0.66)'};
+  animation: ${fadeIn} 0.3s ease-out;
 `
 
-const ContentWrapper = styled.div`
+const Content = styled.div`
   position: relative;
   max-width: 90%;
   max-height: 90%;
-  background: ${({ theme }) =>
-    theme.mode === 'dark'
-      ? theme.colors.surface.cardAlpha
-      : theme.colors.surface.cardAlpha};
+  padding: ${({ theme }) => theme.spacing(4)};
+  background: ${({ theme }) => theme.colors.surface.cardAlpha};
   border-radius: ${({ theme }) => theme.borderRadius.large};
   box-shadow: ${({ theme }) => theme.boxShadow.lg};
-  padding: ${({ theme }) => theme.spacing(4)};
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: ${({ theme }) => theme.colors.primary[2]}
-    ${({ theme }) => theme.colors.surface[1]};
   outline: none;
+  scrollbar-width: thin;
+  scrollbar-color: ${({ theme }) =>
+    `${theme.colors.primary[2]} ${theme.colors.surface[1]}`};
 
   &::-webkit-scrollbar {
     width: 8px;
@@ -61,25 +58,26 @@ const ContentWrapper = styled.div`
   }
 `
 
-const CloseButton = styled.button`
+const Close = styled.button`
   position: absolute;
   top: ${({ theme }) => theme.spacing(2)};
   right: ${({ theme }) => theme.spacing(2)};
-  background: ${({ theme }) => theme.colors.surface[2]};
-  color: ${({ theme }) => theme.colors.text.subtle};
-  border: none;
-  border-radius: 50%;
   width: 40px;
   height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.colors.surface[2]};
+  color: ${({ theme }) => theme.colors.text.subtle};
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   font-size: 1.3rem;
+  cursor: pointer;
+  z-index: 10;
   transition:
     background 0.18s,
     color 0.18s;
-  z-index: 10;
+
   &:hover,
   &:focus-visible {
     background: ${({ theme }) => theme.colors.primary.main};
@@ -92,67 +90,63 @@ function ModalOverlay({ onClose, children }) {
   const modalRef = useRef(null)
 
   useEffect(() => {
-    const originalBodyOverflow = document.body.style.overflow
+    const scrollBarWidth =
+      window.innerWidth - document.documentElement.clientWidth
     document.body.style.overflow = 'hidden'
+    document.body.style.paddingRight = `${scrollBarWidth}px`
+
     return () => {
-      document.body.style.overflow = originalBodyOverflow
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
     }
   }, [])
 
   useEffect(() => {
-    const prevActive = document.activeElement
-    if (modalRef.current) modalRef.current.focus()
-    return () => {
-      if (prevActive && prevActive.focus) prevActive.focus()
-    }
+    const prev = document.activeElement
+    modalRef.current?.focus()
+    return () => prev?.focus?.()
   }, [])
 
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const trap = (e) => {
       if (e.key === 'Escape') onClose()
-      if (e.key === 'Tab' && modalRef.current) {
-        const focusable = modalRef.current.querySelectorAll(
-          'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex]:not([tabindex="-1"])'
-        )
-        if (!focusable.length) {
-          e.preventDefault()
-          return
-        }
-        const first = focusable[0]
-        const last = focusable[focusable.length - 1]
-        if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault()
-          first.focus()
-        }
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault()
-          last.focus()
-        }
+      if (e.key !== 'Tab') return
+
+      const focusables = modalRef.current?.querySelectorAll(
+        'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+      if (!focusables?.length) return
+
+      const first = focusables[0]
+      const last = focusables[focusables.length - 1]
+
+      if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      } else if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
       }
     }
-    document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
+
+    document.addEventListener('keydown', trap)
+    return () => document.removeEventListener('keydown', trap)
   }, [onClose])
 
   if (typeof document === 'undefined') return null
 
   return ReactDOM.createPortal(
-    <Overlay
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modal-title"
-    >
-      <ContentWrapper
+    <Overlay onClick={onClose} role="dialog" aria-modal="true">
+      <Content
         ref={modalRef}
-        onClick={(e) => e.stopPropagation()}
         tabIndex={-1}
+        onClick={(e) => e.stopPropagation()}
       >
-        <CloseButton onClick={onClose} aria-label="Modal schließen">
+        <Close onClick={onClose} aria-label="Modal schließen">
           <FaTimes size={20} />
-        </CloseButton>
+        </Close>
         {children}
-      </ContentWrapper>
+      </Content>
     </Overlay>,
     document.body
   )

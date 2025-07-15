@@ -16,7 +16,7 @@ const ZoomableMedia = styled.img`
     isPanning ? 'none' : 'transform 0.3s ease'};
 `
 
-function Navigation({ src, alt = '', onClose }) {
+function Navigation({ src, alt, onClose }) {
   const [zoomLevel, setZoomLevel] = useState(0)
   const [zoomOriginX, setZoomOriginX] = useState(50)
   const [zoomOriginY, setZoomOriginY] = useState(50)
@@ -26,12 +26,15 @@ function Navigation({ src, alt = '', onClose }) {
   const [hasPanned, setHasPanned] = useState(false)
   const imgRef = useRef()
 
+  const constrainPan = (value, max) => Math.max(Math.min(value, max), -max)
+
   const handleZoom = (e) => {
     e.preventDefault()
     if (hasPanned) {
       setHasPanned(false)
-      return
+      return undefined
     }
+
     const rect = imgRef.current.getBoundingClientRect()
     const x = ((e.clientX - rect.left) / rect.width) * 100
     const y = ((e.clientY - rect.top) / rect.height) * 100
@@ -39,75 +42,62 @@ function Navigation({ src, alt = '', onClose }) {
     if (zoomLevel < 2) {
       setZoomOriginX(x)
       setZoomOriginY(y)
-      setZoomLevel((prev) => prev + 1)
+      setZoomLevel((z) => z + 1)
     } else {
       setZoomLevel(0)
       setPanX(0)
       setPanY(0)
     }
+    return undefined
   }
 
-  const constrainPan = (pan, maxPan) => {
-    return Math.max(Math.min(pan, maxPan), -maxPan)
+  const startPan = (x, y) => {
+    imgRef.current.dataset.startX = x - panX
+    imgRef.current.dataset.startY = y - panY
+  }
+
+  const movePan = (x, y) => {
+    const rect = imgRef.current.getBoundingClientRect()
+    const scale = getScale(zoomLevel)
+    const maxX = (rect.width * (scale - 1)) / 2
+    const maxY = (rect.height * (scale - 1)) / 2
+    const startX = parseFloat(imgRef.current.dataset.startX || 0)
+    const startY = parseFloat(imgRef.current.dataset.startY || 0)
+    setPanX(constrainPan(x - startX, maxX))
+    setPanY(constrainPan(y - startY, maxY))
   }
 
   const handleMouseDown = (e) => {
     if (zoomLevel > 0) {
       e.preventDefault()
       setIsPanning(true)
-      imgRef.current.dataset.startX = e.clientX - panX
-      imgRef.current.dataset.startY = e.clientY - panY
+      startPan(e.clientX, e.clientY)
     }
   }
 
   const handleMouseMove = (e) => {
     if (isPanning) {
       setHasPanned(true)
-      const rect = imgRef.current.getBoundingClientRect()
-      const scale = getScale(zoomLevel)
-      const maxPanX = (rect.width * (scale - 1)) / 2
-      const maxPanY = (rect.height * (scale - 1)) / 2
-
-      const startX = parseFloat(imgRef.current.dataset.startX || 0)
-      const startY = parseFloat(imgRef.current.dataset.startY || 0)
-      setPanX(constrainPan(e.clientX - startX, maxPanX))
-      setPanY(constrainPan(e.clientY - startY, maxPanY))
+      movePan(e.clientX, e.clientY)
     }
-  }
-
-  const handleMouseUp = () => {
-    setIsPanning(false)
   }
 
   const handleTouchStart = (e) => {
     if (zoomLevel > 0) {
       e.preventDefault()
       setIsPanning(true)
-      const touch = e.touches[0]
-      imgRef.current.dataset.startX = touch.clientX - panX
-      imgRef.current.dataset.startY = touch.clientY - panY
+      startPan(e.touches[0].clientX, e.touches[0].clientY)
     }
   }
 
   const handleTouchMove = (e) => {
     if (isPanning) {
       e.preventDefault()
-      const rect = imgRef.current.getBoundingClientRect()
-      const scale = getScale(zoomLevel)
-      const maxPanX = (rect.width * (scale - 1)) / 2
-      const maxPanY = (rect.height * (scale - 1)) / 2
-
-      const touch = e.touches[0]
-      const startX = parseFloat(imgRef.current.dataset.startX || 0)
-      const startY = parseFloat(imgRef.current.dataset.startY || 0)
-      setPanX(constrainPan(touch.clientX - startX, maxPanX))
-      setPanY(constrainPan(touch.clientY - startY, maxPanY))
+      movePan(e.touches[0].clientX, e.touches[0].clientY)
     }
   }
 
-  const handleTouchEnd = () => {
-    setIsPanning(false)
-  }
+  const stopPanning = () => setIsPanning(false)
 
   useEffect(() => {
     const preventScroll = (e) => {
@@ -120,11 +110,11 @@ function Navigation({ src, alt = '', onClose }) {
   }, [zoomLevel])
 
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKey = (e) => {
       if (e.key === 'Escape') onClose()
     }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
   }, [onClose])
 
   useEffect(() => {
@@ -148,11 +138,11 @@ function Navigation({ src, alt = '', onClose }) {
       onClick={handleZoom}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
+      onMouseUp={stopPanning}
+      onMouseLeave={stopPanning}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      onTouchEnd={stopPanning}
     />
   )
 }

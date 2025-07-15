@@ -10,7 +10,7 @@ export default function PythonIntroduction() {
     <>
       <HeroWrapper variant="intense">
         <Typography variant="h1" align="center">
-          🐍 Python-Projekte
+          Python-Projekte
         </Typography>
       </HeroWrapper>
 
