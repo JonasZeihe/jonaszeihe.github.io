@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.daa2fadc.js",
+    "main.js": "/static/js/main.b46543c7.js",
     "static/media/flavorfusion_logo.png": "/static/media/flavorfusion_logo.7b7af6c135b430d1f24f.png",
     "static/media/skryper_structra_logo.png": "/static/media/skryper_structra_logo.26f635bbbdedee958179.png",
     "static/media/kim_logo.png": "/static/media/kim_logo.d22cae88d40cb293012a.png",
@@ -8,9 +8,9 @@
     "static/media/shizen-logo.png": "/static/media/shizen-logo.8c5efac7b9466e12efbf.png",
     "static/media/noctua_logo.png": "/static/media/noctua_logo.c500ffa8d5bc50fa23a2.png",
     "index.html": "/index.html",
-    "main.daa2fadc.js.map": "/static/js/main.daa2fadc.js.map"
+    "main.b46543c7.js.map": "/static/js/main.b46543c7.js.map"
   },
   "entrypoints": [
-    "static/js/main.daa2fadc.js"
+    "static/js/main.b46543c7.js"
   ]
 }
