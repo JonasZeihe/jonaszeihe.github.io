@@ -1,3 +1,5 @@
+const HEX_REGEX = /#(?:[\da-f]{3}){1,2}/gi
+
 const createLinear = (from, to, angle = 135) =>
   `linear-gradient(${angle}deg, ${from}, ${to})`
 
@@ -17,7 +19,6 @@ const pickColor = (group, colors, target = 'main', mode = 'light') => {
   const base = colors[group] || {}
   const baseColor =
     base[target] || base.main || Object.values(base)[0] || '#ccc'
-
   if (mode === 'dark' && contrastRatio(baseColor, '#fff') < 2) {
     const keys = ['0', '1', '2', 'main', '4', '5', '6']
     const fallback = keys.find(
@@ -25,13 +26,17 @@ const pickColor = (group, colors, target = 'main', mode = 'light') => {
     )
     return fallback ? base[fallback] : baseColor
   }
-
   return baseColor
 }
 
-const extractHex = (gradient) => gradient.match(/#(?:[\da-f]{3}){1,2}/gi) || []
+const extractHex = (gradient) => gradient.match(HEX_REGEX) || []
+
+let lastColors = null
+let lastResult = null
 
 const gradients = ({ colors }) => {
+  if (lastColors === colors && lastResult) return lastResult
+
   const mode = luminance(colors.text?.main || '#000') < 0.5 ? 'dark' : 'light'
 
   const g = {
@@ -139,6 +144,8 @@ const gradients = ({ colors }) => {
     return `#${darkened}`
   })
 
+  lastColors = colors
+  lastResult = g
   return g
 }
 

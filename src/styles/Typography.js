@@ -9,12 +9,11 @@ const TAG_MAP = {
   caption: 'span',
 }
 
-const variantCSS = (v, t) => {
+const variantCSS = (v, t, gutter) => {
   const {
     typography: { fontSize, fontWeight, lineHeight, letterSpacing },
     spacing,
     colors: {
-      accent: { main: accent },
       text: { main, subtle },
     },
   } = t
@@ -26,17 +25,17 @@ const variantCSS = (v, t) => {
         font-weight: ${fontWeight.bold};
         line-height: ${lineHeight.tight};
         letter-spacing: ${letterSpacing.tight};
-        margin-bottom: ${s(5)};
         color: ${main};
+        margin-bottom: ${gutter ? s(5) : 0};
       `
     case 'h2':
       return css`
         font-size: ${fontSize.h2};
-        font-weight: ${fontWeight.medium};
+        font-weight: ${fontWeight.bold};
         line-height: ${lineHeight.tight};
         letter-spacing: ${letterSpacing.tight};
-        margin-bottom: ${s(4)};
         color: ${main};
+        margin-bottom: ${gutter ? s(4) : 0};
       `
     case 'h3':
       return css`
@@ -44,49 +43,60 @@ const variantCSS = (v, t) => {
         font-weight: ${fontWeight.medium};
         line-height: ${lineHeight.normal};
         letter-spacing: ${letterSpacing.normal};
-        margin-bottom: ${s(3)};
         color: ${main};
+        margin-bottom: ${gutter ? s(3) : 0};
       `
     case 'subhead':
       return css`
         font-size: ${fontSize.body};
         font-weight: ${fontWeight.medium};
         line-height: ${lineHeight.normal};
-        margin-bottom: ${s(2)};
-        color: ${accent};
+        color: ${main};
+        margin-bottom: ${gutter ? s(2) : 0};
       `
     case 'caption':
       return css`
         font-size: ${fontSize.small};
         font-weight: ${fontWeight.light};
         line-height: ${lineHeight.tight};
-        margin-bottom: ${s(1)};
         color: ${subtle};
+        margin-bottom: ${gutter ? s(1) : 0};
       `
     default:
       return css`
         font-size: ${fontSize.body};
         font-weight: ${fontWeight.regular};
         line-height: ${lineHeight.normal};
-        margin-bottom: ${s(2)};
         color: ${main};
+        margin-bottom: ${gutter ? s(2) : 0};
       `
   }
 }
 
-const applyCustomColor = (c, t) => css`
-  color: ${(() => {
-    const [g, tone = 'main'] = c.split('.')
-    return t.colors[g]?.[tone] || t.colors.text?.[tone] || c
-  })()};
-`
+const getThemeColor = (color, theme) => {
+  if (!color) return null
+  const [group, tone = 'main'] = color.split('.')
+  return theme.colors[group]?.[tone] || theme.colors.text?.[tone] || null
+}
 
 const StyledTypography = styled.span`
   margin: 0;
   padding: 0;
   text-align: ${({ align }) => align};
-  ${({ variant, theme }) => variantCSS(variant, theme)}
-  ${({ color, theme }) => (color ? applyCustomColor(color, theme) : '')}
+  ${({ variant, theme, gutter }) => variantCSS(variant, theme, gutter)}
+  ${({ color, theme }) => {
+    const themeColor = getThemeColor(color, theme)
+    return themeColor
+      ? css`
+          color: ${themeColor};
+        `
+      : ''
+  }}
+  ${({ fontSize }) =>
+    fontSize &&
+    css`
+      font-size: ${fontSize};
+    `}
 `
 
 function Typography({
@@ -94,15 +104,20 @@ function Typography({
   color,
   align = 'left',
   children,
+  as: asTagProp,
+  gutter = true,
+  fontSize,
   ...rest
 }) {
-  const asTag = TAG_MAP[variant] || 'p'
+  const asTag = asTagProp || TAG_MAP[variant] || 'p'
   return (
     <StyledTypography
       as={asTag}
       variant={variant}
       color={color}
       align={align}
+      gutter={gutter}
+      fontSize={fontSize}
       {...rest}
     >
       {children}

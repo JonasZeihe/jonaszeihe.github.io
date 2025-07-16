@@ -59,7 +59,7 @@ export default function Introduction() {
         </Typography>
 
         <Typography variant="h3" align="center">
-          🌟 Meine persönlich ausgewählten Highlights
+          🌟 Meine persönlich ausgewählten Highlights:
         </Typography>
       </SectionWrapper>
 

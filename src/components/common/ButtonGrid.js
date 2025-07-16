@@ -5,19 +5,21 @@ const ButtonGridWrapper = styled.div`
   display: grid;
   width: 100%;
   padding: ${({ theme }) => theme.spacing(1.5)} 0;
-  gap: ${({ theme }) => theme.spacing(1.5)};
-  justify-content: ${({ buttonCount }) =>
-    buttonCount === 1 ? 'center' : 'start'};
+  gap: ${({ theme }) => theme.spacing(1.3)};
+  justify-content: center;
   grid-template-columns: ${({ theme, buttonCount }) => {
-    if (buttonCount === 1) return `minmax(${theme.spacing(20)}, auto)`
-    if (buttonCount === 2)
-      return `repeat(2, minmax(${theme.spacing(17.5)}, 1fr))`
-    return `repeat(auto-fit, minmax(${theme.spacing(15)}, 1fr))`
+    if (buttonCount === 1) return `minmax(${theme.spacing(20)}, 340px)`
+    if (buttonCount === 2) return `repeat(2, minmax(${theme.spacing(14)}, 1fr))`
+    if (buttonCount === 3) return `repeat(3, minmax(${theme.spacing(13)}, 1fr))`
+    return `repeat(auto-fit, minmax(${theme.spacing(12)}, 1fr))`
   }};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: ${({ theme }) =>
-      `repeat(auto-fit, minmax(${theme.spacing(15)}, 1fr))`};
+    grid-template-columns: ${({ theme, buttonCount }) =>
+      buttonCount < 3
+        ? `1fr`
+        : `repeat(auto-fit, minmax(${theme.spacing(12)}, 1fr))`};
+    gap: ${({ theme }) => theme.spacing(1.8)};
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {

@@ -1,26 +1,34 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useMemo } from 'react'
 import styled, { useTheme } from 'styled-components'
-import initMeshEngine from './meshEngine'
 import visualProfile from './visualProfile'
+import initMeshEngine from './meshEngine'
 
 function MeshGradientBackground() {
   const ref = useRef(null)
-  const theme = useTheme()
-  const profile = visualProfile(theme?.mode)
+  const theme = useTheme() || {}
+  const palette = useMemo(
+    () =>
+      Array.isArray(theme.gradients?.meshPalette) &&
+      theme.gradients.meshPalette.length
+        ? theme.gradients.meshPalette
+        : ['#A9B1FF', '#E6B1FF', '#FFE3B1', '#B1FFD6'],
+    [theme.gradients?.meshPalette]
+  )
 
   useEffect(() => {
-    const stop = initMeshEngine(
-      ref.current,
-      theme?.mode,
-      theme?.gradients?.meshPalette || []
-    )
-    return () => stop?.()
-  }, [theme.mode, theme.gradients?.meshPalette])
+    if (ref.current && palette.length) {
+      const stop = initMeshEngine(ref.current, theme.mode, palette)
+      return () => {
+        if (stop) stop()
+      }
+    }
+    return undefined
+  }, [palette, theme.mode])
 
-  return <Canvas ref={ref} profile={profile} aria-hidden />
+  return <Canvas ref={ref} $profile={visualProfile(theme.mode)} aria-hidden />
 }
 
-const Canvas = styled.canvas`
+const Canvas = styled.canvas.attrs({ tabIndex: -1 })`
   position: fixed;
   inset: 0;
   width: 100vw !important;
@@ -28,21 +36,20 @@ const Canvas = styled.canvas`
   z-index: -1;
   pointer-events: none;
   user-select: none;
-  transition: opacity 0.4s ease;
-  opacity: ${({ profile }) => profile.opacity};
-  filter: blur(${({ profile }) => profile.blur}px)
-    brightness(${({ profile }) => profile.brightness})
-    contrast(${({ profile }) => profile.contrast})
-    saturate(${({ profile }) => profile.saturation});
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: ${({ $profile }) => $profile.opacity};
+  filter: blur(${({ $profile }) => $profile.blur}px)
+    brightness(${({ $profile }) => $profile.brightness})
+    contrast(${({ $profile }) => $profile.contrast})
+    saturate(${({ $profile }) => $profile.saturation};
   mix-blend-mode: ${({ theme }) =>
     theme.mode === 'dark' ? 'screen' : 'overlay'};
-
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    filter: blur(${({ profile }) => Math.round(profile.blur * 0.6)}px)
-      brightness(${({ profile }) => profile.brightness * 0.96})
-      contrast(${({ profile }) => profile.contrast * 0.96})
-      saturate(${({ profile }) => profile.saturation * 0.96});
-    opacity: ${({ profile }) => profile.opacity * 0.8};
+    filter: blur(${({ $profile }) => Math.round($profile.blur * 0.66)}px)
+      brightness(${({ $profile }) => ($profile.brightness * 0.96).toFixed(3)})
+      contrast(${({ $profile }) => ($profile.contrast * 0.96).toFixed(3)})
+      saturate(${({ $profile }) => ($profile.saturation * 0.96).toFixed(3)});
+    opacity: ${({ $profile }) => ($profile.opacity * 0.8).toFixed(3)};
   }
 `
 
