@@ -1,11 +1,7 @@
-// styles/theme.js
 import gradients from './Gradient'
 
-const baseFont = 18
-const golden = 1.618
-const scale = (l) => `${(baseFont * golden ** l) / 16}rem`
 const clamp = (min, max) =>
-  `clamp(${min},calc(${min}+(${max}-${min})*((100vw-320px)/(1200-320))),${max})`
+  `clamp(${min}, calc(${min} + (${max} - ${min}) * ((100vw - 350px) / 1000)), ${max})`
 
 export const typography = {
   fontFamily: {
@@ -14,50 +10,50 @@ export const typography = {
     button: "'Geist','Inter','Segoe UI',Arial,sans-serif",
   },
   fontSize: {
-    h1: clamp(scale(3), scale(3.8)),
-    h2: clamp(scale(2), scale(3)),
-    h3: clamp(scale(1), scale(2.1)),
-    h4: clamp(scale(0.5), scale(1.4)),
-    body: clamp(scale(0), scale(1)),
-    small: clamp(scale(-1), scale(0)),
+    h1: clamp(2.1, 2.85), // 2.1rem ~33.6px → 2.85rem ~45.6px
+    h2: clamp(1.6, 2.14), // 1.6rem ~25.6px → 2.14rem ~34.2px
+    h3: clamp(1.25, 1.44), // 1.25rem ~20px → 1.44rem ~23px
+    h4: clamp(1.08, 1.18), // 1.08rem ~17.3px → 1.18rem ~18.9px
+    body: clamp(1, 1.08), // 1rem ~16px → 1.08rem ~17.3px
+    small: clamp(0.92, 1), // 0.92rem ~14.7px → 1rem ~16px
   },
   fontWeight: { light: 300, regular: 400, medium: 500, bold: 700 },
-  lineHeight: { tight: 1.22, normal: 1.6, relaxed: 1.85 },
-  letterSpacing: { tight: '-0.01em', normal: '0', wide: '0.04em' },
+  lineHeight: { tight: 1.19, normal: 1.6, relaxed: 1.9 },
+  letterSpacing: { tight: '-0.012em', normal: '0', wide: '0.035em' },
 }
 
-export const spacing = (f) => `${8 * f}px`
-export const spacingHalf = (f) => `${4 * f}px`
+export const spacing = (f = 1) => `${8 * f}px`
+export const spacingHalf = (f = 1) => `${4 * f}px`
 export const borderRadius = {
   none: '0',
-  small: '0.26rem',
-  medium: '0.52rem',
-  large: '1.05rem',
+  small: '0.25rem', // 4px
+  medium: '0.55rem', // 8.8px
+  large: '1rem', // 16px
   pill: '9999px',
 }
 export const boxShadows = {
   light: {
-    xs: '0 1px 3px rgba(0,0,0,0.05)',
-    sm: '0 2px 8px rgba(32,44,66,0.10)',
-    md: '0 8px 20px rgba(32,52,116,0.14)',
-    lg: '0 12px 30px rgba(22,22,48,0.20)',
-    glow: '0 0 0 4px #7bdff2, 0 1.5px 7px 0 rgba(226,82,209,0.26)',
+    xs: '0 1px 2px rgba(60,80,120,0.03)',
+    sm: '0 2px 6px rgba(80,110,180,0.08)',
+    md: '0 4px 16px rgba(70,70,110,0.11)',
+    lg: '0 8px 36px rgba(70,90,140,0.10)',
+    glow: '0 0 0 2px #5e9fff, 0 4px 22px 0 rgba(150,180,255,0.11)',
   },
   dark: {
-    xs: '0 1px 2px rgba(0,0,0,0.70)',
-    sm: '0 2px 6px rgba(0,0,0,0.60)',
-    md: '0 6px 18px rgba(0,0,0,0.55)',
-    lg: '0 10px 28px rgba(0,0,0,0.50)',
-    glow: '0 0 0 4px #7bdff2, 0 1.5px 6px 0 rgba(123,223,242,0.20)',
+    xs: '0 1px 3px rgba(0,0,0,0.32)',
+    sm: '0 2px 9px rgba(0,0,0,0.22)',
+    md: '0 6px 22px rgba(0,0,0,0.21)',
+    lg: '0 12px 40px rgba(0,0,0,0.22)',
+    glow: '0 0 0 2px #79e6f5, 0 4px 24px 0 rgba(77,208,225,0.10)',
   },
 }
 export const breakpoints = {
-  xs: '320px',
-  sm: '576px',
-  md: '768px',
-  lg: '992px',
-  xl: '1200px',
-  xxl: '1440px',
+  xs: '350px',
+  sm: '600px',
+  md: '900px',
+  lg: '1200px',
+  xl: '1440px',
+  xxl: '1720px',
 }
 const motionSafe =
   typeof window === 'undefined' ||
@@ -291,8 +287,7 @@ const PALETTES = {
       ultraLight: '#22243A',
       dark: '#FFFFFF',
     },
-
-    text: { main: '#FFFFFF', inverse: '#16171D', subtle: '#A1A4C2' },
+    text: { main: '#f3f6fc', inverse: '#181926', subtle: '#8f94ab' },
   },
 }
 
@@ -314,4 +309,4 @@ const createTheme = (mode) => {
 
 export const lightTheme = createTheme('light')
 export const darkTheme = createTheme('dark')
-export default lightTheme // default identical wie bisher
+export default lightTheme

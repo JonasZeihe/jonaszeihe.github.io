@@ -17,19 +17,22 @@ const resolvePadding = ({ padding }) =>
   padding || 'clamp(1.1rem, 2vw, 2.2rem) clamp(1rem, 2.5vw, 1.7rem)'
 
 const resolveBackground = ({ theme, backgroundColor, variant }) => {
-  if (variant === LUMEN_VARIANTS.none) return theme.colors.surface.card
+  if (variant === LUMEN_VARIANTS.none)
+    return theme.mode === 'dark'
+      ? 'rgba(26,28,32,0.97)'
+      : 'rgba(255,255,255,0.98)'
   if (backgroundColor) return backgroundColor
   const isDark = theme.mode === 'dark'
   if (variant === LUMEN_VARIANTS.subtle)
-    return isDark ? 'rgba(45,50,60,0.9)' : 'rgba(255,255,255,0.9)'
+    return isDark ? 'rgba(38,42,52,0.6)' : 'rgba(247,249,255,0.60)'
   return isDark ? 'rgba(35,40,50,0.18)' : 'rgba(255,255,255,0.12)'
 }
 
 const resolveBoxShadow = ({ variant }) => {
   if (variant === LUMEN_VARIANTS.none) return 'none'
   if (variant === LUMEN_VARIANTS.subtle)
-    return '0 2px 12px rgba(60,70,110,0.1), 0 1.5px 9px rgba(120,130,170,0.07)'
-  return '0 2px 18px rgba(80,100,150,0.1), 0 8px 32px rgba(80,100,150,0.06)'
+    return '0 2px 12px rgba(60,70,110,0.10), 0 1.5px 9px rgba(120,130,170,0.06)'
+  return '0 2px 18px rgba(80,100,150,0.12), 0 8px 32px rgba(80,100,150,0.07)'
 }
 
 const Container = styled.div`
