@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.js": "/static/js/main.c2671ef5.js",
-    "static/media/flavorfusion_logo.png": "/static/media/flavorfusion_logo.7b7af6c135b430d1f24f.png",
-    "static/media/skryper_structra_logo.png": "/static/media/skryper_structra_logo.26f635bbbdedee958179.png",
-    "static/media/kim_logo.png": "/static/media/kim_logo.d22cae88d40cb293012a.png",
-    "static/media/inkgrid_logo.png": "/static/media/inkgrid_logo.7e202fc277edcc268eef.png",
-    "static/media/shizen-logo.png": "/static/media/shizen-logo.8c5efac7b9466e12efbf.png",
-    "static/media/noctua_logo.png": "/static/media/noctua_logo.c500ffa8d5bc50fa23a2.png",
+    "main.js": "/static/js/main.6c89c4a9.js",
+    "static/media/inkgrid_logo.webp": "/static/media/inkgrid_logo.544a3be036166a4be171.webp",
+    "static/media/flavorfusion_logo.webp": "/static/media/flavorfusion_logo.95ffd3fc59f30fd7ad91.webp",
+    "static/media/skryper_structra_logo.webp": "/static/media/skryper_structra_logo.271de8098f0370201f70.webp",
+    "static/media/shizen-logo.webp": "/static/media/shizen-logo.917517a7bdfdbb69d899.webp",
+    "static/media/kim_logo.webp": "/static/media/kim_logo.705b3126b307eb10749a.webp",
+    "static/media/noctua_logo.webp": "/static/media/noctua_logo.26a1155ea1c9fbe1f088.webp",
     "index.html": "/index.html",
-    "main.c2671ef5.js.map": "/static/js/main.c2671ef5.js.map"
+    "main.6c89c4a9.js.map": "/static/js/main.6c89c4a9.js.map"
   },
   "entrypoints": [
-    "static/js/main.c2671ef5.js"
+    "static/js/main.6c89c4a9.js"
   ]
 }
