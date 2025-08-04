@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ProjectCard from '../../../components/layout/ProjectCard'
 import ModalOverlay from '../../../components/lightbox/ModalOverlay'
 import NoctuaDetails from './details/01_NoctuaDetails'
-import NoctuaLogo from '../../../assets/images/Projects/noctua_logo.png'
+import NoctuaLogo from '../../../assets/images/Projects/noctua_logo.webp'
 
 export default function Noctua() {
   const [showModal, setShowModal] = useState(false)

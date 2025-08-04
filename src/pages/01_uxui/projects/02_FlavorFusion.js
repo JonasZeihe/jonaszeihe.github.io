@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ProjectCard from '../../../components/layout/ProjectCard'
 import ModalOverlay from '../../../components/lightbox/ModalOverlay'
 import FlavorFusionDetails from './details/02_FlavorFusionDetails'
-import FlavorFusionImage from '../../../assets/images/Projects/flavorfusion_logo.png'
+import FlavorFusionImage from '../../../assets/images/Projects/flavorfusion_logo.webp'
 
 export default function FlavorFusion() {
   const [showModal, setShowModal] = useState(false)
@@ -20,7 +20,7 @@ export default function FlavorFusion() {
       },
       {
         text: 'Case Study',
-        link: 'https://jonaszeihe.github.io/casestudyFlavorFusion/',
+        link: 'https://jonaszeihe.github.io/flavorfusion/',
         variant: 'casestudy',
       },
     ],

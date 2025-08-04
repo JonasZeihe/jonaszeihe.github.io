@@ -11,7 +11,7 @@ import {
   Lightbox,
 } from '../../../../utils/sharedComponents'
 import BadgeGrid from '../../../../components/common/BadgeGrid'
-import FlavorFusionImage from '../../../../assets/images/Projects/flavorfusion_logo.png'
+import FlavorFusionImage from '../../../../assets/images/Projects/flavorfusion_logo.webp'
 
 export default function FlavorFusionDetails() {
   const [lightboxOpen, setLightboxOpen] = useState(false)
@@ -133,7 +133,7 @@ export default function FlavorFusionDetails() {
             variant="casestudy"
             onClick={() =>
               window.open(
-                'https://jonaszeihe.github.io/casestudyFlavorFusion/',
+                'https://jonaszeihe.github.io/flavorfusion/',
                 '_blank'
               )
             }

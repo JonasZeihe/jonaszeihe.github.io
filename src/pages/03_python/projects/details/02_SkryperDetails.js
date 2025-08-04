@@ -11,7 +11,7 @@ import {
   Lightbox,
 } from '../../../../utils/sharedComponents'
 import BadgeGrid from '../../../../components/common/BadgeGrid'
-import SkryperLogo from '../../../../assets/images/Projects/skryper_structra_logo.png'
+import SkryperLogo from '../../../../assets/images/Projects/skryper_structra_logo.webp'
 
 export default function SkryperDetails() {
   const [lightboxOpen, setLightboxOpen] = useState(false)

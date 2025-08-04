@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ProjectCard from '../../../components/layout/ProjectCard'
 import ModalOverlay from '../../../components/lightbox/ModalOverlay'
 import ShizenDetails from './details/01_ShizenDetails'
-import ShizenImage from '../../../assets/images/Projects/shizen-logo.png'
+import ShizenImage from '../../../assets/images/Projects/shizen-logo.webp'
 
 export default function Shizen() {
   const [showModal, setShowModal] = useState(false)
