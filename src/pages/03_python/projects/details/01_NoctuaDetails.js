@@ -11,7 +11,7 @@ import {
   Lightbox,
 } from '../../../../utils/sharedComponents'
 import BadgeGrid from '../../../../components/common/BadgeGrid'
-import NoctuaLogo from '../../../../assets/images/Projects/noctua_logo.png'
+import NoctuaLogo from '../../../../assets/images/Projects/noctua_logo.webp'
 
 export default function NoctuaDetails() {
   const [lightboxOpen, setLightboxOpen] = useState(false)

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ProjectCard from '../../../components/layout/ProjectCard'
 import ModalOverlay from '../../../components/lightbox/ModalOverlay'
 import SkryStructraDetails from './details/02_SkryperDetails'
-import CombinedLogo from '../../../assets/images/Projects/skryper_structra_logo.png'
+import CombinedLogo from '../../../assets/images/Projects/skryper_structra_logo.webp'
 
 export default function Skryper() {
   const [showModal, setShowModal] = useState(false)

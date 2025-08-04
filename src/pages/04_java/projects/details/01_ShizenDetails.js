@@ -12,7 +12,7 @@ import {
 } from '../../../../utils/sharedComponents'
 import BadgeGrid from '../../../../components/common/BadgeGrid'
 
-import ShizenImage from '../../../../assets/images/Projects/shizen-logo.png'
+import ShizenImage from '../../../../assets/images/Projects/shizen-logo.webp'
 
 export default function ShizenDetails() {
   const [lightboxOpen, setLightboxOpen] = useState(false)

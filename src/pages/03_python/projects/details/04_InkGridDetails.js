@@ -11,7 +11,7 @@ import {
   Lightbox,
 } from '../../../../utils/sharedComponents'
 import BadgeGrid from '../../../../components/common/BadgeGrid'
-import InkGridLogo from '../../../../assets/images/Projects/inkgrid_logo.png'
+import InkGridLogo from '../../../../assets/images/Projects/inkgrid_logo.webp'
 
 export default function InkGridDetails() {
   const [lightboxOpen, setLightboxOpen] = useState(false)

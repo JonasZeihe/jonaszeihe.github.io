@@ -11,7 +11,7 @@ import {
   Lightbox,
 } from '../../../../utils/sharedComponents'
 import BadgeGrid from '../../../../components/common/BadgeGrid'
-import KimImage from '../../../../assets/images/Projects/kim_logo.png'
+import KimImage from '../../../../assets/images/Projects/kim_logo.webp'
 
 export default function KIMDetails() {
   const [lightboxOpen, setLightboxOpen] = useState(false)

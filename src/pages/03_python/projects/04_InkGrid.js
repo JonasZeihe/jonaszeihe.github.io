@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ProjectCard from '../../../components/layout/ProjectCard'
 import ModalOverlay from '../../../components/lightbox/ModalOverlay'
 import InkGridDetails from './details/04_InkGridDetails'
-import InkGridLogo from '../../../assets/images/Projects/inkgrid_logo.png'
+import InkGridLogo from '../../../assets/images/Projects/inkgrid_logo.webp'
 
 export default function InkGrid() {
   const [showModal, setShowModal] = useState(false)

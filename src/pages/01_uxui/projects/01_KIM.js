@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ProjectCard from '../../../components/layout/ProjectCard'
 import ModalOverlay from '../../../components/lightbox/ModalOverlay'
 import KIMDetails from './details/01_KIMDetails'
-import KimImage from '../../../assets/images/Projects/kim_logo.png'
+import KimImage from '../../../assets/images/Projects/kim_logo.webp'
 
 export default function KIM() {
   const [showModal, setShowModal] = useState(false)
