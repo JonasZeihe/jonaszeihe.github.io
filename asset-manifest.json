@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/static/js/main.6c89c4a9.js",
+    "main.js": "/static/js/main.44cb80cf.js",
     "static/media/inkgrid_logo.webp": "/static/media/inkgrid_logo.544a3be036166a4be171.webp",
     "static/media/flavorfusion_logo.webp": "/static/media/flavorfusion_logo.95ffd3fc59f30fd7ad91.webp",
     "static/media/skryper_structra_logo.webp": "/static/media/skryper_structra_logo.271de8098f0370201f70.webp",
@@ -8,9 +8,9 @@
     "static/media/kim_logo.webp": "/static/media/kim_logo.705b3126b307eb10749a.webp",
     "static/media/noctua_logo.webp": "/static/media/noctua_logo.26a1155ea1c9fbe1f088.webp",
     "index.html": "/index.html",
-    "main.6c89c4a9.js.map": "/static/js/main.6c89c4a9.js.map"
+    "main.44cb80cf.js.map": "/static/js/main.44cb80cf.js.map"
   },
   "entrypoints": [
-    "static/js/main.6c89c4a9.js"
+    "static/js/main.44cb80cf.js"
   ]
 }
