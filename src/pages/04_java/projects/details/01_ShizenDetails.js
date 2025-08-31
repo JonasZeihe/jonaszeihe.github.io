@@ -23,7 +23,8 @@ export default function ShizenDetails() {
       content: (
         <>
           📝 <HighlightText>Dynamische Kursverwaltung:</HighlightText> Flexibles
-          Erstellen und Verwalten hierarchischer Lerninhalte mit wenigen Klicks.
+          Erstellen und Verwalten hierarchischer Lerninhalte (Kurse → Module →
+          Inhalte).
         </>
       ),
     },
@@ -31,8 +32,8 @@ export default function ShizenDetails() {
       id: 'feature-2',
       content: (
         <>
-          🔄 <HighlightText>Rekursive Strukturen:</HighlightText> Unterstützung
-          für Kurse, Module und Inhalte, die sich nahtlos verschachteln lassen.
+          🔄 <HighlightText>Rekursive Strukturen:</HighlightText> Nahtloses
+          Verschachteln von Kursen, Modulen und Content-Blöcken.
         </>
       ),
     },
@@ -40,9 +41,9 @@ export default function ShizenDetails() {
       id: 'feature-3',
       content: (
         <>
-          🌟 <HighlightText>Gamification und Feedback:</HighlightText> Fördere
-          Engagement durch Fortschrittsverfolgung, Abzeichen und interaktive
-          Elemente.
+          🔒 <HighlightText>Security & Rollen:</HighlightText> Authentifizierung
+          (JWT) und rollenbasierte Autorisierung für Admins, Instruktoren und
+          Teilnehmende.
         </>
       ),
     },
@@ -50,9 +51,8 @@ export default function ShizenDetails() {
       id: 'feature-4',
       content: (
         <>
-          🔒 <HighlightText>Rollenbasierte Zugriffssteuerung:</HighlightText>{' '}
-          Klare Trennung von Benutzerrollen für Admins, Instruktoren und
-          Teilnehmer.
+          🌐 <HighlightText>REST-API first:</HighlightText> Saubere Endpunkte
+          für Kursdaten, Nutzerverwaltung und Zugriffskontrolle.
         </>
       ),
     },
@@ -60,9 +60,38 @@ export default function ShizenDetails() {
       id: 'feature-5',
       content: (
         <>
-          🎓 <HighlightText>Modernes Design:</HighlightText> Ein intuitives und
-          responsives Interface sorgt für eine exzellente Nutzererfahrung auf
-          allen Geräten.
+          🎨 <HighlightText>Responsives UI:</HighlightText> Intuitives
+          React-Frontend mit guter UX auf allen Geräten.
+        </>
+      ),
+    },
+  ]
+
+  const roadmap = [
+    {
+      id: 'roadmap-1',
+      content: (
+        <>
+          🌟 <HighlightText>Gamification:</HighlightText> Badges,
+          XP/Progression, Feedback-Loops.
+        </>
+      ),
+    },
+    {
+      id: 'roadmap-2',
+      content: (
+        <>
+          📊 <HighlightText>Analytics:</HighlightText> Fortschritts-Metriken und
+          Auswertung für Instruktoren.
+        </>
+      ),
+    },
+    {
+      id: 'roadmap-3',
+      content: (
+        <>
+          🧩 <HighlightText>Content-Bausteine:</HighlightText> Erweiterte Typen
+          (z. B. Quiz/Tasks) auf Basis des bestehenden Domain-Modells.
         </>
       ),
     },
@@ -77,7 +106,7 @@ export default function ShizenDetails() {
     'react',
     'responsive-design',
     'ux-ui-best-practices',
-    'gamification',
+    'jwt',
   ]
 
   return (
@@ -100,6 +129,7 @@ export default function ShizenDetails() {
           Feedback, um Bildungsanbieter und Teilnehmer gleichermaßen zu
           unterstützen.
         </Typography>
+
         <MediaDisplay
           media={[{ type: 'image', src: ShizenImage, alt: 'Shizen Logo' }]}
           onClick={() => setLightboxOpen(true)}
@@ -107,12 +137,12 @@ export default function ShizenDetails() {
         />
 
         <Typography variant="h2" align="center">
-          🚀 Features von <HighlightText>Shizen</HighlightText>
+          🚀 Kernfunktionen (heute)
         </Typography>
         <ListComponent items={features} />
 
         <Typography variant="h2" align="center">
-          🛡️ Technologien hinter <HighlightText>Shizen</HighlightText>
+          🛡️ Technologien
         </Typography>
         <BadgeGrid badges={badgeKeys} />
 
@@ -121,25 +151,62 @@ export default function ShizenDetails() {
         </Typography>
         <Typography variant="body" align="center">
           <HighlightText>Status:</HighlightText> Backend vollständig
-          implementiert mit rollenbasiertem Zugriff und API-Endpunkten.
+          implementiert (Spring Boot, Spring Security, JWT) mit rollenbasierter
+          Autorisierung und REST-API; Frontend mit React, responsiv und an das
+          Domain-Modell angebunden.
+        </Typography>
+
+        <Typography variant="h3" align="center" style={{ marginTop: 24 }}>
+          🗺️ Roadmap (Nächste Schritte)
+        </Typography>
+        <ListComponent items={roadmap} />
+
+        <Typography variant="h3" align="center" style={{ marginTop: 24 }}>
+          🔍 Transparenz
+        </Typography>
+        <Typography variant="body" align="center">
+          Der aktuelle Quellcode ist{' '}
+          <HighlightText>privat (IP-Schutz)</HighlightText>. Es gibt eine{' '}
+          <HighlightText>Live-Demo</HighlightText>. Auf Wunsch biete ich einen{' '}
+          <HighlightText>Code-Walkthrough per Videocall</HighlightText> an.
         </Typography>
 
         <ButtonGrid>
-          <Button
-            variant="github"
-            onClick={() =>
-              window.open('https://github.com/jonaszeihe/ninjin', '_blank')
-            }
-          >
-            GitHub Repository
-          </Button>
           <Button
             variant="success"
             onClick={() =>
               window.open('https://shizen-dev.onrender.com/', '_blank')
             }
           >
-            Shizen
+            Live-Demo öffnen
+          </Button>
+
+          <Button
+            onClick={() =>
+              window.open('https://jonaszeihe.github.io/kyon/', '_blank')
+            }
+          >
+            Kyon – Blog / Case Study
+          </Button>
+
+          <Button
+            onClick={() =>
+              window.open(
+                'mailto:jonaszeihe@gmail.com?subject=Code-Walkthrough%20Shizen&body=Hi%20Jonas%2C%0A%0Aich%20würde%20gern%20einen%20kurzen%20Call%20zum%20Code-Walkthrough%20vereinbaren.%20Passt%20dir%20zeitnah%3F%0A%0AThanks!',
+                '_blank'
+              )
+            }
+          >
+            Code-Walkthrough anfragen
+          </Button>
+
+          <Button
+            variant="github"
+            onClick={() =>
+              window.open('https://github.com/jonaszeihe/ninjin', '_blank')
+            }
+          >
+            Legacy-MVP (archiviert)
           </Button>
         </ButtonGrid>
       </SectionWrapper>
